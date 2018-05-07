@@ -1,4 +1,4 @@
-var app = angular.module('VoteClick', ['ngRoute']);
+var app = angular.module('app', ['ngRoute']);
 
 app.config(function($routeProvider){
     $routeProvider
@@ -17,6 +17,10 @@ app.config(function($routeProvider){
         .when('/contacto', {
             templateUrl: 'js/views/contact.html',
             controller: 'MainController'
+        })
+        .when('/BL-Master', {
+            templateUrl: 'js/views/BL-Master.html',
+            controller: 'BLController',
         })
         .otherwise({
             redirectTo: '/'

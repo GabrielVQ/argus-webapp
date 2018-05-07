@@ -1,0 +1,41 @@
+<div class="container" ng-controller="BLController">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>BL-Master</h4>
+
+            </div>
+            <div class="panel-body">
+                    <li>N° de operación: {{numeroOperacion}}</li>
+                    <li>Creado por: {{creador}}</li>
+                    <li>Fecha: {{fecha|date:'dd-MM-yyyy' }}</li>
+
+
+            </div>
+            <div class="panel-body">
+                <select name="Tipo">
+                    <option value="Exportación" selected="selected">Exportación</option>
+                    <option value="Importación">Importación</option>
+                </select>
+                <select name="Tipo">
+                    <option value="Directo" selected="selected">Directo</option>
+                    <option value="Coloader">Coloader</option>
+                </select>
+                <select class="testSelect2" name="estados">
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                    <option value="WY">eqwe</option>
+                    <option value="WY">fasd</option>
+                    <option value="WY">rqwr</option>
+                    <option value="WY">fasfa</option>
+                </select>
+                <script>
+                    console.log('entre al jquery');
+                    $(document).ready(function() {
+                        $('.testSelect2').select2();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

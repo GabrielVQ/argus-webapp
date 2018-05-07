@@ -114,3 +114,15 @@ input[type="checkbox"]:checked + .box:before {
     content: '';
     z-index: 10000;
 }
+
+label{
+    clear: left;
+}
+
+.panel-body1{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #000000;
+
+}
