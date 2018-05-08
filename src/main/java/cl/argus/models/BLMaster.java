@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="BLMasters")
+@Table(name="BLMaster")
 public class BLMaster{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -36,6 +36,18 @@ public class BLMaster{
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date fechaDespacho;
+
+    @ManyToOne
+    @JoinColumn(name="puerto_inicio")
+    private Puerto puertoInicio;
+
+    @ManyToOne
+    @JoinColumn(name="nave")
+    private Nave nave;
+
+    @ManyToOne
+    @JoinColumn(name="puerto_llegada")
+    private Puerto puertoLlegada;
 
     @PrePersist
     public void onCreate() {

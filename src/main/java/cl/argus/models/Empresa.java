@@ -14,5 +14,9 @@ public class Empresa {
     @OneToMany (mappedBy = "empresa",fetch = FetchType.EAGER)
     private Set<Bodega> bodegas;
 
+    @OneToOne(  fetch = FetchType.LAZY,
+                mappedBy = "empresa")
+    private ConfirmacionReserva confirmacion;
+
 
 }
