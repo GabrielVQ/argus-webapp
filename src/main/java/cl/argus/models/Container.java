@@ -2,6 +2,7 @@ package cl.argus.models;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Container")
@@ -10,7 +11,6 @@ public class Container {
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name="naviera")
-    private Naviera naviera;
+    @OneToMany (mappedBy = "container", fetch = FetchType.EAGER)
+    private Set<BLMaster> blMaster;
 }

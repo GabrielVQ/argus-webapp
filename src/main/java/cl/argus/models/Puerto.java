@@ -13,10 +13,10 @@ public class Puerto {
 
     private String nombre;
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoInicio")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoOrigen")
     private Set<BLMaster> blMasterInicio;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoLlegada")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoDescarga")
     private Set<BLMaster> blMasterLlegada;
 
 
