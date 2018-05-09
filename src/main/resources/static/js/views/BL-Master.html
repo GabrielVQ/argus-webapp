@@ -1,0 +1,176 @@
+<div class="container" ng-controller="BLController">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>BL-Master</h4>
+
+            </div>
+            <div class="panel-body1">
+                    <ul>N° de operación: {{numeroOperacion}}</ul>
+                    <ul>Creado por: {{creador}}</ul>
+                    <ul>Fecha: {{fecha|date:'dd-MM-yyyy' }}</ul>
+
+
+            </div>
+            <div class="panel-body1">
+
+                <ul><label>IMP/EXP:</label>
+                    <select name="imp/exp">
+                    <option value="Exportación" selected="selected">Exportación</option>
+                    <option value="Importación">Importación</option>
+                </select>
+                    <label>Servicio:</label>
+                <select name="servicio">
+                    <option value="Directo" selected="selected">Directo</option>
+                    <option value="Coloader">Coloader</option>
+                </select></ul>
+
+                <ul><label>Naviera:</label>
+                    <select class="navieraSelect" name="naviera">
+                    <option value="AL" selected="selected">Naviera</option>
+                    <option value="WY">Wyoming</option>
+                    <option value="WY">eqwe</option>
+                    <option value="WY">fasd</option>
+                    <option value="WY">rqwr</option>
+                    <option value="WY">fasfa</option>
+                </select>
+                    <label>Nave:</label>
+                <select class="navesSelect" name="naves">
+                    <option value="AL" selected="selected">Naves</option>
+                    <option value="WY">Wyoming</option>
+                    <option value="WY">eqwe</option>
+                    <option value="WY">fasd</option>
+                    <option value="WY">rqwr</option>
+                    <option value="WY">fasfa</option>
+                </select></ul>
+            </div>
+                <div class="panel-body1">
+                    <ul><label>N° de viaje:</label>
+                    <input type="text" name="Numero de viaje">
+                    <label>N° de reserva:</label>
+                    <input type="text" name="Numero de reserva">
+                </ul>
+                <ul><label>Naviera:</label>
+                    <select class="origenPuertosSelect" name="origen">
+                        <option value="AL" selected="selected">Origen</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="WY">eqwe</option>
+                        <option value="WY">fasd</option>
+                        <option value="WY">rqwr</option>
+                        <option value="WY">fasfa</option>
+                    </select>
+                    <label>Puerto de descarga:</label>
+                    <select class="puertoDescargaSelect" name="puertoDescarga">
+                        <option value="AL" selected="selected">Puerto de descarga</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="WY">eqwe</option>
+                        <option value="WY">fasd</option>
+                        <option value="WY">rqwr</option>
+                        <option value="WY">fasfa</option>
+                    </select></ul>
+                <ul><label>Destino:</label>
+                    <select class="destinoSelect" name="destino">
+                        <option value="AL" selected="selected">Destino</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="WY">eqwe</option>
+                        <option value="WY">fasd</option>
+                        <option value="WY">rqwr</option>
+                        <option value="WY">fasfa</option>
+                    </select>
+                    <label>Reserva naviera:</label>
+                    <select class="reservaNavieraSelect" name="reservaNaviera">
+                        <option value="AL" selected="selected">ReservaNaviera</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="WY">eqwe</option>
+                        <option value="WY">fasd</option>
+                        <option value="WY">rqwr</option>
+                        <option value="WY">fasfa</option>
+                    </select></ul>
+                <ul><label>Reserva Interna:</label>
+                    <select class="reservaInternaSelect" name="reservaInterna">
+                        <option value="AL" selected="selected">Reserva Interna</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="WY">eqwe</option>
+                        <option value="WY">fasd</option>
+                        <option value="WY">rqwr</option>
+                        <option value="WY">fasfa</option>
+                    </select>
+                    <label>Tipo de carga:</label>
+                    <select class="tipoCargaSelect" name="tipoCarga">
+                        <option value="General" selected="selected">General</option>
+                        <option value="IMO">IMO</option>
+                    </select></ul>
+                    <div class="panel-body1">
+                        <ul>
+                        <label>Fecha zarpe:</label>
+                        <input type="date" name="fechaZarpe">
+                        <label>Fecha arribo:</label>
+                        <input type="date" name="fechaArrribo">
+                        </ul>
+                           <ul><label>BL Master N°:</label>
+                            <input type="text" name="BLMasterNumero">
+                           </ul>
+                    </div>
+                    <div class="panel-body1">
+                        <ul>
+                            <label>Agente:</label>
+                            <select class="agenteSelect" name="agente">
+                                <option value="AL" selected="selected">agente</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="WY">eqwe</option>
+                                <option value="WY">fasd</option>
+                                <option value="WY">rqwr</option>
+                                <option value="WY">fasfa</option>
+                            </select>
+                            <labael>Razón social:</labael>
+                            <input type="textarea" name="razonSocial" readonly>
+                        </ul>
+                    </div>
+                    <div class="panel-body1">
+                        <ul><label>Kilos:</label>
+                            <input type="textarea" name="kilos" readonly size="3px">
+                            <label>Volumen:</label>
+                            <input type="textarea" name="volumen" readonly size="3px">
+                            <label>Cant Cont 20:</label>
+                            <input type="textarea" name="cont20" readonly size="3px">
+                            <label>Cant Cont 40:</label>
+                            <input type="textarea" name="cont40" readonly size="3px">
+                            <input type="button" value="Agregar Contenedor">
+                        </ul>
+                        <ul><input type="button" value="Agregar House">
+                            <input type="button" value="Ver Houses">
+                            <input type="button" value="Guardar">
+                            <input type="button" value="Cancelar">
+                        </ul>
+                    </div>
+                <script>
+                    console.log('entre al jquery');
+                    $(document).ready(function() {
+                        $('.navieraSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.agenteSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.navesSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.origenPuertosSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.puertoDescargaSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.reservaNavieraSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.reservaInternaSelect').select2();
+                    });
+                    $(document).ready(function() {
+                        $('.destinoSelect').select2();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
