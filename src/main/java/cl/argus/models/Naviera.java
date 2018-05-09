@@ -14,4 +14,12 @@ public class Naviera {
 
     @OneToMany(mappedBy = "naviera",fetch = FetchType.EAGER)
     private Set<BLMaster> blMasters;
+
+    public long getId(){
+        return this.id;
+    }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
 }
