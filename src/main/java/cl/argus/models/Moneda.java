@@ -19,7 +19,18 @@ public class Moneda {
     private long id;
     private String nombre;
     private float valor_clp;
+    
+    public long getId(){
+        return this.id;
+    }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
 
+    public float valor_clp(){
+        return this.valor_clp;
+    }
     
     
 }
