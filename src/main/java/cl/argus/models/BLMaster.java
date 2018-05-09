@@ -58,10 +58,10 @@ public class BLMaster{
     @JoinColumn(name="puerto_descarga")
     private Puerto puertoDescarga;
 
-    @PrePersist
-    public void onCreate() {
-        this.blocked = true;
-    }
+    //@PrePersist
+   // public void onCreate() {
+   //     this.blocked = true;
+    //}
 
     public BLMaster(){}
 
