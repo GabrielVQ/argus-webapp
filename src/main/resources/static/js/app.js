@@ -22,6 +22,14 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/BL-Master.html',
             controller: 'BLController',
         })
+        .when('/BL-House',{
+            templateUrl: 'js/views/BL-House.html',
+            controller: 'BLHouseController',
+        })
+        .when('/buscarBLMaster',{
+            templateUrl: 'js/views/buscarBLMaster.html',
+            controller: 'buscarBLMaster',
+        })
         .otherwise({
             redirectTo: '/'
         });
