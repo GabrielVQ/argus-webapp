@@ -19,6 +19,8 @@ public class BLMaster{
     private String servicio;
     private String nreserva;
     private String nviaje;
+    private String agenteCreador;
+
 
     @ManyToOne
     @JoinColumn(name="Naviera_id")
@@ -30,12 +32,12 @@ public class BLMaster{
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date fechaArribo;
+    private Date fechaLlegada;
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date fechaDespacho;
+    private Date fechaInicio;
 
     @ManyToOne
     @JoinColumn(name="puerto_inicio")
