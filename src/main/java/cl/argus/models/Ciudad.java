@@ -11,14 +11,16 @@ public class Ciudad {
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
 
-    private String nombre;
+    
 
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadInicio")
     private Set<BLHouse> blHousesInicio;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadLlegada")
     private Set<BLHouse> blHousesLlegada;
-
+    
+    private String nombre;
+    
     public String getNombre() {
         return nombre;
     }

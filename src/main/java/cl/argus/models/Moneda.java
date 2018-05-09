@@ -18,7 +18,7 @@ public class Moneda {
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
     private String nombre;
-    public float valor_clp;
+    private float valor_clp;
 
     
     
