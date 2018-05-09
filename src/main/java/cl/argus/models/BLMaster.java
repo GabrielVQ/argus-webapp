@@ -71,30 +71,80 @@ public class BLMaster{
 
     public BLMaster(){}
 
-    public long getId(){
-        return this.id;
+    public long getId() {
+        return id;
+    }
+
+    public String getnReserva() {
+        return nReserva;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public String getAgenteCreador() {
+        return agenteCreador;
+    }
+
+    public Set<BLHouse> getBlHouses() {
+        return blHouses;
+    }
+
+    public Puerto getPuertoOrigen() {
+        return puertoOrigen;
+    }
+
+    public Puerto getPuertoDescarga() {
+        return puertoDescarga;
+    }
+
+    public Naviera getNaviera() {
+        return naviera;
+    }
+
+    public Nave getNave() {
+        return nave;
+    }
+
+    public Container getContainer() {
+        return container;
     }
 
     public boolean isBlocked() {
-        return this.blocked;
+        return blocked;
     }
 
-    public String getServicio(){
-        return this.servicio;
+    public Date getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public String getNreserva() {
-        return this.nReserva;
+    public Date getFechaLlegada() {
+        return fechaLlegada;
     }
 
-    public String getNviaje(){
-        return this.nViaje;
+    public Date getFechaZarpe() {
+        return fechaZarpe;
     }
-    public Date getFechaLlegada(){
-        return this.fechaLlegada;
+
+    public String getNumeroOperacion() {
+        return numeroOperacion;
     }
-    public Date getFechaZarpe(){
-        return this.fechaZarpe;
+
+    public String getnViaje() {
+        return nViaje;
+    }
+
+    public String getServicio() {
+        return servicio;
+    }
+
+    public String getTipoNegocio() {
+        return tipoNegocio;
+    }
+
+    public void setAgenteCreador(String agenteCreador) {
+        this.agenteCreador = agenteCreador;
     }
 
 }

@@ -23,4 +23,24 @@ public class ConfirmacionReserva {
     private String estado;
     private boolean confirmado;
 
+    public BLHouse getBlHouse() {
+        return blHouse;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
 }

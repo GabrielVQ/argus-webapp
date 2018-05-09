@@ -21,5 +21,16 @@ public class Puerto {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoDescarga")
     private Set<BLMaster> blMasterLlegada;
 
+    public String getNombre(){
+        return this.nombre;
+    }
+    public long getId(){
+        return this.id;
+    }
+
+
+    public String getDireccion(){
+        return this.direccion;
+    }
 
 }
