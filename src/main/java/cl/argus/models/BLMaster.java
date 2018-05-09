@@ -78,10 +78,10 @@ public class BLMaster{
         return this.nviaje;
     }
     public Date getFechaArribo(){
-        return this.fechaArribo;
+        return this.fechaInicio;
     }
     public Date getFechaDespacho(){
-        return this.fechaDespacho;
+        return this.fechaLlegada;
     }
 
 }
