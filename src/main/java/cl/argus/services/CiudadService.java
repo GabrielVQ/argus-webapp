@@ -1,35 +1,32 @@
 package cl.argus.services;
 
 
-import cl.argus.models.BLHouse;
 import cl.argus.models.BLMaster;
-import cl.argus.models.Puerto;
+import cl.argus.models.Ciudad;
 import cl.argus.repositories.BLMasterRepository;
+import cl.argus.repositories.CiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/blmasters")
-public class BLMasterService {
+@RequestMapping("/ciudades")
+public class CiudadService {
     @Autowired
-    BLMasterRepository blMasterRepository;
+    CiudadRepository ciudadRepository;
+
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Iterable<BLMaster> getAllBLMasters() {
-        return blMasterRepository.findAll();
+    public Iterable<Ciudad> getAllCiudades() {
+        return ciudadRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public BLMaster create(@RequestBody BLMaster resource) {
-        return blMasterRepository.save(resource);
+    public Ciudad create(@RequestBody Ciudad resource) {
+        return ciudadRepository.save(resource);
     }
 }

@@ -17,14 +17,21 @@ public class BLMaster{
     private long id;
     private boolean blocked;
     private String servicio;
-    private String nreserva;
-    private String nviaje;
+    private String nReserva;
+    private String nViaje;
     private String agenteCreador;
+    private String tipoNegocio;
+    private String destino;
+
 
 
     @ManyToOne
     @JoinColumn(name="Naviera_id")
     private Naviera naviera;
+
+    @ManyToOne
+    @JoinColumn(name="Container_id")
+    private Container container;
 
     @OneToMany (mappedBy = "blMaster", fetch = FetchType.EAGER)
     private Set<BLHouse> blHouses;
@@ -40,16 +47,16 @@ public class BLMaster{
     private Date fechaInicio;
 
     @ManyToOne
-    @JoinColumn(name="puerto_inicio")
-    private Puerto puertoInicio;
+    @JoinColumn(name="puerto_origen")
+    private Puerto puertoOrigen;
 
     @ManyToOne
     @JoinColumn(name="nave")
     private Nave nave;
 
     @ManyToOne
-    @JoinColumn(name="puerto_llegada")
-    private Puerto puertoLlegada;
+    @JoinColumn(name="puerto_descarga")
+    private Puerto puertoDescarga;
 
     @PrePersist
     public void onCreate() {
@@ -71,11 +78,11 @@ public class BLMaster{
     }
 
     public String getNreserva() {
-        return this.nreserva;
+        return this.nReserva;
     }
 
     public String getNviaje(){
-        return this.nviaje;
+        return this.nViaje;
     }
     public Date getFechaArribo(){
         return this.fechaInicio;
