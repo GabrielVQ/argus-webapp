@@ -10,7 +10,10 @@ public class Bodega {
     @Id
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
+    private String nombre;
+    private String direccion;
 
+    
     @ManyToOne
     @JoinColumn (name= "Empresa_id")
     private Empresa empresa;

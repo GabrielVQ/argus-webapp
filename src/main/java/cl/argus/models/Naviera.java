@@ -10,7 +10,7 @@ public class Naviera {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-
+    private String nombre;
 
     @OneToMany(mappedBy = "naviera",fetch = FetchType.EAGER)
     private Set<BLMaster> blMasters;

@@ -13,4 +13,6 @@ public class Container {
 
     @OneToMany (mappedBy = "container", fetch = FetchType.EAGER)
     private Set<BLMaster> blMaster;
+    
+    private String tipo;
 }

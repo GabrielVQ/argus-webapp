@@ -12,6 +12,8 @@ public class Puerto {
     private long id;
 
     private String nombre;
+    
+    private String direccion;
 
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "puertoOrigen")
     private Set<BLMaster> blMasterInicio;
