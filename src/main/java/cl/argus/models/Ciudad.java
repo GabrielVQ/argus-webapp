@@ -23,6 +23,10 @@ public class Ciudad {
         return nombre;
     }
 
+    public String setNombre(String nombre) {
+        return this.nombre=nombre;
+    }
+
     public long getId(){
         return id;
     }
