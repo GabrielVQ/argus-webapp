@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,7 +14,7 @@ public class ConfirmacionReserva {
     private long id;
     
 
-    @OneToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "Empresa_id", nullable = false)
     private Empresa empresa;
 
@@ -22,5 +24,25 @@ public class ConfirmacionReserva {
     
     private String estado;
     private boolean confirmado;
+
+    public BLHouse getBlHouse() {
+        return blHouse;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
 
 }

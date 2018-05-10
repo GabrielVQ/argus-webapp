@@ -15,4 +15,17 @@ public class Container {
     private Set<BLMaster> blMaster;
     
     private String tipo;
+
+    public long getId() {
+        return id;
+    }
+
+    public Set<BLMaster> getBlMaster() {
+        return blMaster;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
 }
