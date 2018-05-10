@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ public class Bodega {
     private String nombre;
     private String direccion;
 
-    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn (name= "Empresa_id")
     private Empresa empresa;

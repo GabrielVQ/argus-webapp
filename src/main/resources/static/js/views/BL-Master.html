@@ -69,29 +69,25 @@
                         <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
                             <select ng-model="newBLMaster.puertoInicio" class="col-md-8 origenPuertosSelect" name="origen">
                                 <option ng-selected="{{puertos[0].nombre}}"
-                                        ng-repeat="puerto in puerto"
-                                        value="{{puerto.id}}">{{puertos.nombre}}
+                                        ng-repeat="puerto in puertos"
+                                        value="{{puerto.id}}">{{puerto.nombre}}
                                 </option>
                             </select></div>
                         <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
-                            <select class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
-                                <option value="AL" selected="selected">Puerto de descarga</option>
-                                <option value="WY">Wyoming</option>
-                                <option value="WY">eqwe</option>
-                                <option value="WY">fasd</option>
-                                <option value="WY">rqwr</option>
-                                <option value="WY">fasfa</option>
+                            <select ng-model="newBLMaster.puertoLlegada" class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
+                                <option ng-selected="{{puertos[0].nombre}}"
+                                        ng-repeat="puerto in puertos"
+                                        value="{{puerto.id}}">{{puerto.nombre}}
+                                </option>
                             </select></div>
                     </ul>
                     <ul class="col-md-12">
                         <div class="col-md-6"><label class="col-md-4">Destino:</label>
-                            <select class="col-md-8 destinoSelect" name="destino">
-                                <option value="AL" selected="selected">Destino</option>
-                                <option value="WY">Wyoming</option>
-                                <option value="WY">eqwe</option>
-                                <option value="WY">fasd</option>
-                                <option value="WY">rqwr</option>
-                                <option value="WY">fasfa</option>
+                            <select ng-model="newBLMaster.destino" class="col-md-8 destinoSelect" name="destino">
+                                <option ng-selected="{{puertos[0].nombre}}"
+                                        ng-repeat="puerto in puertos"
+                                        value="{{puerto.id}}">{{puerto.nombre}}
+                                </option>
                             </select></div>
                         <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
                         <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
@@ -126,7 +122,7 @@
                             <div class="col-md-4"><label class="col-md-5">Fecha zarpe:</label>
                                 <input class="col-md-7" type="date" name="fechaZarpe"></div>
                             <div class="col-md-4"><label class="col-md-5">Fecha arribo:</label>
-                                <input class="col-md-7" type="date" name="fechaArrribo"></div>
+                                <input class="col-md-7" type="date" name="fechaLlegada"></div>
                             <div class="col-md-4"><label class="col-md-5">BL Master N°:</label>
                                 <input class="col-md-7" type="text" name="BLMasterNumero">
                         </ul>
@@ -148,16 +144,16 @@
 
                                 <select ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect"
                                         name="agente">
-                                    <option ng-selected="{{empresas[0].nombre}}"
+                                    <option ng-selected="{{empresas[0].nombre_abrev}}"
                                             ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombre}}
+                                            value="{{e.id}}">{{e.nombre_abrev}}
                                     </option>
                                 </select>
 
 
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8" type="textarea" disabled name="razonSocial">
+                                <input class="col-md-8"  type="textarea" disabled name="razonSocial">
                         </ul>
                     </div>
 

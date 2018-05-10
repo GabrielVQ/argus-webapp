@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -32,11 +34,11 @@ public class Puerto {
     public String getDireccion(){
         return this.direccion;
     }
-    
+    @JsonIgnore
     public Set<BLMaster> getBLMasterInicio(){
         return this.blMasterInicio;
     }
-    
+    @JsonIgnore
     public Set<BLMaster> getblMasterLlegada(){
         return this.blMasterLlegada;
     }
