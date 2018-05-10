@@ -1,4 +1,4 @@
-app.controller('BLController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('BLController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     $scope.numeroOperacion = 1452;
@@ -12,21 +12,28 @@ app.controller('BLController', ['$scope', '$location', '$http', function($scope,
         return route === $location.path();
     }
     $scope.newBLMaster= {
-        blocked:false,
-        servicio:'maritimo2jhgg',
-        n_reserva:12345,
-        nViaje:'55',
-        agenteCreador:'ALUSA',
-        tipoNegocio:'algo',
-        destino:'STGO',
-        naviera:1,
-        container:1
+
+        "numeroOperacion": "ARG0044",
+        "blocked": false,
+        "servicio": "",
+        "nReserva": "",
+        "nViaje": "",
+        "agenteCreador": "eavendano", // $scope.creador
+        "tipoNegocio": "",
+        "destino": "Conce",
+        "fechaIngreso": "10/05/2018 a las 10:46",
+        "fechaLlegada": "12/07/2018 a las 04:00",
+        "fechaZarpe": "25/07/2018 a las 04:00"
 
     };
 
     $scope.send = function(){
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         console.log($scope.newBLMaster);
+        $scope.mensaje = 'BL Generada con exito!';
+        $window.alert($scope.mensaje);
+
+
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
