@@ -15,12 +15,16 @@
                     <ul class="col-md-12">
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">IMP/EXP:</label>
-                            <select class="col-md-8 navieraSelect" name="imp/exp">
-                                <option value="Exportación" selected="selected">Exportación</option>
-                                <option value="Importación">Importación</option>
-                            </select></div>
+
+                            <select  class="col-md-8 navieraSelect" name="imp/exp">
+                                <option ng-selected="{{ciudades[0].nombre}}"
+                                        ng-repeat="c in ciudades"
+                                        value="{{c.id}}">{{c.nombre}}</option>
+                            </select>
+
+                        </div>
                         <div class="col-md-6"><label class="col-md-4">Servicio:</label>
-                            <select class="col-md-8 navieraSelect" name="servicio">
+                            <select ng-model="newBLMaster.servicio" id="servicio" class="col-md-8 navieraSelect" name="servicio">
                                 <option value="Directo" selected="selected">Directo</option>
                                 <option value="Coloader">Coloader</option>
                             </select>
@@ -167,6 +171,7 @@
                         <input type="button" value="Ver Houses">
                         <input type="button" value="Guardar">
                         <input type="button" value="Cancelar">
+                        <button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
                     </ul>
                 </div>
             </div>
