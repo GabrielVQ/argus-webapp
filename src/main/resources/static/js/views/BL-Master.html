@@ -16,7 +16,7 @@
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">IMP/EXP:</label>
 
-                            <select  class="col-md-8 navieraSelect" name="imp/exp">
+                            <select  ng-model="newBLMaster.tipoNegocio" class="col-md-8 navieraSelect" name="tipoNegocio">
                                 <option ng-selected="{{ciudades[0].nombre}}"
                                         ng-repeat="c in ciudades"
                                         value="{{c.id}}">{{c.nombre}}</option>
@@ -96,7 +96,7 @@
                         <option value="WY">rqwr</option>
                         <option value="WY">fasfa</option>
                     </select></div>
-                    <div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
+                    <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
                     <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
                         <option value="AL" selected="selected">ReservaNaviera</option>
                         <option value="WY">Wyoming</option>
@@ -114,7 +114,7 @@
                         <option value="WY">fasd</option>
                         <option value="WY">rqwr</option>
                         <option value="WY">fasfa</option>
-                    </select></div>
+                    </select></div>-->
                     <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
                     <select class="col-md-8 tipoCargaSelect navieraSelect" name="tipoCarga">
                         <option value="General" selected="selected">General</option>
@@ -139,14 +139,24 @@
                     <ul class="col-md-12">
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">Agente:</label>
-                        <select class="col-md-8 agenteSelect" name="agente">
+                       <!-- <select class="col-md-8 agenteSelect" name="agente">
                             <option value="AL" selected="selected">agente</option>
                             <option value="WY">Wyoming</option>
                             <option value="WY">eqwe</option>
                             <option value="WY">fasd</option>
                             <option value="WY">rqwr</option>
                             <option value="WY">fasfa</option>
-                        </select></div>
+                        </select>-->
+
+                            <select  ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect" name="agente">
+                                <option ng-selected="{{empresas[0].nombre}}"
+                                        ng-repeat="e in empresas"
+                                        value="{{e.id}}">{{e.nombre}}</option>
+                            </select>
+
+
+
+                        </div>
                         <div class="col-md-6"><label class="col-md-4">Razón social:</label>
                         <input class="col-md-8" type="textarea" disabled name="razonSocial" >
                     </ul>
