@@ -24,7 +24,7 @@ public class Nave {
     public String getNombre(){
         return this.nombre;
         }
-    
+    @JsonIgnore
     public Set<BLMaster> getblMaster(){
         return this.blMaster;
     }

@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,16 +25,18 @@ public class BLHouse {
     @JoinColumn(name="Ciudad_llegada")
     private Ciudad ciudadLlegada;
 
+    @JsonIgnore
     @OneToMany (mappedBy = "blHouse",fetch = FetchType.EAGER)
     private Set<Cargament> cargaments;
 
+    @JsonIgnore
     @OneToOne ( mappedBy = "blHouse", fetch = FetchType.LAZY)
     private ConfirmacionReserva confirmacion;
 
     public long getId(){
         return id;
     }
-
+    @JsonIgnore
     public BLMaster getBlMaster(){
         return blMaster;
     }

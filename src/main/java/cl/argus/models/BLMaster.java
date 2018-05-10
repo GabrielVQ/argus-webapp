@@ -2,6 +2,7 @@ package cl.argus.models;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -35,9 +36,11 @@ public class BLMaster{
     @JoinColumn(name="Naviera_id")
     private Naviera naviera;
 
+
     @ManyToOne
     @JoinColumn(name="Container_id")
     private Container container;
+
 
     @OneToMany (mappedBy = "blMaster", fetch = FetchType.EAGER)
     private Set<BLHouse> blHouses;

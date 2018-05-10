@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,7 +13,7 @@ public class Naviera {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String nombre;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "naviera",fetch = FetchType.EAGER)
     private Set<BLMaster> blMasters;
 

@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,10 +14,11 @@ public class Ciudad {
     private long id;
 
     
-
+    @JsonIgnore
    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadInicio")
     private Set<BLHouse> blHousesInicio;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadLlegada")
     private Set<BLHouse> blHousesLlegada;
     
