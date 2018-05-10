@@ -15,6 +15,7 @@ public class BLMaster{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    private String numeroOperacion;
     private boolean blocked;
     private String servicio;
     private String nReserva;
@@ -22,6 +23,11 @@ public class BLMaster{
     private String agenteCreador;
     private String tipoNegocio;
     private String destino;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date fechaIngreso;
 
 
 
@@ -44,7 +50,7 @@ public class BLMaster{
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date fechaInicio;
+    private Date fechaZarpe;
 
     @ManyToOne
     @JoinColumn(name="puerto_origen")
@@ -84,11 +90,11 @@ public class BLMaster{
     public String getNviaje(){
         return this.nViaje;
     }
-    public Date getFechaArribo(){
-        return this.fechaInicio;
-    }
-    public Date getFechaDespacho(){
+    public Date getFechaLlegada(){
         return this.fechaLlegada;
+    }
+    public Date getFechaZarpe(){
+        return this.fechaZarpe;
     }
 
 }

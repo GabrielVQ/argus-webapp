@@ -10,6 +10,7 @@ public class ConfirmacionReserva {
     @Id
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
+    
 
     @OneToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "Empresa_id", nullable = false)
@@ -18,5 +19,8 @@ public class ConfirmacionReserva {
     @OneToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "BLHouse_id", nullable = false)
     private BLHouse blHouse;
+    
+    private String estado;
+    private boolean confirmado;
 
 }
