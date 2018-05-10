@@ -46,7 +46,7 @@
             <a href="#!/" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">Inicio</a>
             <a href="#!/servicios" class="btn navbar-btn" ng-class="{ active: isActive('/servicios') }" role="button">Servicio</a>
             <a href="#!/nosotros" class="btn navbar-btn" ng-class="{ active: isActive('/nosotros') }" role="button">Nosotros</a>
-            <a href="#!/contactos" class="btn navbar-btn" ng-class="{ active: isActive('/contacto') }" role="button">Contacto</a>
+            <a href="#!/BL-House" class="btn navbar-btn" ng-class="{ active: isActive('/contacto') }" role="button">Contacto</a>
             <div class="btn-group">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -54,12 +54,10 @@
                            aria-expanded="false">BL
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#!/BL-Master" ng-class="{ active: isActive('/BL-Master') }" role="button">BL-Master</a>
+                            <li><a href="#!/BL-Master" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-Master</a>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#/aprobacionConglomerados">Conglomerados</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#/aprobacionPoliticos">Políticos</a></li>
+                            <li><a href="#!/buscarBLMaster" ng-class="{ active: isActive('/buscarBL-Master') }" role="button">Buscar BL-Master</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,7 +65,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-right">
                 <a href="#" class="btn navbar-btn" role="button">Iniciar sesión</a>
-                <a href="#" class="btn navbar-btn" role="button">Registrarse</a>
+                <a href="#/" class="btn navbar-btn" role="button">Registrarse</a>
             </ul>
         </div>
     </div>
@@ -81,6 +79,7 @@
 <!-- Angular Controllers -->
 <script src="js/controllers/main-controller.js"></script>
 <script src="js/controllers/BL-master-controller.js"></script>
-
+<script src="js/controllers/BL-house-controller.js"></script>
+<script src="js/controllers/buscarBL-Master-controller.js"></script>
 </body>
 </html>
