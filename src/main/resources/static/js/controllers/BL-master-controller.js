@@ -25,13 +25,19 @@ app.controller('BLController', ['$scope', '$location', '$http','$window', functi
         "destino": "Conce",
         "fechaIngreso": "10/05/2018 a las 10:46",
         "fechaLlegada": "12/07/2018 a las 04:00",
-        "fechaZarpe": "25/07/2018 a las 04:00"
-
+        "fechaZarpe": "25/07/2018 a las 04:00",
+        "nave":0,
+        "naviera":0
     };
 
     $scope.send = function(){
         
         //$scope.numeroOperacion += 1;
+        $scope.newBLMaster.nave= {"id":parseInt($scope.newBLMaster.nave)};
+        $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
+        $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
+        $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
+
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         console.log($scope.newBLMaster);
         $scope.mensaje = 'BL Generada con exito!';
