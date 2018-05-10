@@ -13,15 +13,16 @@ app.controller('BLController', ['$scope', '$location', '$http', function($scope,
     }
     $scope.newBLMaster= {
         blocked:false,
-        servicio:'maritimo2jhgg',
-        n_reserva:12345,
+        servicio:'maritimo',
+        n_reserva:'12345',
         nViaje:'55',
-        agenteCreador:'ALUSA',
+        agenteCreador:'TEST',
         tipoNegocio:'algo',
         destino:'STGO',
-        naviera:1,
-        container:1
-
+        fechaIngreso:'12/05/2018 a las  15:30',
+        fechaZarpe:'25/05/2018 a las  18:30',
+        fechaLlegada:'30/05/2018 a las  05:30',
+        nReserva: '11240'
     };
 
     $scope.send = function(){
