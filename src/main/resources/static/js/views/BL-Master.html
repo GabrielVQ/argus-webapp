@@ -44,7 +44,10 @@
 
                         <div class="col-md-6"><label class="col-md-4">Nave:</label>
                             <select ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" name="naves">
-
+                                <option ng-selected="{{naves[0].nombre}}"
+                                        ng-repeat="nav in naves"
+                                        value="{{nav.id}}">{{nav.nombre}}
+                                </option>
                             </select>
                         </div>
                     </ul>
@@ -64,13 +67,11 @@
 
                     <ul class="col-md-12">
                         <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
-                            <select class="col-md-8 origenPuertosSelect" name="origen">
-                                <option value="AL" selected="selected">Origen</option>
-                                <option value="WY">Wyoming</option>
-                                <option value="WY">eqwe</option>
-                                <option value="WY">fasd</option>
-                                <option value="WY">rqwr</option>
-                                <option value="WY">fasfa</option>
+                            <select ng-model="newBLMaster.puertoInicio" class="col-md-8 origenPuertosSelect" name="origen">
+                                <option ng-selected="{{puertos[0].nombre}}"
+                                        ng-repeat="puerto in puerto"
+                                        value="{{puerto.id}}">{{puertos.nombre}}
+                                </option>
                             </select></div>
                         <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
                             <select class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
