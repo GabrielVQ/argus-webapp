@@ -18,5 +18,20 @@ public class Bodega {
     @JoinColumn (name= "Empresa_id")
     private Empresa empresa;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
 
 }

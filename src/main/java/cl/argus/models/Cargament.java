@@ -25,5 +25,35 @@ public class Cargament {
     @JoinColumn (name= "BLHouse_id")
     private BLHouse blHouse;
 
+    public long getId() {
+        return id;
+    }
 
+    public BLHouse getBlHouse() {
+        return blHouse;
+    }
+
+    public int getImoNumero() {
+        return imoNumero;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public int getVolumen() {
+        return volumen;
+    }
+
+    public String getGeneralImo() {
+        return generalImo;
+    }
+
+    public String getImoClase() {
+        return imoClase;
+    }
+
+    public String getTipo_bulto() {
+        return tipo_bulto;
+    }
 }

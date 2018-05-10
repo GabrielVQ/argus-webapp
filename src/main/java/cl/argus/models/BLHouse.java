@@ -29,4 +29,26 @@ public class BLHouse {
     @OneToOne ( mappedBy = "blHouse", fetch = FetchType.LAZY)
     private ConfirmacionReserva confirmacion;
 
+    public long getId(){
+        return id;
+    }
+
+    public BLMaster getBlMaster(){
+        return blMaster;
+    }
+
+    public Ciudad getCiudadInicio(){
+        return ciudadInicio;
+    }
+
+    public Ciudad getCiudadLlegada(){
+        return ciudadLlegada;
+    }
+
+    public Set<Cargament> getCargaments(){
+        return cargaments;
+    }
+    public ConfirmacionReserva getConfirmacion(){
+        return confirmacion;
+    }
 }

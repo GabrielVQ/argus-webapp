@@ -27,5 +27,23 @@ public class Empresa {
                 mappedBy = "empresa")
     private ConfirmacionReserva confirmacion;
 
+    public long getId() {
+        return id;
+    }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public ConfirmacionReserva getConfirmacion() {
+        return confirmacion;
+    }
+
+    public int getCod_agente() {
+        return cod_agente;
+    }
+
+    public Set<Bodega> getBodegas() {
+        return bodegas;
+    }
 }
