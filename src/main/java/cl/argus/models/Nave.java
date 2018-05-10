@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,7 +14,7 @@ public class Nave {
     private long id;
 
     private String nombre;
-
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "nave")
     private Set<BLMaster> blMaster;
 

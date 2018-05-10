@@ -4,10 +4,12 @@
             <div class="panel-heading text-center">
                 <h4>BL-Master</h4>
             </div>
-            <div class="panel-body1"><div class="content col-md-12">
-                <ul>N° de operación: {{numeroOperacion}}</ul>
-                <ul>Creado por: {{creador}}</ul>
-                <ul>Fecha: {{fecha|date:'dd-MM-yyyy' }}</ul></div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
+                    <ul>N° de operación: {{numeroOperacion}}</ul>
+                    <ul>Creado por: {{creador}}</ul>
+                    <ul>Fecha: {{fecha|date:'dd-MM-yyyy' }}</ul>
+                </div>
             </div>
             <div class="panel-body1">
                 <div class="content col-md-12">
@@ -16,15 +18,14 @@
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">IMP/EXP:</label>
 
-                            <select  ng-model="newBLMaster.tipoNegocio" class="col-md-8 navieraSelect" name="tipoNegocio">
-                                <option ng-selected="{{ciudades[0].nombre}}"
-                                        ng-repeat="c in ciudades"
-                                        value="{{c.id}}">{{c.nombre}}</option>
+                            <select class="col-md-8 navieraSelect" name="tipoNegocio">
+                                <option value="Importación">Importación</option>
+                                <option value="Exportación">Exportación</option>
                             </select>
 
                         </div>
                         <div class="col-md-6"><label class="col-md-4">Servicio:</label>
-                            <select ng-model="newBLMaster.servicio"  class="col-md-8 navieraSelect" name="servicio">
+                            <select ng-model="newBLMaster.servicio" class="col-md-8 navieraSelect" name="servicio">
                                 <option value="Directo" selected="selected">Directo</option>
                                 <option value="Coloader">Coloader</option>
                             </select>
@@ -32,187 +33,186 @@
                     </ul>
 
 
-                <ul class="col-md-12">
-                    <div class="col-md-6"><label class="col-md-4">Naviera</label>
-                        <select class="col-md-8 navieraSelect" name="naviera">
-                            <option value="AL" selected="selected">Naviera</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="WY">eqwe</option>
-                            <option value="WY">fasd</option>
-                            <option value="WY">rqwr</option>
-                            <option value="WY">fasfa</option>
-                        </select></div>
+                    <ul class="col-md-12">
+                        <div class="col-md-6"><label class="col-md-4">Naviera</label>
+                            <select ng-model="newBLMaster.naviera" class="col-md-8 navieraSelect" name="naviera">
+                                <option ng-selected="{{navieras[0].nombre}}"
+                                        ng-repeat="nav in navieras"
+                                        value="{{nav.id}}">{{nav.nombre}}
+                                </option>
+                            </select></div>
+
                         <div class="col-md-6"><label class="col-md-4">Nave:</label>
-                        <select class="col-md-8 navesSelect" name="naves">
-                            <option value="AL" selected="selected">Naves</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="WY">eqwe</option>
-                            <option value="WY">fasd</option>
-                            <option value="WY">rqwr</option>
-                            <option value="WY">fasfa</option>
-                        </select>
-                        </div>
-                </ul>
-            </div>
+                            <select ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" name="naves">
 
-        </div>
-        <div class="panel-body1">
-            <div class="content col-md-12">
-                <ul class="col-md-12">
-                    <hr>
-                    <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
-                        <input class="col-md-8" type="text" name="Numero de viaje"></div>
-                    <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
-                    <input class="col-md-8 type="text" name="Numero de reserva">
-                    </div>
-                </ul>
-
-                <ul class="col-md-12">
-                    <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
-                    <select class="col-md-8 origenPuertosSelect" name="origen">
-                        <option value="AL" selected="selected">Origen</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="WY">eqwe</option>
-                        <option value="WY">fasd</option>
-                        <option value="WY">rqwr</option>
-                        <option value="WY">fasfa</option>
-                    </select></div>
-                    <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
-                    <select class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
-                        <option value="AL" selected="selected">Puerto de descarga</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="WY">eqwe</option>
-                        <option value="WY">fasd</option>
-                        <option value="WY">rqwr</option>
-                        <option value="WY">fasfa</option>
-                    </select></div></ul>
-                <ul class="col-md-12">
-                    <div class="col-md-6"><label class="col-md-4">Destino:</label>
-                    <select class="col-md-8 destinoSelect" name="destino">
-                        <option value="AL" selected="selected">Destino</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="WY">eqwe</option>
-                        <option value="WY">fasd</option>
-                        <option value="WY">rqwr</option>
-                        <option value="WY">fasfa</option>
-                    </select></div>
-                    <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
-                    <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
-                        <option value="AL" selected="selected">ReservaNaviera</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="WY">eqwe</option>
-                        <option value="WY">fasd</option>
-                        <option value="WY">rqwr</option>
-                        <option value="WY">fasfa</option>
-                    </select></ul>
-                <ul class="col-md-12">
-                    <div class="col-md-6"><label class="col-md-4">Reserva Interna:</label>
-                    <select class="col-md-8 reservaInternaSelect" name="reservaInterna">
-                        <option value="AL" selected="selected">Reserva Interna</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="WY">eqwe</option>
-                        <option value="WY">fasd</option>
-                        <option value="WY">rqwr</option>
-                        <option value="WY">fasfa</option>
-                    </select></div>-->
-                    <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
-                    <select class="col-md-8 tipoCargaSelect navieraSelect" name="tipoCarga">
-                        <option value="General" selected="selected">General</option>
-                        <option value="IMO">IMO</option>
-                    </select></div></ul>
-            </div>
-            <div class="panel-body1">
-                <div class="content col-md-12">
-                    <ul class="col-md-12">
-                        <hr>
-                        <div class="col-md-4"><label class="col-md-5">Fecha zarpe:</label>
-                            <input class="col-md-7" type="date" name="fechaZarpe"></div>
-                        <div class="col-md-4"><label class="col-md-5">Fecha arribo:</label>
-                            <input class="col-md-7" type="date" name="fechaArrribo"></div>
-                        <div class="col-md-4"><label class="col-md-5">BL Master N°:</label>
-                            <input class="col-md-7"  type="text" name="BLMasterNumero">
-                    </ul>
-                </div>
-            </div>
-            <div class="panel-body1">
-                <div class="content col-md-12">
-                    <ul class="col-md-12">
-                        <hr>
-                        <div class="col-md-6"><label class="col-md-4">Agente:</label>
-                       <!-- <select class="col-md-8 agenteSelect" name="agente">
-                            <option value="AL" selected="selected">agente</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="WY">eqwe</option>
-                            <option value="WY">fasd</option>
-                            <option value="WY">rqwr</option>
-                            <option value="WY">fasfa</option>
-                        </select>-->
-
-                            <select  ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect" name="agente">
-                                <option ng-selected="{{empresas[0].nombre}}"
-                                        ng-repeat="e in empresas"
-                                        value="{{e.id}}">{{e.nombre}}</option>
                             </select>
-
-
-
                         </div>
-                        <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                        <input class="col-md-8" type="textarea" disabled name="razonSocial" >
                     </ul>
                 </div>
 
             </div>
-            <div class="panel-body1 ">
-                <div class="content">
+            <div class="panel-body1">
+                <div class="content col-md-12">
                     <ul class="col-md-12">
                         <hr>
-                        <div class="col-md-2"><label class="col-md-8">Kilos:</label>
-                            <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
-                        <div class="col-md-2"><label class="col-md-8">Volumen:</label>
-                            <input class="col-md-4" type="textarea" name="volumen" readonly disabled size="3px"></div>
-                        <div class="col-md-2"><label class="col-md-8">Cant Cont 20:</label>
-                            <input class="col-md-4" type="textarea" name="cont20" disabled readonly size="3px"></div>
-                        <div class="col-md-2"><label class="col-md-8">Cant Cont 40:</label>
-                            <input class="col-md-4" ype="textarea" name="cont40" disabled readonly size="3px"></div>
-                        <div class="col-md-2"><input   type="button" value="Agregar Contenedor">
+                        <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
+                            <input class="col-md-8" type="text" name="Numero de viaje"></div>
+                        <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
+                            <input class="col-md-8 type=" text" name="Numero de reserva">
+                        </div>
                     </ul>
-                    <ul><input type="button" value="Agregar House">
-                        <input type="button" value="Ver Houses">
-                        <input type="button" value="Guardar">
-                        <input type="button" value="Cancelar">
-                        <button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
+
+                    <ul class="col-md-12">
+                        <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
+                            <select class="col-md-8 origenPuertosSelect" name="origen">
+                                <option value="AL" selected="selected">Origen</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="WY">eqwe</option>
+                                <option value="WY">fasd</option>
+                                <option value="WY">rqwr</option>
+                                <option value="WY">fasfa</option>
+                            </select></div>
+                        <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
+                            <select class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
+                                <option value="AL" selected="selected">Puerto de descarga</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="WY">eqwe</option>
+                                <option value="WY">fasd</option>
+                                <option value="WY">rqwr</option>
+                                <option value="WY">fasfa</option>
+                            </select></div>
+                    </ul>
+                    <ul class="col-md-12">
+                        <div class="col-md-6"><label class="col-md-4">Destino:</label>
+                            <select class="col-md-8 destinoSelect" name="destino">
+                                <option value="AL" selected="selected">Destino</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="WY">eqwe</option>
+                                <option value="WY">fasd</option>
+                                <option value="WY">rqwr</option>
+                                <option value="WY">fasfa</option>
+                            </select></div>
+                        <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
+                        <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
+                            <option value="AL" selected="selected">ReservaNaviera</option>
+                            <option value="WY">Wyoming</option>
+                            <option value="WY">eqwe</option>
+                            <option value="WY">fasd</option>
+                            <option value="WY">rqwr</option>
+                            <option value="WY">fasfa</option>
+                        </select></ul>
+                    <ul class="col-md-12">
+                        <div class="col-md-6"><label class="col-md-4">Reserva Interna:</label>
+                        <select class="col-md-8 reservaInternaSelect" name="reservaInterna">
+                            <option value="AL" selected="selected">Reserva Interna</option>
+                            <option value="WY">Wyoming</option>
+                            <option value="WY">eqwe</option>
+                            <option value="WY">fasd</option>
+                            <option value="WY">rqwr</option>
+                            <option value="WY">fasfa</option>
+                        </select></div>-->
+                        <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
+                            <select class="col-md-8 tipoCargaSelect navieraSelect" name="tipoCarga">
+                                <option value="General" selected="selected">General</option>
+                                <option value="IMO">IMO</option>
+                            </select></div>
                     </ul>
                 </div>
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+                        <ul class="col-md-12">
+                            <hr>
+                            <div class="col-md-4"><label class="col-md-5">Fecha zarpe:</label>
+                                <input class="col-md-7" type="date" name="fechaZarpe"></div>
+                            <div class="col-md-4"><label class="col-md-5">Fecha arribo:</label>
+                                <input class="col-md-7" type="date" name="fechaArrribo"></div>
+                            <div class="col-md-4"><label class="col-md-5">BL Master N°:</label>
+                                <input class="col-md-7" type="text" name="BLMasterNumero">
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+                        <ul class="col-md-12">
+                            <hr>
+                            <div class="col-md-6"><label class="col-md-4">Agente:</label>
+                                <!-- <select class="col-md-8 agenteSelect" name="agente">
+                                     <option value="AL" selected="selected">agente</option>
+                                     <option value="WY">Wyoming</option>
+                                     <option value="WY">eqwe</option>
+                                     <option value="WY">fasd</option>
+                                     <option value="WY">rqwr</option>
+                                     <option value="WY">fasfa</option>
+                                 </select>-->
+
+                                <select ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect"
+                                        name="agente">
+                                    <option ng-selected="{{empresas[0].nombre}}"
+                                            ng-repeat="e in empresas"
+                                            value="{{e.id}}">{{e.nombre}}
+                                    </option>
+                                </select>
+
+
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Razón social:</label>
+                                <input class="col-md-8" type="textarea" disabled name="razonSocial">
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="panel-body1 ">
+                    <div class="content">
+                        <ul class="col-md-12">
+                            <hr>
+                            <div class="col-md-2"><label class="col-md-8">Kilos:</label>
+                                <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
+                            <div class="col-md-2"><label class="col-md-8">Volumen:</label>
+                                <input class="col-md-4" type="textarea" name="volumen" readonly disabled size="3px">
+                            </div>
+                            <div class="col-md-2"><label class="col-md-8">Cant Cont 20:</label>
+                                <input class="col-md-4" type="textarea" name="cont20" disabled readonly size="3px">
+                            </div>
+                            <div class="col-md-2"><label class="col-md-8">Cant Cont 40:</label>
+                                <input class="col-md-4" ype="textarea" name="cont40" disabled readonly size="3px"></div>
+                            <div class="col-md-2"><input type="button" value="Agregar Contenedor">
+                        </ul>
+                        <ul><input type="button" value="Agregar House">
+                            <input type="button" value="Ver Houses">
+                            <input type="button" value="Guardar">
+                            <input type="button" value="Cancelar">
+                            <button ng-click="send()" type="submit" class="btn btn-default">Crear Votación</button>
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    console.log('entre al jquery');
+                    $(document).ready(function () {
+                        $('.navieraSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.agenteSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.navesSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.origenPuertosSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.puertoDescargaSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.reservaNavieraSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.reservaInternaSelect').select2();
+                    });
+                    $(document).ready(function () {
+                        $('.destinoSelect').select2();
+                    });
+                </script>
             </div>
-            <script>
-                console.log('entre al jquery');
-                $(document).ready(function () {
-                    $('.navieraSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.agenteSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.navesSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.origenPuertosSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.puertoDescargaSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.reservaNavieraSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.reservaInternaSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.destinoSelect').select2();
-                });
-            </script>
         </div>
     </div>
-</div>
 </div>
