@@ -1,6 +1,8 @@
 package cl.argus.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -19,7 +21,7 @@ public class Container {
     public long getId() {
         return id;
     }
-
+    @JsonIgnore
     public Set<BLMaster> getBlMaster() {
         return blMaster;
     }

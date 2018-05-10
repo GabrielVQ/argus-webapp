@@ -18,6 +18,7 @@ public class ConfirmacionReserva {
     @JoinColumn(name = "Empresa_id", nullable = false)
     private Empresa empresa;
 
+    @JsonIgnore
     @OneToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "BLHouse_id", nullable = false)
     private BLHouse blHouse;
