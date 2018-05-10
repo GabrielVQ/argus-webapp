@@ -28,7 +28,7 @@ app.config(function($routeProvider){
         })
         .when('/buscarBLMaster',{
             templateUrl: 'js/views/buscarBLMaster.html',
-            controller: 'buscarBLMaster',
+            controller: 'buscarBLMastercontroller',
         })
         .otherwise({
             redirectTo: '/'

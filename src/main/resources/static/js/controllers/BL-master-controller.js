@@ -1,19 +1,21 @@
 app.controller('BLController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
-    $scope.numeroOperacion = 1452;
+    $scope.numeroOperacion = 3;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
+
     //$scope.ciudades;
    // var list = ciuda.map(x => x.id);
 
 
     $scope.isActive = function(route) {
         return route === $location.path();
+
     }
     $scope.newBLMaster= {
 
-        "numeroOperacion": "ARG0044",
+        "numeroOperacion": "ARG00"+$scope.numeroOperacion,
         "blocked": false,
         "servicio": "",
         "nReserva": "",
@@ -28,6 +30,8 @@ app.controller('BLController', ['$scope', '$location', '$http','$window', functi
     };
 
     $scope.send = function(){
+        
+        //$scope.numeroOperacion += 1;
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         console.log($scope.newBLMaster);
         $scope.mensaje = 'BL Generada con exito!';

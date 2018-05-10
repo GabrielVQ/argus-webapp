@@ -1,8 +1,4 @@
-<div class="container col-md-10 col-md-offset-1" ng-controller="buscarBLMasterController">
-    <div class="panel">
-    <div class="panel-heading text-center">
-        <h4>Buscador de BL-Masters</h4>
-    </div>
+<div class="container" ng-controller="buscarBLMastercontroller">
 
     <input type="search" id="buscar" name="q">
     <button>Buscar</button>
@@ -10,13 +6,13 @@
         <tr>
             <th>Número de operación</th>
             <th>Creado por</th>
-            <th>Fecha</th>
+            <th>Fecha Ingreso</th>
         </tr>
-        <tr>
-            <td><a href="#!/BL-Master">12345</a></td>
-            <td></td>
-            <td></td>
+        <tr ng-repeat=" BL in BLMaster ">
+            <td>{{BL.numeroOperacion}}</td>
+            <td>{{BL.agenteCreador}}</td>
+            <td>{{BL.fechaIngreso}}</td>
         </tr>
     </table>
-    </div>
+    <!--<h1>{{BLMaster[0].numeroOperacion}}</h1>-->
 </div>
