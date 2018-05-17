@@ -6,21 +6,9 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/index.html',
             controller: 'MainController'
         })
-        .when('/servicios', {
-            templateUrl: 'js/views/services.html',
-            controller: 'MainController'
-        })
-        .when('/nosotros', {
-            templateUrl: 'js/views/about.html',
-            controller: 'MainController'
-        })
-        .when('/contacto', {
-            templateUrl: 'js/views/contact.html',
-            controller: 'MainController'
-        })
         .when('/BL-Master', {
             templateUrl: 'js/views/BL-Master.html',
-            controller: 'BLController',
+            controller: 'BLMasterController',
         })
         .when('/BL-House',{
             templateUrl: 'js/views/BL-House.html',
@@ -28,7 +16,11 @@ app.config(function($routeProvider){
         })
         .when('/buscarBLMaster',{
             templateUrl: 'js/views/buscarBLMaster.html',
-            controller: 'buscarBLMastercontroller',
+            controller: 'buscarBLMasterController',
+        })
+        .when('/editarBLMaster',{
+            templateUrl: 'js/views/editarBLMaster.html',
+            controller: 'editarBLMasterController',
         })
         .otherwise({
             redirectTo: '/'

@@ -1,4 +1,4 @@
-app.controller('buscarBLMastercontroller', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('buscarBLMasterController', ['$scope', '$location', '$http', function($scope, $location, $http) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     $scope.numeroOperacion = 1452;
@@ -7,7 +7,7 @@ app.controller('buscarBLMastercontroller', ['$scope', '$location', '$http', func
 
     $http.get('http://localhost:8080/blmasters').then(function(response){
         $scope.BLMaster = response.data;
-        console.log($scope.BLMaster[0].numeroOperacion);
+        //console.log($scope.BLMaster[0].numeroOperacion);
         console.log($scope.BLMaster);
     })
 

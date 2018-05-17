@@ -38,20 +38,21 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
-
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
             <!-- Left Side Of Navbar -->
             <a href="#!/" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">Inicio</a>
-            <a href="#!/servicios" class="btn navbar-btn" ng-class="{ active: isActive('/servicios') }" role="button">Servicio</a>
-            <a href="#!/nosotros" class="btn navbar-btn" ng-class="{ active: isActive('/nosotros') }" role="button">Nosotros</a>
-            <a href="#!/BL-House" class="btn navbar-btn" ng-class="{ active: isActive('/contacto') }" role="button">Contacto</a>
+            
             <div class="btn-group">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">BL
+                           aria-expanded="false">BL-Master
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#!/BL-Master" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-Master</a>
@@ -62,10 +63,26 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="btn-group">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">BL-House
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#!/BL-House" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-House</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#!/buscarBLHouse" ng-class="{ active: isActive('/buscarBLMaster') }" role="button">Buscar BL-House</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-right">
-                <a href="#" class="btn navbar-btn" role="button">Iniciar sesión</a>
-                <a href="#/" class="btn navbar-btn" role="button">Registrarse</a>
+                <a href="#" class="btn navbar-btn" role="button">Mi cuenta</a>
+                <a href="#/" class="btn navbar-btn" role="button">Salir</a>
             </ul>
         </div>
     </div>
@@ -81,5 +98,6 @@
 <script src="js/controllers/BL-master-controller.js"></script>
 <script src="js/controllers/BL-house-controller.js"></script>
 <script src="js/controllers/buscarBL-Master-controller.js"></script>
+<script src="js/controllers/editarBL-master-controller.js"></script>
 </body>
 </html>

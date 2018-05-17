@@ -32,4 +32,12 @@ public class BLMasterService {
     public BLMaster create(@RequestBody BLMaster resource) {
         return blMasterRepository.save(resource);
     }
+
+    @RequestMapping(value="/numerooperacion/{numeroOperacion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<BLMaster> show(@PathVariable("numeroOperacion") String  numeroOperacion){
+        //String nOperacion = Integer.parseInt(id);
+        return blMasterRepository.getByNumeroOperacion(numeroOperacion);
+    }
+
 }

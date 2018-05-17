@@ -1,4 +1,4 @@
-<div class="container" ng-controller="BLMasterController">
+<div class="container" ng-controller="editarBLMasterController">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
@@ -124,7 +124,7 @@
                             <hr>
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha zarpe:</label>
-                                <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpe">
+                                <input  class="col-md-7" type="date" name="fechaZarpe">
                             </div>
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha arribo:</label>
@@ -178,18 +178,18 @@
                             </div>
                             <div class="col-md-2"><label class="col-md-8">Cant Cont 40:</label>
                                 <input class="col-md-4" ype="textarea" name="cont40" disabled readonly size="3px"></div>
-                            <div class="col-md-2"><input class="btn btn-primary btn-sm" type="button" value="Agregar Contenedor">
+                            <div class="col-md-2"><input type="button" value="Agregar Contenedor">
                         </ul>
-                        <ul><input class="btn btn-primary btn-sm" type="button" value="Agregar House">
-                            <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
-                            <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
-                            <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
-                            <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
+                        <ul><input type="button" value="Agregar House">
+                            <input type="button" value="Ver Houses">
+                            <input ng-click="send()" type="submit"  type="button" value="Guardar">
+                            <input type="button" value="Cancelar">
                         </ul>
                     </div>
                 </div>
                 </div>
                 <script>
+                    console.log('entre al jquery');
                     $(document).ready(function () {
                         $('.withoutSearch').select2({
                             minimumResultsForSearch: -1

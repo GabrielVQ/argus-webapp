@@ -125,14 +125,14 @@ label{
     -webkit-border-radius: 0px 0px 0px 0px;
 
     margin-inside: 10px;
-
-
-
-
 }
 
 .content{
     margin-outside: 10px;
     margin-top: 10px;
     margin-bot:10px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #1E9387;
 }
