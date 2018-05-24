@@ -1,0 +1,84 @@
+<div class="container" ng-controller="BLHouseController">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Crear BL-House</h4>
+            </div>
+            <nav class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
+                        <!-- Left Side Of Navbar -->
+                        <a href="#!/BL-House" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">1.Cabecera</a>
+                        <a href="#!/descripcion" class="btn navbar-btn" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a>
+                        <a href="#!/ingresos" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">3.Ingresos</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="panel-body">
+                <form action="admin/crud/insertar/inserta-lineasoferta.php" method="POST">
+                    <table class="table table-bordered" id="tablaresponsive">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check-all" class="flat"></th>
+                            <th>Contenedor</th>
+                            <th>Mark and numbers</th>
+                            <th>Number of packages</th>
+                            <th>Description of goods</th>
+                            <th>Groos weight</th>
+                            <th>Measurement</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <select ng-model="newBLMaster.destino" class="form-control contenedorSelect" name="contenedor">
+                                    <option ng-repeat="puerto in puertos"
+                                            value="{{puerto.nombre}}">{{puerto.nombre}}
+                                    </option>
+                                </select>
+                            </td>
+                            <td><input type ="text" name="markAndNumbers[]"  class="form-control"></td>
+                            <td><input type ="text" name="numberPackages[]"  class="form-control"></td>
+                            <td><input type ="text" name="descriptionGoods[]"  class="form-control"></td>
+                            <td><input type="text" name="groosWeight[]" class="form-control"></td>
+                            <td><input type="text" name="measurement[]" class="form-control"></td>
+                            <td><button type="button" class="eliminalinea">eliminar</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" id="nuevalinea" class="btn btn-danger">Nueva Linea</button>
+                    <input type="submit" name="guardar" class="btn btn-success">
+                </form>
+            </div>
+            <script>
+                $(document).ready(function () {
+                $('.contenedorSelect').select2();
+                });
+            </script>
+            <script>
+                $(document).ready(function(){
+                    $("#nuevalinea").click(function(){
+                        var clonarfila= $("#tablaresponsive").find("tbody tr:last").clone();
+                        $("table tbody").append(clonarfila);
+                    });
+
+                    $("#tablaresponsive").on('click', '.eliminalinea', function () {
+                        var numeroFilas = $("#tablaresponsive tr").length;
+                        if(numeroFilas>2){
+                            $(this).closest('tr').remove();
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>
