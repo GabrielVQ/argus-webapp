@@ -1,4 +1,5 @@
 <div class="container" ng-controller="BLHouseController">
+    
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
@@ -146,26 +147,50 @@
                                 <input class="col-md-7" type="text" name="lugarDeRecepcion">
                             </div>
                         </ul>
+                        <ul class="content col-md-12">
+                            <div class="col-md-6"><label class="col-md-4">Destino:</label>
+                                <select ng-model="newBLMaster.agenteCreador" class="col-md-8 destinoSelect"
+                                        name="almacenista">
+                                    <option ng-repeat="e in empresas"
+                                            value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Tipo de movimiento:</label>
+                                <select class="col-md-8 withoutSearch" name="tipoCarga">
+                                    <option value="LCL/LCL" selected="selected">LCL/LCL</option>
+                                    <option value="FCL/FCL">FCL/FCL</option>
+                                </select>
+                            </div>
+                        </ul>
+                        <ul class="content col-md-12">
+                            <div class="col-md-6"><label class="col-md-4">Contacto:</label>
+                                <input ng-model="newBLMaster.contacto" class="col-md-8" type="text" name="contacto">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Telefono:</label>
+                                <input ng-model="newBLMaster.telefono" class="col-md-8" type="text" name="telefono">
+                            </div>
+                        </ul>
+                        <ul class="content col-md-12">
+                            <div class="col-md-5">
+                                <label class="col-md-5">Fecha stacking:</label>
+                                <input  ng-model="fechaStackingAux" class="col-md-6" type="date" name="fechaStacking">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="col-md-5">Hora stacking:</label>
+                                <input  ng-model="horaStackingAux" class="col-md-3" type="time" name="horaStacking">
+                            </div>
+                        </ul>
+                        <ul class="content col-md-12">
+                            <div class="col-md-6"><label class="col-md-4">Observación:</label>
+                                <input ng-model="newBLMaster.observacion" class="col-md-6" type="text" name="observacion">
+                            </div>
+                        </ul>
                     </div>
                 </div>
-                <div class="panel-body1 ">
-                    <div class="content col-md-12">
-                        <ul class="col-md-12">
-                            <hr>
-                            <div class="col-md-2"><label class="col-md-8">Kilos:</label>
-                                <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
-                            <div class="col-md-2"><label class="col-md-8">Volumen:</label>
-                                <input class="col-md-4" type="textarea" name="volumen" readonly disabled size="3px">
-                            </div>
-                            <div class="col-md-2"><label class="col-md-8">Cant Cont 20:</label>
-                                <input class="col-md-4" type="textarea" name="cont20" disabled readonly size="3px">
-                            </div>
-                            <div class="col-md-2"><label class="col-md-8">Cant Cont 40:</label>
-                                <input class="col-md-4" ype="textarea" name="cont40" disabled readonly size="3px"></div>
-                            <div class="col-md-2"><input class="btn btn-primary btn-sm" type="button" value="Agregar Contenedor">
-                        </ul>
-                        <ul><input class="btn btn-primary btn-sm" type="button" value="Agregar House">
-                            <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
+
+                <ul>
+                            <input class="btn btn-primary btn-sm" type="button" value="Reserva">
                             <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                             <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
                             <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
@@ -192,7 +217,7 @@
                     $('.almacenistaSelect').select2();
                 });
                 $(document).ready(function () {
-                    $('.puertoDescargaSelect').select2();
+                    $('.destinoSelect').select2();
                 });
                 $(document).ready(function () {
                     $('.reservaNavieraSelect').select2();
