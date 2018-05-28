@@ -1,8 +1,9 @@
 var app = angular.module('app', ['ngRoute']);
 
+
 app.config(function($routeProvider){
     $routeProvider
-        .when('/', {
+        .when('/home', {
             templateUrl: 'js/views/index.html',
             controller: 'MainController'
         })
@@ -30,7 +31,34 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/ingresos.html',
             controller: 'BLHouseController',
         })
-        .otherwise({
+        .when('/',{
+            templateUrl: 'js/views/login.html',
+            controller: 'loginController'
+        })
+                .otherwise({
             redirectTo: '/'
         });
 });
+
+app.service('ConsultaService', function($http,$q){
+    var urlBase = 'http://localhost:8080/blmasters';
+
+    this.getBLMaster = function(numeroOperacion){
+        return $http.get(urlBase +"/numeroOperacion/" +numeroOperacion);
+    };
+
+});
+
+app.directive("digitalClock", function($timeout, dateFilter) {
+    return {
+        restrict: 'E',
+        link: function(scope, iElement) {
+            (function updateClock() {
+                iElement.text(dateFilter(new Date(), 'hh:mm:ss a'));
+                $timeout(updateClock, 1000);
+            })();
+        }
+    };
+});
+
+
