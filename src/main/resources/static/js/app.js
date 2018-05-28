@@ -9,27 +9,27 @@ app.config(function($routeProvider){
         })
         .when('/BL-Master', {
             templateUrl: 'js/views/BL-Master.html',
-            controller: 'BLMasterController',
+            controller: 'BLMasterController'
         })
         .when('/BL-House',{
             templateUrl: 'js/views/BL-House.html',
-            controller: 'BLHouseController',
+            controller: 'BLHouseController'
         })
         .when('/buscarBLMaster',{
             templateUrl: 'js/views/buscarBLMaster.html',
-            controller: 'buscarBLMasterController',
+            controller: 'buscarBLMasterController'
         })
         .when('/editarBLMaster',{
             templateUrl: 'js/views/editarBLMaster.html',
-            controller: 'editarBLMasterController',
+            controller: 'editarBLMasterController'
         })
         .when('/descripcion',{
             templateUrl: 'js/views/descripcion.html',
-            controller: 'descripcionController',
+            controller: 'descripcionController'
         })
         .when('/ingresos',{
             templateUrl: 'js/views/ingresos.html',
-            controller: 'BLHouseController',
+            controller: 'BLHouseController'
         })
         .when('/',{
             templateUrl: 'js/views/login.html',
