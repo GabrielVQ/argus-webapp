@@ -57,13 +57,12 @@
                 <h4>Crear BL-Master</h4>
             </div>
             <div class="panel-body">
-                
             <div class="panel-body1">
                 <div class="content col-md-12">
                     <br>
-                    <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
-                    <ul>Creado por: <b>{{creador}}</b></ul>
-                    <ul>Fecha:<b> {{fecha|date:'dd-MM-yyyy' }}</b></ul>
+                    <ul>N° de operación: <b> {{BLMaster.numeroOperacion}}</b></ul>
+                    <ul>Creado por: <b>{{BLMaster.agenteCreador}}</b></ul>
+                    <ul>Fecha ingreso:<b> {{BLMaster.fechaIngreso|date:'dd-MM-yyyy' }}</b></ul>
                 </div>
             </div>
             <div class="panel-body1">
@@ -241,7 +240,6 @@
                 </div>
                 </div>
                 <script>
-                    console.log('entre al jquery');
                     $(document).ready(function () {
                         $('.withoutSearch').select2({
                             minimumResultsForSearch: -1

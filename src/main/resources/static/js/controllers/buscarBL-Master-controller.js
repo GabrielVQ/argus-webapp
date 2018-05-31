@@ -12,7 +12,6 @@ app.controller('buscarBLMasterController', ['$scope', '$location', '$http', func
     })
 
 
-
     $scope.isActive = function(route) {
         return route === $location.path();
     }

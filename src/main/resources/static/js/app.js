@@ -19,13 +19,13 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/buscarBLMaster.html',
             controller: 'buscarBLMasterController'
         })
-        .when('/editarBLMaster',{
+        .when('/editarBLMaster/:bl',{
             templateUrl: 'js/views/editarBLMaster.html',
             controller: 'editarBLMasterController'
         })
         .when('/descripcion',{
             templateUrl: 'js/views/descripcion.html',
-            controller: 'descripcionController'
+            controller: 'BLHouseController'
         })
         .when('/ingresos',{
             templateUrl: 'js/views/ingresos.html',
@@ -48,6 +48,7 @@ app.service('ConsultaService', function($http,$q){
     };
 
 });
+
 
 app.directive("digitalClock", function($timeout, dateFilter) {
     return {
