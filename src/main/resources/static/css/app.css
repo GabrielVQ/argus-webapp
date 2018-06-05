@@ -8,7 +8,7 @@ body {
     background: #DDDDDD;
 }
 
-/* Barra de navegación */
+/* Barra de navegación
 .navbar {
     background: var(--main-color) !important;
     border: none;
@@ -32,15 +32,15 @@ body {
     color: white !important;
     box-shadow: none;
 }
-
+*/
 /* Paneles */
-.panel-heading {
-    background: var(--accent-color) !important;
-}
+
 
 .panel-heading > h4 {
-    color: white !important;
-    font-weight: bold !important;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #423cfa;
 }
 
 .panel-footer {
@@ -120,17 +120,17 @@ label{
 }
 
 .panel-body1{
-    border-radius: 0px 0px 0px 0px;
-    -moz-border-radius: 0px 0px 0px 0px;
-    -webkit-border-radius: 0px 0px 0px 0px;
-
-    margin-inside: 10px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #423cfa;
 }
 
 .content{
     margin-outside: 10px;
     margin-top: 10px;
     margin-bot:10px;
+
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {

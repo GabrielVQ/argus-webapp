@@ -1,58 +1,59 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
-            <!-- Left Side Of Navbar -->
-            <a href="#!/" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">Inicio</a>
-
-            <div class="btn-group">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">BL-Master
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#!/BL-Master" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-Master</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#!/buscarBLMaster" ng-class="{ active: isActive('/buscarBLMaster') }" role="button">Buscar BL-Master</a></li>
-                        </ul>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">Argus</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="INICIO">
+                <a class="nav-link" href="#!/home">
+                    <span class="nav-link-text">Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-wrench"></i>-->
+                    <span class="nav-link-text">BL-Master</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLMaster">
+                    <li>
+                        <a href="#!/BL-Master">Nuevo BL-Master</a>
+                    </li>
+                    <li>
+                        <a href="#!/buscarBLMaster">Buscar BL-Master</a>
                     </li>
                 </ul>
-            </div>
-
-            <div class="btn-group">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">BL-House
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#!/BL-House" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-House</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#!/buscarBLHouse" ng-class="{ active: isActive('/buscarBLMaster') }" role="button">Buscar BL-House</a></li>
-                        </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-file"></i>-->
+                    <span class="nav-link-text">BL-House</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLHouse">
+                    <li>
+                        <a href="#!/BL-House">Nuevo BL-House</a>
                     </li>
                 </ul>
-            </div>
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-right">
-                <a href="#" class="btn navbar-btn" role="button">Mi cuenta</a>
-                <a href="#/" class="btn navbar-btn" role="button">Salir</a>
-            </ul>
-        </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
     </div>
 </nav>
-<div class="container" ng-controller="BLHouseController">
-    <div class="col-md-12">
+<div class="content-wrapper" >
+    <div class="container-fluid" ng-controller="BLHouseController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 <h4>Crear BL-House</h4>
@@ -88,7 +89,7 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
 
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-6"><label class="col-md-4">Tipo House:</label>
 
@@ -98,10 +99,6 @@
                                 </select>
 
                             </div>
-                        </ul>
-
-
-                        <ul class="col-md-12">
                             <div class="col-md-6"><label class="col-md-4">Shipper</label>
                                 <select  ng-model="newBLMaster.naviera" class="col-md-8 shipperSelect" >
                                     <option ng-repeat=""
@@ -109,16 +106,14 @@
                                     </option>
                                 </select></div>
                         </ul>
-                        <ul class="col-md-12">
-                            <div class="col-md-6"><label class="col-md-4">Cliente extranjero:</label>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-6">Cliente extranjero:</label>
                                 <select  ng-model="newBLMaster.nave" class="col-md-8  clienteSelect">
                                     <option ng-repeat="nav in naves"
                                             value="{{nav.id}}">{{nav.nombre}}
                                     </option>
                                 </select>
                             </div>
-                        </ul>
-                        <ul class="col-md-12">
                             <div class="col-md-6"><label class="col-md-4">Notify:</label>
                                 <select  ng-model="newBLMaster.nave" class="col-md-8  notifySelect">
                                     <option ng-repeat="nav in naves"
@@ -132,7 +127,7 @@
                 </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-6"><label class="col-md-4">PP/CC:</label>
 
@@ -150,45 +145,49 @@
                                 </select>
                             </div>
                         </ul>
-                        <ul class="col-md-12">
-                                <div class="col-md-6"><label class="col-md-4">Flete:</label>
-                                    <input class="col-md-7" type="text" name="Flete">
-                                </div>
-                        </ul>
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Carga:</label>
-                            <select ng-model="newBLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="tipoCargo">
-                                <option value="general" selected="selected">General</option>
-                                <option value="imo">IMO</option>
-                            </select>
-                        </div>
-                            <div class="col-md-6"><label class="col-md-4">Kilos:</label>
-                                <input class="col-md-7" type="text" name="Kilos">
+                                <select ng-model="newBLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="tipoCargo">
+                                    <option value="general" selected="selected">General</option>
+                                    <option value="imo">IMO</option>
+                                </select>
                             </div>
-                            </ul>
-                        <ul  class="col-md-12">
                             <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
                                 <select class="col-md-8 withoutSearch" name="tipoCarga">
                                     <option value="General" selected="selected">General</option>
                                     <option value="IMO">IMO</option>
                                 </select>
                             </div>
-                            <div class="col-md-6"><label class="col-md-4">Volumen:</label>
-                                <input class="col-md-7" type="text" name="Volumen">
-                            </div>
-
                         </ul>
                     </div>
                 </div>
+                        <div class="panel-body1">
+                            <div class="content col-md-12">
+                            <ul class="input-group">
+
+
+                            <div class="col-md-6"><label class="col-md-2">Kilos:</label>
+                                <input class="col-md-3" type="text" name="Kilos">
+                            </div>
+                                <div class="col-md-6"><label class="col-md-3">Volumen:</label>
+                                    <input class="col-md-3" type="text" name="Volumen">
+                                </div>
+                        </ul>
+                                <div class="col-md-6"><label class="col-md-2">Flete:</label>
+                                    <input class="col-md-7" type="text" name="Flete">
+                                </div>
+                            </div>
+                        </div>
+
+
                 <div class="panel-body1">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
-                            <hr>
-                            <div class="col-md-6"><label class="col-md-4">IMO Clase:</label>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-3">IMO Clase:</label>
                                 <input class="col-md-7" type="text" name="IMOclase">
                             </div>
                             <div class="col-md-4">
-                                <label class="col-md-5">IMO Número:</label>
+                                <label class="col-md-6">IMO Número:</label>
                                 <input class="col-md-7" type="text" name="IMOnumero">
                             </div>
                         </ul>
@@ -196,7 +195,7 @@
                 </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
                                 <select ng-model="newBLMaster.agenteCreador" class="col-md-8 almacenistaSelect"
@@ -207,7 +206,7 @@
                                 </select>
                             </div>
                         </ul>
-                        <ul class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6">
                                 <label class="col-md-4">Pre-carriage:</label>
                                 <input class="col-md-7" type="text" name="Pre-carriage">
@@ -217,7 +216,7 @@
                                 <input class="col-md-7" type="text" name="lugarDeRecepcion">
                             </div>
                         </ul>
-                        <ul class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Destino:</label>
                                 <select ng-model="newBLMaster.agenteCreador" class="col-md-8 destinoSelect"
                                         name="almacenista">
@@ -233,7 +232,7 @@
                                 </select>
                             </div>
                         </ul>
-                        <ul class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
                                 <input ng-model="newBLMaster.contacto" class="col-md-8" type="text" name="contacto">
                             </div>
@@ -241,7 +240,7 @@
                                 <input ng-model="newBLMaster.telefono" class="col-md-8" type="text" name="telefono">
                             </div>
                         </ul>
-                        <ul class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-5">
                                 <label class="col-md-5">Fecha stacking:</label>
                                 <input  ng-model="fechaStackingAux" class="col-md-6" type="date" name="fechaStacking">
@@ -251,7 +250,7 @@
                                 <input  ng-model="horaStackingAux" class="col-md-3" type="time" name="horaStacking">
                             </div>
                         </ul>
-                        <ul class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Observación:</label>
                                 <input ng-model="newBLMaster.observacion" class="col-md-6" type="text" name="observacion">
                             </div>
