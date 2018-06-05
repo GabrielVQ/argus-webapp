@@ -183,10 +183,10 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-3">IMO Clase:</label>
+                            <div class="col-md-6"><label class="col-md-6">IMO Clase:</label>
                                 <input class="col-md-7" type="text" name="IMOclase">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label class="col-md-6">IMO Número:</label>
                                 <input class="col-md-7" type="text" name="IMOnumero">
                             </div>
@@ -196,7 +196,6 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
                                 <select ng-model="newBLMaster.agenteCreador" class="col-md-8 almacenistaSelect"
                                         name="almacenista">
@@ -208,16 +207,16 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6">
-                                <label class="col-md-4">Pre-carriage:</label>
+                                <label class="col-md-6">Pre-carriage:</label>
                                 <input class="col-md-7" type="text" name="Pre-carriage">
                             </div>
                             <div class="col-md-6">
-                                <label class="col-md-4">Lugar de recepción:</label>
+                                <label class="col-md-6">Lugar de recepción:</label>
                                 <input class="col-md-7" type="text" name="lugarDeRecepcion">
                             </div>
                         </ul>
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Destino:</label>
+                            <div class="col-md-6"><label class="col-md-6">Destino:</label>
                                 <select ng-model="newBLMaster.agenteCreador" class="col-md-8 destinoSelect"
                                         name="almacenista">
                                     <option ng-repeat="e in empresas"
@@ -225,7 +224,7 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="col-md-6"><label class="col-md-4">Tipo de movimiento:</label>
+                            <div class="col-md-6"><label class="col-md-6">Tipo de movimiento:</label>
                                 <select class="col-md-8 withoutSearch" name="tipoCarga">
                                     <option value="LCL/LCL" selected="selected">LCL/LCL</option>
                                     <option value="FCL/FCL">FCL/FCL</option>
@@ -242,17 +241,17 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-5">
-                                <label class="col-md-5">Fecha stacking:</label>
+                                <label class="col-md-6">Fecha stacking:</label>
                                 <input  ng-model="fechaStackingAux" class="col-md-6" type="date" name="fechaStacking">
                             </div>
                             <div class="col-md-5">
-                                <label class="col-md-5">Hora stacking:</label>
-                                <input  ng-model="horaStackingAux" class="col-md-3" type="time" name="horaStacking">
+                                <label class="col-md-6">Hora stacking:</label>
+                                <input  ng-model="horaStackingAux" class="col-md-6" type="time" name="horaStacking">
                             </div>
                         </ul>
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Observación:</label>
-                                <input ng-model="newBLMaster.observacion" class="col-md-6" type="text" name="observacion">
+                            <div class="col-md-6"><label class="col-md-6">Observación:</label>
+                                <input ng-model="newBLMaster.observacion" class="col-md-12" type="textarea" name="observacion">
                             </div>
                         </ul>
                     </div>
