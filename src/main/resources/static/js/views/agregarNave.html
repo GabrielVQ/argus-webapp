@@ -1,4 +1,3 @@
-
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Argus</a>
@@ -47,19 +46,19 @@
                         <a href="#!/agregarCiudad">Ciudad</a>
                     </li>
                     <li>
-                        <a href="#!/BL-House">Cliente</a>
+                        <a href="#!/agregarCliente">Cliente</a>
                     </li>
                     <li>
-                        <a href="#!/BL-House">Nave</a>
+                        <a href="#!/agregarNave">Nave</a>
                     </li>
                     <li>
-                        <a href="#!/BL-House">Cliente</a>
+                        <a href="#!/agregarEmpresa">Empresa</a>
                     </li>
                     <li>
-                        <a href="#!/BL-House">Empresa</a>
+                        <a href="#!/agregarPuerto">Puerto</a>
                     </li>
                     <li>
-                        <a href="#!/BL-House">Puerto</a>
+                        <a href="#!/agregarNaviera">Naviera</a>
                     </li>
                 </ul>
             </li>
@@ -80,8 +79,24 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="MainController">
-                <h4>¡Bienvenid@ a Argus!</h4>
+    <div class="container-fluid" ng-controller="agregarNaveController">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Agregar Nave</h4>
+            </div>
+            <div class="panel-body">
 
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Nombre ciudad:</label>
+                                <input ng-model="newBLMaster.contacto" class="col-md-8" type="text" name="Ciudad">
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div><input class="btn btn-primary btn-sm" type="button" value="Agregar">
+        </div>
     </div>
 </div>
