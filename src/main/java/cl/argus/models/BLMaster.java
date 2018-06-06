@@ -23,7 +23,6 @@ public class BLMaster{
     private String nViaje;
     private String agenteCreador;
     private String agenteAduana;
-    
     private String tipoNegocio;
     private String destino;
     
