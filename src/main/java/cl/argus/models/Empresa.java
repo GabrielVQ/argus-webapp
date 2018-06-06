@@ -24,6 +24,8 @@ public class Empresa {
 
 
 
+
+
     @OneToMany (mappedBy = "empresa",fetch = FetchType.EAGER)
     private Set<Bodega> bodegas;
     @JsonIgnore
