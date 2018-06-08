@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
-                    <!--<i class="fa fa-fw fa-wrench"></i>-->
+                    <i class="fa fa-fw fa-ship"></i>
                     <span class="nav-link-text">BL-Master</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLMaster">
@@ -28,7 +28,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
-                    <!--<i class="fa fa-fw fa-file"></i>-->
+                    <i class="fa fa-fw fa-truck"></i>
                     <span class="nav-link-text">BL-House</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLHouse">
@@ -39,7 +39,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseAgregar" data-parent="#exampleAccordion">
-                    <!--<i class="fa fa-fw fa-file"></i>-->
+                    <i class="fa fa-fw fa-plus-square"></i>
                     <span class="nav-link-text">Agregar</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseAgregar">
@@ -212,7 +212,7 @@
                                 <input class="col-md-7" type="date" name="fechaLlegada">
                             </div>
                             <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
-                                <input class="col-md-7" type="text" name="BLMasterNumero">
+                                <input class="col-md-7" type="text" name="BLMasterNumero"></div>
                         </ul>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
 
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  type="textarea" disabled name="razonSocial">
+                                <input class="col-md-8"  type="textarea" disabled name="razonSocial"></div>
                         </ul>
                     </div>
 
@@ -259,7 +259,50 @@
                             </div>
                             <div class="col-md-2"><label class="col-md-12">Cant Cont 40:</label>
                                 <input class="col-md-4" type="textarea" name="cont40" disabled readonly size="3px"></div>
-                            <div class="col-md-2"><input class="btn btn-primary btn-sm" type="button" value="Agregar Contenedor"></div>
+                            <!--<div class="col-md-2"><input class="btn btn-primary btn-sm" value="Agregar Contenedor"></div>-->
+
+                            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Agregar Contenedor</a>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Agregar Contenedor</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label class="col-md-4">Sigla Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaCtn">
+                                            <label class="col-md-4">N° Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="nCtn">
+                                            <label class="col-md-4">Sigla tipo Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaTipoCtn">
+                                            <label class="col-md-4">Tipo Ctn:</label>
+                                                <select class="col-md-4" name="tipoContenedor">
+                                                    <option value="Break Bulk" selected="selected">Break Bulk</option>
+                                                    <option value="Camion">Camión</option>
+                                                    <option value="consolidadoLCL">Consolidado LCL</option>
+                                                    <option value="dryvan20">Dry Van  20'</option>
+                                                    <option value="dryvan40">Dry Van  40'</option>
+                                                    <option value="flatRack20">Flat Rack 20'</option>
+                                                    <option value="flatRack40">Flat Rack 40'</option>
+                                                    <option value="highCube40">High Cube 40'</option>
+                                                    <option value="isoTank20">Iso Tank 20'</option>
+                                                    <option value="openTop20">Open Top 20'</option>
+                                                    <option value="openTop40">Open Top 40'</option>
+                                                    <option value="reefer20">Reefer 20'</option>
+                                                    <option value="reefer40">Reefer 40'</option>
+                                                    <option value="reefer40">Reefer 40' no operativo</option>
+                                                </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                            <a class="btn btn-primary" data-dismiss="modal" >Agregar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </ul>
                         <ul><input class="btn btn-primary btn-sm" type="button" value="Agregar House">
                             <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
