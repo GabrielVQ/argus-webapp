@@ -64,7 +64,7 @@
                     <br>
                     <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
                     <ul>Creado por: <b>{{creador}}</b></ul>
-                    <ul>Fecha:<b> {{fecha|date:'dd-MM-yyyy' }}</b></ul>
+                    <ul>Fecha ingreso:<b> {{fecha|date:'dd/MM/yyyy' }}</b></ul>
                 </div>
             </div>
             <div class="panel-body1">
@@ -137,8 +137,8 @@
                     <ul class="col-md-12">
                         <div class="col-md-6"><label class="col-md-4">Destino:</label>
                             <select ng-model="newBLMaster.destino" class="col-md-8 destinoSelect" name="destino">
-                                <option ng-repeat="puerto in puertos"
-                                        value="{{puerto.nombre}}">{{puerto.nombre}}
+                                <option ng-repeat="c in ciudades"
+                                        value="{{c.id}}">{{c.nombre}}
                                 </option>
                             </select></div>
                         <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
@@ -202,7 +202,7 @@
                                      <option value="WY">fasfa</option>
                                  </select>-->
 
-                                <select ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect"
+                                <select ng-model="newBLMaster.agenteAduana" class="col-md-8 agenteSelect"
                                         name="agente">
                                     <option ng-repeat="e in empresas"
                                             value="{{e.nombre_abrev}}">{{e.nombre_abrev}}

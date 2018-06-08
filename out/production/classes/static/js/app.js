@@ -3,60 +3,50 @@ var app = angular.module('app', ['ngRoute']);
 
 app.config(function($routeProvider){
     $routeProvider
-        .when('/home', {
+        .when('/', {
             templateUrl: 'js/views/index.html',
             controller: 'MainController'
         })
         .when('/BL-Master', {
             templateUrl: 'js/views/BL-Master.html',
-            controller: 'BLMasterController'
+            controller: 'BLMasterController',
         })
         .when('/BL-House',{
             templateUrl: 'js/views/BL-House.html',
-            controller: 'BLHouseController'
+            controller: 'BLHouseController',
         })
         .when('/buscarBLMaster',{
             templateUrl: 'js/views/buscarBLMaster.html',
-            controller: 'buscarBLMasterController'
+            controller: 'buscarBLMasterController',
         })
-        .when('/editarBLMaster/:bl',{
+        .when('/editarBLMaster',{
             templateUrl: 'js/views/editarBLMaster.html',
-            controller: 'editarBLMasterController'
+            controller: 'editarBLMasterController',
         })
         .when('/descripcion',{
             templateUrl: 'js/views/descripcion.html',
-            controller: 'BLHouseController'
+            controller: 'descripcionController',
         })
         .when('/ingresos',{
             templateUrl: 'js/views/ingresos.html',
-            controller: 'BLHouseController'
+            controller: 'BLHouseController',
         })
-        .when('/',{
+        .when('/login',{
             templateUrl: 'js/views/login.html',
-            controller: 'loginController'
         })
                 .otherwise({
             redirectTo: '/'
         });
 });
 
+app.service('ConsultaService', function($http,$q){
+    var urlBase = 'http://localhost:8080/blmasters';
 
-app.factory("BLMaster1", function($http, $q) {
-    return {
-      get: function() {
-          var deferred = $q.defer();
-          $http.get('http://localhost:8080/blmasters/numerooperacion/ARG003')
-          .then(function(response){
-             deferred.resolve(response.data);
-          })
-          .catch(function(response){
-            deferred.reject(response);
-          });
-          return deferred.promise;
-      }
-    }
-  });
+    this.getBLMaster = function(numeroOperacion){
+        return $http.get(urlBase +"/numeroOperacion/" +numeroOperacion);
+    };
 
+});
 
 app.directive("digitalClock", function($timeout, dateFilter) {
     return {

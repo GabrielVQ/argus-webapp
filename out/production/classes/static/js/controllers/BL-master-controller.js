@@ -1,6 +1,6 @@
 app.controller('BLMasterController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
 
-    $scope.numeroOperacion = "ARG00"+5;
+    $scope.numeroOperacion = 3;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
 
@@ -21,7 +21,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
     }
     $scope.newBLMaster= {
 
-        "numeroOperacion": $scope.numeroOperacion,
+        "numeroOperacion": "ARG00"+$scope.numeroOperacion,
         "blocked": false,
         "servicio": "",
         "nReserva": "",
