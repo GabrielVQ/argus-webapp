@@ -40,7 +40,8 @@ body {
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    border: 1px solid #423cfa;
+    /* border: 1px solid #878487; */
+    margin-bottom: 10px;
 }
 
 .panel-footer {
@@ -123,7 +124,8 @@ label{
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    border: 1px solid #423cfa;
+    border: 1px solid #878487;
+    margin-bottom: 10px;
 }
 
 .content{
