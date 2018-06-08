@@ -94,7 +94,4 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
     })
 
 
-
-
-
-}]);
+        }]);

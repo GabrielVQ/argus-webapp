@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-ship"></i>
+                    <!--<i class="fa fa-fw fa-wrench"></i>-->
                     <span class="nav-link-text">BL-Master</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLMaster">
@@ -25,10 +25,11 @@
                         <a href="#!/buscarBLMaster">Buscar BL-Master</a>
                     </li>
                 </ul>
+
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-truck"></i>
+                    <!--<i class="fa fa-fw fa-file"></i>-->
                     <span class="nav-link-text">BL-House</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLHouse">
@@ -39,7 +40,7 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseAgregar" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-plus-square"></i>
+                    <!--<i class="fa fa-fw fa-file"></i>-->
                     <span class="nav-link-text">Agregar</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseAgregar">
@@ -71,7 +72,6 @@
                 </a>
             </li>
         </ul>
-
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -81,9 +81,27 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="MainController">
-                <h4>¡Bienvenid@ a Argus!</h4>
+    <div class="container-fluid" ng-controller="agregarPuertoController">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Agregar Puerto</h4>
+            </div>
+            <div class="panel-body">
 
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Nombre Puerto:</label>
+                                <input ng-model="newAgregarPuerto.nombre" class="col-md-8" type="text" name="puerto">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Dirección:</label>
+                                <input ng-model="newAgregarPuerto.direccion" class="col-md-8" type="text" name="direccion">
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div><input class="btn btn-primary btn-sm" type="button" value="Agregar">
+        </div>
     </div>
-
 </div>

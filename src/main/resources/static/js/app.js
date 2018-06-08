@@ -31,6 +31,30 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/ingresos.html',
             controller: 'BLHouseController'
         })
+        .when('/agregarCiudad',{
+            templateUrl: 'js/views/agregarCiudad.html',
+            controller: 'agregarCiudadController'
+        })
+        .when('/agregarCliente',{
+            templateUrl: 'js/views/agregarCliente.html',
+            controller: 'agregarClienteController'
+        })
+        .when('/agregarEmpresa',{
+            templateUrl: 'js/views/agregarEmpresa.html',
+            controller: 'agregarEmpresaController'
+        })
+        .when('/agregarNave',{
+            templateUrl: 'js/views/agregarNave.html',
+            controller: 'agregarNaveController'
+        })
+        .when('/agregarNaviera',{
+            templateUrl: 'js/views/agregarNaviera.html',
+            controller: 'agregarNavieraController'
+        })
+        .when('/agregarPuerto',{
+            templateUrl: 'js/views/agregarPuerto.html',
+            controller: 'agregarPuertoController'
+        })
         .when('/',{
             templateUrl: 'js/views/login.html',
             controller: 'loginController'
