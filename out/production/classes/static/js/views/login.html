@@ -1,0 +1,49 @@
+<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<style>
+em {
+    font-family: 'Rubik', sans-serif;
+
+}
+</style>
+<div class="container " ng-controller="loginController">
+        <div class="row">
+            <div class="Absolute-Center is-Responsive">
+                
+                <div class="logo-container text-center">
+                    <img src="http://iconbug.com/data/1a/256/0401c874e8ef259ef70066445f5fd8ef.png" alt="Smiley face" height="64" width="64">
+                    <br>
+                    <em>ARGUS LOGISTICA LTDA</em>
+                    
+                    <br>
+                    <br>
+                    <!-- <img src="http://placehold.it/200x30/1E9387/ffffff/&text=ARGUS LOGISTICA LTDA" alt="Smiley face" height="30" width="200"> -->
+                </div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <form action="" id="loginForm">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="text" name='username' placeholder="usuario"/>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" name='password' placeholder="password"/>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-def btn-block btn-primary btn-md" href="#!/home" ng-class="{ active: isActive('/') }" role="button">Entrar</a>
+                        </div>
+                       <!-- <div class="form-group text-center">
+                            <a href="#">Forgot Password</a>&nbsp;|&nbsp;<a href="#">Support</a>
+                        </div>-->
+                        <br>
+                        <div class="form-group text-center">
+                            <strong>
+                                <span> {{date | date:'dd/MM/yyyy'}}  &nbsp;|&nbsp; <digital-clock  type="text"></digital-clock>
+                                </span>
+                            </strong>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

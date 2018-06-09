@@ -1,0 +1,126 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">Argus</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="INICIO">
+                <a class="nav-link" href="#!/home">
+                    <span class="nav-link-text">Inicio</span>
+                    <i class="fa fa-fw fa-home"></i>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-wrench"></i>-->
+                    <span class="nav-link-text">BL-Master</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLMaster">
+                    <li>
+                        <a href="#!/BL-Master">Nuevo BL-Master</a>
+                    </li>
+                    <li>
+                        <a href="#!/buscarBLMaster">Buscar BL-Master</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-file"></i>-->
+                    <span class="nav-link-text">BL-House</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLHouse">
+                    <li>
+                        <a href="#!/BL-House">Nuevo BL-House</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseAgregar" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-file"></i>-->
+                    <span class="nav-link-text">Agregar</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseAgregar">
+                    <li>
+                        <a href="#!/agregarCiudad">Ciudad</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarCliente">Cliente</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarNave">Nave</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarEmpresa">Empresa</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarPuerto">Puerto</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarNaviera">Naviera</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper" >
+    <div class="container-fluid" ng-controller="agregarEmpresaController">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h4>Agregar Empresa</h4>
+            </div>
+            <div class="panel-body">
+
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Codigo Agente:</label>
+                                <input ng-model="newAgregarEmpresa.codigoAgente" class="col-md-8" type="text" name="Codigo-Agente">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Contacto:</label>
+                                <input ng-model="newAgregarEmpresa.contacto" class="col-md-8" type="text" name="Contacto">
+                            </div>
+                        </ul>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Dirección:</label>
+                                <input ng-model="newAgregarEmpresa.direccion" class="col-md-8" type="text" name="Codigo-Agente">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">Telefono:</label>
+                                <input ng-model="newAgregarEmpresa.telefono" class="col-md-8" type="text" name="Telefono">
+                            </div>
+                        </ul>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Nacionalidad:</label>
+                                <input ng-model="newAgregarEmpresa.nacionalidad" class="col-md-8" type="text" name="Nacionalidad">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-6">Nombre abreviado:</label>
+                                <input ng-model="newAgregarEmpresa.nombreAbreviado" class="col-md-8" type="text" name="Nombre-abreviado">
+                            </div>
+                        </ul>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Razón social:</label>
+                                <input ng-model="newAgregarEmpresa.razonSocial" class="col-md-8" type="text" name="Razon-social">
+                            </div>
+                    </div>
+                </div>
+            </div><input class="btn btn-primary btn-sm" type="button" value="Agregar">
+        </div>
+    </div>
+</div>
