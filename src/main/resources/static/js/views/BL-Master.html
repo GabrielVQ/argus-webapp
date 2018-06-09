@@ -259,8 +259,9 @@
                             <div class="col-md-2"><label class="col-md-12">Cant Cont 40:</label>
                                 <input class="col-md-4" type="textarea" name="cont40" disabled readonly size="3px"></div>
                             <!--<div class="col-md-2"><input class="btn btn-primary btn-sm" value="Agregar Contenedor"></div>-->
-
-                            <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Agregar Contenedor</a>
+                        </ul>
+                        <ul>
+                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Agregar Contenedor</a>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -278,22 +279,22 @@
                                             <label class="col-md-4">Sigla tipo Ctn:</label>
                                             <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaTipoCtn">
                                             <label class="col-md-4">Tipo Ctn:</label>
-                                                <select class="col-md-4" name="tipoContenedor">
-                                                    <option value="Break Bulk" selected="selected">Break Bulk</option>
-                                                    <option value="Camion">Camión</option>
-                                                    <option value="consolidadoLCL">Consolidado LCL</option>
-                                                    <option value="dryvan20">Dry Van  20'</option>
-                                                    <option value="dryvan40">Dry Van  40'</option>
-                                                    <option value="flatRack20">Flat Rack 20'</option>
-                                                    <option value="flatRack40">Flat Rack 40'</option>
-                                                    <option value="highCube40">High Cube 40'</option>
-                                                    <option value="isoTank20">Iso Tank 20'</option>
-                                                    <option value="openTop20">Open Top 20'</option>
-                                                    <option value="openTop40">Open Top 40'</option>
-                                                    <option value="reefer20">Reefer 20'</option>
-                                                    <option value="reefer40">Reefer 40'</option>
-                                                    <option value="reefer40">Reefer 40' no operativo</option>
-                                                </select>
+                                            <select class="col-md-4" name="tipoContenedor">
+                                                <option value="Break Bulk" selected="selected">Break Bulk</option>
+                                                <option value="Camion">Camión</option>
+                                                <option value="consolidadoLCL">Consolidado LCL</option>
+                                                <option value="dryvan20">Dry Van  20'</option>
+                                                <option value="dryvan40">Dry Van  40'</option>
+                                                <option value="flatRack20">Flat Rack 20'</option>
+                                                <option value="flatRack40">Flat Rack 40'</option>
+                                                <option value="highCube40">High Cube 40'</option>
+                                                <option value="isoTank20">Iso Tank 20'</option>
+                                                <option value="openTop20">Open Top 20'</option>
+                                                <option value="openTop40">Open Top 40'</option>
+                                                <option value="reefer20">Reefer 20'</option>
+                                                <option value="reefer40">Reefer 40'</option>
+                                                <option value="reefer40">Reefer 40' no operativo</option>
+                                            </select>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
@@ -302,8 +303,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </ul>
-                        <ul><input class="btn btn-primary btn-sm" type="button" value="Agregar House">
+                            <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>
                             <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
                             <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                             <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
