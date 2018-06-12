@@ -44,7 +44,10 @@ dependencies {
 	compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.9'
 	compile group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.4.1'
 
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+
+
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile 'com.itextpdf:itext-pdfa:5.5.10'
 	compile 'com.itextpdf:itextg:5.5.9'
