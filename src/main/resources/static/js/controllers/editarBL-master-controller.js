@@ -22,7 +22,6 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
 
         $scope.fechaZarpeValue = parseFecha($scope.BLMaster.fechaZarpe);
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
-        //console.log('fecha for front',fechaZarpe);
     });
 
 
