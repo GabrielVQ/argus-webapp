@@ -1,19 +1,11 @@
 app.controller('BLMasterController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
 
-    $scope.numeroOperacion = 3;
+    $scope.numeroOperacion = 6;
     $scope.creador = 'Eduardo Avendaño';
-    $scope.fecha = new Date();
 
     var d = new Date();
-
-    var datestring = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
-    console.log(' fecha de hoy: ',$scope.fecha);
-
-    console.log(' fecha de hoy: ',datestring);
-
-    //$scope.ciudades;
-   // var list = ciuda.map(x => x.id);
-    $scope.fechaZarpeAux = '';
+    var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+    
 
     $scope.isActive = function(route) {
         return route === $location.path();
@@ -29,27 +21,29 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         "agenteCreador": "eavendano", // $scope.creador
         "tipoNegocio": "",
         "destino": "Conce",
-        "fechaIngreso": datestring,
-        "fechaLlegada": "12/07/2018 a las 04:00",
-        "fechaZarpe": "25/07/2018 a las 04:00",
+        "fechaIngreso": fechaIngreso,
+        "fechaLlegada": "",
+        "fechaZarpe": "",
         "nave":0,
-        "naviera":0
+        "naviera":0,
+        "BLMasterNumero":0
     };
 
     $scope.send = function(){
-        
+        console.log('fechaaaaa original:',$scope.newBLMaster.fechaZarpe);
         //$scope.numeroOperacion += 1;
         $scope.newBLMaster.nave= {"id":parseInt($scope.newBLMaster.nave)};
         $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
 
-        $scope.fechaZarpeAux =  $scope.fechaZarpeAux.getDate()  + "/" + ($scope.fechaZarpeAux.getMonth()+1) + "/" +
-        $scope.fechaZarpeAux.getFullYear() + " a las " + ("0" + $scope.fechaZarpeAux.getHours()).slice(-2) + ":" + ("0" + $scope.fechaZarpeAux.getMinutes()).slice(-2);
-        console.log(' fecha de hoy: ',$scope.fecha);
-        console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
+        $scope.newBLMaster.fechaZarpe =  $scope.newBLMaster.fechaZarpe.getDate()  + "/" + ($scope.newBLMaster.fechaZarpe.getMonth()+1) + "/" +
+        $scope.newBLMaster.fechaZarpe.getFullYear() + " a las " + ("0" + $scope.newBLMaster.fechaZarpe.getHours()).slice(-2) + ":" + ("0" + $scope.newBLMaster.fechaZarpe.getMinutes()).slice(-2);
+        //console.log(' fecha de hoy: ',$scope.fecha);
+        //console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
 
-        $scope.newBLMaster.fechaZarpe = $scope.fechaZarpeAux;
+        //$scope.newBLMaster.fechaZarpe = $scope.fechaZarpeAux;
+        console.log('fecha zarpeeee final : ',$scope.newBLMaster.fechaZarpe);
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'BL Generada con exito!';

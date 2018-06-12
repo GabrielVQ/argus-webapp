@@ -25,6 +25,8 @@ public class BLMaster{
     private String agenteAduana;
     private String tipoNegocio;
     private String destino;
+    private String BLMasterNumero;
+
     
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")

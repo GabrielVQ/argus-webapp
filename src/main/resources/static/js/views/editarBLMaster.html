@@ -1,57 +1,86 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header" style="padding-top: 0.6em; padding-right: 3em;">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding-left: 10em">
-            <!-- Left Side Of Navbar -->
-            <a href="#!/" class="btn navbar-btn" ng-class="{ active: isActive('/') }" role="button">Inicio</a>
-
-            <div class="btn-group">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">BL-Master
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#!/BL-Master" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-Master</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#!/buscarBLMaster" ng-class="{ active: isActive('/buscarBLMaster') }" role="button">Buscar BL-Master</a></li>
-                        </ul>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">Argus</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="INICIO">
+                <a class="nav-link" href="#!/home">
+                    <i class="fa fa-fw fa-home"></i>
+                    <span class="nav-link-text">Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-ship"></i>
+                    <span class="nav-link-text">BL-Master</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLMaster">
+                    <li>
+                        <a href="#!/BL-Master">Nuevo BL-Master</a>
+                    </li>
+                    <li>
+                        <a href="#!/buscarBLMaster">Buscar BL-Master</a>
                     </li>
                 </ul>
-            </div>
-
-            <div class="btn-group">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">BL-House
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#!/BL-House" ng-class="{ active: isActive('/BL-Master') }" role="button">Nuevo BL-House</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#!/buscarBLHouse" ng-class="{ active: isActive('/buscarBLMaster') }" role="button">Buscar BL-House</a></li>
-                        </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-truck"></i>
+                    <span class="nav-link-text">BL-House</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLHouse">
+                    <li>
+                        <a href="#!/BL-House">Nuevo BL-House</a>
                     </li>
                 </ul>
-            </div>
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-right">
-                <a href="#" class="btn navbar-btn" role="button">Mi cuenta</a>
-                <a href="#/" class="btn navbar-btn" role="button">Salir</a>
-            </ul>
-        </div>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseAgregar" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-plus-square"></i>
+                    <span class="nav-link-text">Agregar</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseAgregar">
+                    <li>
+                        <a href="#!/agregarCiudad">Ciudad</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarCliente">Cliente</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarNave">Nave</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarEmpresa">Empresa</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarPuerto">Puerto</a>
+                    </li>
+                    <li>
+                        <a href="#!/agregarNaviera">Naviera</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
     </div>
 </nav>
-<div class="container" ng-controller="editarBLMasterController">
-    <div class="col-md-12">
+<div class="content-wrapper" >
+    <div class="container-fluid" ng-controller="editarBLMasterController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 <h4>Crear BL-Master</h4>
@@ -62,44 +91,53 @@
                     <br>
                     <ul>N° de operación: <b> {{BLMaster.numeroOperacion}}</b></ul>
                     <ul>Creado por: <b>{{BLMaster.agenteCreador}}</b></ul>
-                    <ul>Fecha ingreso:<b> {{BLMaster.fechaIngreso|date:'dd-MM-yyyy' }}</b></ul>
+                    <ul>Fecha ingreso:<b> {{BLMaster.fechaIngreso}}</b></ul>
                 </div>
             </div>
             <div class="panel-body1">
                 <div class="content col-md-12">
 
-                    <ul class="col-md-12">
+                    <ul class="input-group">
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">IMP/EXP:</label>
 
-                            <select ng-model="newBLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="tipoNegocio">
+                            <select ng-model="BLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="tipoNegocio">
                                 <option value="Importación">Importación</option>
-                                <option value="Exportación" selected="selected">Exportación</option>
+                                <option value="Exportación" >Exportación</option>
                             </select>
 
                         </div>
                         <div class="col-md-6"><label class="col-md-4">Servicio:</label>
-                            <select ng-model="newBLMaster.servicio" class="col-md-8 withoutSearch" name="servicio">
-                                <option value="Directo" selected="selected">Directo</option>
+                            <select ng-model="BLMaster.servicio"  class="col-md-8 withoutSearch" name="servicio">
+                                <option value="Directo" >Directo</option>
                                 <option value="Coloader">Coloader</option>
                             </select>
                         </div>
                     </ul>
 
 
-                    <ul class="col-md-12">
+                    <ul class="input-group">
                         <div class="col-md-6"><label class="col-md-4">Naviera</label>
-                            <select  ng-model="newBLMaster.naviera" class="col-md-8 navieraSelect" >
+                            <!-- <select  ng-model="newBLMaster.naviera" class="col-md-8 navieraSelect" >
                                 <option ng-repeat="nav in navieras"
                                         value="{{nav.id}}">{{nav.nombre}}
                                 </option>
-                            </select></div>
+                            </select> -->
+                            <select 
+                                name="destino"
+                                ng-options="nav.nombre for nav in navieras track by nav.id"
+                                ng-model="BLMaster.naviera"
+                                class="col-md-8 navieraSelect" >
+                            </select>
+                        </div>
 
                         <div class="col-md-6"><label class="col-md-4">Nave:</label>
-                            <select  ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" >
-                                <option ng-repeat="nav in naves"
-                                        value="{{nav.id}}">{{nav.nombre}}
-                                </option>
+                            
+                            <select 
+                                name="nave"
+                                ng-options="nav.nombre for nav in naves track by nav.id" 
+                                ng-model="BLMaster.nave"
+                                class="col-md-8 navesSelect" >
                             </select>
                         </div>
                     </ul>
@@ -108,37 +146,43 @@
             </div>
             <div class="panel-body1">
                 <div class="content col-md-12">
-                    <ul class="col-md-12">
+                    <ul class="input-group">
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
-                            <input ng-model="newBLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
+                            <input ng-model="BLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
                         </div>
                         <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
-                            <input ng-model="newBLMaster.nReserva" class="col-md-8" type="text" name="nReserva">
+                            <input ng-model="BLMaster.nReserva" class="col-md-8" type="text" name="nReserva">
                         </div>
                     </ul>
 
-                    <ul class="col-md-12">
+                    <ul class="input-group">
                         <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
-                            <select ng-model="newBLMaster.puertoOrigen"  class="col-md-8 origenPuertosSelect" name="puertoOrigen">
-                                <option ng-repeat="puerto in puertos"
-                                        value="{{puerto.id}}">{{puerto.nombre}}
-                                </option>
-                            </select></div>
+                            
+                            <select ng-model="BLMaster.puertoOrigen" ng-init="BLMaster.puertoOrigen.nombre" ng-options="puerto as puerto.nombre for puerto in puertos track by puerto.id" class="col-md-8 origenPuertosSelect" name="puertoOrigen">
+                                
+                            </select>
+                            
+
+                        </div>
                         <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
-                            <select  ng-model="newBLMaster.puertoDescarga" class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
-                                <option ng-repeat="puerto in puertos"
-                                        value="{{puerto.id}}">{{puerto.nombre}}
-                                </option>
-                            </select></div>
+                            
+                            <select ng-model="BLMaster.puertoDescarga" ng-init="BLMaster.puertoDescarga.nombre" ng-options="puerto as puerto.nombre for puerto in puertos track by puerto.id" class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
+                                
+                            </select>
+                        </div>
                     </ul>
-                    <ul class="col-md-12">
+                    <ul class="input-group">
                         <div class="col-md-6"><label class="col-md-4">Destino:</label>
-                            <select ng-model="newBLMaster.destino" class="col-md-8 destinoSelect" name="destino">
+                            <!-- <select ng-model="newBLMaster.destino" class="col-md-8 destinoSelect" name="destino">
                                 <option ng-repeat="puerto in puertos"
                                         value="{{puerto.nombre}}">{{puerto.nombre}}
                                 </option>
-                            </select></div>
+                            </select> -->
+                            <select ng-model="BLMaster.destino" ng-options="c as c.nombre for c in ciudades track by c.id" class="col-md-8 destinoSelect" name="destino">
+                                <option value="">{{BLMaster.destino}}</option>
+                            </select>
+                        </div>
                         <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
                         <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
                             <option value="AL" selected="selected">ReservaNaviera</option>
@@ -171,24 +215,26 @@
             </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha zarpe:</label>
-                                <input  class="col-md-7" type="date" name="fechaZarpe">
+                                <!-- <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpeAux"> -->
+                                <input type="date" id="exampleInput" name="input" ng-model="fechaZarpe" value={{fechaZarpeValue}} required />
                             </div>
                             <div class="col-md-4">
-                                <label class="col-md-5">Fecha arribo:</label>
-                                <input class="col-md-7" type="date" name="fechaLlegada">
+                                <label class="col-md-8">Fecha arribo:</label>
+                                <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
+                                <input type="date" id="exampleInput" name="input" ng-model="fechaLlegada" value={{fechaLlegadaValue}} required />
                             </div>
-                            <div class="col-md-4"><label class="col-md-5">BL Master N°:</label>
-                                <input class="col-md-7" type="text" name="BLMasterNumero">
+                            <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
+                                <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.BLMasterNumero"></div>
                         </ul>
                     </div>
                 </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-6"><label class="col-md-4">Agente:</label>
                                 <!-- <select class="col-md-8 agenteSelect" name="agente">
@@ -200,12 +246,12 @@
                                      <option value="WY">fasfa</option>
                                  </select>-->
 
-                                <select ng-model="newBLMaster.agenteCreador" class="col-md-8 agenteSelect"
-                                        name="agente">
-                                    <option ng-repeat="e in empresas"
-                                            value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
-                                    </option>
-                                </select>
+                                 <select ng-model="BLMaster.agenteAduana" class="col-md-8 agenteSelect"
+                                 name="agente">
+                             <option ng-repeat="e in empresas"
+                                     value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
+                             </option>
+                         </select>
 
 
                             </div>
@@ -217,27 +263,71 @@
                 </div>
                 <div class="panel-body1 ">
                     <div class="content col-md-12">
-                        <ul class="col-md-12">
+                        <ul class="input-group">
                             <hr>
                             <div class="col-md-2"><label class="col-md-8">Kilos:</label>
                                 <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
                             <div class="col-md-2"><label class="col-md-8">Volumen:</label>
                                 <input class="col-md-4" type="textarea" name="volumen" readonly disabled size="3px">
                             </div>
-                            <div class="col-md-2"><label class="col-md-8">Cant Cont 20:</label>
+                            <div class="col-md-2"><label class="col-md-12">Cant Cont 20:</label>
                                 <input class="col-md-4" type="textarea" name="cont20" disabled readonly size="3px">
                             </div>
-                            <div class="col-md-2"><label class="col-md-8">Cant Cont 40:</label>
-                                <input class="col-md-4" ype="textarea" name="cont40" disabled readonly size="3px"></div>
-                            <div class="col-md-2"><input type="button" value="Agregar Contenedor">
+                            <div class="col-md-2"><label class="col-md-12">Cant Cont 40:</label>
+                                <input class="col-md-4" type="textarea" name="cont40" disabled readonly size="3px"></div>
+                            <!--<div class="col-md-2"><input class="btn btn-primary btn-sm" value="Agregar Contenedor"></div>-->
                         </ul>
-                        <ul><input type="button" value="Agregar House">
-                            <input type="button" value="Ver Houses">
-                            <input ng-click="send()" type="submit"  type="button" value="Guardar">
-                            <input type="button" value="Cancelar">
+                        <ul>
+                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Agregar Contenedor</a>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Agregar Contenedor</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label class="col-md-4">Sigla Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaCtn">
+                                            <label class="col-md-4">N° Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="nCtn">
+                                            <label class="col-md-4">Sigla tipo Ctn:</label>
+                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaTipoCtn">
+                                            <label class="col-md-4">Tipo Ctn:</label>
+                                            <select class="col-md-4" name="tipoContenedor">
+                                                <option value="Break Bulk" selected="selected">Break Bulk</option>
+                                                <option value="Camion">Camión</option>
+                                                <option value="consolidadoLCL">Consolidado LCL</option>
+                                                <option value="dryvan20">Dry Van  20'</option>
+                                                <option value="dryvan40">Dry Van  40'</option>
+                                                <option value="flatRack20">Flat Rack 20'</option>
+                                                <option value="flatRack40">Flat Rack 40'</option>
+                                                <option value="highCube40">High Cube 40'</option>
+                                                <option value="isoTank20">Iso Tank 20'</option>
+                                                <option value="openTop20">Open Top 20'</option>
+                                                <option value="openTop40">Open Top 40'</option>
+                                                <option value="reefer20">Reefer 20'</option>
+                                                <option value="reefer40">Reefer 40'</option>
+                                                <option value="reefer40">Reefer 40' no operativo</option>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                            <a class="btn btn-primary" data-dismiss="modal" >Agregar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>
+                            <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
+                            <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
+                            <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
+                            <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
                         </ul>
                     </div>
-                </div>
+    </div>
                 </div>
                 <script>
                     $(document).ready(function () {
