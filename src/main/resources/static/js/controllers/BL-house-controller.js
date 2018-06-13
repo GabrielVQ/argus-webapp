@@ -1,4 +1,4 @@
-app.controller('BLHouseController', ['$scope', '$location', function($scope, $location) {
+app.controller('BLHouseController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     $scope.numeroOperacion = 1452;
@@ -11,4 +11,6 @@ app.controller('BLHouseController', ['$scope', '$location', function($scope, $lo
     $scope.isActive = function(route) {
         return route === $location.path();
     }
+
+
 }]);

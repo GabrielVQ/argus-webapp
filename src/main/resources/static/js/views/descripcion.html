@@ -80,7 +80,7 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="BLHouseController">
+    <div class="container-fluid" ng-controller="descripcionController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 <h4>Crear BL-House</h4>
@@ -104,15 +104,16 @@
                     </div>
                 </div>
             </nav>
-            <div class="panel-body">
-                <div class="panel-body1">
-                    <div class="content col-md-12">
-                        <br>
-                        <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
-                        <ul>N° BL House: <b></b></ul>
-                        <ul>N° BL Master:<b> </b></ul>
-                    </div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
+                    <br>
+                    <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
+                    <ul>N° BL House: <b></b></ul>
+                    <ul>N° BL Master:<b></b></ul>
                 </div>
+            </div>
+            <div class="panel-body1">
+
                 <form action="admin/crud/insertar/inserta-lineasoferta.php" method="POST">
                     <table class="table table-bordered" id="tablaresponsive">
                         <thead>
@@ -130,14 +131,14 @@
 
                             <td>
                                 <select ng-model="newBLMaster.destino" class="form-control contenedorSelect" name="contenedor">
-                                    <option ng-repeat="puerto in puertos"
-                                            value="{{puerto.nombre}}">{{puerto.nombre}}
+                                    <option ng-repeat="container in containers"
+                                            value="{{container.tipo}}">{{container.tipo}}
                                     </option>
                                 </select>
                             </td>
                             <td><input type ="text" name="markAndNumbers[]"  class="form-control"></td>
                             <td><input type ="text" name="numberPackages[]"  class="form-control"></td>
-                            <td><input type ="text" name="descriptionGoods[]"  class="form-control"></td>
+                            <td width="400px" height="100px"><textarea type ="text" name="descriptionGoods[]"  class="form-control"></textarea></td>
                             <td><input type="text" name="groosWeight[]" class="form-control"></td>
                             <td><input type="text" name="measurement[]" class="form-control"></td>
                             <td><button type="button" class="eliminalinea">eliminar</button></td>
