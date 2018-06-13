@@ -48,11 +48,14 @@ public class Empresa {
     public String getRazon_social(){
         return razon_social;
     }
-
+    public String getNacionalidad(){
+        return nacionalidad;
+    }
     public int getCod_agente() {
         return cod_agente;
     }
-
+    public String getContacto() {return contacto;}
+    public String getFonoContacto() {return fonoContacto;}
     public Set<Bodega> getBodegas() {
         return bodegas;
     }

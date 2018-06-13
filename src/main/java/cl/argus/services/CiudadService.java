@@ -26,7 +26,5 @@ public class CiudadService {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Ciudad create(@RequestBody Ciudad resource) {
-        return ciudadRepository.save(resource);
-    }
+    public Ciudad create(@RequestBody Ciudad resource) { return ciudadRepository.save(resource); }
 }
