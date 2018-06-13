@@ -149,6 +149,14 @@ public class BLMaster{
         return tipoNegocio;
     }
 
+    public String getAgenteAduana(){
+        return agenteAduana;
+    }
+
+    public String getBLMasterNumero() {
+        return BLMasterNumero;
+    }
+
     public void setAgenteCreador(String agenteCreador) {
         this.agenteCreador = agenteCreador;
     }

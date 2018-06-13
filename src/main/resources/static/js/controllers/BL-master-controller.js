@@ -6,6 +6,11 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
     
+    function parseFecha(date){
+        var fecha = date.getDate()  + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " a las " + ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+        return fecha;
+    }
+
 
     $scope.isActive = function(route) {
         return route === $location.path();
@@ -37,13 +42,14 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
 
-        $scope.newBLMaster.fechaZarpe =  $scope.newBLMaster.fechaZarpe.getDate()  + "/" + ($scope.newBLMaster.fechaZarpe.getMonth()+1) + "/" +
-        $scope.newBLMaster.fechaZarpe.getFullYear() + " a las " + ("0" + $scope.newBLMaster.fechaZarpe.getHours()).slice(-2) + ":" + ("0" + $scope.newBLMaster.fechaZarpe.getMinutes()).slice(-2);
+        $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
+        $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
         //console.log(' fecha de hoy: ',$scope.fecha);
         //console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
 
         //$scope.newBLMaster.fechaZarpe = $scope.fechaZarpeAux;
         console.log('fecha zarpeeee final : ',$scope.newBLMaster.fechaZarpe);
+        console.log('BL : ',$scope.newBLMaster);
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'BL Generada con exito!';
