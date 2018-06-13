@@ -28,11 +28,10 @@ public class Puerto {
     }
     
     public String getNombre(){
-        return this.nombre;
+        return nombre;
     }
-    
     public String getDireccion(){
-        return this.direccion;
+        return direccion;
     }
     @JsonIgnore
     public Set<BLMaster> getBLMasterInicio(){

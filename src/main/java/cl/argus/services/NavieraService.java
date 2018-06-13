@@ -6,6 +6,7 @@ import cl.argus.models.Naviera;
 import cl.argus.repositories.ContainerRepository;
 import cl.argus.repositories.NavieraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -20,5 +21,12 @@ public class NavieraService {
     @ResponseBody
     public Iterable<Naviera> getAllNavieras() {
         return navieraRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Naviera create(@RequestBody Naviera resource) {
+        return navieraRepository.save(resource);
     }
 }

@@ -92,7 +92,7 @@
 
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Codigo Agente:</label>
-                                <input ng-model="newAgregarEmpresa.codigoAgente" class="col-md-8" type="text" name="Codigo-Agente">
+                                <input ng-model="newAgregarEmpresa.cod_agente" class="col-md-8" type="text" name="Codigo-Agente">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
                                 <input ng-model="newAgregarEmpresa.contacto" class="col-md-8" type="text" name="Contacto">
@@ -103,7 +103,7 @@
                                 <input ng-model="newAgregarEmpresa.direccion" class="col-md-8" type="text" name="Codigo-Agente">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Telefono:</label>
-                                <input ng-model="newAgregarEmpresa.telefono" class="col-md-8" type="text" name="Telefono">
+                                <input ng-model="newAgregarEmpresa.fonoContacto" class="col-md-8" type="text" name="Telefono">
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -111,16 +111,17 @@
                                 <input ng-model="newAgregarEmpresa.nacionalidad" class="col-md-8" type="text" name="Nacionalidad">
                             </div>
                             <div class="col-md-6"><label class="col-md-6">Nombre abreviado:</label>
-                                <input ng-model="newAgregarEmpresa.nombreAbreviado" class="col-md-8" type="text" name="Nombre-abreviado">
+                                <input ng-model="newAgregarEmpresa.nombre_abrev" class="col-md-8" type="text" name="Nombre-abreviado">
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input ng-model="newAgregarEmpresa.razonSocial" class="col-md-8" type="text" name="Razon-social">
+                                <input ng-model="newAgregarEmpresa.razon_social" class="col-md-8" type="text" name="Razon-social">
                             </div>
+                        </ul>
                     </div>
                 </div>
-            </div><input class="btn btn-primary btn-sm" type="button" value="Agregar">
+            </div><input class="btn btn-primary btn-sm" ng-click="send()" type="submit" type="button" value="Agregar">
         </div>
     </div>
 </div>

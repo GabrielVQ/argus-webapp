@@ -17,10 +17,6 @@ app.controller('agregarCiudadController', ['$scope', '$location','$http','$windo
         $scope.mensaje = 'ciudad añadida con exito!';
         $window.alert($scope.mensaje);
 
-
-
-        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
-
     }
 
 
