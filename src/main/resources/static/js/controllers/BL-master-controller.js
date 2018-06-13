@@ -31,7 +31,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         "fechaZarpe": "",
         "nave":0,
         "naviera":0,
-        "BLMasterNumero":0
+        "blmasterNumero":""
     };
 
     $scope.send = function(){
@@ -41,6 +41,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
+        $scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};
 
         $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
         $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);

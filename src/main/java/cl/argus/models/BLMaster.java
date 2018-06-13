@@ -25,7 +25,7 @@ public class BLMaster{
     private String agenteAduana;
     private String tipoNegocio;
     private String destino;
-    private String BLMasterNumero;
+    private String blmasterNumero;
 
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -154,7 +154,7 @@ public class BLMaster{
     }
 
     public String getBLMasterNumero() {
-        return BLMasterNumero;
+        return blmasterNumero;
     }
 
     public void setAgenteCreador(String agenteCreador) {
