@@ -10,6 +10,8 @@ buildscript {
 	}
 }
 
+
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
@@ -28,13 +30,27 @@ bootRun {
 }
 
 
+
+
+
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+
+	compile group: 'com.lowagie', name: 'itext', version: '4.2.2', ext: 'pom'
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.postgresql:postgresql')
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.9'
+	compile group: 'com.itextpdf.tool', name: 'xmlworker', version: '5.4.1'
+
+
+
+
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile 'com.itextpdf:itext-pdfa:5.5.10'
+	compile 'com.itextpdf:itextg:5.5.9'
 	testCompile('org.springframework.security:spring-security-test')
 }
 

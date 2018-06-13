@@ -7,4 +7,5 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface CiudadRepository extends CrudRepository<Ciudad,Long>{
+
 }
