@@ -154,7 +154,7 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
+
                             <div class="col-md-6"><label class="col-md-4">PP/CC:</label>
 
                                 <select ng-model="newBLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="pp/ccHouse">
@@ -179,7 +179,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
-                                <select class="col-md-8 withoutSearch" name="tipoCarga">
+                                <select class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
                                     <option value="General" selected="selected">General</option>
                                     <option value="IMO">IMO</option>
                                 </select>
@@ -208,7 +208,7 @@
                         </div>
 
 
-                <div class="panel-body1">
+                <div class="panel-body1" id="divCarga">
                     <div class="content col-md-12">
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">IMO Clase:</label>
@@ -326,6 +326,24 @@
                 });
             </script>
 
+    <script>
+        $(function() {
+            $("#inputSelect").on('change', function() {
+
+                var selectValue = $(this).val();
+
+                    if (selectValue == "IMO") {
+                        $("#divCarga").show();
+                    }
+                    else{
+                        $("#divCarga").hide();
+                    }
+                //console.log(selectValue);
+
+            }).change();
+
+        });
+    </script>
         </div>
     </div>
 </div>
