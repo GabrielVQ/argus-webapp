@@ -15,14 +15,14 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-ship"></i>
-                    <span class="nav-link-text">BL-Master</span>
+                    <span class="nav-link-text">Operación</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLMaster">
                     <li>
-                        <a href="#!/BL-Master">Nuevo BL-Master</a>
+                        <a href="#!/BL-Master">Nueva Operación</a>
                     </li>
                     <li>
-                        <a href="#!/buscarBLMaster">Buscar BL-Master</a>
+                        <a href="#!/buscarBLMaster">Buscar Operación</a>
                     </li>
                 </ul>
             </li>
@@ -33,7 +33,7 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLHouse">
                     <li>
-                        <a href="#!/BL-House">Nuevo BL-House</a>
+                        <a href="#!/BL-House">buscar BL-House</a>
                     </li>
                 </ul>
             </li>
@@ -91,10 +91,11 @@
 
                 <input type="text" id="search" placeholder="Escribe para buscar..." />
                 <br>
-                <table id="table" class="table table-striped table-hover">
+                <table id="table" class="table table-striped table-hover table-bordered">
                     <thead>
                     <tr>
                         <th>Número de operación</th>
+                        <th>BL Number</th>
                         <th>Creado por</th>
                         <th>Fecha Ingreso</th>
                         <th></th>
@@ -104,10 +105,12 @@
                     <tbody>
                     <tr ng-repeat=" BL in BLMaster |filter:searchBox ">
                         <td>{{BL.numeroOperacion}}</td>
+                        <td>{{BL.blmasterNumero}}</td>
                         <td>{{BL.agenteCreador}}</td>
                         <td>{{BL.fechaIngreso}}</td>
                         <td>
                             <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
+                            <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
                         </td>
                     </tr>
                     </tbody>
