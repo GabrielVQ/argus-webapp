@@ -17,6 +17,10 @@ public class Container {
     private Set<BLMaster> blMaster;
     
     private String tipo;
+    private String sigla;
+    private String numeroContenedor;
+    private String selloContenedor;
+    private String digito;
 
     public long getId() {
         return id;
@@ -30,4 +34,19 @@ public class Container {
         return tipo;
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
+    public String getNumeroContenedor() {
+        return numeroContenedor;
+    }
+
+    public String getSelloContenedor() {
+        return selloContenedor;
+    }
+
+    public String getDigito() {
+        return digito;
+    }
 }

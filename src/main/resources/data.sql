@@ -4,7 +4,7 @@ INSERT INTO public.ciudad(id, nombre) VALUES (1, 'Valparaiso'),(2,'Santiago'),(3
 
 INSERT INTO public.moneda VALUES (1,'pesos chilenos',0),(2,'dolar USA',600);
 
-INSERT INTO public.container VALUES (1,'tipo1'),(2,'Tipo2');
+INSERT INTO public.container VALUES (1,'7','123456','asdfghSello','arghasuSigla','20 Reefer'),(2,'6','123456','qwertySello','arguscontainerSigla','40 Reefer');
 
 INSERT INTO public.nave VALUES (1,'SaintQueen'),(2,'Titanic2.0');
 

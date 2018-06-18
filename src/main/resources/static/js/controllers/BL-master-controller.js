@@ -1,8 +1,8 @@
 app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL',function($scope, $location, $http,$window, servicioNumeroBL) {
 
     servicioNumeroBL.setNumeroBLMaster(15+1);
-    $scope.numeroOperacion = 6;
-    $scope.creador = servicioNumeroBL.numeroBL;
+    $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+    $scope.creador = "EAvendano";
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -70,6 +70,20 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
             //console.log($scope.ciudades[0]);
     }*/
 
+
+    $scope.newContenedor={
+        "tipo":"",
+        "sigla":"" ,
+        "numeroContenedor":"",
+        "selloContenedor":"",
+        "digito":""
+    }
+
+    $scope.agregarContenedor = function(){
+        $http.post("http://localhost:8080/containers",$scope.newContenedor);
+        $scope.mensaje = 'Conetenedor agregado con exito!';
+        $window.alert($scope.mensaje);
+    }
 
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;
