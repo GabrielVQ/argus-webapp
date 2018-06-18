@@ -89,7 +89,7 @@
             <div class="panel-body">
 
                 <div class="panel-body1">
-                    <div class="content col-md-12">
+                    <div class="content col-md-12" >
                         <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
                         <ul>Creado por: <b>{{creador}}</b></ul>
                         <ul>Fecha Ingreso:<b> {{newBLMaster.fechaIngreso}}</b></ul>
@@ -206,12 +206,12 @@
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha zarpe:</label>
                                 <!-- <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpeAux"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="newBLMaster.fechaZarpe" required />
+                                <input type="date" id="fechaZarpe" name="input" ng-model="newBLMaster.fechaZarpe" required />
                             </div>
                             <div class="col-md-4">
                                 <label class="col-md-8">Fecha arribo:</label>
                                 <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="newBLMaster.fechaLlegada" required />
+                                <input type="date" id="fechaArrribo" name="input" ng-model="newBLMaster.fechaLlegada" required />
                             </div>
                             <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
                                 <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="text" name="BLMasterNumero"></div>
@@ -239,11 +239,9 @@
                                             value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
                                     </option>
                                 </select>
-
-
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  type="textarea" disabled name="razonSocial"></div>
+                                <input class="col-md-8"  type="text" disabled name="razonSocial" value="{{}}"></div>
                         </ul>
                     </div>
 
@@ -287,17 +285,17 @@
                                                 <option value="Break Bulk" selected="selected">Break Bulk</option>
                                                 <option value="Camion">Camión</option>
                                                 <option value="consolidadoLCL">Consolidado LCL</option>
-                                                <option value="dryvan20">Dry Van  20'</option>
-                                                <option value="dryvan40">Dry Van  40'</option>
-                                                <option value="flatRack20">Flat Rack 20'</option>
-                                                <option value="flatRack40">Flat Rack 40'</option>
-                                                <option value="highCube40">High Cube 40'</option>
-                                                <option value="isoTank20">Iso Tank 20'</option>
-                                                <option value="openTop20">Open Top 20'</option>
-                                                <option value="openTop40">Open Top 40'</option>
-                                                <option value="reefer20">Reefer 20'</option>
-                                                <option value="reefer40">Reefer 40'</option>
-                                                <option value="reefer40">Reefer 40' no operativo</option>
+                                                <option value="dryvan20">20' Dry Van</option>
+                                                <option value="dryvan40">40' Dry Van</option>
+                                                <option value="flatRack20">20' Flat Rack</option>
+                                                <option value="flatRack40">40' Flat Rack</option>
+                                                <option value="highCube40">40' High Cube</option>
+                                                <option value="isoTank20">20' Iso Tank</option>
+                                                <option value="openTop20">20' Open Top</option>
+                                                <option value="openTop40">40' Open Top</option>
+                                                <option value="reefer20">20' Reefer'</option>
+                                                <option value="reefer40">40' Reefer</option>
+                                                <option value="reefer40">40' Reefer no operativo</option>
                                             </select>
                                         </div>
                                         <div class="modal-footer">

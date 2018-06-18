@@ -16,7 +16,7 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 
 import javax.swing.*;
 

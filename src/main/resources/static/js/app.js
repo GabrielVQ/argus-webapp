@@ -1,5 +1,12 @@
 var app = angular.module('app', ['ngRoute']);
 
+app.service('servicioNumeroBL', function () {
+    this.numeroBL = 0;
+    this.setNumeroBLMaster = function (numeroBL) {
+        this.numeroBL = numeroBL;
+        return this.numeroBL;
+    }
+});
 
 app.config(function($routeProvider){
     $routeProvider
