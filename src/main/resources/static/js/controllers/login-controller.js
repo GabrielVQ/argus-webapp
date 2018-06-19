@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope', '$location', '$http','$window','$interval', function($scope, $location, $http,$window,ConsultaService,digitalClock) {
+app.controller('loginController', ['$scope', '$location', '$http','$window','$interval', function($scope, $location, $http,$window,ConsultaService,digitalClock, MisDatos) {
 
     $scope.date = new Date();
 

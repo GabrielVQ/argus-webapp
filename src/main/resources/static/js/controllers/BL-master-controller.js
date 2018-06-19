@@ -1,7 +1,8 @@
-app.controller('BLMasterController', ['$scope', '$location', '$http','$window', function($scope, $location, $http,$window) {
+app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL',function($scope, $location, $http,$window, servicioNumeroBL) {
 
-    $scope.numeroOperacion = 6;
-    $scope.creador = 'Eduardo Avendaño';
+    servicioNumeroBL.setNumeroBLMaster(15+1);
+    $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+    $scope.creador = "EAvendano";
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -11,11 +12,11 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         return fecha;
     }
 
-
     $scope.isActive = function(route) {
         return route === $location.path();
 
     }
+
     $scope.newBLMaster= {
 
         "numeroOperacion": "ARG00"+$scope.numeroOperacion,
@@ -25,13 +26,14 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         "nViaje": "",
         "agenteCreador": "eavendano", // $scope.creador
         "tipoNegocio": "",
-        "destino": "Conce",
+        "destino": "",
         "fechaIngreso": fechaIngreso,
         "fechaLlegada": "",
         "fechaZarpe": "",
         "nave":0,
         "naviera":0,
-        "blmasterNumero":""
+        "blmasterNumero":"",
+        "agenteAduana": ""
     };
 
     $scope.send = function(){
@@ -41,7 +43,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
-        //$scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};
+        /*$scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};*/
 
         $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
         $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
@@ -69,6 +71,20 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
     }*/
 
 
+    $scope.newContenedor={
+        "tipo":"",
+        "sigla":"" ,
+        "numeroContenedor":"",
+        "selloContenedor":"",
+        "digito":""
+    }
+
+    $scope.agregarContenedor = function(){
+        $http.post("http://localhost:8080/containers",$scope.newContenedor);
+        $scope.mensaje = 'Conetenedor agregado con exito!';
+        $window.alert($scope.mensaje);
+    }
+
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;
         //console.log($scope.ciudades);
@@ -93,6 +109,5 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window', 
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
-
 
         }]);

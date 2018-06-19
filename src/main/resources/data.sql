@@ -4,7 +4,7 @@ INSERT INTO public.ciudad(id, nombre) VALUES (1, 'Valparaiso'),(2,'Santiago'),(3
 
 INSERT INTO public.moneda VALUES (1,'pesos chilenos',0),(2,'dolar USA',600);
 
-INSERT INTO public.container VALUES (1,'tipo1'),(2,'Tipo2');
+INSERT INTO public.container VALUES (1,'7','123456','asdfghSello','arghasuSigla','20 Reefer'),(2,'6','123456','qwertySello','arguscontainerSigla','40 Reefer');
 
 INSERT INTO public.nave VALUES (1,'SaintQueen'),(2,'Titanic2.0');
 
@@ -16,7 +16,7 @@ INSERT INTO public.empresa VALUES (1,1,'Luis Videla','av. central park 123','alm
 
 INSERT INTO public.bodega VALUES (1,'Bodega_1','puerto Stanley',1),(2,'Bodega_2','puerto ABCD',1);
 
-INSERT INTO public.blmaster VALUES (1,'agenteDemo','eavendano','1112223',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,'ARG00001','coloader','importacion',1,1,2,1,2),(2,'agenteDemo','eavendano','1134456',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,'ARG0003','coloader','importacion',1,1,2,1,2);
+INSERT INTO public.blmaster VALUES (1,'1224660','agencia aduana 1','eavendano',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,'ARG00001','coloader','importacion',1,1,2,1,2),(2,'1224660','agencia aduana 2','eavendano',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,'ARG0003','coloader','importacion',1,1,2,1,2);
 
 INSERT INTO public.blhouse VALUES(1,1,1,2);
 

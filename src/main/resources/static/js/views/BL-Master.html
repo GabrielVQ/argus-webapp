@@ -89,7 +89,7 @@
             <div class="panel-body">
 
                 <div class="panel-body1">
-                    <div class="content col-md-12">
+                    <div class="content col-md-12" >
                         <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
                         <ul>Creado por: <b>{{creador}}</b></ul>
                         <ul>Fecha Ingreso:<b> {{newBLMaster.fechaIngreso}}</b></ul>
@@ -124,14 +124,8 @@
                                             value="{{nav.id}}">{{nav.nombre}}
                                     </option>
                                 </select></div>
-
-                            <div class="col-md-6"><label class="col-md-4">Nave:</label>
-                                <select  ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" >
-                                    <option ng-repeat="nav in naves"
-                                            value="{{nav.id}}">{{nav.nombre}}
-                                    </option>
-                                </select>
-                            </div>
+                            <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
+                                <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="text" name="BLMasterNumero"></div>
                         </ul>
                     </div>
 
@@ -143,19 +137,29 @@
                             <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
                                 <input ng-model="newBLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
                             </div>
+                            <div class="col-md-6"><label class="col-md-4">Nave:</label>
+                                <select  ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" >
+                                    <option ng-repeat="nav in naves"
+                                            value="{{nav.id}}">{{nav.nombre}}
+                                    </option>
+                                </select>
+                            </div>
                             <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
                                 <input ng-model="newBLMaster.nReserva" class="col-md-8" type="text" name="nReserva">
                             </div>
                         </ul>
-
+                    </div>
+                </div>
+                <div class="panel-body1">
+                    <div class="content col-md-12">
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
+                            <div class="col-md-6"><label class="col-md-6">Puerto de Origen:</label>
                                 <select ng-model="newBLMaster.puertoOrigen"  class="col-md-8 origenPuertosSelect" name="puertoOrigen">
                                     <option ng-repeat="puerto in puertos"
                                             value="{{puerto.id}}">{{puerto.nombre}}
                                     </option>
                                 </select></div>
-                            <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
+                            <div class="col-md-6"><label class="col-md-6">Puerto de descarga:</label>
                                 <select  ng-model="newBLMaster.puertoDescarga" class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
                                     <option ng-repeat="puerto in puertos"
                                             value="{{puerto.id}}">{{puerto.nombre}}
@@ -202,27 +206,22 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-4">
-                                <label class="col-md-5">Fecha zarpe:</label>
+                                <label class="col-md-8">Fecha zarpe:</label>
                                 <!-- <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpeAux"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="newBLMaster.fechaZarpe" required />
+                                <input type="date" id="fechaZarpe" name="input" ng-model="newBLMaster.fechaZarpe" required />
                             </div>
                             <div class="col-md-4">
                                 <label class="col-md-8">Fecha arribo:</label>
                                 <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="newBLMaster.fechaLlegada" required />
+                                <input type="date" id="fechaArrribo" name="input" ng-model="newBLMaster.fechaLlegada" required />
                             </div>
-                            <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
-                                <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="text" name="BLMasterNumero"></div>
-                                
                         </ul>
                     </div>
                 </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-6"><label class="col-md-4">Agente:</label>
                                 <!-- <select class="col-md-8 agenteSelect" name="agente">
                                      <option value="AL" selected="selected">agente</option>
@@ -239,11 +238,9 @@
                                             value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
                                     </option>
                                 </select>
-
-
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  type="textarea" disabled name="razonSocial"></div>
+                                <input class="col-md-8"  type="text" disabled name="razonSocial" value="{{}}"></div>
                         </ul>
                     </div>
 
@@ -251,7 +248,6 @@
                 <div class="panel-body1 ">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-2"><label class="col-md-8">Kilos:</label>
                                 <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
                             <div class="col-md-2"><label class="col-md-8">Volumen:</label>
@@ -277,34 +273,38 @@
                                         </div>
                                         <div class="modal-body">
                                             <label class="col-md-4">Sigla Ctn:</label>
-                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaCtn">
+                                            <input ng-model="newContenedor.sigla" class="col-md-4" type="text" name="siglaCtn">
+
                                             <label class="col-md-4">N° Ctn:</label>
-                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="nCtn">
-                                            <label class="col-md-4">Sigla tipo Ctn:</label>
-                                            <input ng-model="newBLMaster.nViaje" class="col-md-4" type="text" name="siglaTipoCtn">
+                                            <input ng-model="newContenedor.numeroContenedor" class="col-md-4" type="text" name="nCtn">
+                                            <label class="col-md-1">-</label>
+                                            <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn">
+
+                                            <label class="col-md-4">Sello Ctn:</label>
+                                            <input ng-model="newContenedor.selloContenedor" class="col-md-4" type="text" name="sello">
                                             <label class="col-md-4">Tipo Ctn:</label>
-                                            <select class="col-md-4" name="tipoContenedor">
+                                            <select ng-model="newContenedor.tipo" class="col-md-4" name="tipoContenedor">
                                                 <option value="Break Bulk" selected="selected">Break Bulk</option>
-                                                <option value="Camion">Camión</option>
-                                                <option value="consolidadoLCL">Consolidado LCL</option>
-                                                <option value="dryvan20">Dry Van  20'</option>
-                                                <option value="dryvan40">Dry Van  40'</option>
-                                                <option value="flatRack20">Flat Rack 20'</option>
-                                                <option value="flatRack40">Flat Rack 40'</option>
-                                                <option value="highCube40">High Cube 40'</option>
-                                                <option value="isoTank20">Iso Tank 20'</option>
-                                                <option value="openTop20">Open Top 20'</option>
-                                                <option value="openTop40">Open Top 40'</option>
-                                                <option value="reefer20">Reefer 20'</option>
-                                                <option value="reefer40">Reefer 40'</option>
-                                                <option value="reefer40">Reefer 40' no operativo</option>
+                                                <option value="Camión">Camión</option>
+                                                <option value="Consolidado LCL">Consolidado LCL</option>
+                                                <option value="20 Dry Van">20 Dry Van</option>
+                                                <option value="40 Dry Van">40 Dry Van</option>
+                                                <option value="20 Flat Rack">20 Flat Rack</option>
+                                                <option value="40 Flat Rack">40 Flat Rack</option>
+                                                <option value="40 High Cube">40 High Cube</option>
+                                                <option value="20 Iso Tank">20 Iso Tank</option>
+                                                <option value="20 Open Top">20 Open Top</option>
+                                                <option value="40 Open Top">40 Open Top</option>
+                                                <option value="20 Reefer">20 Reefer</option>
+                                                <option value="40 Reefer">40 Reefer</option>
+                                                <option value="40 Reefer no operativo">40 Reefer no operativo</option>
                                             </select>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-primary" data-dismiss="modal" >Agregar</a>
+                                            <a class="btn btn-primary" ng-click="agregarContenedor()" data-dismiss="modal" >Agregar</a>
                                         </div>
-                                    </div>
+                                    </div>,
                                 </div>
                             </div>
                             <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>

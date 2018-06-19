@@ -110,7 +110,7 @@
                         <br>
                         <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
                         <ul>N° BL House: <b></b></ul>
-                        <ul>N° BL Master:<b> </b></ul>
+                        <ul>N° BL Master:<b>{{numeroBLMaster}} </b></ul>
                     </div>
                 </div>
                 <div class="panel-body1">
@@ -154,7 +154,7 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
+
                             <div class="col-md-6"><label class="col-md-4">PP/CC:</label>
 
                                 <select ng-model="newBLMaster.tipoNegocio" class="col-md-8 withoutSearch" name="pp/ccHouse">
@@ -179,7 +179,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Tipo de carga:</label>
-                                <select class="col-md-8 withoutSearch" name="tipoCarga">
+                                <select class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
                                     <option value="General" selected="selected">General</option>
                                     <option value="IMO">IMO</option>
                                 </select>
@@ -199,14 +199,16 @@
                                     <input class="col-md-3" type="text" name="Volumen">
                                 </div>
                         </ul>
+                                <ul class="input-group">
                                 <div class="col-md-6"><label class="col-md-2">Flete:</label>
                                     <input class="col-md-7" type="text" name="Flete">
                                 </div>
+                                </ul>
                             </div>
                         </div>
 
 
-                <div class="panel-body1">
+                <div class="panel-body1" id="divCarga">
                     <div class="content col-md-12">
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">IMO Clase:</label>
@@ -324,6 +326,24 @@
                 });
             </script>
 
+    <script>
+        $(function() {
+            $("#inputSelect").on('change', function() {
+
+                var selectValue = $(this).val();
+
+                    if (selectValue == "IMO") {
+                        $("#divCarga").show();
+                    }
+                    else{
+                        $("#divCarga").hide();
+                    }
+                //console.log(selectValue);
+
+            }).change();
+
+        });
+    </script>
         </div>
     </div>
 </div>

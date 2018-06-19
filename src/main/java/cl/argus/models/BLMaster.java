@@ -85,9 +85,7 @@ public class BLMaster{
         return nReserva;
     }
 
-    public String getDestino() {
-        return destino;
-    }
+    public String getDestino() { return destino; }
 
     public String getAgenteCreador() {
         return agenteCreador;
