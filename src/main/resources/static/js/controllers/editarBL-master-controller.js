@@ -7,9 +7,21 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
     $scope.bl = $routeParams.bl;
     $scope.BLMaster = [];
 
+    
+    function isDate(x) 
+    { 
+    return (null != x) && !isNaN(x) && ("undefined" !== typeof x.getDate); 
+    }
+    
+
     function parseFecha(date){
         var aux = date.split(' ')[0].split('/');
         var fecha =  aux[2]+"-"+aux[1]+"-"+aux[0];
+        return fecha;
+    }
+
+    function parseFechaForDB(date){
+        var fecha = date.getDate()  + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " a las " + ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
         return fecha;
     }
     
@@ -18,7 +30,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
     $http.get(urlBase)
     .then(function(response) {
         $scope.BLMaster = response.data[0];
-        console.log('fecha from api',$scope.BLMaster.fechaZarpe);
+        console.log('id: ',$scope.BLMaster);
 
         $scope.fechaZarpeValue = parseFecha($scope.BLMaster.fechaZarpe);
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
@@ -27,14 +39,32 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
 
     $scope.send = function(){
         
-        //$scope.numeroOperacion += 1;
-        $scope.newBLMaster.nave= {"id":parseInt($scope.newBLMaster.nave)};
-        $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
-        $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
-        $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
+    
+        
+        //$scope.BLMaster.nave= {"id":parseInt($scope.BLMaster.nave)};
+        //$scope.BLMaster.naviera= {"id":parseInt($scope.BLMaster.naviera)};
+        //$scope.BLMaster.puertoOrigen= {"id":parseInt($scope.BLMaster.puertoOrigen)};
+        //$scope.BLMaster.puertoDescarga= {"id":parseInt($scope.BLMaster.puertoDescarga)};
+        //$scope.BLMaster.destino= {"id":parseInt($scope.BLMaster.destino)};
 
+        if (isDate( $scope.fechaZarpeValue)) {
+            $scope.BLMaster.fechaZarpe =  parseFechaForDB($scope.fechaZarpeValue);
+        }
 
-        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
+        if (isDate( $scope.fechaLlegadaValue)) {
+            $scope.BLMaster.fechaLlegada =  parseFechaForDB($scope.fechaLlegadaValue);
+        }
+
+        //console.log(' fecha de hoy: ',$scope.fecha);
+        //console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
+
+        //$scope.BLMaster.fechaZarpe = $scope.fechaZarpeAux;
+        console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
+        console.log('BL : ',$scope.BLMaster);
+        $http.post("http://localhost:8080/blmasters",$scope.BLMaster);
+        //console.log($scope.BLMaster);
+        $scope.mensaje = 'BL Editada con exito!';
+        $window.alert($scope.mensaje);
 
     }
 

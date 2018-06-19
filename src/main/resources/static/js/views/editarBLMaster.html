@@ -88,7 +88,6 @@
             <div class="panel-body">
             <div class="panel-body1">
                 <div class="content col-md-12">
-                    <br>
                     <ul>N° de operación: <b> {{BLMaster.numeroOperacion}}</b></ul>
                     <ul>Creado por: <b>{{BLMaster.agenteCreador}}</b></ul>
                     <ul>Fecha ingreso:<b> {{BLMaster.fechaIngreso}}</b></ul>
@@ -220,12 +219,12 @@
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha zarpe:</label>
                                 <!-- <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpeAux"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="fechaZarpe" value={{fechaZarpeValue}} required />
+                                <input type="date" id="exampleInput" name="input" ng-model="fechaZarpeValue" value={{fechaZarpeValue}} required />
                             </div>
                             <div class="col-md-4">
                                 <label class="col-md-8">Fecha arribo:</label>
                                 <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="fechaLlegada" value={{fechaLlegadaValue}} required />
+                                <input type="date" id="exampleInput" name="input" ng-model="fechaLlegadaValue" value={{fechaLlegadaValue}} required />
                             </div>
                             <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
                                 <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.blmasterNumero"></div>
