@@ -1,9 +1,10 @@
-app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL',function($scope, $location, $http,$window, servicioNumeroBL) {
+app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL', function($scope, $location, $http,$window, servicioNumeroBL) {
 
-    servicioNumeroBL.setNumeroBLMaster(15+1);
-    $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+
+
     $scope.creador = "EAvendano";
-
+    $scope.numeroOperacion = 7;
+    //parse fecha formato: dd/mm/yyyy a las hh:mm
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
     
@@ -16,10 +17,9 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         return route === $location.path();
 
     }
-
     $scope.newBLMaster= {
 
-        "numeroOperacion": "ARG00"+$scope.numeroOperacion,
+        "numeroOperacion": servicioNumeroBL.numeroBL,
         "blocked": false,
         "servicio": "",
         "nReserva": "",
@@ -79,6 +79,12 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         "digito":""
     }
 
+    function  setnumeroOperacion(data){
+        servicioNumeroBL.setNumeroBLMaster(data.pop().numeroOperacion + 1);
+        console.log('data funcion:',servicioNumeroBL.numeroBL);
+        $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+    }
+
     $scope.agregarContenedor = function(){
         $http.post("http://localhost:8080/containers",$scope.newContenedor);
         $scope.mensaje = 'Conetenedor agregado con exito!';
@@ -109,5 +115,20 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
+
+    $http.get('http://localhost:8080/blmasters').then(function(response){
+        $scope.BLMaster = response.data;
+        //console.log($scope.BLMaster[0].numeroOperacion);
+        //console.log($scope.BLMaster.pop().numeroOperacion);
+        //console.log($scope.BLMaster);
+        //servicioNumeroBL.setNumeroBLMaster($scope.BLMaster.pop().numeroOperacion + 1);
+        //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
+        //console.log('numero opera1:', servicioNumeroBL.numeroBL2());
+        setnumeroOperacion($scope.BLMaster)
+    })
+
+    //servicioNumeroBL.setNumeroBLMaster($scope.BLMaster.pop().numeroOperacion);
+    //console.log($scope.BLMaster);
+    //console.log('numero opera2:', servicioNumeroBL.ultimo);
 
         }]);

@@ -1,11 +1,28 @@
 var app = angular.module('app', ['ngRoute']);
 
-app.service('servicioNumeroBL', function () {
+app.service('servicioNumeroBL', function ($http) {
+    /*
+    this.numeroBL= -1;
+    this.numeroBL2 = function() {
+        this.ultimo;
+        $http.get('http://localhost:8080/blmasters').then(function (response) {
+            this.ultimo = response.data;
+            //console.log($scope.BLMaster[0].numeroOperacion);
+            //console.log($scope.BLMaster.pop().numeroOperacion);
+            //this.numeroBL = (this.ultimo.pop().numeroOperacion + 1);
+            //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
+            console.log('data1:', this.ultimo);
+            return this.ultimo;
+        })
+        return this.ultimo;
+    }
+    //console.log('data2:', this.numeroBL2());
+    */
     this.numeroBL = 0;
     this.setNumeroBLMaster = function (numeroBL) {
         this.numeroBL = numeroBL;
-        return this.numeroBL;
     }
+    //return this.numeroBL2;
 });
 
 app.config(function($routeProvider){
@@ -79,8 +96,19 @@ app.service('ConsultaService', function($http,$q){
     };
 
 });
-
-
+/*
+app.service('BLMasterService', function ($http) {
+     $http.get('http://localhost:8080/blmasters').then(function(response){
+         this.ultimo = response.data;
+        //console.log($scope.BLMaster[0].numeroOperacion);
+        //console.log($scope.BLMaster.pop().numeroOperacion);
+        //servicioNumeroBL.setNumeroBLMaster($scope.BLMaster.pop().numeroOperacion + 1);
+        //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
+        console.log('data:', this.ultimo);
+    })
+    return this.ultimo
+});
+*/
 app.directive("digitalClock", function($timeout, dateFilter) {
     return {
         restrict: 'E',

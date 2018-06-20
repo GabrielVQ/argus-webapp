@@ -16,7 +16,7 @@ public class BLMaster{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private String numeroOperacion;
+    private int numeroOperacion;
     private boolean blocked;
     private String servicio;
     private String nReserva;
@@ -131,7 +131,7 @@ public class BLMaster{
         return fechaZarpe;
     }
 
-    public String getNumeroOperacion() {
+    public int getNumeroOperacion() {
         return numeroOperacion;
     }
 
