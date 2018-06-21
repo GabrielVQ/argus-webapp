@@ -130,15 +130,10 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6"><label class="col-md-4">Nave:</label>
-                            
-                            <select 
-                                name="nave"
-                                ng-options="nav.nombre for nav in naves track by nav.id" 
-                                ng-model="BLMaster.nave"
-                                class="col-md-8 navesSelect" >
-                            </select>
-                        </div>
+                        <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
+                            <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.blmasterNumero"></div>
+
+                        
                     </ul>
                 </div>
 
@@ -150,13 +145,25 @@
                         <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
                             <input ng-model="BLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
                         </div>
+                        <div class="col-md-6"><label class="col-md-4">Nave:</label>
+                            
+                            <select 
+                                name="nave"
+                                ng-options="nav.nombre for nav in naves track by nav.id" 
+                                ng-model="BLMaster.nave"
+                                class="col-md-8 navesSelect" >
+                            </select>
+                        </div>
                         <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
                             <input ng-model="BLMaster.nReserva" class="col-md-8" type="text" name="nReserva">
                         </div>
                     </ul>
-
+                </div>
+            </div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
                     <ul class="input-group">
-                        <div class="col-md-6"><label class="col-md-4">Puerto de Origen:</label>
+                        <div class="col-md-6"><label class="col-md-6">Puerto de Origen:</label>
                             
                             <select ng-model="BLMaster.puertoOrigen" ng-init="BLMaster.puertoOrigen.nombre" ng-options="puerto as puerto.nombre for puerto in puertos track by puerto.id" class="col-md-8 origenPuertosSelect" name="puertoOrigen">
                                 
@@ -164,7 +171,7 @@
                             
 
                         </div>
-                        <div class="col-md-6"><label class="col-md-4">Puerto de descarga:</label>
+                        <div class="col-md-6"><label class="col-md-6">Puerto de descarga:</label>
                             
                             <select ng-model="BLMaster.puertoDescarga" ng-init="BLMaster.puertoDescarga.nombre" ng-options="puerto as puerto.nombre for puerto in puertos track by puerto.id" class="col-md-8 puertoDescargaSelect" name="puertoDescarga">
                                 
@@ -215,7 +222,6 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-4">
                                 <label class="col-md-5">Fecha zarpe:</label>
                                 <!-- <input  ng-model="fechaZarpeAux" class="col-md-7" type="date" name="fechaZarpeAux"> -->
@@ -226,8 +232,7 @@
                                 <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
                                 <input type="date" id="exampleInput" name="input" ng-model="fechaLlegadaValue" value={{fechaLlegadaValue}} required />
                             </div>
-                            <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
-                                <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.blmasterNumero"></div>
+                            
                         </ul>
                     </div>
                 </div>
@@ -263,7 +268,6 @@
                 <div class="panel-body1 ">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
                             <div class="col-md-2"><label class="col-md-8">Kilos:</label>
                                 <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
                             <div class="col-md-2"><label class="col-md-8">Volumen:</label>
@@ -319,14 +323,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>
-                            <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
-                            <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
-                            <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
-                            <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
                         </ul>
                     </div>
-    </div>
+                </div>
+                <div class="content col-md-12">
+                    <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>
+                    <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
+                    <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
+                    <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
+                    <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
+
+                </div>
+                <br>
+                <br>
                 </div>
                 <script>
                     $(document).ready(function () {

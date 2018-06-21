@@ -9,5 +9,5 @@ import java.util.List;
 @Transactional
 public interface BLMasterRepository extends CrudRepository<BLMaster,Long>{
 
-    List <BLMaster> getByNumeroOperacion(String numeroOperacion);
+    List <BLMaster> getByNumeroOperacion(int numeroOperacion);
 }
