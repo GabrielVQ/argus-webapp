@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngRoute']);
 
-app.service('servicioNumeroBL', function ($http) {
+app.service('servicioNumeroBL', function () {
     /*
     this.numeroBL= -1;
     this.numeroBL2 = function() {
@@ -18,13 +18,12 @@ app.service('servicioNumeroBL', function ($http) {
     }
     //console.log('data2:', this.numeroBL2());
     */
-    this.numeroBL = 0;
+    this.numeroBL = -1;
     this.setNumeroBLMaster = function (numeroBL) {
         this.numeroBL = numeroBL;
     }
     //return this.numeroBL2;
 });
-
 app.config(function($routeProvider){
     $routeProvider
         .when('/home', {
