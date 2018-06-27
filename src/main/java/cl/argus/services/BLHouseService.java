@@ -29,4 +29,6 @@ public class BLHouseService {
     public BLHouse create(@RequestBody BLHouse resource) {
         return blHouseRepository.save(resource);
     }
+
+
 }

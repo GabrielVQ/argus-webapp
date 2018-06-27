@@ -22,4 +22,4 @@ INSERT INTO public.blhouse VALUES(1,1,1,2);
 
 INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 
-INSERT INTO public.cargament VALUES (1,'general','none',3,100,'cajas de carton',200,1);
+INSERT INTO public.cargament VALUES (1,'general','none',3,100,'cajas de carton',1,1);

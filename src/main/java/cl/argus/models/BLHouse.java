@@ -50,6 +50,8 @@ public class BLHouse {
     @JoinColumn(name="notify")
     private Empresa notify;
 
+    private String numeroOperacion;
+
     private String ppcc;
 
     private String carga;
@@ -196,5 +198,9 @@ public class BLHouse {
 
     public String getTipoHouse() {
         return tipoHouse;
+    }
+
+    public String getNumeroOperacion() {
+        return numeroOperacion;
     }
 }

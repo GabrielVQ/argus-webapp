@@ -6,7 +6,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     $scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
-    $scope.numeroBLMaster = 2;
+    $scope.numeroBLMaster = 0;
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -20,11 +20,9 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     }
 
-    $scope.isActive = function(route) {
-        return route === $location.path();
-    }
 
     $scope.newBLHouse= {
+        "numeroOperacion": $scope.numeroOperacion,
         "blMaster":"",
         "tipoHouse":"",
         "shipper":0,
@@ -47,16 +45,21 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "fechaStacking":"",
         "observacion":""
     };
-/*
+
     var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ (servicioNumeroBL.numeroBL -1);
 
     $http.get(urlBase)
         .then(function(response) {
             $scope.BLMaster = response.data;
-            console.log('id: ',$scope.BLMaster);
-            $scope.newBLHouse.blMaster = {"id":parseInt($scope.BLMaster)};
+            //$scope.idaux = $scope.BLMaster[0].id;
+            //console.log('id: ',$scope.BLMaster[0].id);
+            //$scope.newBLHouse.blMaster = $scope.BLMaster[0].id;
+            var token2 = $scope.BLMaster[0].id;
+            localStorage.setItem("token2", token2);
+            //console.log('id dentro:',localStorage.getItem("token2"));
         });
-*/
+    $scope.idaux = localStorage.getItem("token2");
+
     $scope.send = function(){
 
         $scope.newBLHouse.shipper= {"id":parseInt($scope.newBLHouse.shipper)};
@@ -64,27 +67,18 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         $scope.newBLHouse.notify= {"id":parseInt($scope.newBLHouse.notify)};
         $scope.newBLHouse.almacenista= {"id":parseInt($scope.newBLHouse.almacenista)};
         $scope.newBLHouse.ciudadLlegada= {"id":parseInt($scope.newBLHouse.ciudadLlegada)};
-        $scope.newBLHouse.blMaster= {"id":parseInt($scope.numeroBLMaster)};
-
+        $scope.newBLHouse.blMaster= {"id":parseInt($scope.idaux)};
         $scope.newBLHouse.fechaStacking =  parseFecha($scope.newBLHouse.fechaStacking);
-        //$scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
-        //console.log(' fecha de hoy: ',$scope.fecha);
-        //console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
-
-        //$scope.newBLMaster.fechaZarpe = $scope.fechaZarpeAux;
-        //console.log('fecha zarpeeee final : ',$scope.newBLMaster.fechaZarpe);
-        //console.log('BL : ',$scope.newBLMaster);
         $http.post("http://localhost:8080/blhouses",$scope.newBLHouse);
-        //console.log($scope.newBLMaster);
         $scope.mensaje = 'BL House generado con exito!';
         $window.alert($scope.mensaje);
-
-
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
     }
 
+
+   // console.log($scope.idaux);
     //peticion de servicios
 
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino

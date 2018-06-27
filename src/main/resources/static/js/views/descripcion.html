@@ -116,37 +116,37 @@
                 <div class="content col-md-12">
                     <ul class="input-group">
                     <div class="col-md-6"><label class="col-md-6">Contenedor:</label>
-                        <select ng-model="newBLMaster.destino" class="col-md-6 contenedorSelect" name="contenedor" >
+                        <select ng-model="newDescripcion.contenedor" class="col-md-6 contenedorSelect"  >
                             <option ng-repeat="container in containers"
                                     value="{{container.id}}">{{container.sigla}}
                             </option>
                         </select>
                     </div>
                         <div class="col-md-6"><label class="col-md-6">Mark and numbers:</label>
-                            <input ng-model="newBLMaster.nReserva" class="col-md-6" type="text" name="nReserva">
+                            <input ng-model="newDescripcion.markNumbers" class="col-md-6" type="text" >
                         </div>
                     </ul>
                     <ul class="input-group">
                         <div class="col-md-4"><label class="col-md-5">Number of packages:</label>
-                            <input ng-model="newBLMaster.nReserva" class="col-md-2" type="number" name="nReserva">
+                            <input ng-model="newDescripcion.numberPackages" class="col-md-2" type="number" >
                         </div>
                         <div class="col-md-4"><label class="col-md-5">Groos weight:</label>
-                            <input ng-model="newBLMaster.nReserva" class="col-md-2" type="number" name="nReserva">
+                            <input ng-model="newDescripcion.groosWeight" class="col-md-2" type="number" >
                         </div>
                         <div class="col-md-4"><label class="col-md-4">Measurement:</label>
-                            <input ng-model="newBLMaster.nReserva" class="col-md-4" type="text" name="nReserva">
+                            <input ng-model="newDescripcion.measurement" class="col-md-2" type="number" >
                         </div>
                     </ul>
                     <ul class="input-group">
                         <div class="col-md-12"><label class="col-md-6">Description of goods:</label>
-                        <textarea type ="text" name=""  class="col-md-10"></textarea>
+                        <textarea ng-model="newDescripcion.descriptionGoods" type ="text" name=""  class="col-md-10"></textarea>
                         </div>
                     </ul>
 
                 </div>
             </div>
             <ul>
-                <input class="btn btn-primary btn-sm" ng-click="" type="submit"  type="button" value="Guardar">
+                <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
             </ul>
             <script>
                 $(document).ready(function () {
