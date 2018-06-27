@@ -48,11 +48,11 @@ app.config(function($routeProvider){
         })
         .when('/descripcion',{
             templateUrl: 'js/views/descripcion.html',
-            controller: 'BLHouseController'
+            controller: 'descripcionController'
         })
         .when('/ingresos',{
             templateUrl: 'js/views/ingresos.html',
-            controller: 'BLHouseController'
+            controller: 'ingresosController'
         })
         .when('/agregarCiudad',{
             templateUrl: 'js/views/agregarCiudad.html',

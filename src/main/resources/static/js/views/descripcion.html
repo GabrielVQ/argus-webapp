@@ -113,47 +113,47 @@
                 </div>
             </div>
             <div class="panel-body1">
+                <div class="content col-md-12">
+                    <ul class="input-group">
+                    <div class="col-md-6"><label class="col-md-6">Contenedor:</label>
+                        <select ng-model="newBLMaster.destino" class="col-md-6 contenedorSelect" name="contenedor" >
+                            <option ng-repeat="container in containers"
+                                    value="{{container.id}}">{{container.sigla}}
+                            </option>
+                        </select>
+                    </div>
+                        <div class="col-md-6"><label class="col-md-6">Mark and numbers:</label>
+                            <input ng-model="newBLMaster.nReserva" class="col-md-6" type="text" name="nReserva">
+                        </div>
+                    </ul>
+                    <ul class="input-group">
+                        <div class="col-md-4"><label class="col-md-5">Number of packages:</label>
+                            <input ng-model="newBLMaster.nReserva" class="col-md-2" type="number" name="nReserva">
+                        </div>
+                        <div class="col-md-4"><label class="col-md-5">Groos weight:</label>
+                            <input ng-model="newBLMaster.nReserva" class="col-md-2" type="number" name="nReserva">
+                        </div>
+                        <div class="col-md-4"><label class="col-md-4">Measurement:</label>
+                            <input ng-model="newBLMaster.nReserva" class="col-md-4" type="text" name="nReserva">
+                        </div>
+                    </ul>
+                    <ul class="input-group">
+                        <div class="col-md-12"><label class="col-md-6">Description of goods:</label>
+                        <textarea type ="text" name=""  class="col-md-10"></textarea>
+                        </div>
+                    </ul>
 
-                <form action="admin/crud/insertar/inserta-lineasoferta.php" method="POST">
-                    <table class="table table-bordered" id="tablaresponsive">
-                        <thead>
-                        <tr>
-                            <th>Contenedor</th>
-                            <th>Mark and numbers</th>
-                            <th>Number of packages</th>
-                            <th>Description of goods</th>
-                            <th>Groos weight</th>
-                            <th>Measurement</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-
-                            <td>
-                                <select ng-model="newBLMaster.destino" class="form-control contenedorSelect" name="contenedor">
-                                    <option ng-repeat="container in containers"
-                                            value="{{container.tipo}}">{{container.tipo}}
-                                    </option>
-                                </select>
-                            </td>
-                            <td><input type ="text" name="markAndNumbers[]"  class="form-control"></td>
-                            <td><input type ="text" name="numberPackages[]"  class="form-control"></td>
-                            <td width="400px"><textarea type ="text" name="descriptionGoods[]"  class="form-control"></textarea></td>
-                            <td><input type="text" name="groosWeight[]" class="form-control"></td>
-                            <td><input type="text" name="measurement[]" class="form-control"></td>
-                            <td><button type="button" class="eliminalinea">eliminar</button></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" id="nuevalinea" class="btn btn-danger">Nueva Linea</button>
-                    <input type="submit" name="guardar" class="btn btn-success">
-                </form>
+                </div>
             </div>
+            <ul>
+                <input class="btn btn-primary btn-sm" ng-click="" type="submit"  type="button" value="Guardar">
+            </ul>
             <script>
                 $(document).ready(function () {
                 $('.contenedorSelect').select2();
                 });
             </script>
+            <!--
             <script>
                 $(document).ready(function(){
                     $("#nuevalinea").click(function(){
@@ -168,7 +168,7 @@
                         }
                     });
                 });
-            </script>
+            </script>-->
         </div>
     </div>
 </div>
