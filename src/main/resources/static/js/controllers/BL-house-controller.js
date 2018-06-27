@@ -6,7 +6,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     $scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
-    $scope.numeroBLMaster = "123";
+    $scope.numeroBLMaster = 2;
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -25,7 +25,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     }
 
     $scope.newBLHouse= {
-
+        "blMaster":"",
         "tipoHouse":"",
         "shipper":0,
         "clienteExtranjero":0,
@@ -40,21 +40,31 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "almacenista":0,
         "preCarriage":"",
         "lugarRecepcion":"",
-        "ciudad_llegada":0, //destino
+        "ciudadLlegada":0, //destino
         "tipoMovimiento":"",
         "contacto":"",
         "telefono":"",
         "fechaStacking":"",
         "observacion":""
     };
+/*
+    var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ (servicioNumeroBL.numeroBL -1);
 
+    $http.get(urlBase)
+        .then(function(response) {
+            $scope.BLMaster = response.data;
+            console.log('id: ',$scope.BLMaster);
+            $scope.newBLHouse.blMaster = {"id":parseInt($scope.BLMaster)};
+        });
+*/
     $scope.send = function(){
 
         $scope.newBLHouse.shipper= {"id":parseInt($scope.newBLHouse.shipper)};
         $scope.newBLHouse.clienteExtranjero= {"id":parseInt($scope.newBLHouse.clienteExtranjero)};
         $scope.newBLHouse.notify= {"id":parseInt($scope.newBLHouse.notify)};
         $scope.newBLHouse.almacenista= {"id":parseInt($scope.newBLHouse.almacenista)};
-        $scope.newBLHouse.ciudad_llegada= {"id":parseInt($scope.newBLHouse.ciudad_llegada)};
+        $scope.newBLHouse.ciudadLlegada= {"id":parseInt($scope.newBLHouse.ciudadLlegada)};
+        $scope.newBLHouse.blMaster= {"id":parseInt($scope.numeroBLMaster)};
 
         $scope.newBLHouse.fechaStacking =  parseFecha($scope.newBLHouse.fechaStacking);
         //$scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);

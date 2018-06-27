@@ -17,7 +17,7 @@ public class BLHouse {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name="BLMaster_id")
+    @JoinColumn(name="blMaster")
     private BLMaster blMaster;
 
     @ManyToOne
@@ -25,7 +25,7 @@ public class BLHouse {
     private Ciudad ciudadInicio;
 
     @ManyToOne
-    @JoinColumn(name="Ciudad_llegada")
+    @JoinColumn(name="ciudadLlegada")
     private Ciudad ciudadLlegada;
 
     @JsonIgnore
