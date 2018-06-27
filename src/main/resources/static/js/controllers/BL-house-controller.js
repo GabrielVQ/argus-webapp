@@ -40,7 +40,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "almacenista":0,
         "preCarriage":"",
         "lugarRecepcion":"",
-        "destino":"", //ciudad llegada
+        "ciudad_llegada":0, //destino
         "tipoMovimiento":"",
         "contacto":"",
         "telefono":"",
@@ -54,7 +54,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         $scope.newBLHouse.clienteExtranjero= {"id":parseInt($scope.newBLHouse.clienteExtranjero)};
         $scope.newBLHouse.notify= {"id":parseInt($scope.newBLHouse.notify)};
         $scope.newBLHouse.almacenista= {"id":parseInt($scope.newBLHouse.almacenista)};
-        /*$scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};*/
+        $scope.newBLHouse.ciudad_llegada= {"id":parseInt($scope.newBLHouse.ciudad_llegada)};
 
         $scope.newBLHouse.fechaStacking =  parseFecha($scope.newBLHouse.fechaStacking);
         //$scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);

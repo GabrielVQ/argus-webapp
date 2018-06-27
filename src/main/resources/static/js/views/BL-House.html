@@ -236,9 +236,9 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Destino:</label>
-                                <select ng-model="newBLHouse.destino" class="col-md-8 destinoSelect" name="destino">
+                                <select ng-model="newBLHouse.ciudad_llegada" class="col-md-8 destinoSelect" name="destino">
                                     <option ng-repeat="e in ciudades"
-                                            value="{{e.nombre}}">{{e.nombre}}
+                                            value="{{e.id}}">{{e.nombre}}
                                     </option>
                                 </select>
                             </div>
