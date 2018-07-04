@@ -12,9 +12,6 @@ public class Cargament {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @NotNull
-    private String imoClase;
-
     @ManyToOne
     @JoinColumn(name="contenedor")
     private Container contenedor;
@@ -39,9 +36,6 @@ public class Cargament {
         return id;
     }
 
-    public String getImoClase() {
-        return imoClase;
-    }
 
     public Container getContenedor() {
         return contenedor;

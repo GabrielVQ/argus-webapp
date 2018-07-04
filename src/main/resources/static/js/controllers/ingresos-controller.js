@@ -16,4 +16,9 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $scope.containers = response.data;
         console.log($scope.containers);
     })
+
+    $http.get('http://localhost:8080/empresas').then(function(response){ // campo: agente
+        $scope.empresas = response.data;
+        //console.log($scope.puertos);
+    })
 }]);

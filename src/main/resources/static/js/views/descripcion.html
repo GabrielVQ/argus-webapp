@@ -114,6 +114,31 @@
             </div>
             <div class="panel-body1">
                 <div class="content col-md-12">
+                    <table id="table" class="table table-striped table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Contenedor</th>
+                            <th>Mark and numbers</th>
+                            <th>Description of goods</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat=" BL in cargaments ">
+                            <td>{{BL.contenedor.sigla}}</td>
+                            <td>{{BL.markNumbers}}</td>
+                            <td>{{BL.descriptionGoods}}</td>
+
+                            <td width="180">
+                                <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
+                                <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
                     <ul class="input-group">
                     <div class="col-md-6"><label class="col-md-6">Contenedor:</label>
                         <select ng-model="newDescripcion.contenedor" class="col-md-6 contenedorSelect"  >

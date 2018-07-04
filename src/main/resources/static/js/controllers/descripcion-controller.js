@@ -25,7 +25,7 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
 
     $scope.send = function(){
 
-        $scope.newDescripcion.blHouse= {"id":parseInt()};
+        $scope.newDescripcion.blHouse= {"id":parseInt(1)};
         $scope.newDescripcion.contenedor= {"id":parseInt($scope.newDescripcion.contenedor)};
 
 
@@ -40,6 +40,11 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
 
     $http.get('http://localhost:8080/containers').then(function(response){
         $scope.containers = response.data;
-        console.log($scope.containers);
+        //console.log($scope.containers);
+    })
+
+    $http.get('http://localhost:8080/cargaments').then(function(response){
+        $scope.cargaments = response.data;
+        console.log($scope.cargaments);
     })
 }]);
