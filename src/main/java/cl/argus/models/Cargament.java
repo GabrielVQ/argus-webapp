@@ -32,10 +32,11 @@ public class Cargament {
     @JoinColumn (name= "blHouse")
     private BLHouse blHouse;
 
+    private String numeroBLHouse;
+
     public long getId() {
         return id;
     }
-
 
     public Container getContenedor() {
         return contenedor;
@@ -67,5 +68,9 @@ public class Cargament {
 
     public String getNumeroOperacion() {
         return numeroOperacion;
+    }
+
+    public String getNumeroBLHouse() {
+        return numeroBLHouse;
     }
 }

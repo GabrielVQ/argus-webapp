@@ -1,11 +1,11 @@
-app.controller('ingresosController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL', function($scope, $location, $http,$window, servicioNumeroBL) {
+app.controller('ingresosController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse', function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     $scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
 
-
+    $scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
 
 
     $scope.isActive = function(route) {

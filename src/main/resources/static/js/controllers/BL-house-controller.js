@@ -1,4 +1,4 @@
-app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL', function($scope, $location, $http,$window, servicioNumeroBL) {
+app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse',function($scope, $location, $http,$window, servicioNumeroBL, servicioNumeroBLHouse) {
 
 
     $scope.nombre = 'Nacho';
@@ -6,7 +6,8 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     $scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
-    $scope.numeroBLMaster = 0;
+    $scope.numeroBLMaster = 1;
+    $scope.numeroBLHouse= servicioNumeroBLHouse.numeroBLHouse
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -23,6 +24,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     $scope.newBLHouse= {
         "numeroOperacion": $scope.numeroOperacion,
+        "numeroBLHouse":$scope.numeroBLHouse,
         "blMaster":"",
         "tipoHouse":"",
         "shipper":0,
@@ -45,6 +47,10 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "fechaStacking":"",
         "observacion":""
     };
+    if(localStorage.getItem("token3") != -5) {
+        $scope.numeroBLHouse = localStorage.getItem("token3");
+        console.log('numero bl house cabecera',localStorage.getItem("token3") )
+    }
 
     var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ (servicioNumeroBL.numeroBL -1);
 
@@ -59,6 +65,23 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
             //console.log('id dentro:',localStorage.getItem("token2"));
         });
     $scope.idaux = localStorage.getItem("token2");
+
+    var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+
+    $http.get(urlBase2)
+        .then(function(response) {
+
+            if (response.data.length != 0){
+                servicioNumeroBLHouse.setNumeroBLHouse(response.data[response.data.length - 1].numeroBLHouse + 1);
+                var token = servicioNumeroBLHouse.numeroBLHouse;
+                localStorage.setItem("token3", token);
+            }
+            else{
+                var token = -5;
+                localStorage.setItem("token3", token);
+                console.log('no hay bl houses')
+            }
+        });
 
     $scope.send = function(){
 

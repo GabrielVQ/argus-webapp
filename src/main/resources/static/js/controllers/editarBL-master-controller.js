@@ -31,7 +31,6 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
     .then(function(response) {
         $scope.BLMaster = response.data[0];
         console.log('id: ',$scope.BLMaster);
-
         $scope.fechaZarpeValue = parseFecha($scope.BLMaster.fechaZarpe);
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
     });

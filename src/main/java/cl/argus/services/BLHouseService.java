@@ -30,5 +30,10 @@ public class BLHouseService {
         return blHouseRepository.save(resource);
     }
 
-
+    @RequestMapping(value="/numerooperacion/{numeroOperacion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<BLHouse> show(@PathVariable("numeroOperacion") String  numeroOperacion){
+        //String nOperacion = Integer.parseInt(id);
+        return blHouseRepository.getByNumeroOperacion(numeroOperacion);
+    }
 }

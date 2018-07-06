@@ -108,7 +108,7 @@
                 <div class="content col-md-12">
                     <br>
                     <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
-                    <ul>N° BL House: <b></b></ul>
+                    <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
                     <ul>N° BL Master:<b></b></ul>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat=" BL in cargaments ">
+                        <tr ng-repeat=" BL in cargamentsBYoperacion ">
                             <td>{{BL.contenedor.sigla}}</td>
                             <td>{{BL.markNumbers}}</td>
                             <td>{{BL.descriptionGoods}}</td>

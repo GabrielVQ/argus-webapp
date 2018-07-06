@@ -64,6 +64,8 @@ public class BLHouse {
 
     private String volumen;
 
+    private int numeroBLHouse;
+
     @ManyToOne
     @JoinColumn(name="almacenista")
     private Empresa almacenista;
@@ -202,5 +204,9 @@ public class BLHouse {
 
     public String getNumeroOperacion() {
         return numeroOperacion;
+    }
+
+    public int getNumeroBLHouse() {
+        return numeroBLHouse;
     }
 }

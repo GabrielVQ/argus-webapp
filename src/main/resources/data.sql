@@ -18,7 +18,7 @@ INSERT INTO public.bodega VALUES (1,'Bodega_1','puerto Stanley',1),(2,'Bodega_2'
 
 INSERT INTO public.blmaster VALUES (1,'agencia aduana 1','eavendano','1224660',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,1,'coloader','importacion',1,1,2,1,2),(2,'agencia aduana 2','eavendano','1224660',TRUE,'Puerto Montt','2010-12-03','2010-12-03','2011-01-04',123456,21,2,'coloader','importacion',1,1,2,1,2);
 
-INSERT INTO public.blhouse VALUES(1,1,1,2);
+INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1, '2', null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1);
 
 INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 
