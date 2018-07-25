@@ -1,4 +1,4 @@
-app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','$routeParams','servicioNumeroBLHouse',function($scope, $location, $http,$window, servicioNumeroBL,$routeParams, servicioNumeroBLHouse) {
+app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','$routeParams','servicioNumeroBLHouse',function($scope, $location, $http,$window, servicioNumeroBL, $routeParams, servicioNumeroBLHouse) {
 
     $scope.blNumOp =  $routeParams.bl;
 
@@ -48,6 +48,10 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "fechaStacking":"",
         "observacion":""
     };
+    if(localStorage.getItem("token3") != -5) {
+        $scope.numeroBLHouse = localStorage.getItem("token3");
+        console.log('numero bl house cabecera',localStorage.getItem("token3") )
+    }
 
     var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ $scope.blNumOp;
 

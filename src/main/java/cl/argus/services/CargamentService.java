@@ -27,4 +27,12 @@ public class CargamentService {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Cargament create(@RequestBody Cargament resource) { return cargamentRepository.save(resource); }
+
+
+    @RequestMapping(value="/numerooperacion/{numeroOperacion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Cargament> show(@PathVariable("numeroOperacion") String  numeroOperacion){
+        //String nOperacion = Integer.parseInt(id);
+        return cargamentRepository.getByNumeroOperacion(numeroOperacion);
+    }
 }

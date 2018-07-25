@@ -5,7 +5,10 @@ import cl.argus.models.Naviera;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 public interface CargamentRepository extends CrudRepository<Cargament,Long>{
+
+    List <Cargament> getByNumeroOperacion(String numeroOperacion);
 }

@@ -108,46 +108,75 @@
                 <div class="content col-md-12">
                     <br>
                     <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
-                    <ul>N° BL House: <b></b></ul>
+                    <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
                     <ul>N° BL Master:<b> </b></ul>
                 </div>
             </div>
             <div class="panel-body1">
-                <form action="admin/crud/insertar/inserta-lineasoferta.php" method="POST">
-                    <table class="table table-bordered" id="tablaresponsive">
-                        <thead>
-                        <tr>
-                            <th>Datos de facturación</th>
-                            <th>Facturar a</th>
-                            <th>Freight and charges</th>
-                            <th>Tipo cargo</th>
-                            <th>Prepaid</th>
-                            <th>Collect</th>
-                            <th>BL prepaid</th>
-                            <th>BL collect</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><input type ="text" name="datosFacturacion[]"  class="form-control"></td>
-                            <td><input type ="text" name="facturar[]"  class="form-control"></td>
-                            <td><input type ="text" name="freightAndCharges[]"  class="form-control"></td>
-                            <td><input type ="text" name="tipoCargo[]"  class="form-control"></td>
-                            <td><input type="text" name="prepaid[]" class="form-control"></td>
-                            <td><input type="text" name="collect[]" class="form-control"></td>
-                            <td><input type="text" name="BLprepaid[]" class="form-control"></td>
-                            <td><input type="text" name="BLcollect[]" class="form-control"></td>
-                            <td><button type="button" class="eliminalinea">eliminar</button></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <button type="button" id="nuevalinea" class="btn btn-danger">Nueva Linea</button>
-                    <input type="submit" name="guardar" class="btn btn-success">
-                </form>
+                <div class="content col-md-12">
+
+                    <label class="col-md-6">Datos de facturación:</label>
+
+                    <ul>
+                        <input type="radio" name="factura" value="" checked><label class="col-md-2">Facturar</label>
+                        <input type="radio" name="factura" value="" ><label class="col-md-2">No</label>
+
+                        <input type="radio" name="impuesto" value="" checked><label class="col-md-2">Afecto</label>
+                        <input type="radio" name="impuesto" value="" ><label class="col-md-2">Exento</label>
+                    </ul>
+                </div>
+            </div>
+                    <div class="panel-body1">
+                        <div class="content col-md-12">
+                    <ul class="input-group">
+                        <div class="col-md-4"><label class="col-md-4">Facturar a:</label>
+                            <select ng-model="newDescripcion.contenedor" class="col-md-4 empresaSelect"  >
+                                <option ng-repeat="container in empresas"
+                                        value="{{container.id}}">{{container.nombre_abrev}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4"><label class="col-md-4">Freight and charges:</label>
+                            <select ng-model="newDescripcion.contenedor" class="col-md-4 empresaSelect"  >
+                                <option ng-repeat="container in empresas"
+                                        value="{{container.id}}">{{container.nombre_abrev}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4"><label class="col-md-4">LLevar al formulario:</label>
+                            <select ng-model="newDescripcion.contenedor" class="col-md-4 withoutSearch"  >
+                                <option value="SI" selected="selected">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                    </ul>
+                        </div>
+                </div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
+                    <ul class="input-group">
+                    <div class="col-md-4"><label class="col-md-8">Prepaid:</label>
+                        <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
+                    <div class="col-md-4"><label class="col-md-8">Collect:</label>
+                        <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
+                    </ul>
+                </div>
+            </div>
+
+    <ul>
+            <input class="btn btn-primary btn-sm" ng-click="send()" type="submit" value="Guardar">
+            <input class="btn btn-primary btn-sm"  type="button" value="Nuevo">
+    </ul>
             </div>
             <script>
                 $(document).ready(function () {
-                    $('.contenedorSelect').select2();
+                    $('.empresaSelect').select2();
+                });
+
+                $(document).ready(function () {
+                    $('.withoutSearch').select2({
+                        minimumResultsForSearch: -1
+                    });
                 });
             </script>
             <!--
