@@ -260,7 +260,8 @@
 
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  type="textarea" disabled name="razonSocial">
+                                <input class="col-md-8"  ng-model="BLMaster.razonsocial" type="textarea" disabled name="razonSocial">
+                            </div>
                         </ul>
                     </div>
 
@@ -327,7 +328,7 @@
                     </div>
                 </div>
                 <div class="content col-md-12">
-                    <a class="btn btn-primary btn-sm" href="#!/BL-House" type="button" value="Agregar House">Agregar House</a>
+                    <a class="btn btn-primary btn-sm" href="#!/BL-House/{{BLMaster.numeroOperacion}}" type="button" value="Agregar House">Agregar House</a>
                     <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
                     <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                     <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">

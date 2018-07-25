@@ -55,6 +55,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         console.log('BL : ',$scope.newBLMaster);
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         //console.log($scope.newBLMaster);
+        $scope.blnum = $scope.newBLMaster.numeroOperacion; 
         $scope.mensaje = 'BL Generada con exito!';
         $window.alert($scope.mensaje);
 

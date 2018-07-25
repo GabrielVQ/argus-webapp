@@ -24,6 +24,15 @@ app.service('servicioNumeroBL', function () {
     }
     //return this.numeroBL2;
 });
+
+app.service('servicioNumeroBLHouse', function () {
+
+    this.numeroBLHouse = 1;
+    this.setNumeroBLHouse = function (numeroBLHouse) {
+        this.numeroBLHouse = numeroBLHouse;
+    }
+    //return this.numeroBL2;
+});
 app.config(function($routeProvider){
     $routeProvider
         .when('/home', {
@@ -34,7 +43,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/BL-Master.html',
             controller: 'BLMasterController'
         })
-        .when('/BL-House',{
+        .when('/BL-House/:bl',{
             templateUrl: 'js/views/BL-House.html',
             controller: 'BLHouseController'
         })
