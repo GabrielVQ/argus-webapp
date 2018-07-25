@@ -103,7 +103,44 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     }
 
+    $scope.newDescripcion = {
+        "numeroOperacion": $scope.numeroOperacion,
+        "numeroBLHouse": $scope.numeroBLHouse,
+        "blHouse":0,
+        "contenedor":0,
+        "markNumbers":"",
+        "numerPackages":"",
+        "groosWeight":"",
+        "measurement":"",
+        "descriptionGoods":""
+    }
 
+    var urlBaseCargament = 'http://localhost:8080/cargaments/numerooperacion/'+$scope.numeroOperacion;
+
+    $http.get(urlBaseCargament)
+        .then(function(response) {
+            $scope.cargamentsBYoperacion = response.data;
+        });
+
+    var urlBase1 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+
+    $http.get(urlBase1)
+        .then(function(response) {
+            $scope.BLHouseId = response.data[0].id;
+            // console.log('status: ',response.status);
+        });
+
+    $scope.send2 = function(){
+
+        $scope.newDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
+        $scope.newDescripcion.contenedor= {"id":parseInt($scope.newDescripcion.contenedor)};
+        $http.post("http://localhost:8080/cargaments",$scope.newDescripcion);
+        $scope.mensaje = 'Descripción agregada con exito!';
+        $window.alert($scope.mensaje);
+
+        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
+
+    }
    // console.log($scope.idaux);
     //peticion de servicios
 
