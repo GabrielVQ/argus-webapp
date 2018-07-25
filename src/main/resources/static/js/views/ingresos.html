@@ -113,6 +113,33 @@
                 </div>
             </div>
             <div class="panel-body1">
+            <div class="content col-md-12">
+                <table id="table" class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Facturar a</th>
+                        <th>F & C</th>
+                        <th>Prepaid</th>
+                        <th>Collect</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat=" BL in cargamentsBYoperacion ">
+                        <td>{{BL.contenedor.sigla}}</td>
+                        <td>{{BL.markNumbers}}</td>
+                        <td>{{BL.descriptionGoods}}</td>
+                        <td>{{BL.descriptionGoods}}</td>
+                        <td width="180">
+                            <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
+                            <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="panel-body1">
+
                 <div class="content col-md-12">
 
                     <label class="col-md-6">Datos de facturación:</label>
