@@ -1,5 +1,6 @@
-app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse',function($scope, $location, $http,$window, servicioNumeroBL, servicioNumeroBLHouse) {
+app.controller('BLHouseController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','$routeParams','servicioNumeroBLHouse',function($scope, $location, $http,$window, servicioNumeroBL, $routeParams, servicioNumeroBLHouse) {
 
+    $scope.blNumOp =  $routeParams.bl;
 
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
@@ -7,7 +8,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
     $scope.numeroBLMaster = 1;
-    $scope.numeroBLHouse= servicioNumeroBLHouse.numeroBLHouse
+    $scope.numeroBLHouse= servicioNumeroBLHouse.numeroBLHouse;
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -52,17 +53,19 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         console.log('numero bl house cabecera',localStorage.getItem("token3") )
     }
 
-    var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ (servicioNumeroBL.numeroBL -1);
+    var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ $scope.blNumOp;
 
     $http.get(urlBase)
         .then(function(response) {
             $scope.BLMaster = response.data;
+            console.log('bl que llega',$scope.BLMaster[0]);
             //$scope.idaux = $scope.BLMaster[0].id;
             //console.log('id: ',$scope.BLMaster[0].id);
             //$scope.newBLHouse.blMaster = $scope.BLMaster[0].id;
             var token2 = $scope.BLMaster[0].id;
             localStorage.setItem("token2", token2);
             //console.log('id dentro:',localStorage.getItem("token2"));
+            console.log('bl numero dentro:',$scope.BLMaster[0].blmasterNumero);
         });
     $scope.idaux = localStorage.getItem("token2");
 

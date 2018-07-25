@@ -43,7 +43,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/BL-Master.html',
             controller: 'BLMasterController'
         })
-        .when('/BL-House',{
+        .when('/BL-House/:bl',{
             templateUrl: 'js/views/BL-House.html',
             controller: 'BLHouseController'
         })

@@ -43,7 +43,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
-        /*$scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};*/
+        $scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};
 
         $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
         $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
@@ -55,6 +55,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         console.log('BL : ',$scope.newBLMaster);
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         //console.log($scope.newBLMaster);
+        $scope.blnum = $scope.newBLMaster.numeroOperacion; 
         $scope.mensaje = 'BL Generada con exito!';
         $window.alert($scope.mensaje);
 
