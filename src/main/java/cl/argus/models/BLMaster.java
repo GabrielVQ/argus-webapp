@@ -24,7 +24,7 @@ public class BLMaster{
     private String agenteCreador;
     private String agenteAduana;
     private String tipoNegocio;
-    private String destino;
+    
     private String blmasterNumero;
 
     
@@ -63,6 +63,10 @@ public class BLMaster{
     private Puerto puertoOrigen;
 
     @ManyToOne
+    @JoinColumn(name="destino")
+    private Ciudad destino;
+
+    @ManyToOne
     @JoinColumn(name="nave")
     private Nave nave;
 
@@ -85,7 +89,9 @@ public class BLMaster{
         return nReserva;
     }
 
-    public String getDestino() { return destino; }
+    public Ciudad getDestino() {
+        return destino;
+    }
 
     public String getAgenteCreador() {
         return agenteCreador;

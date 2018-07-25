@@ -185,9 +185,11 @@
                                         value="{{puerto.nombre}}">{{puerto.nombre}}
                                 </option>
                             </select> -->
-                            <select ng-model="BLMaster.destino" ng-options="c as c.nombre for c in ciudades track by c.id" class="col-md-8 destinoSelect" name="destino">
-                                <option value="">{{BLMaster.destino}}</option>
+
+                            <select ng-model="BLMaster.destino" ng-init="BLMaster.destino.nombre" ng-options="c as c.nombre for c in ciudades track by c.id" class="col-md-8 destinoSelect" name="destino">
+                             
                             </select>
+                            
                         </div>
                         <!--<div class="col-md-6"><label class="col-md-4">Reserva naviera:</label>
                         <select class="col-md-8 reservaNavieraSelect" name="reservaNaviera">
