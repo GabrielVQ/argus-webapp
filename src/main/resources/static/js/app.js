@@ -68,8 +68,8 @@ app.config(function($routeProvider){
             controller: 'agregarCiudadController'
         })
         .when('/agregarCliente',{
-            templateUrl: 'js/views/agregarCliente.html',
-            controller: 'agregarClienteController'
+            templateUrl: 'js/views/agregarCobro.html',
+            controller: 'agregarCobroController'
         })
         .when('/agregarEmpresa',{
             templateUrl: 'js/views/agregarEmpresa.html',

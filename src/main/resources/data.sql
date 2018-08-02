@@ -22,4 +22,6 @@ INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1,
 
 INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 
+INSERT INTO public.cobro VALUES (1,'ocean freights');
+
 INSERT INTO public.cargament VALUES (1,'dice contener ... test testtesttes ttesttesttesttesttestt esttesttesttest testtesttestt esttesttestt esttesttestt esttesttet','456 kgs','container STD','30 cbm',2,3,1,1);
