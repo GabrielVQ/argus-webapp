@@ -13,21 +13,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/**", "/home", "/css/**", "/js/**", "/img/**","/ciudades").permitAll()
+                .antMatchers("/**","/#!", "/css/**", "/js/**", "/img/**","/ciudades", "/users/validate").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login")
+                .loginPage("/#!/login")
                 .permitAll()
                 .and()
             .logout()
                 .permitAll();
     }
 
-    @Autowired
+/*     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER");
-    }
+    } */
 }

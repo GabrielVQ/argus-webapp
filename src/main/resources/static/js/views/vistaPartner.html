@@ -1,0 +1,49 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">Argus</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="INICIO">
+                <a class="nav-link" href="#!/partnerHome">
+                    <i class="fa fa-fw fa-home"></i>
+                    <span class="nav-link-text">Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="BL-Master">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLMaster" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-ship"></i>
+                    <span class="nav-link-text">Operación</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseBLMaster">
+                    <li>
+                        <a href="#!/partnerBuscar"><i class="fa fa-fw fa-search"></i> Buscar Operación</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>    
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper" >
+    <div class="container-fluid" ng-controller="partnerController">
+                <h4>¡Bienvenid@ a Argus!, {{nombre_usuario}}</h4>
+
+    </div>
+
+</div>

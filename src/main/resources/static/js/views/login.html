@@ -2,9 +2,9 @@
 <style>
 em {
     font-family: 'Rubik', sans-serif;
-
 }
 </style>
+<form th:action="@{/login}" method="post">
 <div class="container " ng-controller="loginController">
         <div class="row">
             <div class="Absolute-Center is-Responsive">
@@ -19,15 +19,15 @@ em {
                     <!-- <img src="http://placehold.it/200x30/1E9387/ffffff/&text=ARGUS LOGISTICA LTDA" alt="Smiley face" height="30" width="200"> -->
                 </div>
                 <div class="logo-container col-sm-12 col-md-10 col-md-offset-1">
-                    <form action="" id="loginForm">
+                    <form action="" id="loginForm" role="form">
                         <div class="form-group input-group">
-                            <input class="form-control" type="text" name='username' placeholder="usuario"/>
+                            <input class="form-control" id="usuario" type="text" placeholder="correo@argus.cl" required/>
                         </div>
                         <div class="form-group input-group">
-                            <input class="form-control" type="password" name='password' placeholder="password"/>
+                            <input class="form-control" type="password" id="pass" placeholder="contraseña"/>
                         </div>
                         <div class="form-group">
-                            <a class="btn btn-def btn-block btn-primary btn-md" href="#!/home" ng-class="{ active: isActive('/') }" role="button">Entrar</a>
+                            <button ng-click="send()" type="submit" class="btn btn-def btn-block btn-primary btn-md">Iniciar sesión</button>
                         </div>
                        <!-- <div class="form-group text-center">
                             <a href="#">Forgot Password</a>&nbsp;|&nbsp;<a href="#">Support</a>
@@ -42,3 +42,4 @@ em {
             </div>
         </div>
     </div>
+</form>

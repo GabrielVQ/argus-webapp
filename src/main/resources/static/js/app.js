@@ -87,12 +87,20 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/agregarPuerto.html',
             controller: 'agregarPuertoController'
         })
-        .when('/',{
+        .when('/partnerHome',{
+            templateUrl: 'js/views/vistaPartner.html',
+            controller: 'partnerController'
+        })
+        .when('/partnerBuscar',{
+            templateUrl: 'js/views/vistaPartnerbuscar.html',
+            controller: 'partnerController'
+        })
+        .when('/login',{
             templateUrl: 'js/views/login.html',
             controller: 'loginController'
         })
                 .otherwise({
-            redirectTo: '/'
+            redirectTo: '/login'
         });
 });
 
