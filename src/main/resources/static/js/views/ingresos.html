@@ -47,7 +47,7 @@
                         <a href="#!/agregarCiudad">Ciudad</a>
                     </li>
                     <li>
-                        <a href="#!/agregarCliente">Cliente</a>
+                        <a href="#!/agregarCobro">Cobro</a>
                     </li>
                     <li>
                         <a href="#!/agregarNave">Nave</a>
@@ -157,21 +157,21 @@
                         <div class="content col-md-12">
                     <ul class="input-group">
                         <div class="col-md-4"><label class="col-md-4">Facturar a:</label>
-                            <select ng-model="newDescripcion.contenedor" class="col-md-4 empresaSelect"  >
+                            <select ng-model="newIngresos.facturara" class="col-md-4 empresaSelect"  >
                                 <option ng-repeat="container in empresas"
                                         value="{{container.id}}">{{container.nombre_abrev}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-4"><label class="col-md-4">Freight and charges:</label>
-                            <select ng-model="newDescripcion.contenedor" class="col-md-4 empresaSelect"  >
-                                <option ng-repeat="container in empresas"
-                                        value="{{container.id}}">{{container.nombre_abrev}}
+                            <select ng-model="newIngresos.cobro" class="col-md-4 empresaSelect"  >
+                                <option ng-repeat="cobro in cobros"
+                                        value="{{cobro.id}}">{{cobro.nombreCobro}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-4"><label class="col-md-4">LLevar al formulario:</label>
-                            <select ng-model="newDescripcion.contenedor" class="col-md-4 withoutSearch"  >
+                            <select ng-model="newIngresos.llevarFormulario" class="col-md-4 withoutSearch"  >
                                 <option value="SI" selected="selected">SI</option>
                                 <option value="NO">NO</option>
                             </select>
@@ -183,15 +183,15 @@
                 <div class="content col-md-12">
                     <ul class="input-group">
                     <div class="col-md-4"><label class="col-md-8">Prepaid:</label>
-                        <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
+                        <input ng-model="newIngresos.prepaid" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
                     <div class="col-md-4"><label class="col-md-8">Collect:</label>
-                        <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
+                        <input ng-model="newIngresos.collect" class="col-md-7" type="number" name="BLMasterNumero" placeholder="0000,00"></div>
                     </ul>
                 </div>
             </div>
 
     <ul>
-            <input class="btn btn-primary btn-sm" ng-click="send()" type="submit" value="Guardar">
+            <input class="btn btn-primary btn-sm" ng-click="send3()" type="submit" value="Guardar">
             <input class="btn btn-primary btn-sm"  type="button" value="Nuevo">
     </ul>
             </div>

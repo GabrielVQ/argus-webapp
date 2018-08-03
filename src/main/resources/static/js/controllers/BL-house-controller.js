@@ -141,6 +141,29 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
     }
+
+    $scope.newIngresos = {
+        "facturar": "",
+        "impuesto":"",
+        "facturara": 0,
+        "cobro":0,
+        "llevarFormulario": "",
+        "prepaid": 0,
+        "collect":0,
+        "blHouse":0
+
+    }
+    $scope.send3 = function(){
+
+        $scope.newIngresos.blHouse= {"id":parseInt($scope.BLHouseId)};
+        $scope.newIngresos.cobro= {"id":parseInt($scope.newIngresos.cobro)};
+        $http.post("http://localhost:8080/ingresos",$scope.newIngresos);
+        $scope.mensaje = 'Ingresos agregado con exito!';
+        $window.alert($scope.mensaje);
+
+        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
+
+    }
    // console.log($scope.idaux);
     //peticion de servicios
 
@@ -166,6 +189,11 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     $http.get('http://localhost:8080/empresas').then(function(response){ // campo: agente
         $scope.empresas = response.data;
+        //console.log($scope.puertos);
+    })
+
+    $http.get('http://localhost:8080/cobros').then(function(response){ // campo: agente
+        $scope.cobros = response.data;
         //console.log($scope.puertos);
     })
 }]);

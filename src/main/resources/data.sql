@@ -25,3 +25,5 @@ INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 INSERT INTO public.cargament VALUES (1,'dice contener ... test testtesttes ttesttesttesttesttestt esttesttesttest testtesttestt esttesttestt esttesttestt esttesttet','456 kgs','container STD','30 cbm',2,3,1,1);
 
 INSERT INTO public.userdb(id,email,name, rut, password) VALUES (1,'eavendano@argus.cl','Eduardo Avendano', '18701892-6', '12345'), (2,'costarica@argus.cl','Argus Costa Rica', '18701792-6', '12345');
+INSERT INTO public.cobro VALUES (1,'ocean freights');
+
