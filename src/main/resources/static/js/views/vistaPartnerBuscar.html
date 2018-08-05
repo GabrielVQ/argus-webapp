@@ -52,10 +52,9 @@
 
             <div class="input-group col-md-8 justify-content-between">
                 <div class="col-md-6">
-                    <input ng-model="searchBox.numeroOperacion" id="msgNumOperacion" type="text" class="form-control " name="msgNumOperacion" placeholder="buscar por N° operación...">
-                </div>
-                <div class="col-md-6">
-                    <input ng-model="searchBox.blmasterNumero" id="msgNumBL" type="text" class="form-control " name="msgNumBL" placeholder="buscar por N° BL...">
+                    <input ng-model="op_num" id="msgNumOperacion" type="text" class="form-control " name="msgNumOperacion" placeholder="buscar por N° operación..."> 
+                    <br>
+                    <input class="btn btn-primary btn-sm" ng-click="search()" type="submit"  type="button" value="Buscar">
                 </div>
                 
             </div>

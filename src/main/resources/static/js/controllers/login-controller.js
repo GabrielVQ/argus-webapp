@@ -16,12 +16,13 @@ app.controller('loginController', ['$scope', '$location', '$http','$window','$in
         $http.post("http://localhost:8080/users/validate",$scope.usuario).then(function(response){
             //console.log(response.data);
             if(response.data!=""){
+
                 //if
-                console.log("mail del weon ",response.data.email);
+                console.log("mail del weon ",response.data);
                 if(response.data.email=="costarica@argus.cl") {
-                    $location.url('/partnerHome');
+                    $location.url('/partnerHome/'+ response.data.id);
                 }
-                else $location.url('/home');
+                else $location.url('/home/'+ response.data.id);
             } 
             else
                 alert("Correo o contraseña incorrectas")

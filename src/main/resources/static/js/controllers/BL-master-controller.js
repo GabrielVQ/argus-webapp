@@ -1,9 +1,11 @@
-app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL', function($scope, $location, $http,$window, servicioNumeroBL) {
+app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL','$routeParams', function($scope, $location, $http,$window, servicioNumeroBL,$routeParams) {
 
+    console.log("testing scope main controller: ",$scope.title);
+    $http.get('http://localhost:8080/users/'+ $scope.user_id).then(function(response){ 
+        $scope.nombre_usuario = response.data.name;
+        $scope.creador = $scope.nombre_usuario;
+    })
 
-
-
-    $scope.creador = "EAvendano";
     $scope.numeroOperacion = "";
     //parse fecha formato: dd/mm/yyyy a las hh:mm
     var d = new Date();

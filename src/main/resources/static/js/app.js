@@ -35,7 +35,7 @@ app.service('servicioNumeroBLHouse', function () {
 });
 app.config(function($routeProvider){
     $routeProvider
-        .when('/home', {
+        .when('/home/:user_id', {
             templateUrl: 'js/views/index.html',
             controller: 'MainController'
         })
@@ -87,7 +87,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/agregarPuerto.html',
             controller: 'agregarPuertoController'
         })
-        .when('/partnerHome',{
+        .when('/partnerHome/:user_id',{
             templateUrl: 'js/views/vistaPartner.html',
             controller: 'partnerController'
         })
