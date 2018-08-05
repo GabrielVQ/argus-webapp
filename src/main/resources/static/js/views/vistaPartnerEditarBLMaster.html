@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="INICIO">
-                <a class="nav-link" href="#!/home">
+                <a class="nav-link" href="#!/partnerHome">
                     <i class="fa fa-fw fa-home"></i>
                     <span class="nav-link-text">Inicio</span>
                 </a>
@@ -19,51 +19,11 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLMaster">
                     <li>
-                        <a href="#!/BL-Master">Nueva Operación</a>
-                    </li>
-                    <li>
-                        <a href="#!/buscarBLMaster">Buscar Operación</a>
+                        <a href="/#!/partnerBuscar"><i class="fa fa-fw fa-search"></i> Buscar Operación</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseBLHouse" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-truck"></i>
-                    <span class="nav-link-text">BL-House</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseBLHouse">
-                    <li>
-                        <a href="#!/BL-House">buscar BL-House</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" data-target="#collapseAgregar" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-plus-square"></i>
-                    <span class="nav-link-text">Agregar</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseAgregar">
-                    <li>
-                        <a href="#!/agregarCiudad">Ciudad</a>
-                    </li>
-                    <li>
-                        <a href="#!/agregarCobro">Cobro</a>
-                    </li>
-                    <li>
-                        <a href="#!/agregarNave">Nave</a>
-                    </li>
-                    <li>
-                        <a href="#!/agregarEmpresa">Empresa</a>
-                    </li>
-                    <li>
-                        <a href="#!/agregarPuerto">Puerto</a>
-                    </li>
-                    <li>
-                        <a href="#!/agregarNaviera">Naviera</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        </ul>    
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
                 <a class="nav-link text-center" id="sidenavToggler">
@@ -71,6 +31,7 @@
                 </a>
             </li>
         </ul>
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
@@ -80,10 +41,10 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="editarBLMasterController">
+    <div class="container-fluid" ng-controller="partnerControllerEditar">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h4>Editar BL-Master</h4>
+                <h4>Operación BL-Master</h4>
             </div>
             <div class="panel-body">
             <div class="panel-body1">
@@ -330,11 +291,9 @@
                     </div>
                 </div>
                 <div class="content col-md-12">
-                    <a class="btn btn-primary btn-sm" href="#!/BL-House/{{BLMaster.numeroOperacion}}" type="button" value="Agregar House">Agregar House</a>
                     <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
                     <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
-                    <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
-                    <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
+                    <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Descargar Pdf">
 
                 </div>
                 <br>

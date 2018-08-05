@@ -95,6 +95,10 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/vistaPartnerbuscar.html',
             controller: 'partnerController'
         })
+        .when('/partnerEditar/:bl',{
+            templateUrl: 'js/views/vistaPartnerEditarBLMaster.html',
+            controller: 'partnerControllerEditar'
+        })
         .when('/login',{
             templateUrl: 'js/views/login.html',
             controller: 'loginController'

@@ -13,11 +13,13 @@ app.controller('partnerController', ['$scope', '$location','$routeParams','$http
         console.log("input value: ",$scope.op_num);  
         $http.get('http://localhost:8080/blmasters/numerooperacion/'+ $scope.op_num).then(function(response){ 
         console.log("BL: ", response.data);
-        $scope.BLMaster = response.data;
+        $scope.BLMaster = response.data; // deberia ser el bl-house ahi se obtienen todos los datos q van en el pdf
         //console.log($scope.ciudades);
     })
 
     }
+
+    console.log("bl num from buscarbl in partner",$routeParams.bl)
 
 
 	$scope.isActive = function(route) {
