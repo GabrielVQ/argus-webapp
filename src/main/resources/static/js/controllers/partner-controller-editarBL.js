@@ -62,7 +62,7 @@ app.controller('partnerControllerEditar', ['$scope', '$location', '$http','$wind
         //$scope.BLMaster.fechaZarpe = $scope.fechaZarpeAux;
         console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
         console.log('BL : ',$scope.BLMaster);
-        $http.post("http://localhost:8080/blmasters",$scope.BLMaster);
+        $http.post("",$scope.BLMaster);
         //console.log($scope.BLMaster);
         $scope.mensaje = 'BL Editada con exito!';
         $window.alert($scope.mensaje);
