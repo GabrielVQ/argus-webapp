@@ -11,51 +11,66 @@ public class Cargament {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    
-    private String generalImo;
-    
-    @NotNull
-    private String imoClase;
-    
-    private int imoNumero;
-    private int peso;
-    private int volumen;
-    private String tipo_bulto;
-    
 
     @ManyToOne
-    @JoinColumn (name= "BLHouse_id")
+    @JoinColumn(name="contenedor")
+    private Container contenedor;
+
+    private String markNumbers;
+
+    private String numerPackages;
+
+    private String groosWeight;
+
+    private String measurement;
+
+    private String descriptionGoods;
+
+    private String numeroOperacion;
+
+    @OneToOne
+    @JoinColumn (name= "blHouse")
     private BLHouse blHouse;
+
+    private String numeroBLHouse;
 
     public long getId() {
         return id;
+    }
+
+    public Container getContenedor() {
+        return contenedor;
+    }
+
+    public String getMarkNumbers() {
+        return markNumbers;
+    }
+
+    public String getNumerPackages() {
+        return numerPackages;
+    }
+
+    public String getGroosWeight() {
+        return groosWeight;
+    }
+
+    public String getMeasurement() {
+        return measurement;
     }
 
     public BLHouse getBlHouse() {
         return blHouse;
     }
 
-    public int getImoNumero() {
-        return imoNumero;
+    public String getDescriptionGoods() {
+        return descriptionGoods;
     }
 
-    public int getPeso() {
-        return peso;
+    public String getNumeroOperacion() {
+        return numeroOperacion;
     }
 
-    public int getVolumen() {
-        return volumen;
-    }
-
-    public String getGeneralImo() {
-        return generalImo;
-    }
-
-    public String getImoClase() {
-        return imoClase;
-    }
-
-    public String getTipo_bulto() {
-        return tipo_bulto;
+    public String getNumeroBLHouse() {
+        return numeroBLHouse;
     }
 }

@@ -30,4 +30,11 @@ public class PuertoService {
     public Puerto create(@RequestBody Puerto resource) {
         return puertoRepository.save(resource);
     }
+
+    @RequestMapping(value="/codigo/{direccion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Puerto> show(@PathVariable("direccion") String  direccion){
+        //String nOperacion = Integer.parseInt(id);
+        return puertoRepository.getByDireccion(direccion);
+    }
 }

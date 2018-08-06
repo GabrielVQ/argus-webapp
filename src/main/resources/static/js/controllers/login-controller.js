@@ -1,26 +1,35 @@
-app.controller('loginController', ['$scope', '$location', '$http','$window','$interval', function($scope, $location, $http,$window,ConsultaService,digitalClock, MisDatos) {
+app.controller('loginController', ['$scope', '$location', '$http','$window','$interval', '$routeParams',function($scope, $location, $http,$window, $routeParams, ConsultaService,digitalClock, MisDatos) {
 
     $scope.date = new Date();
 
+	$scope.usuario = {
+		email : "",
+		password :""
+	};
 
+    $scope.send = function () {
+        var correo = document.getElementById("usuario").value;
+        var pass = document.getElementById("pass").value;
+        $scope.usuario.email = (correo);
+        $scope.usuario.password = (pass);
 
+        $http.post("http://localhost:8080/users/validate",$scope.usuario).then(function(response){
+            //console.log(response.data);
+            if(response.data!=""){
 
-    $scope.send = function(){
+                //if
+                console.log("mail del weon ",response.data);
+                if(response.data.email=="costarica@argus.cl") {
+                    $location.url('/partnerHome/'+ response.data.id);
+                }
+                else $location.url('/home/'+ response.data.id);
+            } 
+            else
+                alert("Correo o contraseña incorrectas")
+        });
+
         
-        //$scope.numeroOperacion += 1;
-
-
-        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
-
-    }
-
-    /*$scope.ciudades = function() {
-        $http.get('http://localhost:8080/ciudades').then(function (response) {
-            $scope.ciudades = response.data;});
-            //console.log($scope.ciudades[0]);
-    }*/
-
-
+    };
 
 
 }]);

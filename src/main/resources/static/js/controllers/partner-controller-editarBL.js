@@ -1,4 +1,4 @@
-app.controller('editarBLMasterController', ['$scope', '$location', '$http','$window','$routeParams', function($scope, $location, $http,$window, $routeParams) {
+app.controller('partnerControllerEditar', ['$scope', '$location', '$http','$window','$routeParams', function($scope, $location, $http,$window, $routeParams) {
     
 
     $scope.creador = 'Eduardo Avendaño';
@@ -6,6 +6,8 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
 
     $scope.bl = $routeParams.bl;
     $scope.BLMaster = [];
+
+    console.log("test partner editar: ",$scope.bl);
 
     
     function isDate(x) 
@@ -60,7 +62,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         //$scope.BLMaster.fechaZarpe = $scope.fechaZarpeAux;
         console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
         console.log('BL : ',$scope.BLMaster);
-        $http.post("http://localhost:8080/blmasters",$scope.BLMaster);
+        $http.post("",$scope.BLMaster);
         //console.log($scope.BLMaster);
         $scope.mensaje = 'BL Editada con exito!';
         $window.alert($scope.mensaje);

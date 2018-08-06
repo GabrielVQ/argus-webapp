@@ -6,6 +6,7 @@ import cl.argus.models.Naviera;
 import cl.argus.repositories.CargamentRepository;
 import cl.argus.repositories.NavieraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -20,5 +21,18 @@ public class CargamentService {
     @ResponseBody
     public Iterable<Cargament> getAllCargaments() {
         return cargamentRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Cargament create(@RequestBody Cargament resource) { return cargamentRepository.save(resource); }
+
+
+    @RequestMapping(value="/numerooperacion/{numeroOperacion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Cargament> show(@PathVariable("numeroOperacion") String  numeroOperacion){
+        //String nOperacion = Integer.parseInt(id);
+        return cargamentRepository.getByNumeroOperacion(numeroOperacion);
     }
 }

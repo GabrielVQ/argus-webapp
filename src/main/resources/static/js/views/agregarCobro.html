@@ -47,7 +47,7 @@
                         <a href="#!/agregarCiudad">Ciudad</a>
                     </li>
                     <li>
-                        <a href="#!/agregarCliente">Cliente</a>
+                        <a href="#!/agregarCobro">Cobro</a>
                     </li>
                     <li>
                         <a href="#!/agregarNave">Nave</a>
@@ -73,17 +73,17 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="agregarClienteController">
+    <div class="container-fluid" ng-controller="agregarCobroController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h4>Agregar Cliente</h4>
+                <h4>Agregar Cobro</h4>
             </div>
             <div class="panel-body">
 
@@ -91,13 +91,13 @@
                     <div class="content col-md-12">
 
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Nombre:</label>
-                                <input ng-model="newBLMaster.contacto" class="col-md-8" type="text" name="Ciudad">
+                            <div class="col-md-6"><label class="col-md-4">Nombre cobro:</label>
+                                <input ng-model="newAgregarCobro.nombreCobro" class="col-md-8" type="text" name="Ciudad">
                             </div>
                         </ul>
                     </div>
                 </div>
-            </div><input class="btn btn-primary btn-sm" type="button" value="Agregar">
+            </div><input class="btn btn-primary btn-sm" ng-click="send()" type="submit" type="button" value="Agregar">
         </div>
     </div>
 </div>

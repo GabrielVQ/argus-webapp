@@ -47,7 +47,7 @@
                         <a href="#!/agregarCiudad">Ciudad</a>
                     </li>
                     <li>
-                        <a href="#!/agregarCliente">Cliente</a>
+                        <a href="#!/agregarCobro">Cobro</a>
                     </li>
                     <li>
                         <a href="#!/agregarNave">Nave</a>
@@ -73,7 +73,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
@@ -108,9 +108,9 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <br>
-                        <ul>N° de operación:<b> {{numeroOperacion}}</b></ul>
-                        <ul>N° BL House: <b></b></ul>
-                        <ul>N° BL Master:<b>{{numeroBLMaster}} </b></ul>
+                        <ul>N° de operación:<b>{{numeroOperacion}}</b></ul>
+                        <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
+                        <ul>N° BL Master:<b>{{BLMaster[0].blmasterNumero}}</b></ul>
                     </div>
                 </div>
                 <div class="panel-body1">
@@ -170,10 +170,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Bultos:</label>
-                                <select ng-model="newBLHouse.bultos" class="col-md-8 withoutSearch" name="tipoCargo">
-                                    <option value="" selected="selected">Opción 1</option>
-                                    <option value="">Opción 2</option>
-                                </select>
+                                <input ng-model="newBLHouse.bultos" class="col-md-8" type="text" name="bultos" >
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Carga:</label>
                                 <select ng-model="newBLHouse.carga" class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
@@ -222,7 +219,7 @@
                             <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
                                 <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
                                     <option ng-repeat="e in empresas"
-                                            value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
+                                            value="{{e.id}}">{{e.nombre_abrev}}
                                     </option>
                                 </select>
                             </div>
@@ -239,7 +236,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Destino:</label>
-                                <select ng-model="newBLHouse.destino" class="col-md-8 destinoSelect" name="destino">
+                                <select ng-model="newBLHouse.ciudadLlegada" class="col-md-8 destinoSelect" name="destino">
                                     <option ng-repeat="e in ciudades"
                                             value="{{e.id}}">{{e.nombre}}
                                     </option>
@@ -263,7 +260,7 @@
                         <ul class="input-group">
                             <div class="col-md-5">
                                 <label class="col-md-6">Fecha stacking:</label>
-                                <input  ng-model="fechaStackingAux" class="col-md-6" type="date" name="fechaStacking">
+                                <input  ng-model="newBLHouse.fechaStacking" class="col-md-6" type="date" name="fechaStacking">
                             </div>
                             <div class="col-md-5">
                                 <label class="col-md-6">Hora stacking:</label>

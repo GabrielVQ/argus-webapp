@@ -24,9 +24,18 @@ app.service('servicioNumeroBL', function () {
     }
     //return this.numeroBL2;
 });
+
+app.service('servicioNumeroBLHouse', function () {
+
+    this.numeroBLHouse = 1;
+    this.setNumeroBLHouse = function (numeroBLHouse) {
+        this.numeroBLHouse = numeroBLHouse;
+    }
+    //return this.numeroBL2;
+});
 app.config(function($routeProvider){
     $routeProvider
-        .when('/home', {
+        .when('/home/:user_id', {
             templateUrl: 'js/views/index.html',
             controller: 'MainController'
         })
@@ -34,7 +43,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/BL-Master.html',
             controller: 'BLMasterController'
         })
-        .when('/BL-House',{
+        .when('/BL-House/:bl',{
             templateUrl: 'js/views/BL-House.html',
             controller: 'BLHouseController'
         })
@@ -59,8 +68,8 @@ app.config(function($routeProvider){
             controller: 'agregarCiudadController'
         })
         .when('/agregarCliente',{
-            templateUrl: 'js/views/agregarCliente.html',
-            controller: 'agregarClienteController'
+            templateUrl: 'js/views/agregarCobro.html',
+            controller: 'agregarCobroController'
         })
         .when('/agregarEmpresa',{
             templateUrl: 'js/views/agregarEmpresa.html',
@@ -78,12 +87,24 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/agregarPuerto.html',
             controller: 'agregarPuertoController'
         })
-        .when('/',{
+        .when('/partnerHome/:user_id',{
+            templateUrl: 'js/views/vistaPartner.html',
+            controller: 'partnerController'
+        })
+        .when('/partnerBuscar',{
+            templateUrl: 'js/views/vistaPartnerbuscar.html',
+            controller: 'partnerController'
+        })
+        .when('/partnerEditar/:bl',{
+            templateUrl: 'js/views/vistaPartnerEditarBLMaster.html',
+            controller: 'partnerControllerEditar'
+        })
+        .when('/login',{
             templateUrl: 'js/views/login.html',
             controller: 'loginController'
         })
                 .otherwise({
-            redirectTo: '/'
+            redirectTo: '/login'
         });
 });
 

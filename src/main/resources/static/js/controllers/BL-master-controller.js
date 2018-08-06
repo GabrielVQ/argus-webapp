@@ -1,9 +1,11 @@
-app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL', function($scope, $location, $http,$window, servicioNumeroBL) {
+app.controller('BLMasterController', ['$scope', '$location', '$http','$window','servicioNumeroBL','$routeParams', function($scope, $location, $http,$window, servicioNumeroBL,$routeParams) {
 
+    console.log("testing scope main controller: ",$scope.title);
+    $http.get('http://localhost:8080/users/'+ $scope.user_id).then(function(response){ 
+        $scope.nombre_usuario = response.data.name;
+        $scope.creador = $scope.nombre_usuario;
+    })
 
-
-
-    $scope.creador = "EAvendano";
     $scope.numeroOperacion = "";
     //parse fecha formato: dd/mm/yyyy a las hh:mm
     var d = new Date();
@@ -43,7 +45,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.newBLMaster.naviera= {"id":parseInt($scope.newBLMaster.naviera)};
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
-        /*$scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};*/
+        $scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};
 
         $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
         $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
@@ -55,6 +57,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         console.log('BL : ',$scope.newBLMaster);
         $http.post("http://localhost:8080/blmasters",$scope.newBLMaster);
         //console.log($scope.newBLMaster);
+        $scope.blnum = $scope.newBLMaster.numeroOperacion; 
         $scope.mensaje = 'BL Generada con exito!';
         $window.alert($scope.mensaje);
 
@@ -82,19 +85,19 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
    // var token = "xxx";
 
    // localStorage.setItem("token", token);
-    console.log('data scope4:', localStorage.getItem("token"));
+    //console.log('data scope4:', localStorage.getItem("token"));
     $scope.numeroOperacion = localStorage.getItem("token");
 
     function  setnumeroOperacion(data){
         servicioNumeroBL.setNumeroBLMaster(data[data.length - 1].numeroOperacion + 1);
-        console.log('data funcion:',servicioNumeroBL.numeroBL);
+        //console.log('data funcion:',servicioNumeroBL.numeroBL);
         //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
         $scope.newBLMaster.numeroOperacion = servicioNumeroBL.numeroBL;
         var token = servicioNumeroBL.numeroBL;
         localStorage.setItem("token", token);
-        console.log('data scope2:', $scope.newBLMaster.numeroOperacion);
+        //console.log('data scope2:', $scope.newBLMaster.numeroOperacion);
     }
-    console.log('data scope3:', $scope.newBLMaster.numeroOperacion);
+    //console.log('data scope3:', $scope.newBLMaster.numeroOperacion);
 
     $scope.agregarContenedor = function(){
         $http.post("http://localhost:8080/containers",$scope.newContenedor);
@@ -126,6 +129,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
+
     $http.get('http://localhost:8080/blmasters').then(function(response){
         $scope.BLMaster = response.data;
         //console.log($scope.BLMaster[0].numeroOperacion);

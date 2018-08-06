@@ -47,7 +47,7 @@
                         <a href="#!/agregarCiudad">Ciudad</a>
                     </li>
                     <li>
-                        <a href="#!/agregarCliente">Cliente</a>
+                        <a href="#!/agregarCobro">Cobro</a>
                     </li>
                     <li>
                         <a href="#!/agregarNave">Nave</a>
@@ -73,7 +73,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
@@ -98,9 +98,9 @@
 
                     <div class="" id="app-navbar-collapse" style="padding-left: 10em">
                         <!-- Left Side Of Navbar -->
-                        <a href="#!/BL-House" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/') }" role="button">1.Cabecera</a>
+                        <a href="#!/BL-House" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House/:bl') }" role="button">1.Cabecera</a>
                         <a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a>
-                        <a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/') }" role="button">3.Ingresos</a>
+                        <a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a>
                     </div>
                 </div>
             </nav>
@@ -108,52 +108,77 @@
                 <div class="content col-md-12">
                     <br>
                     <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
-                    <ul>N° BL House: <b></b></ul>
+                    <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
                     <ul>N° BL Master:<b></b></ul>
                 </div>
             </div>
             <div class="panel-body1">
-
-                <form action="admin/crud/insertar/inserta-lineasoferta.php" method="POST">
-                    <table class="table table-bordered" id="tablaresponsive">
+                <div class="content col-md-12">
+                    <table id="table" class="table table-striped table-hover table-bordered">
                         <thead>
                         <tr>
                             <th>Contenedor</th>
                             <th>Mark and numbers</th>
-                            <th>Number of packages</th>
                             <th>Description of goods</th>
-                            <th>Groos weight</th>
-                            <th>Measurement</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr ng-repeat=" BL in cargamentsBYoperacion ">
+                            <td>{{BL.contenedor.sigla}}</td>
+                            <td>{{BL.markNumbers}}</td>
+                            <td>{{BL.descriptionGoods}}</td>
 
-                            <td>
-                                <select ng-model="newBLMaster.destino" class="form-control contenedorSelect" name="contenedor">
-                                    <option ng-repeat="container in containers"
-                                            value="{{container.tipo}}">{{container.tipo}}
-                                    </option>
-                                </select>
+                            <td width="180">
+                                <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
+                                <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
                             </td>
-                            <td><input type ="text" name="markAndNumbers[]"  class="form-control"></td>
-                            <td><input type ="text" name="numberPackages[]"  class="form-control"></td>
-                            <td width="400px"><textarea type ="text" name="descriptionGoods[]"  class="form-control"></textarea></td>
-                            <td><input type="text" name="groosWeight[]" class="form-control"></td>
-                            <td><input type="text" name="measurement[]" class="form-control"></td>
-                            <td><button type="button" class="eliminalinea">eliminar</button></td>
                         </tr>
                         </tbody>
                     </table>
-                    <button type="button" id="nuevalinea" class="btn btn-danger">Nueva Linea</button>
-                    <input type="submit" name="guardar" class="btn btn-success">
-                </form>
+                </div>
             </div>
+            <div class="panel-body1">
+                <div class="content col-md-12">
+                    <ul class="input-group">
+                    <div class="col-md-6"><label class="col-md-6">Contenedor:</label>
+                        <select ng-model="newDescripcion.contenedor" class="col-md-6 contenedorSelect"  >
+                            <option ng-repeat="container in containers"
+                                    value="{{container.id}}">{{container.sigla}}
+                            </option>
+                        </select>
+                    </div>
+                        <div class="col-md-6"><label class="col-md-6">Mark and numbers:</label>
+                            <input ng-model="newDescripcion.markNumbers" class="col-md-6" type="text" >
+                        </div>
+                    </ul>
+                    <ul class="input-group">
+                        <div class="col-md-4"><label class="col-md-5">Number of packages:</label>
+                            <input ng-model="newDescripcion.numberPackages" class="col-md-2" type="number" >
+                        </div>
+                        <div class="col-md-4"><label class="col-md-5">Groos weight:</label>
+                            <input ng-model="newDescripcion.groosWeight" class="col-md-2" type="number" >
+                        </div>
+                        <div class="col-md-4"><label class="col-md-4">Measurement:</label>
+                            <input ng-model="newDescripcion.measurement" class="col-md-2" type="number" >
+                        </div>
+                    </ul>
+                    <ul class="input-group">
+                        <div class="col-md-12"><label class="col-md-6">Description of goods:</label>
+                        <textarea ng-model="newDescripcion.descriptionGoods" type ="text" name=""  class="col-md-10"></textarea>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+            <ul>
+                <input class="btn btn-primary btn-sm" ng-click="send2()" type="submit"  type="button" value="Guardar">
+            </ul>
             <script>
                 $(document).ready(function () {
                 $('.contenedorSelect').select2();
                 });
             </script>
+            <!--
             <script>
                 $(document).ready(function(){
                     $("#nuevalinea").click(function(){
@@ -168,7 +193,7 @@
                         }
                     });
                 });
-            </script>
+            </script>-->
         </div>
     </div>
 </div>
