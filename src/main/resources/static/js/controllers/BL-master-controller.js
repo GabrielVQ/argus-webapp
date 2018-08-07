@@ -60,7 +60,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.blnum = $scope.newBLMaster.numeroOperacion; 
         $scope.mensaje = 'BL Generada con exito!';
         $window.alert($scope.mensaje);
-
+        setNumeroBLHouse();
 
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
@@ -98,6 +98,23 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         //console.log('data scope2:', $scope.newBLMaster.numeroOperacion);
     }
     //console.log('data scope3:', $scope.newBLMaster.numeroOperacion);
+
+        var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+        $http.get(urlBase2)
+            .then(function(response) {
+
+                if (response.data.length != 0){
+                    servicioNumeroBLHouse.setNumeroBLHouse(response.data[response.data.length - 1].numeroBLHouse + 1);
+                    var token = servicioNumeroBLHouse.numeroBLHouse;
+                    localStorage.setItem("token3", token);
+                    console.log('hay bl houses:', localStorage.getItem("token3"))
+                }
+                else{
+                    var token2 = "1";
+                    localStorage.setItem("token3", token2);
+                    console.log('no hay bl houses', localStorage.getItem("token3"))
+                }
+            });
 
     $scope.agregarContenedor = function(){
         $http.post("http://localhost:8080/containers",$scope.newContenedor);

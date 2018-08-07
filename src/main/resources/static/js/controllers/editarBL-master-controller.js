@@ -35,6 +35,9 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
     });
 
+    var token = $scope.bl;
+    localStorage.setItem("token", token);
+
 
     $scope.send = function(){
         
@@ -58,8 +61,8 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         //console.log('fecha zarpeeee: ',$scope.fechaZarpeAux);
 
         //$scope.BLMaster.fechaZarpe = $scope.fechaZarpeAux;
-        console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
-        console.log('BL : ',$scope.BLMaster);
+       // console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
+       // console.log('BL : ',$scope.BLMaster);
         $http.post("http://localhost:8080/blmasters",$scope.BLMaster);
         //console.log($scope.BLMaster);
         $scope.mensaje = 'BL Editada con exito!';
@@ -74,6 +77,24 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
     }*/
 
 
+
+        var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.bl;
+        console.log("ME EJECUTE")
+        $http.get(urlBase2)
+            .then(function(response) {
+
+                if (response.data.length != 0){
+                    var token = response.data[response.data.length - 1].numeroBLHouse + 1;
+                    //var token = servicioNumeroBLHouse.numeroBLHouse;
+                    localStorage.setItem("token3", token);
+                    //console.log('hay bl houses:', localStorage.getItem("token3"))
+                }
+                else{
+                    var token2 = "1";
+                    localStorage.setItem("token3", token2);
+                    //console.log('no hay bl houses', localStorage.getItem("token3"))
+                }
+            });
 
 
     

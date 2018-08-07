@@ -4,11 +4,11 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
-    $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+   // $scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
-    $scope.numeroBLMaster = 1;
-    $scope.numeroBLHouse= servicioNumeroBLHouse.numeroBLHouse;
+
+    //$scope.numeroBLHouse= servicioNumeroBLHouse.numeroBLHouse;
 
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -22,6 +22,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     }
 
+    $scope.numeroOperacion = localStorage.getItem("token");
 
     $scope.newBLHouse= {
         "numeroOperacion": $scope.numeroOperacion,
@@ -48,10 +49,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "fechaStacking":"",
         "observacion":""
     };
-    if(localStorage.getItem("token3") != -5) {
-        $scope.numeroBLHouse = localStorage.getItem("token3");
-        console.log('numero bl house cabecera',localStorage.getItem("token3") )
-    }
+
 
     var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+ $scope.blNumOp;
 
@@ -62,29 +60,40 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
             //$scope.idaux = $scope.BLMaster[0].id;
             //console.log('id: ',$scope.BLMaster[0].id);
             //$scope.newBLHouse.blMaster = $scope.BLMaster[0].id;
+            //setea id del blmaster
             var token2 = $scope.BLMaster[0].id;
             localStorage.setItem("token2", token2);
+            //setea numero blmaster para ser usado en las vistas
+            var token4 = $scope.BLMaster[0].blmasterNumero;
+            localStorage.setItem("token4", token4)
             //console.log('id dentro:',localStorage.getItem("token2"));
             console.log('bl numero dentro:',$scope.BLMaster[0].blmasterNumero);
         });
     $scope.idaux = localStorage.getItem("token2");
+    $scope.numeroBLMaster = localStorage.getItem("token4");
+/*
+   function setNumeroBLHouse(){
+        var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+        console.log("ME EJECUTE")
+        $http.get(urlBase2)
+            .then(function(response) {
 
-    var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+                if (response.data.length != 0){
+                    servicioNumeroBLHouse.setNumeroBLHouse(response.data[response.data.length - 1].numeroBLHouse + 1);
+                    var token = servicioNumeroBLHouse.numeroBLHouse;
+                    localStorage.setItem("token3", token);
+                    console.log('hay bl houses:', localStorage.getItem("token3"))
+                }
+                else{
+                    var token2 = "1";
+                    localStorage.setItem("token3", token2);
+                    console.log('no hay bl houses', localStorage.getItem("token3"))
+                }
+            });
+        }*/
+        $scope.numeroBLHouse = localStorage.getItem("token3");
+        console.log('numero bl house cabecera',localStorage.getItem("token3"))
 
-    $http.get(urlBase2)
-        .then(function(response) {
-
-            if (response.data.length != 0){
-                servicioNumeroBLHouse.setNumeroBLHouse(response.data[response.data.length - 1].numeroBLHouse + 1);
-                var token = servicioNumeroBLHouse.numeroBLHouse;
-                localStorage.setItem("token3", token);
-            }
-            else{
-                var token = -5;
-                localStorage.setItem("token3", token);
-                console.log('no hay bl houses')
-            }
-        });
 
     $scope.send = function(){
 

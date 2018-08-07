@@ -1,7 +1,7 @@
 app.controller('descripcionController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse' ,function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
-    $scope.numeroOperacion = servicioNumeroBL.numeroBL;
+    //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
     $scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
@@ -39,7 +39,7 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
            // console.log('status: ',response.status);
         });
 
-    $scope.send = function(){
+    $scope.send2 = function(){
 
         $scope.newDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
         $scope.newDescripcion.contenedor= {"id":parseInt($scope.newDescripcion.contenedor)};
@@ -50,6 +50,10 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
     }
+
+    $scope.numeroBLMaster = localStorage.getItem("token4");
+    $scope.numeroOperacion = localStorage.getItem("token");
+    $scope.numeroBLHouse = localStorage.getItem("token3");
 
     $http.get('http://localhost:8080/containers').then(function(response){
         $scope.containers = response.data;

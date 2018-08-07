@@ -26,4 +26,11 @@ public class IngresoService {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Ingreso create(@RequestBody Ingreso resource) { return ingresoRepository.save(resource); }
+
+    @RequestMapping(value="/numerooperacion/{numeroOperacion}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Ingreso> show(@PathVariable("numeroOperacion") String  numeroOperacion){
+        //String nOperacion = Integer.parseInt(id);
+        return ingresoRepository.getByNumeroOperacion(numeroOperacion);
+    }
 }

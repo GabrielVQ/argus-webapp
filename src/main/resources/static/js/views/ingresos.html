@@ -80,7 +80,7 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="BLHouseController">
+    <div class="container-fluid" ng-controller="ingresosController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 <h4>Crear BL-House</h4>
@@ -95,21 +95,26 @@
                             <span class="icon-bar"></span>
                         </button>-->
                     </div>
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a></li>
+                        <li><a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
+                        <li><a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
 
+                    </ul>
+                    <!--
                     <div class="" id="app-navbar-collapse" style="padding-left: 10em">
-                        <!-- Left Side Of Navbar -->
-                        <a href="#!/BL-House" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a>
+                        <a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a>
                         <a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a>
                         <a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a>
-                    </div>
+                    </div>-->
                 </div>
             </nav>
             <div class="panel-body1">
                 <div class="content col-md-12">
                     <br>
-                    <ul>N° de operación: <b> {{numeroOperacion}}</b></ul>
+                    <ul>N° de operación: <b>{{numeroOperacion}}</b></ul>
                     <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
-                    <ul>N° BL Master:<b> </b></ul>
+                    <ul>N° BL Master:<b>{{numeroBLMaster}}</b></ul>
                 </div>
             </div>
             <div class="panel-body1">
@@ -124,11 +129,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat=" BL in cargamentsBYoperacion ">
-                        <td>{{BL.contenedor.sigla}}</td>
-                        <td>{{BL.markNumbers}}</td>
-                        <td>{{BL.descriptionGoods}}</td>
-                        <td>{{BL.descriptionGoods}}</td>
+                    <tr ng-repeat=" BL in ingresosBYoperacion ">
+                        <td>{{BL.facturara.nombre_abrev}}</td>
+                        <td>{{BL.cobro.nombreCobro}}</td>
+                        <td>{{BL.prepaid}}</td>
+                        <td>{{BL.collect}}</td>
                         <td width="180">
                             <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
                             <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
@@ -144,12 +149,20 @@
 
                     <label class="col-md-6">Datos de facturación:</label>
 
-                    <ul>
-                        <input type="radio" name="factura" value="" checked><label class="col-md-2">Facturar</label>
-                        <input type="radio" name="factura" value="" ><label class="col-md-2">No</label>
+                    <ul class="input-group">
+                        <div class="col-md-4"><label class="col-md-4">Facturar:</label>
+                            <select ng-model="newIngresos.facurar" class="col-md-4 withoutSearch"  >
+                                <option value="SI" selected="selected">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
 
-                        <input type="radio" name="impuesto" value="" checked><label class="col-md-2">Afecto</label>
-                        <input type="radio" name="impuesto" value="" ><label class="col-md-2">Exento</label>
+                        <div class="col-md-4"><label class="col-md-4">Impuesto:</label>
+                            <select ng-model="newIngresos.impuesto" class="col-md-4 withoutSearch"  >
+                                <option value="afecto" selected="selected">Afecto</option>
+                                <option value="exento">Exento</option>
+                            </select>
+                        </div>
                     </ul>
                 </div>
             </div>

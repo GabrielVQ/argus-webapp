@@ -95,12 +95,22 @@
                             <span class="icon-bar"></span>
                         </button>-->
                     </div>
+
+
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a></li>
+                        <li><a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
+                        <li><a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
+
+                    </ul>
+                    <!--
                     <div class="" id="app-navbar-collapse-blhouse" style="padding-left: 10em">
-                        <!-- Left Side Of Navbar -->
-                        <a href="#!/BL-House" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a>
+
+                        <a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a>
                         <a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a>
                         <a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a>
                     </div>
+                    -->
                 </div>
             </nav>
             <div class="panel-body">
@@ -108,9 +118,9 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <br>
-                        <ul>N° de operación:<b>{{numeroOperacion}}</b></ul>
+                        <ul>N° de operación: <b>{{numeroOperacion}}</b></ul>
                         <ul>N° BL House: <b>{{numeroBLHouse}}</b></ul>
-                        <ul>N° BL Master:<b>{{BLMaster[0].blmasterNumero}}</b></ul>
+                        <ul>N° BL Master:<b>{{numeroBLMaster}}</b></ul>
                     </div>
                 </div>
                 <div class="panel-body1">

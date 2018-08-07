@@ -21,7 +21,7 @@ public class Ingreso {
 
     @ManyToOne
     @JoinColumn(name="empresa")
-    private Empresa empresa;
+    private Empresa facturara;
 
     @ManyToOne
     @JoinColumn(name="cobro")
@@ -30,7 +30,8 @@ public class Ingreso {
     public String llevarFormulario;
     public String prepaid;
     public String collect;
-
+    public String numeroOperacion;
+    public String numeroBLHouse;
     @OneToOne
     @JoinColumn (name= "blHouse")
     private BLHouse blHouse;
@@ -47,8 +48,8 @@ public class Ingreso {
         return impuesto;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Empresa getFacturara() {
+        return facturara;
     }
 
     public Cobro getCobro() {
@@ -69,5 +70,13 @@ public class Ingreso {
 
     public BLHouse getBlHouse() {
         return blHouse;
+    }
+
+    public String getNumeroOperacion() {
+        return numeroOperacion;
+    }
+
+    public String getNumeroBLHouse() {
+        return numeroBLHouse;
     }
 }
