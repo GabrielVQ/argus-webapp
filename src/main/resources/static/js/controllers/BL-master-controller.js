@@ -60,7 +60,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.blnum = $scope.newBLMaster.numeroOperacion; 
         $scope.mensaje = 'BL Generada con exito!';
         $window.alert($scope.mensaje);
-        setNumeroBLHouse();
+        //setNumeroBLHouse();
 
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
@@ -100,6 +100,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
     //console.log('data scope3:', $scope.newBLMaster.numeroOperacion);
 
         var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+
         $http.get(urlBase2)
             .then(function(response) {
 

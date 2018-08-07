@@ -55,6 +55,10 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/editarBLMaster.html',
             controller: 'editarBLMasterController'
         })
+        .when('/editarBLHouse/:bl/:blhouse',{
+            templateUrl: 'js/views/editarBLHouse.html',
+            controller: 'editarBLHouseController'
+        })
         .when('/descripcion',{
             templateUrl: 'js/views/descripcion.html',
             controller: 'descripcionController'
@@ -102,6 +106,10 @@ app.config(function($routeProvider){
         .when('/login',{
             templateUrl: 'js/views/login.html',
             controller: 'loginController'
+        })
+        .when('/buscarBLHouse',{
+            templateUrl: 'js/views/buscarBLHouse.html',
+            controller: 'buscarBLHouseController'
         })
                 .otherwise({
             redirectTo: '/login'

@@ -64,6 +64,8 @@ public class BLHouse {
 
     private String volumen;
 
+    private String moneda;
+
     private int numeroBLHouse;
 
     @ManyToOne
@@ -208,5 +210,9 @@ public class BLHouse {
 
     public int getNumeroBLHouse() {
         return numeroBLHouse;
+    }
+
+    public String getMoneda() {
+        return moneda;
     }
 }

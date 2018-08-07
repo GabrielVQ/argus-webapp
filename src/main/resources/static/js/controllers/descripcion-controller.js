@@ -4,9 +4,11 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
     //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
-    $scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
+    //$scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
 
-
+    $scope.numeroBLMaster = localStorage.getItem("token4");
+    $scope.numeroOperacion = localStorage.getItem("token");
+    $scope.numeroBLHouse = localStorage.getItem("token3");
 
     $scope.isActive = function(route) {
         return route === $location.path();
@@ -29,6 +31,19 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
     $http.get(urlBaseCargament)
         .then(function(response) {
             $scope.cargamentsBYoperacion = response.data;
+            //var i = 0;
+            //console.log("NUMERO BL HOUSE:", response.data[i].numeroBLHouse);
+            /*
+            while (i <= response.data.length) {
+                $scope.numHouse = parseInt(response.data[i].numeroBLHouse);
+                if ($scope.numeroBLHouse === parseInt(response.data[i].numeroBLHouse)) {
+                    $scope.cargamentsBYoperacion = response.data[i];
+                    console.log("TENGO house:", response.data[i].numeroBLHouse)
+                    break;
+                }
+                //console.log("no encontre")
+                i = i+1;
+            }*/
         });
 
     var urlBase = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
@@ -51,9 +66,7 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
 
     }
 
-    $scope.numeroBLMaster = localStorage.getItem("token4");
-    $scope.numeroOperacion = localStorage.getItem("token");
-    $scope.numeroBLHouse = localStorage.getItem("token3");
+
 
     $http.get('http://localhost:8080/containers').then(function(response){
         $scope.containers = response.data;

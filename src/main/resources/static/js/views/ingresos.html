@@ -33,7 +33,7 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseBLHouse">
                     <li>
-                        <a href="#!/BL-House">buscar BL-House</a>
+                        <a href="#!/buscarBLHouse">buscar BL-House</a>
                     </li>
                 </ul>
             </li>
@@ -126,6 +126,7 @@
                         <th>F & C</th>
                         <th>Prepaid</th>
                         <th>Collect</th>
+                        <th>BL House Number</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -134,6 +135,7 @@
                         <td>{{BL.cobro.nombreCobro}}</td>
                         <td>{{BL.prepaid}}</td>
                         <td>{{BL.collect}}</td>
+                        <td>{{BL.numeroBLHouse}}</td>
                         <td width="180">
                             <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
                             <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>

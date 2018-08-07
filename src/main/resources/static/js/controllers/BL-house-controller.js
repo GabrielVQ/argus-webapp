@@ -47,7 +47,9 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "contacto":"",
         "telefono":"",
         "fechaStacking":"",
-        "observacion":""
+        "observacion":"",
+        "imoClase":"",
+        "imoNumero":"",
     };
 
 

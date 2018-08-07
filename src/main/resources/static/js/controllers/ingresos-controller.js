@@ -50,7 +50,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
     $scope.numeroBLMaster = localStorage.getItem("token4");
     $scope.numeroOperacion = localStorage.getItem("token");
     $scope.numeroBLHouse = localStorage.getItem("token3");
-    console.log("controlador ingresos")
+   // console.log("controlador ingresos")
 
     var urlBaseIngreso = 'http://localhost:8080/ingresos/numerooperacion/'+$scope.numeroOperacion;
 

@@ -80,10 +80,10 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="BLHouseController">
+    <div class="container-fluid" ng-controller="editarBLHouseController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h4>Crear BL-House</h4>
+                <h4>Editar BL-House</h4>
             </div>
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
@@ -128,31 +128,53 @@
                         <ul class="input-group">
                             <hr>
                             <div class="col-md-6"><label class="col-md-4">Tipo House:</label>
-                                <select ng-model="newBLHouse.tipoHouse" class="col-md-8 withoutSearch" name="tipoHouse">
-                                    <option value="BLHijo" selected="selected">BL Hijo</option>
+                                <select ng-model="editarBLHouse.tipoHouse"  class="col-md-8 withoutSearch" name="tipoHouse">
+                                    <option value="BLHijo">BL Hijo</option>
                                     <option value="BLNieto">BL Nieto</option>
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Shipper</label>
+                                <!--
                                 <select  ng-model="newBLHouse.shipper" class="col-md-8 shipperSelect" >
                                     <option ng-repeat="ship in empresas"
                                             value="{{ship.id}}">{{ship.nombre_abrev}}
                                     </option>
-                                </select></div>
+                                </select>-->
+                                <select
+                                        name="shipper"
+                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-model="editarBLHouse.shipper"
+                                        class="col-md-8 shipperSelect" >
+                                </select>
+                            </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Cliente extranjero:</label>
+                                <!--
                                 <select  ng-model="newBLHouse.clienteExtranjero" class="col-md-8  clienteSelect">
                                     <option ng-repeat="cli in empresas"
                                             value="{{cli.id}}">{{cli.nombre_abrev}}
                                     </option>
+                                </select>-->
+                                <select
+                                        name="clienteExtranjero"
+                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-model="editarBLHouse.clienteExtranjero"
+                                        class="col-md-8 shipperSelect" >
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Notify:</label>
+                                <!--
                                 <select  ng-model="newBLHouse.notify" class="col-md-8  notifySelect">
                                     <option ng-repeat="noti in empresas"
                                             value="{{noti.id}}">{{noti.nombre_abrev}}
                                     </option>
+                                </select>-->
+                                <select
+                                        name="notify"
+                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-model="editarBLHouse.notify"
+                                        class="col-md-8 shipperSelect" >
                                 </select>
                             </div>
                         </ul>
@@ -164,7 +186,7 @@
 
                             <div class="col-md-6"><label class="col-md-4">PP/CC:</label>
 
-                                <select ng-model="newBLHouse.ppcc" class="col-md-8 withoutSearch" name="pp-cc">
+                                <select ng-model="editarBLHouse.ppcc" class="col-md-8 withoutSearch" name="pp-cc">
                                     <option value="prepaid" selected="selected">Prepaid</option>
                                     <option value="collect">Collect</option>
                                 </select>
@@ -172,7 +194,7 @@
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Moneda:</label>
 
-                                <select ng-model="newBLHouse.moneda" class="col-md-8 withoutSearch" name="monedaHouse">
+                                <select ng-model="editarBLHouse.moneda" class="col-md-8 withoutSearch" name="monedaHouse">
                                     <option value="Dolar USA" selected="selected">Dolar USA</option>
                                     <option value="pesos">CLP</option>
                                 </select>
@@ -180,10 +202,10 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Bultos:</label>
-                                <input ng-model="newBLHouse.bultos" class="col-md-8" type="text" name="bultos" >
+                                <input ng-model="editarBLHouse.bultos" class="col-md-8" type="text" name="bultos" >
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Carga:</label>
-                                <select ng-model="newBLHouse.carga" class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
+                                <select ng-model="editarBLHouse.carga" class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
                                     <option value="General" selected="selected">General</option>
                                     <option value="IMO">IMO</option>
                                 </select>
@@ -191,34 +213,34 @@
                         </ul>
                     </div>
                 </div>
-                        <div class="panel-body1">
-                            <div class="content col-md-12">
-                            <ul class="input-group">
+                <div class="panel-body1">
+                    <div class="content col-md-12">
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-2">Kilos:</label>
-                                <input ng-model="newBLHouse.kilos" class="col-md-3" type="number" name="Kilos" ><label class="col-md-2">KGs</label>
+                                <input ng-model="editarBLHouse.kilos" class="col-md-3" type="number" name="Kilos" ><label class="col-md-2">KGs</label>
                             </div>
-                                <div class="col-md-6"><label class="col-md-3">Volumen:</label>
-                                    <input ng-model="newBLHouse.volumen" class="col-md-3" type="number" name="Volumen"><label class="col-md-2">M<sup>3</sup></label>
-                                </div>
+                            <div class="col-md-6"><label class="col-md-3">Volumen:</label>
+                                <input ng-model="editarBLHouse.volumen" class="col-md-3" type="number" name="Volumen"><label class="col-md-2">M<sup>3</sup></label>
+                            </div>
                         </ul>
-                                <ul class="input-group">
-                                <div class="col-md-6"><label class="col-md-2">Flete:</label>
-                                    <input ng-model="newBLHouse.flete" class="col-md-7" type="text" name="Flete">
-                                </div>
-                                </ul>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-2">Flete:</label>
+                                <input ng-model="editarBLHouse.flete" class="col-md-7" type="text" name="Flete">
                             </div>
-                        </div>
+                        </ul>
+                    </div>
+                </div>
 
 
                 <div class="panel-body1" id="divCarga">
                     <div class="content col-md-12">
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">IMO Clase:</label>
-                                <input class="col-md-7" type="text" ng-model="newBLHouse.imoClase" name="IMOclase">
+                                <input ng-model="editarBLHouse.imoClase" class="col-md-7" type="text" name="IMOclase">
                             </div>
                             <div class="col-md-6">
                                 <label class="col-md-6">IMO Número:</label>
-                                <input class="col-md-7" ng-model="newBLHouse.imoNumero" type="text" name="IMOnumero">
+                                <input ng-model="editarBLHouse.imoNumero" class="col-md-7" type="text" name="IMOnumero">
                             </div>
                         </ul>
                     </div>
@@ -227,33 +249,46 @@
                     <div class="content col-md-12">
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
+                                <!--
                                 <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
                                     <option ng-repeat="e in empresas"
                                             value="{{e.id}}">{{e.nombre_abrev}}
                                     </option>
+                                </select>-->
+                                <select
+                                        name="almacenista"
+                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-model="editarBLHouse.almacenista"
+                                        class="col-md-8 shipperSelect" >
                                 </select>
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6">
                                 <label class="col-md-6">Pre-carriage:</label>
-                                <input ng-model="newBLHouse.preCarriage" class="col-md-7" type="text" name="Pre-carriage">
+                                <input ng-model="editarBLHouse.preCarriage" class="col-md-7" type="text" name="Pre-carriage">
                             </div>
                             <div class="col-md-6">
                                 <label class="col-md-6">Lugar de recepción:</label>
-                                <input ng-model="newBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion">
+                                <input ng-model="editarBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion">
                             </div>
                         </ul>
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-6">Destino:</label>
-                                <select ng-model="newBLHouse.ciudadLlegada" class="col-md-8 destinoSelect" name="destino">
+                            <div class="col-md-6"><label class="col-md-6">Destino:</label> <!-- en el modelo esta como ciudad llegada-->
+                                <!--<select ng-model="newBLHouse.ciudadLlegada" class="col-md-8 destinoSelect" name="destino">
                                     <option ng-repeat="e in ciudades"
                                             value="{{e.id}}">{{e.nombre}}
                                     </option>
+                                </select>-->
+                                <select
+                                        name="destino"
+                                        ng-options="emp.nombre for emp in ciudades track by emp.id"
+                                        ng-model="editarBLHouse.ciudadLlegada"
+                                        class="col-md-8 shipperSelect" >
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-6">Tipo de movimiento:</label>
-                                <select ng-model="newBLHouse.tipoMovimiento" class="col-md-8 withoutSearch" name="tipoCarga">
+                                <select ng-model="editarBLHouse.tipoMovimiento" class="col-md-8 withoutSearch" name="tipoCarga">
                                     <option value="LCL/LCL" selected="selected">LCL/LCL</option>
                                     <option value="FCL/FCL">FCL/FCL</option>
                                 </select>
@@ -261,16 +296,16 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
-                                <input ng-model="newBLHouse.contacto" class="col-md-8" type="text" name="contacto">
+                                <input ng-model="editarBLHouse.contacto" class="col-md-8" type="text" name="contacto">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Telefono:</label>
-                                <input ng-model="newBLHouse.telefono" class="col-md-8" type="text" name="telefono">
+                                <input ng-model="editarBLHouse.telefono" class="col-md-8" type="text" name="telefono">
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-5">
                                 <label class="col-md-6">Fecha stacking:</label>
-                                <input  ng-model="newBLHouse.fechaStacking" class="col-md-6" type="date" name="fechaStacking">
+                                <input  ng-model="fechaStacking" value={{fechaStacking}} required class="col-md-6" type="date" name="fechaStacking">
                             </div>
                             <div class="col-md-5">
                                 <label class="col-md-6">Hora stacking:</label>
@@ -279,7 +314,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Observación:</label>
-                                <input ng-model="newBLHouse.observacion" class="col-md-12" type="text" name="observacion">
+                                <input ng-model="editarBLHouse.observacion" class="col-md-12" type="text" name="observacion">
                             </div>
                         </ul>
                     </div>
@@ -291,35 +326,35 @@
                     <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
                     <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
                 </ul>
-                    </div>
-                </div>
             </div>
-            <script>
-                $(document).ready(function () {
-                    $('.withoutSearch').select2({
-                        minimumResultsForSearch: -1
-                    });
-                });
-                $(document).ready(function () {
-                    $('.shipperSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.clienteSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.notifySelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.almacenistaSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.destinoSelect').select2();
-                });
-                $(document).ready(function () {
-                    $('.reservaNavieraSelect').select2();
-                });
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.withoutSearch').select2({
+                minimumResultsForSearch: -1
+            });
+        });
+        $(document).ready(function () {
+            $('.shipperSelect').select2();
+        });
+        $(document).ready(function () {
+            $('.clienteSelect').select2();
+        });
+        $(document).ready(function () {
+            $('.notifySelect').select2();
+        });
+        $(document).ready(function () {
+            $('.almacenistaSelect').select2();
+        });
+        $(document).ready(function () {
+            $('.destinoSelect').select2();
+        });
+        $(document).ready(function () {
+            $('.reservaNavieraSelect').select2();
+        });
 
-            </script>
+    </script>
 
     <script>
         $(function() {
@@ -327,18 +362,18 @@
 
                 var selectValue = $(this).val();
 
-                    if (selectValue == "IMO") {
-                        $("#divCarga").show();
-                    }
-                    else{
-                        $("#divCarga").hide();
-                    }
+                if (selectValue == "IMO") {
+                    $("#divCarga").show();
+                }
+                else{
+                    $("#divCarga").hide();
+                }
                 //console.log(selectValue);
 
             }).change();
 
         });
     </script>
-        </div>
-    </div>
+</div>
+</div>
 </div>
