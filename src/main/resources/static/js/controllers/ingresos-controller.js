@@ -34,6 +34,8 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
             // console.log('status: ',response.status);
         });
 
+    var urlBaseIngreso = 'http://localhost:8080/ingresos/numerooperacion/'+$scope.numeroOperacion;
+
     $scope.send3 = function(){
 
         $scope.newIngresos.blHouse= {"id":parseInt($scope.BLHouseId)};
@@ -42,6 +44,12 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $http.post("http://localhost:8080/ingresos",$scope.newIngresos);
         $scope.mensaje = 'Ingresos agregado con exito!';
         $window.alert($scope.mensaje);
+
+        $http.get(urlBaseIngreso)
+        .then(function(response) {
+            $scope.ingresosBYoperacion = response.data;
+            console.log("ingresos por operacion ADENTRO ",$scope.ingresosBYoperacion);
+        });
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
@@ -52,11 +60,12 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
     $scope.numeroBLHouse = localStorage.getItem("token3");
    // console.log("controlador ingresos")
 
-    var urlBaseIngreso = 'http://localhost:8080/ingresos/numerooperacion/'+$scope.numeroOperacion;
+    
 
     $http.get(urlBaseIngreso)
         .then(function(response) {
             $scope.ingresosBYoperacion = response.data;
+            console.log("ingresos por operacion AFUERA ",$scope.ingresosBYoperacion);
         });
 
     $http.get('http://localhost:8080/containers').then(function(response){

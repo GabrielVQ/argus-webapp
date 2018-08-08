@@ -62,6 +62,24 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
         $scope.mensaje = 'Descripción agregada con exito!';
         $window.alert($scope.mensaje);
 
+        $http.get(urlBaseCargament)
+        .then(function(response) {
+            $scope.cargamentsBYoperacion = response.data;
+            //var i = 0;
+            //console.log("NUMERO BL HOUSE:", response.data[i].numeroBLHouse);
+            /*
+            while (i <= response.data.length) {
+                $scope.numHouse = parseInt(response.data[i].numeroBLHouse);
+                if ($scope.numeroBLHouse === parseInt(response.data[i].numeroBLHouse)) {
+                    $scope.cargamentsBYoperacion = response.data[i];
+                    console.log("TENGO house:", response.data[i].numeroBLHouse)
+                    break;
+                }
+                //console.log("no encontre")
+                i = i+1;
+            }*/
+        });
+
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
     }

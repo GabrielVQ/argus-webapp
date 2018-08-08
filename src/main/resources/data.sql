@@ -35,7 +35,6 @@ INSERT INTO public.navieras VALUES (13,'CIA. LATINOAMERICANA DE NAVEGACION S.A. 
 INSERT INTO public.navieras VALUES (14,'CARGONAUTS AIR & OCEAN CARGO                      ');
 INSERT INTO public.navieras VALUES (15,'ECULINE                                           ');
 INSERT INTO public.navieras VALUES (16,'COEXCO CHILE S.A.                                 ');
-INSERT INTO public.navieras VALUES (17,'HAMBURG SUD COLUMBUS LINE CHILE                   ');
 INSERT INTO public.navieras VALUES (18,'J.F. HILLEBRAND CHILE LTDA.- JFH                  ');
 INSERT INTO public.navieras VALUES (19,'IAN TAYLOR - CHILE                                ');
 INSERT INTO public.navieras VALUES (20,'K KIEN HUNG SERVICIO LEJANO ORIENTE               ');
@@ -157,7 +156,7 @@ INSERT INTO public.navieras VALUES (135,'SIN COMPA�IA EMBARQUE CO-LOADER      
 INSERT INTO public.navieras VALUES (136,'CIA. SUDAMERICANA DE VAPORES                      ');
 
 
-INSERT INTO public.puerto VALUES (1,'BUE','BUENOS AIRES'),(2,'MDQ','MAR DEL PLATA'),(16,'SLO','SAN LORENZO'), (13,'CAL','CALAMA'),(19416,'XGO','SANTIAGO');
+INSERT INTO public.puerto VALUES (1,'BUE','BUENOS AIRES'),(2,'MDQ','MAR DEL PLATA'),(16,'SLO','SAN LORENZO'), (13,'CAL','CALAMA'),(19416,'XGO','SANTIAGO'),(116,'VAL','VALPARAISO');
 
 
 INSERT INTO public.empresa VALUES (1,1,'Luis Videla','av. central park 123','almacenista','82596935','chilena','acme','ACME CORPORATION');

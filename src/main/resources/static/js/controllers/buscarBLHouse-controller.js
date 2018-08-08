@@ -1,4 +1,5 @@
-app.controller('buscarBLHouseController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('buscarBLHouseController', ['$scope', '$location', '$http','$routeParams', function($scope, $location, $http, $routeParams) {
+    
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     $scope.numeroOperacion = 1452;
