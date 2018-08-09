@@ -65,6 +65,8 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
         $http.get(urlBaseCargament)
         .then(function(response) {
             $scope.cargamentsBYoperacion = response.data;
+            
+            console.log("cargamentByoperacion", $scope.cargamentsBYoperacion);
             //var i = 0;
             //console.log("NUMERO BL HOUSE:", response.data[i].numeroBLHouse);
             /*

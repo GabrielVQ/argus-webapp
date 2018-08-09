@@ -66,13 +66,13 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
             var token2 = $scope.BLMaster[0].id;
             localStorage.setItem("token2", token2);
             //setea numero blmaster para ser usado en las vistas
-            var token4 = $scope.BLMaster[0].blmasterNumero;
+            $scope.numeroBLMaster = $scope.BLMaster[0].blmasterNumero;
             localStorage.setItem("token4", token4)
             //console.log('id dentro:',localStorage.getItem("token2"));
             console.log('bl numero dentro:',$scope.BLMaster[0].blmasterNumero);
         });
     $scope.idaux = localStorage.getItem("token2");
-    $scope.numeroBLMaster = localStorage.getItem("token4");
+    //$scope.numeroBLMaster = localStorage.getItem("token4");
 /*
    function setNumeroBLHouse(){
         var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
