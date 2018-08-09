@@ -137,12 +137,12 @@
                                 <!--
                                 <select  ng-model="newBLHouse.shipper" class="col-md-8 shipperSelect" >
                                     <option ng-repeat="ship in empresas"
-                                            value="{{ship.id}}">{{ship.nombre_abrev}}
+                                            value="{{ship.id}}">{{ship.nombreAbrev}}
                                     </option>
                                 </select>-->
                                 <select
                                         name="shipper"
-                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
                                         ng-model="editarBLHouse.shipper"
                                         class="col-md-8 shipperSelect" >
                                 </select>
@@ -153,12 +153,12 @@
                                 <!--
                                 <select  ng-model="newBLHouse.clienteExtranjero" class="col-md-8  clienteSelect">
                                     <option ng-repeat="cli in empresas"
-                                            value="{{cli.id}}">{{cli.nombre_abrev}}
+                                            value="{{cli.id}}">{{cli.nombreAbrev}}
                                     </option>
                                 </select>-->
                                 <select
                                         name="clienteExtranjero"
-                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
                                         ng-model="editarBLHouse.clienteExtranjero"
                                         class="col-md-8 shipperSelect" >
                                 </select>
@@ -167,12 +167,12 @@
                                 <!--
                                 <select  ng-model="newBLHouse.notify" class="col-md-8  notifySelect">
                                     <option ng-repeat="noti in empresas"
-                                            value="{{noti.id}}">{{noti.nombre_abrev}}
+                                            value="{{noti.id}}">{{noti.nombreAbrev}}
                                     </option>
                                 </select>-->
                                 <select
                                         name="notify"
-                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
                                         ng-model="editarBLHouse.notify"
                                         class="col-md-8 shipperSelect" >
                                 </select>
@@ -252,12 +252,12 @@
                                 <!--
                                 <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
                                     <option ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombre_abrev}}
+                                            value="{{e.id}}">{{e.nombreAbrev}}
                                     </option>
                                 </select>-->
                                 <select
                                         name="almacenista"
-                                        ng-options="emp.nombre_abrev for emp in empresas track by emp.id"
+                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
                                         ng-model="editarBLHouse.almacenista"
                                         class="col-md-8 shipperSelect" >
                                 </select>

@@ -15,7 +15,7 @@ public class Empresa {
 
     private int cod_agente;
     private String razon_social;
-    private String nombre_abrev;
+    private String nombreAbrev;
     private String nacionalidad;
     private String esNotifyAlmacenista;
     private String direccion;
@@ -44,8 +44,8 @@ public class Empresa {
         return confirmacion;
     }
 
-    public String getNombre_abrev() {
-        return nombre_abrev;
+    public String getNombreAbrev() {
+        return nombreAbrev;
     }
     public String getRazon_social(){
         return razon_social;

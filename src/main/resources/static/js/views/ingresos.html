@@ -131,7 +131,7 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat=" BL in ingresosBYoperacion ">
-                        <td>{{BL.facturara.nombre_abrev}}</td>
+                        <td>{{BL.facturara.nombreAbrev}}</td>
                         <td>{{BL.cobro.nombreCobro}}</td>
                         <td>{{BL.prepaid}}</td>
                         <td>{{BL.collect}}</td>
@@ -174,7 +174,7 @@
                         <div class="col-md-4"><label class="col-md-4">Facturar a:</label>
                             <select ng-model="newIngresos.facturara" class="col-md-4 empresaSelect"  >
                                 <option ng-repeat="container in empresas"
-                                        value="{{container.id}}">{{container.nombre_abrev}}
+                                        value="{{container.id}}">{{container.nombreAbrev}}
                                 </option>
                             </select>
                         </div>

@@ -33,6 +33,12 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         console.log('id: ',$scope.BLMaster);
         $scope.fechaZarpeValue = parseFecha($scope.BLMaster.fechaZarpe);
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
+        console.log("falops 1 ",$scope.BLMaster.agenteAduana);
+        var urlBase6 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
+        $http.get(urlBase6).then(function(response){  // campo: destino
+            $scope.razon_social = response.data[0].razon_social;
+            console.log("falops ",$scope.razon_social);
+        })
     });
 
     var token = $scope.bl;
@@ -123,6 +129,15 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
+    
+    
+    
 
+    $scope.selectedItemChanged = function(){
+        var urlBase5 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
+        $http.get(urlBase5).then(function(response){  // campo: destino
+        $scope.razon_social = response.data[0].razon_social;
+    })
+    }
 
 }]);

@@ -69,6 +69,12 @@ app.controller('partnerControllerEditar', ['$scope', '$location', '$http','$wind
 
     }
 
+    $scope.selectedItemChanged = function(){
+        var urlBase5 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.newBLMaster.agenteAduana;
+        $http.get(urlBase5).then(function(response){  // campo: destino
+        $scope.razon_social = response.data[0].razon_social;
+    })
+    }
     /*$scope.ciudades = function() {
         $http.get('http://localhost:8080/ciudades').then(function (response) {
             $scope.ciudades = response.data;});

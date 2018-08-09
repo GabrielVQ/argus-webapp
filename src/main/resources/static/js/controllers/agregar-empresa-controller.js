@@ -12,7 +12,7 @@ app.controller('agregarEmpresaController', ['$scope', '$location','$http','$wind
         "direccion": "",
         "fonoContacto": "",
         "nacionalidad": "",
-        "nombre_abrev": "",
+        "nombreAbrev": "",
         "razon_social": ""
     };
 

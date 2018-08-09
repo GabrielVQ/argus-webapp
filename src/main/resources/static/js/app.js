@@ -111,6 +111,14 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/buscarBLHouse.html',
             controller: 'buscarBLHouseController'
         })
+        .when('/rentaBuscar',{
+            templateUrl: 'js/views/rentaBuscarOperacion.html',
+            controller: 'rentaBuscarController'
+        })
+        .when('/rentaVer',{
+            templateUrl: 'js/views/rentaVerOperacion.html',
+            controller: 'rentaVerController'
+        })
                 .otherwise({
             redirectTo: '/login'
         });

@@ -253,17 +253,14 @@
                                  </select>-->
 
                                  <select ng-model="BLMaster.agenteAduana" class="col-md-8 agenteSelect"
-                                 name="agente">
-                             <option ng-repeat="e in empresas"
-                                     value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
-                             </option>
-                         </select>
-
-
+                                        name="agente" ng-change="selectedItemChanged()">
+                                    <option ng-repeat="e in empresas"
+                                            value="{{e.nombreAbrev}}">{{e.nombreAbrev}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  ng-model="BLMaster.razonsocial" type="textarea" disabled name="razonSocial">
-                            </div>
+                                <input class="col-md-8"  ng-model="razon_social" type="text" disabled name="razonSocial" value="{{}}"></div>
                         </ul>
                     </div>
 

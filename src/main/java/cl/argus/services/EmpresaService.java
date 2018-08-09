@@ -29,4 +29,11 @@ public class EmpresaService {
     public Empresa create(@RequestBody Empresa resource) {
         return empresaRepository.save(resource);
     }
+
+    @RequestMapping(value="/nombreabrev/{nombreAbrev}", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<Empresa> show(@PathVariable("nombreAbrev") String  nombreAbrev){
+        //String nOperacion = Integer.parseInt(id);
+        return empresaRepository.getByNombreAbrev(nombreAbrev);
+    }
 }

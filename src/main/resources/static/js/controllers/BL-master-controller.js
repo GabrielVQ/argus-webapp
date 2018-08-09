@@ -117,6 +117,13 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
                 }
             });
 
+    $scope.selectedItemChanged = function(){
+        var urlBase5 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.newBLMaster.agenteAduana;
+        $http.get(urlBase5).then(function(response){  // campo: destino
+        $scope.razon_social = response.data[0].razon_social;
+    })
+    }
+
     $scope.agregarContenedor = function(){
         $http.post("http://localhost:8080/containers",$scope.newContenedor);
         $scope.mensaje = 'Conetenedor agregado con exito!';

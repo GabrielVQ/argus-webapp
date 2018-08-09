@@ -233,14 +233,14 @@
                                  </select>-->
 
                                 <select ng-model="newBLMaster.agenteAduana" class="col-md-8 agenteSelect"
-                                        name="agente">
+                                        name="agente" ng-change="selectedItemChanged()">
                                     <option ng-repeat="e in empresas"
-                                            value="{{e.nombre_abrev}}">{{e.nombre_abrev}}
+                                            value="{{e.nombreAbrev}}">{{e.nombreAbrev}}
                                     </option>
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input class="col-md-8"  type="text" disabled name="razonSocial" value="{{}}"></div>
+                                <input class="col-md-8"  ng-model="razon_social" type="text" disabled name="razonSocial" value="{{}}"></div>
                         </ul>
                     </div>
                 </div>

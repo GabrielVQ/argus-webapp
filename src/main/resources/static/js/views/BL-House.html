@@ -136,7 +136,7 @@
                             <div class="col-md-6"><label class="col-md-4">Shipper</label>
                                 <select  ng-model="newBLHouse.shipper" class="col-md-8 shipperSelect" >
                                     <option ng-repeat="ship in empresas"
-                                            value="{{ship.id}}">{{ship.nombre_abrev}}
+                                            value="{{ship.id}}">{{ship.nombreAbrev}}
                                     </option>
                                 </select></div>
                         </ul>
@@ -144,14 +144,14 @@
                             <div class="col-md-6"><label class="col-md-6">Cliente extranjero:</label>
                                 <select  ng-model="newBLHouse.clienteExtranjero" class="col-md-8  clienteSelect">
                                     <option ng-repeat="cli in empresas"
-                                            value="{{cli.id}}">{{cli.nombre_abrev}}
+                                            value="{{cli.id}}">{{cli.nombreAbrev}}
                                     </option>
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Notify:</label>
                                 <select  ng-model="newBLHouse.notify" class="col-md-8  notifySelect">
                                     <option ng-repeat="noti in empresas"
-                                            value="{{noti.id}}">{{noti.nombre_abrev}}
+                                            value="{{noti.id}}">{{noti.nombreAbrev}}
                                     </option>
                                 </select>
                             </div>
@@ -229,7 +229,7 @@
                             <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
                                 <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
                                     <option ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombre_abrev}}
+                                            value="{{e.id}}">{{e.nombreAbrev}}
                                     </option>
                                 </select>
                             </div>

@@ -159,7 +159,7 @@ INSERT INTO public.navieras VALUES (136,'CIA. SUDAMERICANA DE VAPORES           
 INSERT INTO public.puerto VALUES (1,'BUE','BUENOS AIRES'),(2,'MDQ','MAR DEL PLATA'),(16,'SLO','SAN LORENZO'), (13,'CAL','CALAMA'),(19416,'XGO','SANTIAGO'),(116,'VAL','VALPARAISO');
 
 
-INSERT INTO public.empresa VALUES (1,1,'Luis Videla','av. central park 123','almacenista','82596935','chilena','acme','ACME CORPORATION');
+INSERT INTO public.empresa VALUES (1,1,'Luis Videla','av. central park 123','almacenista','82596935','chilena','acme','ACME CORPORATION') ,(2,2,'Francisco Gomez','av. providencia 123','almacenista','64996935','chilena','Alusa','ALUSA CHILE S.A.');
 
 INSERT INTO public.bodega VALUES (1,'Bodega_1','puerto Stanley',1),(2,'Bodega_2','puerto ABCD',1);
 
