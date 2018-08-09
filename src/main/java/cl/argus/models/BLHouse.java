@@ -215,4 +215,120 @@ public class BLHouse {
     public String getMoneda() {
         return moneda;
     }
+
+    public void setBlMaster(BLMaster blMaster) {
+        this.blMaster = blMaster;
+    }
+
+    public void setCiudadInicio(Ciudad ciudadInicio) {
+        this.ciudadInicio = ciudadInicio;
+    }
+
+    public void setCiudadLlegada(Ciudad ciudadLlegada) {
+        this.ciudadLlegada = ciudadLlegada;
+    }
+
+    public void setCargaments(Set<Cargament> cargaments) {
+        this.cargaments = cargaments;
+    }
+
+    public void setConfirmacion(ConfirmacionReserva confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setShipper(Empresa shipper) {
+        this.shipper = shipper;
+    }
+
+    public void setClienteExtranjero(Empresa clienteExtranjero) {
+        this.clienteExtranjero = clienteExtranjero;
+    }
+
+    public void setNotify(Empresa notify) {
+        this.notify = notify;
+    }
+
+    public void setNumeroOperacion(String numeroOperacion) {
+        this.numeroOperacion = numeroOperacion;
+    }
+
+    public void setPpcc(String ppcc) {
+        this.ppcc = ppcc;
+    }
+
+    public void setCarga(String carga) {
+        this.carga = carga;
+    }
+
+    public void setImoClase(String imoClase) {
+        this.imoClase = imoClase;
+    }
+
+    public void setImoNumero(String imoNumero) {
+        this.imoNumero = imoNumero;
+    }
+
+    public void setKilos(String kilos) {
+        this.kilos = kilos;
+    }
+
+    public void setVolumen(String volumen) {
+        this.volumen = volumen;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
+
+    public void setNumeroBLHouse(int numeroBLHouse) {
+        this.numeroBLHouse = numeroBLHouse;
+    }
+
+    public void setAlmacenista(Empresa almacenista) {
+        this.almacenista = almacenista;
+    }
+
+    public void setPreCarriage(String preCarriage) {
+        this.preCarriage = preCarriage;
+    }
+
+    public void setLugarRecepcion(String lugarRecepcion) {
+        this.lugarRecepcion = lugarRecepcion;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setFechaStacking(Date fechaStacking) {
+        this.fechaStacking = fechaStacking;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public void setFlete(String flete) {
+        this.flete = flete;
+    }
+
+    public void setBultos(String bultos) {
+        this.bultos = bultos;
+    }
+
+    public void setTipoMovimiento(String tipoMovimiento) {
+        this.tipoMovimiento = tipoMovimiento;
+    }
+
+    public void setTipoHouse(String tipoHouse) {
+        this.tipoHouse = tipoHouse;
+    }
 }

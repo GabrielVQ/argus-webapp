@@ -1,6 +1,7 @@
 package cl.argus.services;
 
 import cl.argus.controllers.PDFController;
+import cl.argus.repositories.BLHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +30,14 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/pdf")
 public class PDFService {
-
-
+    @Autowired
+    BLHouseRepository blHouseRepository;
 
     /*
      *
      * Descripci&oacute;n: Servicio que permite descargar pdf
      */
-    @RequestMapping(value = "/download",method = RequestMethod.GET)
+    @RequestMapping(value = "/download/",method = RequestMethod.GET)
     public void downloadPDF(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         final ServletContext servletContext = request.getSession().getServletContext();
@@ -49,7 +50,7 @@ public class PDFService {
 
         try {
             PDFController createpdf = new PDFController();
-            createpdf.createPDF(temperotyFilePath+"\\"+fileName,"Test");
+            createpdf.createPDF(temperotyFilePath+"\\"+fileName, 1L,blHouseRepository);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
             OutputStream os = response.getOutputStream();

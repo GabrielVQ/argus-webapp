@@ -10,5 +10,6 @@ import java.util.List;
 @Transactional
 public interface BLHouseRepository extends CrudRepository<BLHouse,Long>{
 
+    BLHouse getById(Long id);
     List <BLHouse> getByNumeroOperacion(String numeroOperacion);
 }
