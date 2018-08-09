@@ -219,7 +219,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getShipper().getNombre_abrev();
+        String name=blHouse.getShipper().getNombreAbrev();
 
 
         String direccion=blHouse.getShipper().getDireccion();

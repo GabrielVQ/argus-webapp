@@ -89,8 +89,8 @@ public class Empresa {
         this.nacionalidad = nacionalidad;
     }
 
-    public void setNombre_abrev(String nombre_abrev) {
-        this.nombre_abrev = nombre_abrev;
+    public void setNombre_abrev(String nombreAbrev) {
+        this.nombreAbrev = nombreAbrev;
     }
 
     public void setRazon_social(String razon_social) {
