@@ -159,13 +159,13 @@ INSERT INTO public.navieras VALUES (136,'CIA. SUDAMERICANA DE VAPORES           
 INSERT INTO public.puerto VALUES (1,'BUE','BUENOS AIRES'),(2,'MDQ','MAR DEL PLATA'),(16,'SLO','SAN LORENZO'), (13,'CAL','CALAMA'),(19416,'XGO','SANTIAGO'),(116,'VAL','VALPARAISO');
 
 
-INSERT INTO public.empresa VALUES (1,1,'Luis Videla','av. central park 123','almacenista','82596935','chilena','acme','ACME CORPORATION');
+INSERT INTO public.empresa VALUES (1,1,'Luis Videla','AVDA. PERIFERICO SUR 7980 EDIFICIO 3D SANTA MARIA TEQUEXPAN, 45601 MEXICO RFC:DME920609BE5\r\nCIUDAD DE MEXICO/MEXICO','almacenista','226793200','chilena','DELIMEX S.A.','DELIMEX DE MEXICO SA DE CV','89.010.400-2');
 
 INSERT INTO public.bodega VALUES (1,'Bodega_1','puerto Stanley',1),(2,'Bodega_2','puerto ABCD',1);
 
 INSERT INTO public.blmaster VALUES (1,'agencia aduana 1','eavendano','1224660',TRUE,'2010-12-03','2010-12-03','2011-01-04',123456,21,1,'Coloader','Importacion',1,1,1,2,1,2),(2,'agencia aduana 2','eavendano','1224660',TRUE,'2010-12-03','2010-12-03','2011-01-04',123456,21,2,'coloader','importacion',1,2,1,2,1,2);
 
-INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1, '2', null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1);
+INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1, '2', 1, 1, 1, 1,1, 1, 1, 1,1, 1, 1, 1,1,1, 1,1);
 
 INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 

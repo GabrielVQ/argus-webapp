@@ -1,6 +1,11 @@
 package cl.argus.controllers;
 
 
+import cl.argus.argusApplication;
+import cl.argus.repositories.BLHouseRepository;
+import cl.argus.repositories.BLMasterRepository;
+import cl.argus.models.BLMaster;
+import cl.argus.models.BLHouse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,40 +21,57 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 
 
+import javax.print.Doc;
 import javax.swing.*;
 
 /*
  * Clase para la creacion de documentos PDF que consta de distintos metodos para formato y posibilidades
  * de a&ntilde;adir componentes como titulos, subtitulos o tablas.
  */
+@CrossOrigin
+@RestController
 public class PDFController {
+
 
     private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 18,Font.BOLD);
     private static Font TIME_ROMAN_SMALL = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 
+    @Autowired
+    BLMasterRepository blMasterRepository;
+
+    BLHouse blHouse;
+    BLMaster blMaster;
+
     /**
      *
      * @param file
-     * @param nombre_usuario
+     * @param idBl
      * @return
      */
-    public Document createPDF(String file, String nombre_usuario) throws IOException {
+    public Document createPDF(String file, Long id,BLHouseRepository blHouseRepository) throws IOException {
 
         Document document = null;
 
+
         try {
-
-
+            blHouse=blHouseRepository.findOne(id);
+            System.out.println(blHouse.getShipper());
             document = new Document(PageSize.LETTER,1, 1, 2, 2);
 
             PdfWriter pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
 
             addMetaData(document);
-
-            addTitlePage(document,nombre_usuario);
+            addTitlePage(document);
             //TABLA DE DATOS
             PdfPTable tablaGeneral = new PdfPTable(2);
             tablaGeneral.setPaddingTop(0);
@@ -59,8 +81,12 @@ public class PDFController {
             PdfPTable tablaLeft = new PdfPTable(1);
             PdfPTable tablaRight= new PdfPTable(1);
             PdfPTable details= new PdfPTable(5);
+            PdfPTable pagos= new PdfPTable(5);
             details.setWidths(new float[] { 1, 0.5f,3.5f,0.7f,0.6f});
             details.setWidthPercentage(95);
+
+            pagos.setWidths(new float[] {1.5f,1.75f/2,1.75f/2,0.3f,-0.3f+3.5f/2+0.7f+0.6f});
+            pagos.setWidthPercentage(95);
 
 
             createShipper(tablaLeft);
@@ -97,7 +123,15 @@ public class PDFController {
             createMeasurement(details);
             document.add(details);
             /////
-
+            document.add(new Paragraph("\n",new Font(Font.FontFamily.HELVETICA, 6)));
+            createTitleCostos(pagos);
+            createFreightAndCharges(pagos);
+            createPrepaid(pagos);
+            createCollect(pagos);
+            createVoid(pagos);
+            createAnnounce(pagos);
+            createTotalCollectPrepaid(pagos);
+            document.add(pagos);
 
             document.close();
 
@@ -126,7 +160,7 @@ public class PDFController {
      * @throws DocumentException
      */
 
-    private void addTitlePage(Document document, String nombre_usuario)
+    private void addTitlePage(Document document)
             throws DocumentException {
 
         Paragraph preface = new Paragraph();
@@ -185,23 +219,35 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String name=blHouse.getShipper().getNombre_abrev();
+
+
+        String direccion=blHouse.getShipper().getDireccion();
+        String[] direcciones= direccion.split("\\n");
+
+        String rut=blHouse.getShipper().getRut();
+        String fono=blHouse.getShipper().getFonoContacto();
+
+
 
         ///SHIPPER
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("SHIPPER",title));
         celda.add("\n");
-        celda.add(new Paragraph("ALUSA CHILE S.A.",contentBold));
+        celda.add(new Paragraph( name,contentBold));
         celda.add("\n");
-        celda.add(new Paragraph("AVDA. PDTE. EDUARDO FREI MONTALVA N°9160",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("SANTIAGO CHILE",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("RUT : 89.010.400-2  F:226793200\n",contentBold));
+        for (String cosa:direcciones) {
+            System.out.println(cosa);
+            celda.add(new Paragraph(cosa,contentBold));
+            celda.add("\n");
+        }
+        celda.add(new Paragraph("RUT:"+rut,contentBold));
+        celda.add(new Paragraph("    FONO:"+fono,contentBold));
         PdfPCell c1 = new PdfPCell(celda);
 
         table.addCell(c1);
 
-    }
+        }
 
     private void createConsignee(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
@@ -219,7 +265,7 @@ public class PDFController {
         celda.add("\n");
         celda.add(new Paragraph("TEQUEPEXPAN, 45601 MEXICO RFC:DME920609BE5 ",contentBold));
         celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n",contentBold));
+        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",contentBold));
         PdfPCell c1 = new PdfPCell(celda);
 
         table.addCell(c1);
@@ -241,7 +287,7 @@ public class PDFController {
         celda.add("\n");
         celda.add(new Paragraph("TEQUEPEXPAN, 45601 MEXICO RFC:DME920609BE5 ",contentBold));
         celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO",contentBold));
+        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",contentBold));
         PdfPCell c1 = new PdfPCell(celda);
 
         table.addCell(c1);
@@ -425,7 +471,7 @@ public class PDFController {
         celda.add("\n");
         celda.add(new Paragraph("ALMIRANTE SEÑORET 151 OF 113 ",content));
         celda.add("\n");
-        celda.add(new Paragraph("VALPARAISO/CHILE\n",content));
+        celda.add(new Paragraph("VALPARAISO/CHILE\n\n",content));
         PdfPCell c1 = new PdfPCell(celda);
 
 
@@ -447,7 +493,7 @@ public class PDFController {
         celda.add("\n");
         celda.add(new Paragraph("JUAREZ CIUDDA DE MEXICO C.P. 06600 ",content));
         celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO",content));
+        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",content));
         PdfPCell c1 = new PdfPCell(celda);
 
 
@@ -479,7 +525,7 @@ public class PDFController {
 
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("FOR RELEASE OF >GOODS APPLY TO",title));
-        celda.add("\n");
+        celda.add("\n\n\n\n\n");
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -497,18 +543,21 @@ public class PDFController {
         celda.add(new Paragraph("MARK AND NUMBERS",contentBold));
         PdfPCell cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cl);
 
         celda = new Paragraph();
         celda.add(new Paragraph("NUMBERS OF PACKAGES",contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cl);
 
         celda = new Paragraph();
         celda.add(new Paragraph("DESCRIPTION OF GODS",contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cl);
 
 
@@ -516,6 +565,7 @@ public class PDFController {
         celda.add(new Paragraph("GROSS WEIGHT",contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cl);
 
 
@@ -523,6 +573,7 @@ public class PDFController {
         celda.add(new Paragraph("MEASUREMENT",contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cl);
     }
 
@@ -549,9 +600,9 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add((new Paragraph("1",content)));
         celda.add(" ");
-        celda.setAlignment(Element.ALIGN_RIGHT);
-        PdfPCell c1 = new PdfPCell(celda);
 
+        PdfPCell c1 = new PdfPCell(celda);
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 
         table.addCell(c1);
 
@@ -575,7 +626,9 @@ public class PDFController {
                 "CODIGO ARANCEL: 3920.1010\n\n" +
                 "PAIS DE ORIGEN : CHILE \n" +
                 "CLEAN ON BOARD \n" +
-                "FREIGHT COLLECT\n",content));
+                "FREIGHT COLLECT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",content));
+
+
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -592,11 +645,11 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("1.487,46",content));
         celda.add(" ");
-        celda.setAlignment(Element.ALIGN_RIGHT);
 
-        PdfPCell c1 = new PdfPCell(celda);
 
-        table.addCell(c1);
+        PdfPCell cl = new PdfPCell(celda);
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
 
     }
 
@@ -614,5 +667,174 @@ public class PDFController {
         table.addCell(c1);
 
     }
+
+    private void createTitleCostos(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 6, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+        Paragraph celda = new Paragraph();
+        celda.add(new Paragraph("FREIGHT AND CHARGES",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("PREAPAID",contentBold));
+        cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("COLLECT",contentBold));
+        cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+
+        cl.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cl);
+
+    }
+
+    private void createFreightAndCharges(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+
+        Paragraph celda = new Paragraph();
+        celda = new Paragraph();
+        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+
+        table.addCell(cl);
+    }
+
+    private void createPrepaid(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+
+        Paragraph celda = new Paragraph();
+        celda = new Paragraph();
+        celda.add(new Paragraph("\n\n\n\n",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+
+        table.addCell(cl);
+    }
+
+    private void createCollect(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+        Paragraph celda = new Paragraph();
+        celda = new Paragraph();
+        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+
+        table.addCell(cl);
+    }
+    private void createVoid(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+        Paragraph celda = new Paragraph();
+        celda = new Paragraph();
+        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+
+        table.addCell(cl);
+    }
+    private void createAnnounce(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 7);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 7, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 6);
+
+        Paragraph celda = new Paragraph();
+        celda.add(new Paragraph("" +
+                        "Received by Carrier for shipment by ocean vesel between port\n" +
+                        "of loading and port of discharge, and for arrangement or\n"+
+                        "procurement of pre-carriage from please of receip and on-carriage\n"+
+                        "to please of delivery, where stated above, the goods as specified\n" +
+                        "above in apparent good order and condition unless otherwise\n" +
+                        "stated. The goods to be delivered at the above mentioned port\n" +
+                        "of discharge or please of delivery, whichever is applicable, subject\n" +
+                        "always to the exceptions, limitations, conditions and liberties set\n" +
+                        "out the reverse side hereof, to whitch the Shipper and/or\n" +
+                        "Consignee agree to accepting this Bill of Lading.\n" +
+                        "In witness where of the original Bill of Lading all of this tenor\n" +
+                        "and date have been signed in then number stated above, one of\n" +
+                        " whitch being accomplished the other(s) to be void.\n\n" ,content));
+        celda.add(new Paragraph("DATED AT:\t",title));
+        celda.add(new Paragraph("  SAN ANTONIO 27 DE MAYO 2018\n\n",contentBold));
+        celda.add(new Paragraph("BY       \t:",title));
+        celda.add(new Paragraph("    BY ARGUS LOGISTICA LIMITADA\n",contentBold));
+
+
+        PdfPCell cl =new PdfPCell(celda);
+        cl.setPadding(20);
+        table.addCell(cl);
+    }
+
+
+    private void createTotalCollectPrepaid(PdfPTable table) throws DocumentException{
+        Font title = new Font(Font.FontFamily.HELVETICA, 6);
+        Font contentBold = new Font(Font.FontFamily.HELVETICA, 6, Font.BOLD);
+        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+        Paragraph celda = new Paragraph();
+        celda.add(new Paragraph("TOTAL PREPAID / COLLECT ",contentBold));
+        PdfPCell cl =new PdfPCell(celda);
+        cl.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+        cl.setBackgroundColor(new BaseColor(0,255,255));
+
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+
+        table.addCell(cl);
+
+        celda = new Paragraph();
+        celda.add(new Paragraph("",contentBold));
+        cl =new PdfPCell(celda);
+
+
+        table.addCell(cl);
+    }
+
+
+
 
 }

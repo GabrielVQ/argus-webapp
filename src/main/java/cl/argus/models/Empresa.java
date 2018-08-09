@@ -21,7 +21,7 @@ public class Empresa {
     private String direccion;
     private String contacto;
     private String fonoContacto;
-
+    private String rut;
 
 
 
@@ -31,6 +31,8 @@ public class Empresa {
     @JsonIgnore
     @OneToMany( mappedBy = "empresa",fetch = FetchType.EAGER)
     private Set<ConfirmacionReserva> confirmacion;
+
+
 
     public long getId() {
         return id;
@@ -43,6 +45,7 @@ public class Empresa {
     public Set<ConfirmacionReserva> getConfirmacion() {
         return confirmacion;
     }
+    public String getRut(){return rut;}
 
     public String getNombre_abrev() {
         return nombre_abrev;
@@ -60,5 +63,45 @@ public class Empresa {
     public String getFonoContacto() {return fonoContacto;}
     public Set<Bodega> getBodegas() {
         return bodegas;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public void setFonoContacto(String fonoContacto) {
+        this.fonoContacto = fonoContacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setEsNotifyAlmacenista(String esNotifyAlmacenista) {
+        this.esNotifyAlmacenista = esNotifyAlmacenista;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public void setNombre_abrev(String nombre_abrev) {
+        this.nombre_abrev = nombre_abrev;
+    }
+
+    public void setRazon_social(String razon_social) {
+        this.razon_social = razon_social;
+    }
+
+    public void setCod_agente(int cod_agente) {
+        this.cod_agente = cod_agente;
+    }
+
+    public String getEsNotifyAlmacenista() {
+        return esNotifyAlmacenista;
     }
 }
