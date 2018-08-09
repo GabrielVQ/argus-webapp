@@ -145,6 +145,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         //console.log($scope.naves);
     })
 
+
     $http.get('http://localhost:8080/puertos').then(function(response){   //campos: pto origen y descarga
         $scope.puertos = response.data;
         //console.log($scope.puertos);
