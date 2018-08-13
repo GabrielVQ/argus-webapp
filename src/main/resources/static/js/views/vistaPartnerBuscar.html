@@ -54,7 +54,8 @@
                 <div class="col-md-6">
                     <input ng-model="op_num" id="msgNumOperacion" type="text" class="form-control " name="msgNumOperacion" placeholder="buscar por N° operación..."> 
                     <br>
-                    <input class="btn btn-primary btn-sm" ng-click="search()" type="submit"  type="button" value="Buscar">
+<a  ng-click="search()"  class=" font-white btn btn-primary btn-xs"  role="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+
                 </div>
                 
             </div>
@@ -67,7 +68,6 @@
                     <th>BL Number</th>
                     <th>Creado por</th>
                     <th>Fecha Ingreso</th>
-                    <th></th>
 
                 </tr>
                 </thead>
@@ -78,8 +78,8 @@
                     <td>{{BL.agenteCreador}}</td>
                     <td>{{BL.fechaIngreso}}</td>
                     <td>
-                        <a href="#!/partnerEditar/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
-                        <a href="" class="btn btn-info btn-xs" role="button">Pdf</a>
+                        <a href="#!/partnerEditar/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                        <a href="" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-pdf-o"></i> Pdf</a>
                     </td>
                 </tr>
                 </tbody>

@@ -119,7 +119,6 @@
                         <th>BL Number</th>
                         <th>BL-House Number</th>
                         <th>Creado por</th>
-                        <th></th>
 
                     </tr>
                     </thead>
@@ -130,9 +129,9 @@
                         <td>{{BL.numeroBLHouse}}</td>
                         <td>{{BL.blMaster[0].fechaIngreso}}</td>
                         <td>
-                            <a href="" class="btn btn-info btn-xs" role="button">Pdf</a>
-                            <a href="#!/editarBLHouse/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-primary btn-xs" role="button">Editar</a>
-                            <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
+                            <a href="" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-pdf-o"></i> Pdf</a>
+                            <a href="#!/editarBLHouse/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                            <a href="" class="btn btn-danger btn-xs" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</a>
                         </td>
                     </tr>
                     </tbody>
