@@ -156,7 +156,7 @@ public class PDFController {
     /**
      *
      * @param document
-     * @param nombre_usuario
+     * @param
      * @throws DocumentException
      */
 
@@ -254,18 +254,24 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String name=blHouse.getNotify().getNombreAbrev();
+        String direccion=blHouse.getNotify().getDireccion();
+        String[] direcciones= direccion.split("\\n");
 
-
+        String rut=blHouse.getShipper().getRut();
+        String fono=blHouse.getShipper().getFonoContacto();
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("CONSIGNEE",title));
         celda.add("\n");
-        celda.add(new Paragraph("DELIMEX DE MEXICO SA DE CV ",contentBold));
+        celda.add(new Paragraph( name,contentBold));
         celda.add("\n");
-        celda.add(new Paragraph("AVDA PERIFERICO SUR 7980  EDIFICIO 3D SANTA MARIA ",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("TEQUEPEXPAN, 45601 MEXICO RFC:DME920609BE5 ",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",contentBold));
+        for (String cosa:direcciones) {
+            System.out.println(cosa);
+            celda.add(new Paragraph(cosa,contentBold));
+            celda.add("\n");
+        }
+        celda.add(new Paragraph("RUT:"+rut,contentBold));
+        celda.add(new Paragraph("    FONO:"+fono,contentBold));
         PdfPCell c1 = new PdfPCell(celda);
 
         table.addCell(c1);
@@ -276,18 +282,24 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String name=blHouse.getNotify().getNombreAbrev();
+        String direccion=blHouse.getNotify().getDireccion();
+        String[] direcciones= direccion.split("\\n");
 
-
+        String rut=blHouse.getShipper().getRut();
+        String fono=blHouse.getShipper().getFonoContacto();
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("NOTIFY PARTY",title));
         celda.add("\n");
-        celda.add(new Paragraph("DELIMEX DE MEXICO SA DE CV",contentBold));
+        celda.add(new Paragraph( name,contentBold));
         celda.add("\n");
-        celda.add(new Paragraph("AVDA PERIFERICO SUR 7980  EDIFICIO 3D SANTA MARIA ",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("TEQUEPEXPAN, 45601 MEXICO RFC:DME920609BE5 ",contentBold));
-        celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",contentBold));
+        for (String cosa:direcciones) {
+            System.out.println(cosa);
+            celda.add(new Paragraph(cosa,contentBold));
+            celda.add("\n");
+        }
+        celda.add(new Paragraph("RUT:"+rut,contentBold));
+        celda.add(new Paragraph("    FONO:"+fono,contentBold));
         PdfPCell c1 = new PdfPCell(celda);
 
         table.addCell(c1);
@@ -299,6 +311,8 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String precarriage= blHouse.getPreCarriage();
+        String place= blHouse.getLugarRecepcion();
 
         PdfPTable tablita = new PdfPTable(2);
 
@@ -306,7 +320,7 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("PRECARRIAGE",title));
         celda.add("\n");
-        celda.add(new Paragraph(" ",content));
+        celda.add(new Paragraph(precarriage,content));
         PdfPCell cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -332,6 +346,9 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String vessel= blHouse.getBlMaster().getNave().getNombre();
+        String loading=blHouse.getBlMaster().getPuertoOrigen().getNombre();
+
 
         PdfPTable tablita = new PdfPTable(2);
 
@@ -339,7 +356,7 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("OCEAN VESSEL",title));
         celda.add("\n");
-        celda.add(new Paragraph("XIN YA ZHOU V.132",content));
+        celda.add(new Paragraph(vessel,content));
         PdfPCell cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -348,7 +365,7 @@ public class PDFController {
         celda= new Paragraph();
         celda.add(new Paragraph("PORT OF LOADING",title));
         celda.add("\n");
-        celda.add(new Paragraph("SAN ANTONIO",content));
+        celda.add(new Paragraph(loading,content));
         cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -365,6 +382,8 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String descarga=blHouse.getBlMaster().getPuertoDescarga().getNombre();
+        String place=blHouse.getCiudadLlegada().getNombre();
 
         PdfPTable tablita = new PdfPTable(2);
 
@@ -372,7 +391,7 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("PORT OF DISCHARGE",title));
         celda.add("\n");
-        celda.add(new Paragraph("MANZANILLO",content));
+        celda.add(new Paragraph(descarga,content));
         PdfPCell cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -381,7 +400,7 @@ public class PDFController {
         celda= new Paragraph();
         celda.add(new Paragraph("PLACE OF DELIVERY",title));
         celda.add("\n");
-        celda.add(new Paragraph("MANZANILLO",content));
+        celda.add(new Paragraph(place,content));
         cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -398,7 +417,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-
+        String tipo=blHouse.getTipoMovimiento() ;
         PdfPTable tablita = new PdfPTable(2);
 
         //TYPE OF MOVE
