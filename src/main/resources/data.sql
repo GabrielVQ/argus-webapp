@@ -164,7 +164,7 @@ INSERT INTO public.bodega VALUES (1,'Bodega_1','puerto Stanley',1),(2,'Bodega_2'
 
 INSERT INTO public.blmaster VALUES (1,'DELIMEX','eavendano','1224660',TRUE,'2010-12-03','2010-12-03','2011-01-04',123456,21,1,'Coloader','Importacion',1,1,1,2,1,2),(2,'Alusa','eavendano','1224660',TRUE,'2010-12-03','2010-12-03','2011-01-04',123456,21,2,'coloader','importacion',1,2,1,2,1,2);
 
-INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1, '2', 1, 1, 1, 1,1, 1, 1, 1,1, 1, 1, 1,1,1, 1,1);
+INSERT INTO public.blhouse VALUES (1, 1, 1, 2, null, '4', '5', '6', '7', '8', 1, '2', 1, 1, 1, 1,1, 1, 1, 1,1, 1, 1, 1,1,1, 1,1,1);
 
 INSERT INTO public.confirmacion_reserva VALUES(1,FALSE,'pendiente',1,1);
 

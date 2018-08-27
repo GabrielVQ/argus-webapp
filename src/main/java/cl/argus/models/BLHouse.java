@@ -50,6 +50,11 @@ public class BLHouse {
     @JoinColumn(name="notify")
     private Empresa notify;
 
+    @ManyToOne
+    @JoinColumn(name="consignee")
+    private Empresa consignee;
+
+
     private String numeroOperacion;
 
     private String ppcc;
@@ -66,7 +71,7 @@ public class BLHouse {
 
     private String moneda;
 
-    private int numeroBLHouse;
+    private String numeroBLHouse;
 
     @ManyToOne
     @JoinColumn(name="almacenista")
@@ -79,6 +84,8 @@ public class BLHouse {
     private String contacto;
 
     private String telefono;
+
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd/MM/yyyy' a las 'HH:mm")
@@ -208,7 +215,7 @@ public class BLHouse {
         return numeroOperacion;
     }
 
-    public int getNumeroBLHouse() {
+    public String getNumeroBLHouse() {
         return numeroBLHouse;
     }
 
@@ -284,7 +291,7 @@ public class BLHouse {
         this.moneda = moneda;
     }
 
-    public void setNumeroBLHouse(int numeroBLHouse) {
+    public void setNumeroBLHouse(String numeroBLHouse) {
         this.numeroBLHouse = numeroBLHouse;
     }
 
@@ -330,5 +337,13 @@ public class BLHouse {
 
     public void setTipoHouse(String tipoHouse) {
         this.tipoHouse = tipoHouse;
+    }
+
+    public Empresa getConsignee() {
+        return consignee;
+    }
+
+    public void setConsignee(Empresa consignee) {
+        this.consignee = consignee;
     }
 }

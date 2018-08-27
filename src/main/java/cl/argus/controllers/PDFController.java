@@ -2,6 +2,7 @@ package cl.argus.controllers;
 
 
 import cl.argus.argusApplication;
+import cl.argus.models.Cargament;
 import cl.argus.repositories.BLHouseRepository;
 import cl.argus.repositories.BLMasterRepository;
 import cl.argus.models.BLMaster;
@@ -254,12 +255,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getNotify().getNombreAbrev();
-        String direccion=blHouse.getNotify().getDireccion();
+        String name=blHouse.getConsignee().getNombreAbrev();
+        String direccion=blHouse.getConsignee().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
-        String rut=blHouse.getShipper().getRut();
-        String fono=blHouse.getShipper().getFonoContacto();
+        String rut=blHouse.getConsignee().getRut();
+        String fono=blHouse.getConsignee().getFonoContacto();
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("CONSIGNEE",title));
         celda.add("\n");
@@ -424,11 +425,10 @@ public class PDFController {
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("TYPE OF MOVE",title));
         celda.add("\n");
-        celda.add(new Paragraph("FCL/FCL",content));
+        celda.add(new Paragraph(tipo,content));
         PdfPCell cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
-
         //Port of loading
         celda= new Paragraph();
         celda.add(new Paragraph("CONTAINERIZED (vessel only)",title));
@@ -450,23 +450,24 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-
+        String  docNumber = blHouse.getNumeroOperacion();
+        String blNumber= blHouse.getNumeroBLHouse();
         PdfPTable tablita = new PdfPTable(2);
 
         //docNumber
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("DOCUMENT NUMBER",title));
         celda.add("\n");
-        celda.add(new Paragraph("ARG 753",content));
+        celda.add(new Paragraph(docNumber,content));
         PdfPCell cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
 
         //BLnumber
         celda= new Paragraph();
-        celda.add(new Paragraph("DocumentNumber",title));
+        celda.add(new Paragraph("B/L Number",title));
         celda.add("\n");
-        celda.add(new Paragraph("ARGEM20170548",content));
+        celda.add(new Paragraph(blNumber,content));
         cl= new PdfPCell(celda);
 
         tablita.addCell(cl);
@@ -482,6 +483,8 @@ public class PDFController {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
+
+
 
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("EXPORT REFERENCES",title));
@@ -503,6 +506,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        String forwarding;
+
+        /////////////////////////////////////////////////////////////////////
+        //FALTA ESTO ESTO ESTO ESTO
+        /////////////////////////////////////////////////////////////////////
+
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("FORWARDING AGENT",title));
         celda.add("\n");
@@ -510,7 +519,7 @@ public class PDFController {
         celda.add("\n");
         celda.add(new Paragraph("AVDA PASEO DE LA REFORMA N° 222 PISO 15 COL. ",content));
         celda.add("\n");
-        celda.add(new Paragraph("JUAREZ CIUDDA DE MEXICO C.P. 06600 ",content));
+        celda.add(new Paragraph("JUAREZ CIUDAD DE MEXICO C.P. 06600 ",content));
         celda.add("\n");
         celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",content));
         PdfPCell c1 = new PdfPCell(celda);
@@ -601,8 +610,10 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+        Cargament carga= blHouse.getCargaments().iterator().next();
+
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph("CONTAINER\nXINU 11911-5\nS/ WHL1664697",content));
+        celda.add(new Paragraph("CONTAINTER\n"+carga.getMarkNumbers(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -616,8 +627,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
+        Cargament carga= blHouse.getCargaments().iterator().next();
+
+
         Paragraph celda= new Paragraph();
-        celda.add((new Paragraph("1",content)));
+        celda.add((new Paragraph(carga.getNumerPackages(),content)));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -631,21 +646,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
+        Cargament carga= blHouse.getCargaments().iterator().next();
+
+
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph("x20 STD CONTAINER STC\n" +
-                "5 PALLETS CON 24 BOBINAS DE: \n" +
-                "COMPLEJO DE ALUMINIO 7 MIC. LAMINADO CON FILM DE\n" +
-                "POLYESTER 12 MIC. Y POLIETILENO 100 MIC. EN BOBINAS \n" +
-                "IMPRESAS\n" +
-                "6.374,00 MTS. 21066 PELICULA LAMINADA KETCHUP 90G\n" +
-                "CODIGO ARANCEL: 7607.2090 \n" +
-                "FILM DE POLIETILENO 90 MIC. LAMINADO CON FILM DE\n" +
-                "POLYESTER 12 MIC. EN BOBINAS IMPRESAS\n" +
-                "25.360,00 MTS. 21283 PAPILLA PLATANO 113G\n" +
-                "CODIGO ARANCEL: 3920.1010\n\n" +
-                "PAIS DE ORIGEN : CHILE \n" +
-                "CLEAN ON BOARD \n" +
-                "FREIGHT COLLECT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",content));
+        celda.add(new Paragraph(carga.getDescriptionGoods(),content));
 
 
         celda.add(" ");
@@ -661,8 +667,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
+        Cargament carga= blHouse.getCargaments().iterator().next();
+
+
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph("1.487,46",content));
+        celda.add(new Paragraph(carga.getGroosWeight(),content));
         celda.add(" ");
 
 
@@ -677,8 +687,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
+        Cargament carga= blHouse.getCargaments().iterator().next();
+
+
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(" ",content));
+        celda.add(new Paragraph(carga.getMeasurement(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);

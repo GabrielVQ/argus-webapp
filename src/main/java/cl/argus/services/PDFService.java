@@ -5,12 +5,7 @@ import cl.argus.repositories.BLHouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import java.io.ByteArrayOutputStream;
@@ -37,8 +32,8 @@ public class PDFService {
      *
      * Descripci&oacute;n: Servicio que permite descargar pdf
      */
-    @RequestMapping(value = "/download/",method = RequestMethod.GET)
-    public void downloadPDF(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/download/{id}",method = RequestMethod.GET)
+    public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
 
         final ServletContext servletContext = request.getSession().getServletContext();
         final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
@@ -50,7 +45,7 @@ public class PDFService {
 
         try {
             PDFController createpdf = new PDFController();
-            createpdf.createPDF(temperotyFilePath+"\\"+fileName, 1L,blHouseRepository);
+            createpdf.createPDF(temperotyFilePath+"\\"+fileName, id,blHouseRepository);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
             OutputStream os = response.getOutputStream();
