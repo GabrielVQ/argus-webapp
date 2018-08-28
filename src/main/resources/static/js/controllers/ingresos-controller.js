@@ -52,7 +52,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         });
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
-
+        $window.location.reload();
     }
 
     $scope.numeroBLMaster = localStorage.getItem("token4");
@@ -60,7 +60,14 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
     $scope.numeroBLHouse = localStorage.getItem("token3");
    // console.log("controlador ingresos")
 
-    
+    $scope.borrar = function(id){
+        var opcion = confirm("¿Seguro que desea eliminar el ingreso?");
+        if (opcion == true) {
+            $http.delete("http://localhost:8080/ingresos/ingresoBorrar/" + id);
+            $window.alert("Ingreso eliminado");
+            $window.location.reload();
+        }
+    }
 
     $http.get(urlBaseIngreso)
         .then(function(response) {

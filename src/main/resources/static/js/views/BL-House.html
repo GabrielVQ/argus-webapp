@@ -87,7 +87,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a href="" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
@@ -187,8 +187,8 @@
                             <div class="col-md-6"><label class="col-md-4">Moneda:</label>
 
                                 <select ng-model="newBLHouse.moneda" class="col-md-8 withoutSearch" name="monedaHouse">
-                                    <option value="Dolar USA" selected="selected">Dolar USA</option>
-                                    <option value="pesos">CLP</option>
+                                    <option value="USD" selected="selected">Dolar USA</option>
+                                    <option value="CLP">CLP</option>
                                 </select>
                             </div>
                         </ul>
@@ -303,7 +303,7 @@
                     <input class="btn btn-primary btn-sm" type="button" value="Reserva">
                     <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                     <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
-                    <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
+                    <input class="btn btn-primary btn-sm" ng-click="cancelar()" type="button" value="Cancelar">
                 </ul>
                     </div>
                 </div>

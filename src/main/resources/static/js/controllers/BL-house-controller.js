@@ -67,6 +67,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
             localStorage.setItem("token2", token2);
             //setea numero blmaster para ser usado en las vistas
             $scope.numeroBLMaster = $scope.BLMaster[0].blmasterNumero;
+            var token4 = $scope.numeroBLMaster;
             localStorage.setItem("token4", token4)
             //console.log('id dentro:',localStorage.getItem("token2"));
             console.log('bl numero dentro:',$scope.BLMaster[0].blmasterNumero);
@@ -174,6 +175,9 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
 
+    }
+    $scope.cancelar = function(){
+        $window.location.reload();
     }
    // console.log($scope.idaux);
     //peticion de servicios

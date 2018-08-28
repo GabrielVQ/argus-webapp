@@ -1,7 +1,11 @@
 package cl.argus.services;
 
 import cl.argus.controllers.PDFController;
+import cl.argus.models.BLMaster;
 import cl.argus.repositories.BLHouseRepository;
+import cl.argus.repositories.BLMasterRepository;
+import cl.argus.repositories.CargamentRepository;
+import cl.argus.repositories.IngresoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,25 +31,30 @@ import javax.servlet.http.HttpServletResponse;
 public class PDFService {
     @Autowired
     BLHouseRepository blHouseRepository;
-
+    @Autowired
+    BLMasterRepository blMasterRepository;
+    @Autowired
+    CargamentRepository cargamentRepository;
+    @Autowired
+    IngresoRepository ingresoRepository;
     /*
      *
      * Descripci&oacute;n: Servicio que permite descargar pdf
      */
-    @RequestMapping(value = "/download/{id}",method = RequestMethod.GET)
-    public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
+    @RequestMapping(value = "/download/{numeroOperacion}/{numeroBLHouse}",method = RequestMethod.GET)
+    public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("numeroOperacion") int numeroOperacion, @PathVariable("numeroBLHouse") int numeroBLHouse) throws IOException {
 
         final ServletContext servletContext = request.getSession().getServletContext();
         final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
         final String temperotyFilePath = tempDirectory.getAbsolutePath();
 
-        String fileName = "DetalleUsuario.pdf";
+        String fileName = numeroOperacion+".pdf";
         response.setContentType("application/pdf");
         response.setHeader("Content-disposition", "attachment; filename="+ fileName);
 
         try {
             PDFController createpdf = new PDFController();
-            createpdf.createPDF(temperotyFilePath+"\\"+fileName, id,blHouseRepository);
+            createpdf.createPDF(temperotyFilePath+"\\"+fileName, numeroOperacion, numeroBLHouse,blHouseRepository, blMasterRepository, cargamentRepository, ingresoRepository);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
             OutputStream os = response.getOutputStream();

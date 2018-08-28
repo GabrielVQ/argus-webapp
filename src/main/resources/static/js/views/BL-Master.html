@@ -104,7 +104,7 @@
                 <div class="panel-body1">
                     <div class="content col-md-12" >
                         <ul>N° de operación: <b>{{newBLMaster.numeroOperacion}}</b></ul>
-                        <ul>Creado por: <b>{{creador}}</b></ul>
+                        <ul>Creado por: <b>{{nombre_usuario}}</b></ul>
                         <ul>Fecha Ingreso:<b> {{newBLMaster.fechaIngreso}}</b></ul>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                         </ul>
 
 
-                        
+
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Naviera</label>
                                 <select  ng-model="newBLMaster.naviera" class="col-md-8 navieraSelect" >
@@ -326,7 +326,7 @@
                 </div>
                 <div class="content col-md-12">
                     <a class="btn btn-primary btn-sm" href="#!/BL-House/{{blnum}}" type="button" value="Agregar House">Agregar House</a>
-                    <input class="btn btn-primary btn-sm" type="button" value="Ver Houses">
+                    <a class="btn btn-primary btn-sm" href="#!/buscarBLHouse">Ver BL-House</a>
                     <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                     <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
                     <input class="btn btn-primary btn-sm" type="button" value="Cancelar">

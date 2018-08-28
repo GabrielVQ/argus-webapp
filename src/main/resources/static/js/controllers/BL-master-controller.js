@@ -5,7 +5,8 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.nombre_usuario = response.data.name;
         $scope.creador = $scope.nombre_usuario;
     })
-
+    $scope.nombre_usuario = localStorage.getItem("token5");
+    console.log("nombre de usuario", $scope.nombre_usuario)
     $scope.numeroOperacion = "";
     //parse fecha formato: dd/mm/yyyy a las hh:mm
     var d = new Date();
@@ -46,7 +47,7 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.newBLMaster.puertoOrigen= {"id":parseInt($scope.newBLMaster.puertoOrigen)};
         $scope.newBLMaster.puertoDescarga= {"id":parseInt($scope.newBLMaster.puertoDescarga)};
         $scope.newBLMaster.destino= {"id":parseInt($scope.newBLMaster.destino)};
-
+        //$scope.newBLMaster.agenteAduana = {"id":parseInt($scope.newBLMaster.agenteAduana)};
         $scope.newBLMaster.fechaZarpe =  parseFecha($scope.newBLMaster.fechaZarpe);
         $scope.newBLMaster.fechaLlegada =  parseFecha($scope.newBLMaster.fechaLlegada);
         //console.log(' fecha de hoy: ',$scope.fecha);
@@ -87,8 +88,16 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
    // localStorage.setItem("token", token);
     //console.log('data scope4:', localStorage.getItem("token"));
     $scope.numeroOperacion = localStorage.getItem("token");
-
+    //console.log("data numer", $scope.numeroOperacion)
     function  setnumeroOperacion(data){
+        /*
+        console.log("data length", data.length)
+        if (data.length === 0) {
+            var token = "1"
+            localStorage.setItem("token", token);
+            console.log("data length", data.length)
+            return
+        }*/
         servicioNumeroBL.setNumeroBLMaster(data[data.length - 1].numeroOperacion + 1);
         //console.log('data funcion:',servicioNumeroBL.numeroBL);
         //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
@@ -129,6 +138,8 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
         $scope.mensaje = 'Conetenedor agregado con exito!';
         $window.alert($scope.mensaje);
     }
+
+
 
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;

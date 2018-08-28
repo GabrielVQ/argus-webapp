@@ -2,20 +2,19 @@ package cl.argus.controllers;
 
 
 import cl.argus.argusApplication;
-import cl.argus.models.Cargament;
-import cl.argus.repositories.BLHouseRepository;
-import cl.argus.repositories.BLMasterRepository;
-import cl.argus.models.BLMaster;
-import cl.argus.models.BLHouse;
+import cl.argus.models.*;
+import cl.argus.repositories.*;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import cl.argus.models.Empresa;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
@@ -47,25 +46,43 @@ public class PDFController {
     private static Font TIME_ROMAN_SMALL = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 
     @Autowired
-    BLMasterRepository blMasterRepository;
-
-    BLHouse blHouse;
+    //BLMasterRepository blMasterRepository;
+    BLHouseRepository blHouseRepository;
+    //CiudadRepository ciudadRepository;
     BLMaster blMaster;
-
+    BLHouse blHouse;
+    List<Cargament>  cargamento;
+    List<Ingreso>  ingreso;
     /**
      *
      * @param file
      * @param idBl
      * @return
      */
-    public Document createPDF(String file, Long id,BLHouseRepository blHouseRepository) throws IOException {
+    public Document createPDF(String file, int numeroOperacion, int numeroBLHouse, BLHouseRepository blHouseRepository, BLMasterRepository blMasterRepository, CargamentRepository cargamentRepository, IngresoRepository ingresoRepository) throws IOException {
 
         Document document = null;
 
 
         try {
-            blHouse=blHouseRepository.findOne(id);
-            System.out.println(blHouse.getShipper());
+            String auxNumeroOperacion = Integer.toString(numeroOperacion);
+            String auxNumeroBLHouse = Integer.toString(numeroBLHouse);
+            System.out.println("numeroOperacion:"+ numeroOperacion);
+            System.out.println("numeroHouse:"+ numeroBLHouse);
+            //buscqueda de datos por número de operacion
+            Iterable <BLHouse> blHouses = blHouseRepository.getByNumeroOperacion(auxNumeroOperacion);
+            blMaster = blMasterRepository.getByNumeroOperacion(numeroOperacion).get(0);
+            Iterable <Cargament> cargamentos = cargamentRepository.getByNumeroOperacion(auxNumeroOperacion);
+            Iterable <Ingreso> ingresos = ingresoRepository.getByNumeroOperacion(auxNumeroOperacion);
+            //System.out.println( "BLMASTER:" + blMasterRepository.getByNumeroOperacion(3).get(0).getBLMasterNumero());
+            //System.out.println( "CARGAMENTO:" + cargamentRepository.getByNumeroOperacion("3").get(0).getDescriptionGoods());
+            //System.out.println("tengo bl master:"+(((List<BLHouse>) blHouses).get(0).getBlMaster().getBLMasterNumero()));
+
+            blHouse = buscarBLHouse((List<BLHouse>)blHouses,auxNumeroBLHouse);
+            cargamento = buscarCargamento((List<Cargament>)cargamentos , auxNumeroBLHouse);
+            ingreso = buscarIngresos((List<Ingreso>)ingresos , auxNumeroBLHouse);
+
+
             document = new Document(PageSize.LETTER,1, 1, 2, 2);
 
             PdfWriter pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(file));
@@ -146,6 +163,65 @@ public class PDFController {
 
     }
 
+
+    public BLHouse buscarBLHouse (List<BLHouse> BLHouses, String numeroBLHouse ){
+
+       int i = 0;
+
+       while(i<BLHouses.size()){
+           //System.out.println("tengo numero:" + BLHouses.get(i).getNumeroBLHouse());
+           //System.out.println("busncado numero:"+numeroBLHouse);
+           if ( BLHouses.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+               System.out.println("encontre el blhouse");
+               return BLHouses.get(i);
+           }
+           i++;
+       }
+        System.out.println("no encontre nada");
+        return null;
+
+    }
+
+    public List<Cargament> buscarCargamento (List<Cargament> cargamento, String numeroBLHouse ){
+
+        int i = 0;
+        List<Cargament> cargamentoBLHouse = new ArrayList<Cargament>() {
+        };
+        while(i<cargamento.size()){
+            //System.out.println("tengo numero:" + cargamento.get(i).getNumeroBLHouse());
+            //System.out.println("busncado numero:"+numeroBLHouse);
+            if ( cargamento.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+                //System.out.println("encontre el blhouse");
+                cargamentoBLHouse.add(cargamento.get(i));
+            }
+            i++;
+        }
+        //System.out.println("no encontre nada");
+        return cargamentoBLHouse;
+
+    }
+
+    public List<Ingreso> buscarIngresos (List<Ingreso> ingresos, String numeroBLHouse ){
+
+        int i = 0;
+        List<Ingreso> ingresosBLHouse = new ArrayList<Ingreso>() {
+        };
+        while(i<ingresos.size()){
+            //System.out.println("tengo numero:" + cargamento.get(i).getNumeroBLHouse());
+            //System.out.println("busncado numero:"+numeroBLHouse);
+            if ( ingresos.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+                //System.out.println("encontre el blhouse");
+                ingresosBLHouse.add(ingresos.get(i));
+            }
+            i++;
+        }
+        //System.out.println("no encontre nada");
+        return ingresosBLHouse;
+
+    }
 
     private void addMetaData(Document document) {
         document.addTitle("Generate PDF report");
@@ -255,12 +331,12 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getConsignee().getNombreAbrev();
-        String direccion=blHouse.getConsignee().getDireccion();
+        String name=blHouse.getNotify().getNombreAbrev();
+        String direccion=blHouse.getNotify().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
-        String rut=blHouse.getConsignee().getRut();
-        String fono=blHouse.getConsignee().getFonoContacto();
+        String rut=blHouse.getNotify().getRut();
+        String fono=blHouse.getNotify().getFonoContacto();
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("CONSIGNEE",title));
         celda.add("\n");
@@ -347,8 +423,8 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String vessel= blHouse.getBlMaster().getNave().getNombre();
-        String loading=blHouse.getBlMaster().getPuertoOrigen().getNombre();
+        String vessel= blMaster.getNave().getNombre();
+        String loading=blMaster.getPuertoOrigen().getNombre();
 
 
         PdfPTable tablita = new PdfPTable(2);
@@ -383,7 +459,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String descarga=blHouse.getBlMaster().getPuertoDescarga().getNombre();
+        String descarga=blMaster.getPuertoDescarga().getNombre();
         String place=blHouse.getCiudadLlegada().getNombre();
 
         PdfPTable tablita = new PdfPTable(2);
@@ -511,17 +587,19 @@ public class PDFController {
         /////////////////////////////////////////////////////////////////////
         //FALTA ESTO ESTO ESTO ESTO
         /////////////////////////////////////////////////////////////////////
-
+        //provisoriamente se completa con agente aduana
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("FORWARDING AGENT",title));
         celda.add("\n");
-        celda.add(new Paragraph("RH SHIPPING & CHARTERING S. DE R.L. DE C.V. ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getNombreAbrev(),content));
         celda.add("\n");
-        celda.add(new Paragraph("AVDA PASEO DE LA REFORMA N° 222 PISO 15 COL. ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getRazon_social(),content));
         celda.add("\n");
-        celda.add(new Paragraph("JUAREZ CIUDAD DE MEXICO C.P. 06600 ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getDireccion(),content));
         celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",content));
+       // celda.add(new Paragraph("JUAREZ CIUDAD DE MEXICO C.P. 06600 ",content));
+        //celda.add("\n");
+        //celda.add(new Paragraph(blHouse.getClienteExtranjero().get"\n\n",content));
         PdfPCell c1 = new PdfPCell(celda);
 
 
@@ -610,10 +688,10 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph("CONTAINTER\n"+carga.getMarkNumbers(),content));
+        celda.add(new Paragraph(cargamento.get(0).getMarkNumbers(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -628,11 +706,11 @@ public class PDFController {
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add((new Paragraph(carga.getNumerPackages(),content)));
+        celda.add((new Paragraph(cargamento.get(0).getNumerPackages(),content)));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -647,13 +725,11 @@ public class PDFController {
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getDescriptionGoods(),content));
-
-
+        celda.add(new Paragraph(cargamento.get(0).getDescriptionGoods(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -668,11 +744,11 @@ public class PDFController {
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getGroosWeight(),content));
+        celda.add(new Paragraph(cargamento.get(0).getGroosWeight(),content));
         celda.add(" ");
 
 
@@ -688,16 +764,15 @@ public class PDFController {
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
 
 
-        Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getMeasurement(),content));
-        celda.add(" ");
+            Paragraph celda = new Paragraph();
+            celda.add(new Paragraph(cargamento.get(0).getMeasurement(), content));
+            celda.add(" ");
 
-        PdfPCell c1 = new PdfPCell(celda);
+            PdfPCell c1 = new PdfPCell(celda);
 
-        table.addCell(c1);
+            table.addCell(c1);
 
     }
 
@@ -752,7 +827,10 @@ public class PDFController {
 
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getCobro().getNombreCobro()+" "+blHouse.getMoneda()+"\n", contentBold));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -766,7 +844,10 @@ public class PDFController {
 
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph("\n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+" "+blHouse.getMoneda()+"\n", contentBold));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -777,9 +858,13 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getCollect()+" "+blHouse.getMoneda()+"\n", contentBold));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -839,15 +924,23 @@ public class PDFController {
         cl.setHorizontalAlignment(Element.ALIGN_RIGHT);
         table.addCell(cl);
 
+        int totalPrepaid = 0;
+        for (int i = 0; i<ingreso.size(); i++) {
+            totalPrepaid = Integer.parseInt(ingreso.get(i).getPrepaid()) + totalPrepaid;
+        }
         celda = new Paragraph();
-        celda.add(new Paragraph("",contentBold));
+        celda.add(new Paragraph(totalPrepaid+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 
         table.addCell(cl);
 
+        int totalCollect = 0;
+        for (int i = 0; i<ingreso.size(); i++) {
+            totalCollect = Integer.parseInt(ingreso.get(i).getCollect()) + totalCollect;
+        }
         celda = new Paragraph();
-        celda.add(new Paragraph("",contentBold));
+        celda.add(new Paragraph(totalCollect+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 

@@ -16,7 +16,6 @@ public class BLHouseService {
     @Autowired
     BLHouseRepository blHouseRepository;
 
-
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Iterable<BLHouse> getAllHouses() {

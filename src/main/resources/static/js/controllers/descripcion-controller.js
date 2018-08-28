@@ -83,10 +83,17 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
         });
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
-
+        $window.location.reload();
     }
 
-
+    $scope.borrar = function(id){
+        var opcion = confirm("¿Seguro que desea eliminar el cargamento?")
+        if (opcion == true) {
+            $http.delete("http://localhost:8080/cargaments/cargamentBorrar/" + id)
+            $window.alert("Cargamento eliminado")
+            $window.location.reload();
+        }
+    }
 
     $http.get('http://localhost:8080/containers').then(function(response){
         $scope.containers = response.data;

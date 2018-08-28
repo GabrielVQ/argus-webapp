@@ -150,8 +150,8 @@
                         <td>{{BL.collect}}</td>
                         <td>{{BL.numeroBLHouse}}</td>
                         <td width="180">
-                            <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
-                            <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
+                            <!--<a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>-->
+                            <input ng-click="borrar (BL.id)" class="btn btn-danger btn-xs" role="button" value="Borrar">
                         </td>
                     </tr>
                     </tbody>
@@ -220,7 +220,7 @@
 
     <ul>
             <input class="btn btn-primary btn-sm" ng-click="send3()" type="submit" value="Guardar">
-            <input class="btn btn-primary btn-sm"  type="button" value="Nuevo">
+
     </ul>
             </div>
             <script>
