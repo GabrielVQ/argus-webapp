@@ -101,12 +101,15 @@
             <!-- Example DataTables Card-->
             <div class="panel-body">
 
-                <div class="input-group col-md-8 justify-content-between">
-                    <div class="col-md-6">
+                <div class="input-group col-md-12 justify-content-between">
+                    <div class="col-md-4">
                         <input ng-model="searchBox.numeroOperacion" id="msgNumOperacion" type="text" class="form-control " name="msgNumOperacion" placeholder="Buscar por N° operación...">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input ng-model="searchBox.numeroBLHouse" id="msgNumBL" type="text" class="form-control " name="msgNumBL" placeholder="Buscar por N° BL House...">
+                    </div>
+                    <div class="col-md-4">
+                        <input ng-model="searchBox.almacenista.nombreAbrev" id="msgCliente" type="text" class="form-control " name="msgcliente" placeholder="Buscar por Cliente...">
                     </div>
 
                 </div>
@@ -133,7 +136,7 @@
                         <td>{{BL.almacenista.rut}}</td>
                         <td>{{BL.fechaStacking}}</td>
                         <td>
-                            <a href="#!/editarBLHouse/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-text"></i> Ver</a>
+                            <a href="#!/rentaVer/{{BL.numeroOperacion}}" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-text"></i> Ver</a>
                             
                         </td>
                     </tr>

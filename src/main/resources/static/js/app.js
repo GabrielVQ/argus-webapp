@@ -115,7 +115,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/rentaBuscarOperacion.html',
             controller: 'rentaBuscarController'
         })
-        .when('/rentaVer',{
+        .when('/rentaVer/:bl',{
             templateUrl: 'js/views/rentaVerOperacion.html',
             controller: 'rentaVerController'
         })
