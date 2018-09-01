@@ -686,7 +686,7 @@ public class PDFController {
     private void createMarkAndNumbers(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
         //Cargament carga= cargamento.iterator().next();
 
@@ -703,7 +703,7 @@ public class PDFController {
     private void createNumberOfPackages(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
         //Cargament carga= cargamento.iterator().next();
@@ -722,7 +722,7 @@ public class PDFController {
     private void createDescriptionOfGods(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
         //Cargament carga= cargamento.iterator().next();
@@ -741,7 +741,7 @@ public class PDFController {
     private void createGrossWeight(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
         //Cargament carga= cargamento.iterator().next();
@@ -761,7 +761,7 @@ public class PDFController {
     private void createMeasurement(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
 
@@ -828,7 +828,7 @@ public class PDFController {
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
         for (int i = 0; i<ingreso.size(); i++) {
-            celda.add(new Paragraph(ingreso.get(i).getCobro().getNombreCobro()+" "+blHouse.getMoneda()+"\n", contentBold));
+            celda.add(new Paragraph(ingreso.get(i).getCobro().getNombreCobro()+" "+blHouse.getMoneda()+"\n", content));
         }
 
         PdfPCell cl =new PdfPCell(celda);
@@ -845,7 +845,7 @@ public class PDFController {
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
         for (int i = 0; i<ingreso.size(); i++) {
-            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+" "+blHouse.getMoneda()+"\n", contentBold));
+            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+" "+blHouse.getMoneda()+"\n", content));
         }
 
         PdfPCell cl =new PdfPCell(celda);
@@ -862,7 +862,7 @@ public class PDFController {
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
         for (int i = 0; i<ingreso.size(); i++) {
-            celda.add(new Paragraph(ingreso.get(i).getCollect()+" "+blHouse.getMoneda()+"\n", contentBold));
+            celda.add(new Paragraph(ingreso.get(i).getCollect()+" "+blHouse.getMoneda()+"\n", content));
         }
 
         PdfPCell cl =new PdfPCell(celda);
