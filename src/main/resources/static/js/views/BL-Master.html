@@ -147,7 +147,7 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <hr>
+
                             <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
                                 <input ng-model="newBLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
                             </div>
@@ -293,8 +293,15 @@
                                             <label class="col-md-1">-</label>
                                             <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn">
 
-                                            <label class="col-md-4">Sello Ctn:</label>
-                                            <input ng-model="newContenedor.selloContenedor" class="col-md-4" type="text" name="sello">
+                                            <label class="col-md-4">Sello Empresa:</label>
+                                            <input ng-model="newContenedor.selloEmpresa" class="col-md-4" type="text" name="sello">
+
+                                            <label class="col-md-4">Sello Cliente:</label>
+                                            <input ng-model="newContenedor.selloCliente" class="col-md-4" type="text" name="sello">
+
+                                            <label class="col-md-4">Sello Aduana:</label>
+                                            <input ng-model="newContenedor.selloAduana" class="col-md-4" type="text" name="sello">
+
                                             <label class="col-md-4">Tipo Ctn:</label>
                                             <select ng-model="newContenedor.tipo" class="col-md-4" name="tipoContenedor">
                                                 <option value="Break Bulk" selected="selected">Break Bulk</option>
@@ -314,8 +321,9 @@
                                             </select>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                                             <a class="btn btn-primary" ng-click="agregarContenedor()" data-dismiss="modal" >Agregar</a>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+
                                         </div>
                                     </div>,
                                 </div>

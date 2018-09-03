@@ -240,22 +240,16 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
-                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
-                                    <option ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombreAbrev}}
-                                    </option>
-                                </select>
-                            </div>
+
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6">
                                 <label class="col-md-6">Pre-carriage:</label>
-                                <input ng-model="newBLHouse.preCarriage" class="col-md-7" type="text" name="Pre-carriage">
+                                <input ng-model="newBLHouse.preCarriage" class="col-md-8" type="text" name="Pre-carriage">
                             </div>
                             <div class="col-md-6">
                                 <label class="col-md-6">Lugar de recepción:</label>
-                                <input ng-model="newBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion">
+                                <input ng-model="newBLHouse.lugarRecepcion" class="col-md-8" type="text" name="lugarDeRecepcion">
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -274,6 +268,13 @@
                             </div>
                         </ul>
                         <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
+                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
+                                    <option ng-repeat="e in empresas"
+                                            value="{{e.id}}">{{e.nombreAbrev}}
+                                    </option>
+                                </select>
+                            </div>
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
                                 <input ng-model="newBLHouse.contacto" class="col-md-8" type="text" name="contacto">
                             </div>

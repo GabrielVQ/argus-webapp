@@ -102,7 +102,19 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
                 }
             });
 
+    $scope.newContenedor={
+        "tipo":"",
+        "sigla":"" ,
+        "numeroContenedor":"",
+        "selloEmpresa":"",
+        "selloCliente":"",
+        "selloAduana":"",
+        "descripcionLarga":"",
+        "digito":""
+    }
+
     $scope.agregarContenedor = function(){
+        $scope.newContenedor.descripcionLarga = $scope.newContenedor.sigla+"-"+$scope.newContenedor.selloEmpresa+"-"+$scope.newContenedor.selloCliente+"-"+$scope.newContenedor.selloAduana;
         $http.post("http://localhost:8080/containers",$scope.newContenedor);
         $scope.mensaje = 'Conetenedor agregado con exito!';
         $window.alert($scope.mensaje);
