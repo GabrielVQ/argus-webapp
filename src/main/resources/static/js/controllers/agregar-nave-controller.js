@@ -11,7 +11,7 @@ app.controller('agregarNaveController', ['$scope', '$location','$http','$window'
 
     $scope.send = function(){
 
-
+        $scope.newAgregarNave.nombre = $scope.newAgregarNave.nombre.toUpperCase();
         $http.post("http://localhost:8080/naves",$scope.newAgregarNave);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'nave añadida con exito!';

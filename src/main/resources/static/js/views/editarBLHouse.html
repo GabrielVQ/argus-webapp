@@ -215,7 +215,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Bultos:</label>
-                                <input ng-model="editarBLHouse.bultos" class="col-md-8" type="text" name="bultos" >
+                                <input ng-model="editarBLHouse.bultos" class="col-md-8" type="text" name="bultos"  >
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Carga:</label>
                                 <select ng-model="editarBLHouse.carga" class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
@@ -238,7 +238,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-2">Flete:</label>
-                                <input ng-model="editarBLHouse.flete" class="col-md-7" type="text" name="Flete">
+                                <input ng-model="editarBLHouse.flete" class="col-md-7" type="text" name="Flete" >
                             </div>
                         </ul>
                     </div>
@@ -260,30 +260,15 @@
                 </div>
                 <div class="panel-body1">
                     <div class="content col-md-12">
+
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
-                                <!--
-                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
-                                    <option ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombreAbrev}}
-                                    </option>
-                                </select>-->
-                                <select
-                                        name="almacenista"
-                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
-                                        ng-model="editarBLHouse.almacenista"
-                                        class="col-md-8 shipperSelect" >
-                                </select>
-                            </div>
-                        </ul>
-                        <ul class="input-group">
-                            <div class="col-md-6">
+                            <!--<div class="col-md-6">
                                 <label class="col-md-6">Pre-carriage:</label>
                                 <input ng-model="editarBLHouse.preCarriage" class="col-md-7" type="text" name="Pre-carriage">
-                            </div>
+                            </div>-->
                             <div class="col-md-6">
                                 <label class="col-md-6">Lugar de recepción:</label>
-                                <input ng-model="editarBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion">
+                                <input ng-model="editarBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion" >
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -308,11 +293,27 @@
                             </div>
                         </ul>
                         <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
+                                <!--
+                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
+                                    <option ng-repeat="e in empresas"
+                                            value="{{e.id}}">{{e.nombreAbrev}}
+                                    </option>
+                                </select>-->
+                                <select
+                                        name="almacenista"
+                                        ng-options="emp.nombreAbrev for emp in empresas track by emp.id"
+                                        ng-model="editarBLHouse.almacenista"
+                                        class="col-md-8 shipperSelect" >
+                                </select>
+                            </div>
+                        </ul>
+                        <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
-                                <input ng-model="editarBLHouse.contacto" class="col-md-8" type="text" name="contacto">
+                                <input ng-model="editarBLHouse.contacto" class="col-md-8" type="text" name="contacto" style="text-transform: uppercase">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Telefono:</label>
-                                <input ng-model="editarBLHouse.telefono" class="col-md-8" type="text" name="telefono">
+                                <input ng-model="editarBLHouse.telefono" class="col-md-8" type="text" name="telefono" style="text-transform: uppercase">
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -327,7 +328,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Observación:</label>
-                                <input ng-model="editarBLHouse.observacion" class="col-md-12" type="text" name="observacion">
+                                <input ng-model="editarBLHouse.observacion" class="col-md-12" type="text" name="observacion" >
                             </div>
                         </ul>
                     </div>

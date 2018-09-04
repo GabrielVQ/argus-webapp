@@ -13,7 +13,7 @@ public class Empresa {
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
 
-    private int cod_agente;
+    private String codigo;
     private String razon_social;
     private String nombreAbrev;
     private String nacionalidad;
@@ -22,7 +22,7 @@ public class Empresa {
     private String contacto;
     private String fonoContacto;
     private String rut;
-
+    private String tipoEmpresa;
 
 
 
@@ -56,8 +56,8 @@ public class Empresa {
     public String getNacionalidad(){
         return nacionalidad;
     }
-    public int getCod_agente() {
-        return cod_agente;
+    public String getCod_agente() {
+        return codigo;
     }
     public String getContacto() {return contacto;}
     public String getFonoContacto() {return fonoContacto;}
@@ -97,11 +97,11 @@ public class Empresa {
         this.razon_social = razon_social;
     }
 
-    public void setCod_agente(int cod_agente) {
-        this.cod_agente = cod_agente;
-    }
-
     public String getEsNotifyAlmacenista() {
         return esNotifyAlmacenista;
+    }
+
+    public String getTipoEmpresa() {
+        return tipoEmpresa;
     }
 }

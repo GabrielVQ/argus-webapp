@@ -144,7 +144,7 @@
                         </div>
 
                         <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
-                            <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.blmasterNumero"></div>
+                            <input class="col-md-7" type="text" name="BLMasterNumero" ng-model="BLMaster.blmasterNumero" ></div>
 
                         
                     </ul>
@@ -156,7 +156,7 @@
                     <ul class="input-group">
                         <hr>
                         <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
-                            <input ng-model="BLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
+                            <input ng-model="BLMaster.nViaje" class="col-md-8" type="text" name="nViaje" >
                         </div>
                         <div class="col-md-6"><label class="col-md-4">Nave:</label>
                             
@@ -245,7 +245,7 @@
                             <div class="col-md-4">
                                 <label class="col-md-8">Fecha arribo:</label>
                                 <!-- <input class="col-md-7" type="date" name="fechaLlegada"> -->
-                                <input type="date" id="exampleInput" name="input" ng-model="fechaLlegadaValue" value={{fechaLlegadaValue}} required />
+                                <input type="date" id="exampleInput2" name="input" ng-model="fechaLlegadaValue" value={{fechaLlegadaValue}} required />
                             </div>
                             
                         </ul>
@@ -306,21 +306,22 @@
                                         </div>
                                         <div class="modal-body">
                                             <label class="col-md-4">Sigla Ctn:</label>
-                                            <input ng-model="newContenedor.sigla" class="col-md-4" type="text" name="siglaCtn">
+                                            <input ng-model="newContenedor.sigla" class="col-md-4" type="text" name="siglaCtn" style="text-transform: uppercase">
 
                                             <label class="col-md-4">N° Ctn:</label>
-                                            <input ng-model="newContenedor.numeroContenedor" class="col-md-4" type="text" name="nCtn">
+                                            <input ng-model="newContenedor.numeroContenedor" class="col-md-4" type="text" name="nCtn" style="text-transform: uppercase">
+
                                             <label class="col-md-1">-</label>
-                                            <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn">
+                                            <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Empresa:</label>
-                                            <input ng-model="newContenedor.selloEmpresa" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloEmpresa" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Cliente:</label>
-                                            <input ng-model="newContenedor.selloCliente" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloCliente" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Aduana:</label>
-                                            <input ng-model="newContenedor.selloAduana" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloAduana" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Tipo Ctn:</label>
                                             <select ng-model="newContenedor.tipo" class="col-md-4" name="tipoContenedor">

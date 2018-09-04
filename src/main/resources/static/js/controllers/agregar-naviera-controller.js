@@ -12,7 +12,7 @@ app.controller('agregarNavieraController', ['$scope', '$location', '$http','$win
 
     $scope.send = function(){
 
-
+        $scope.newAgregarNaviera.nombre = $scope.newAgregarNaviera.nombre.toUpperCase();
         $http.post("http://localhost:8080/navieras",$scope.newAgregarNaviera);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'puerto añadido con exito!';

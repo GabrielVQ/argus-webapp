@@ -139,7 +139,7 @@
                                     </option>
                                 </select></div>
                             <div class="col-md-4"><label class="col-md-8">BL Master N°:</label>
-                                <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="text" name="BLMasterNumero"></div>
+                                <input ng-model="newBLMaster.blmasterNumero" class="col-md-7" type="text" name="BLMasterNumero" ></div>
                         </ul>
                     </div>
 
@@ -149,7 +149,7 @@
                         <ul class="input-group">
 
                             <div class="col-md-6"><label class="col-md-4">N° de viaje:</label>
-                                <input ng-model="newBLMaster.nViaje" class="col-md-8" type="text" name="nViaje">
+                                <input ng-model="newBLMaster.nViaje" class="col-md-8" type="text" name="nViaje" >
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Nave:</label>
                                 <select  ng-model="newBLMaster.nave" class="col-md-8 navieraSelect" >
@@ -159,7 +159,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6"><label class="col-md-4">N° de reserva:</label>
-                                <input ng-model="newBLMaster.nReserva" class="col-md-8" type="text" name="nReserva">
+                                <input ng-model="newBLMaster.nReserva" class="col-md-8" type="text" name="nReserva" >
                             </div>
                         </ul>
                     </div>
@@ -262,15 +262,15 @@
                     <div class="content col-md-12">
                         <ul class="input-group">
                             <div class="col-md-2"><label class="col-md-8">Kilos:</label>
-                                <input class="col-md-4" type="textarea" name="kilos" disabled readonly size="3px"></div>
+                                <input class="col-md-4" type="text" name="kilos" disabled readonly size="3px"></div>
                             <div class="col-md-2"><label class="col-md-8">Volumen:</label>
-                                <input class="col-md-4" type="textarea" name="volumen" readonly disabled size="3px">
+                                <input class="col-md-4" type="text" name="volumen" readonly disabled size="3px">
                             </div>
                             <div class="col-md-2"><label class="col-md-12">Cant Cont 20:</label>
-                                <input class="col-md-4" type="textarea" name="cont20" disabled readonly size="3px">
+                                <input class="col-md-4" type="text" name="cont20" disabled readonly size="3px">
                             </div>
                             <div class="col-md-2"><label class="col-md-12">Cant Cont 40:</label>
-                                <input class="col-md-4" type="textarea" name="cont40" disabled readonly size="3px"></div>
+                                <input class="col-md-4" type="text" name="cont40" disabled readonly size="3px"></div>
                             <!--<div class="col-md-2"><input class="btn btn-primary btn-sm" value="Agregar Contenedor"></div>-->
                         </ul>
                         <ul>
@@ -286,21 +286,21 @@
                                         </div>
                                         <div class="modal-body">
                                             <label class="col-md-4">Sigla Ctn:</label>
-                                            <input ng-model="newContenedor.sigla" class="col-md-4" type="text" name="siglaCtn">
+                                            <input ng-model="newContenedor.sigla" class="col-md-4" type="text" name="siglaCtn" style="text-transform: uppercase">
 
                                             <label class="col-md-4">N° Ctn:</label>
-                                            <input ng-model="newContenedor.numeroContenedor" class="col-md-4" type="text" name="nCtn">
+                                            <input ng-model="newContenedor.numeroContenedor" class="col-md-4" type="text" name="nCtn" style="text-transform: uppercase">
                                             <label class="col-md-1">-</label>
-                                            <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn">
+                                            <input ng-model="newContenedor.digito" size="1" type="text" name="nCtn" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Empresa:</label>
-                                            <input ng-model="newContenedor.selloEmpresa" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloEmpresa" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Cliente:</label>
-                                            <input ng-model="newContenedor.selloCliente" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloCliente" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Sello Aduana:</label>
-                                            <input ng-model="newContenedor.selloAduana" class="col-md-4" type="text" name="sello">
+                                            <input ng-model="newContenedor.selloAduana" class="col-md-4" type="text" name="sello" style="text-transform: uppercase">
 
                                             <label class="col-md-4">Tipo Ctn:</label>
                                             <select ng-model="newContenedor.tipo" class="col-md-4" name="tipoContenedor">

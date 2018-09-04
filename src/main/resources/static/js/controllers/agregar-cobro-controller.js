@@ -7,12 +7,12 @@ app.controller('agregarCobroController', ['$scope', '$location','$http','$window
     }
 
     $scope.newAgregarCobro = {
-        "nombreCobro": "asdf"
+        "nombreCobro": ""
     };
 
 
     $scope.send = function(){
-
+        $scope.newAgregarCobro.nombreCobro = $scope.newAgregarCobro.nombreCobro.toUpperCase();
         $http.post("http://localhost:8080/cobros",$scope.newAgregarCobro);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'Cobro añadido con exito!';

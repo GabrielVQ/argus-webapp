@@ -296,7 +296,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getShipper().getNombreAbrev();
+        String name=blHouse.getShipper().getRazon_social();
 
 
         String direccion=blHouse.getShipper().getDireccion();
@@ -331,7 +331,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getNotify().getNombreAbrev();
+        String name=blHouse.getNotify().getRazon_social();
         String direccion=blHouse.getNotify().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
@@ -359,7 +359,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getNotify().getNombreAbrev();
+        String name=blHouse.getNotify().getRazon_social();
         String direccion=blHouse.getNotify().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
@@ -404,7 +404,7 @@ public class PDFController {
 
         //PLACE
         celda= new Paragraph();
-        celda.add(new Paragraph("PLACE OF RECEIPT",title));
+        celda.add(new Paragraph("PLACE OF RECEIPT"+blHouse.getLugarRecepcion(),title));
         celda.add("\n");
         celda.add(new Paragraph(" ",content));
         cl= new PdfPCell(celda);
@@ -691,7 +691,8 @@ public class PDFController {
         //Cargament carga= cargamento.iterator().next();
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(cargamento.get(0).getMarkNumbers(),content));
+
+        celda.add(new Paragraph("CONTAINER\n"+cargamento.get(0).getContenedor().getSigla()+" "+ cargamento.get(0).getContenedor().getNumeroContenedor()+"-"+cargamento.get(0).getContenedor().getDigito()+"\n"+cargamento.get(0).getMarkNumbers(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -845,7 +846,7 @@ public class PDFController {
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
         for (int i = 0; i<ingreso.size(); i++) {
-            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+" "+blHouse.getMoneda()+"\n", content));
+            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+"\n", content));
         }
 
         PdfPCell cl =new PdfPCell(celda);
@@ -862,7 +863,7 @@ public class PDFController {
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
         for (int i = 0; i<ingreso.size(); i++) {
-            celda.add(new Paragraph(ingreso.get(i).getCollect()+" "+blHouse.getMoneda()+"\n", content));
+            celda.add(new Paragraph(ingreso.get(i).getCollect()+"\n", content));
         }
 
         PdfPCell cl =new PdfPCell(celda);
@@ -904,7 +905,7 @@ public class PDFController {
         celda.add(new Paragraph("DATED AT:\t",title));
         celda.add(new Paragraph("  SAN ANTONIO 27 DE MAYO 2018\n\n",contentBold));
         celda.add(new Paragraph("BY       \t:",title));
-        celda.add(new Paragraph("    BY ARGUS LOGISTICA LIMITADA\n",contentBold));
+        celda.add(new Paragraph("    ARGUS LOGISTICA LIMITADA\n",contentBold));
 
 
         PdfPCell cl =new PdfPCell(celda);
@@ -924,23 +925,23 @@ public class PDFController {
         cl.setHorizontalAlignment(Element.ALIGN_RIGHT);
         table.addCell(cl);
 
-        int totalPrepaid = 0;
+        float totalPrepaid = 0;
         for (int i = 0; i<ingreso.size(); i++) {
-            totalPrepaid = Integer.parseInt(ingreso.get(i).getPrepaid()) + totalPrepaid;
+            totalPrepaid = Float.parseFloat(ingreso.get(i).getPrepaid()) + totalPrepaid;
         }
         celda = new Paragraph();
-        celda.add(new Paragraph(totalPrepaid+" "+blHouse.getMoneda(),contentBold));
+        celda.add(new Paragraph(String.format("%.2f", totalPrepaid)+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 
         table.addCell(cl);
 
-        int totalCollect = 0;
+        float totalCollect = 0;
         for (int i = 0; i<ingreso.size(); i++) {
-            totalCollect = Integer.parseInt(ingreso.get(i).getCollect()) + totalCollect;
+            totalCollect = Float.parseFloat(ingreso.get(i).getCollect()) + totalCollect;
         }
         celda = new Paragraph();
-        celda.add(new Paragraph(totalCollect+" "+blHouse.getMoneda(),contentBold));
+        celda.add(new Paragraph(String.format("%.2f", totalCollect)+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 

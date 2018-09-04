@@ -20,8 +20,8 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         "facturara": 0,
         "cobro":0,
         "llevarFormulario": "",
-        "prepaid": 0,
-        "collect":0,
+        "prepaid": "",
+        "collect":"",
         "blHouse":0
 
     }
@@ -41,6 +41,10 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $scope.newIngresos.blHouse= {"id":parseInt($scope.BLHouseId)};
         $scope.newIngresos.cobro= {"id":parseInt($scope.newIngresos.cobro)};
         $scope.newIngresos.facturara = {"id":parseInt($scope.newIngresos.facturara)};
+        $scope.newIngresos.prepaid = parseFloat($scope.newIngresos.prepaid).toFixed(2);
+        $scope.newIngresos.collect = parseFloat($scope.newIngresos.collect).toFixed(2);
+
+
         $http.post("http://localhost:8080/ingresos",$scope.newIngresos);
         $scope.mensaje = 'Ingresos agregado con exito!';
         $window.alert($scope.mensaje);
@@ -62,7 +66,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
 
     $scope.borrar = function(id){
         var opcion = confirm("¿Seguro que desea eliminar el ingreso?");
-        if (opcion == true) {
+        if (opcion === true) {
             $http.delete("http://localhost:8080/ingresos/ingresoBorrar/" + id);
             $window.alert("Ingreso eliminado");
             $window.location.reload();

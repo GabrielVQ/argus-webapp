@@ -49,10 +49,12 @@ app.controller('editarIngresosController', ['$scope', '$location', '$http','$win
         //console.log("datos a guardar",$scope.editarDescripcion.contenedor);
         //$scope.editarDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
         //$scope.editarDescripcion.contenedor= {"id":parseInt($scope.editarDescripcion.contenedor.)};
-
+        $scope.editarIngreso.prepaid = parseFloat($scope.editarIngreso.prepaid).toFixed(2);
+        $scope.editarIngreso.collect = parseFloat($scope.editarIngreso.collect).toFixed(2);
         $http.post("http://localhost:8080/ingresos",$scope.editarIngreso);
         $scope.mensaje = 'Ingreso editado con exito!';
         $window.alert($scope.mensaje);
+        $window.location.reload();
         $location.url('/ingresos');
 
 

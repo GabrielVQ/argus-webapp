@@ -57,10 +57,11 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
         });
 
     $scope.send2 = function(){
-        console.log("datos a guardar",$scope.editarDescripcion.contenedor);
+        //console.log("datos a guardar",$scope.editarDescripcion.contenedor);
         //$scope.editarDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
         //$scope.editarDescripcion.contenedor= {"id":parseInt($scope.editarDescripcion.contenedor.)};
-
+        $scope.editarDescripcion.groosWeight = parseFloat($scope.editarDescripcion.groosWeight).toFixed(2);
+        $scope.editarDescripcion.measurement = parseFloat($scope.editarDescripcion.measurement).toFixed(2);
         $http.post("http://localhost:8080/cargaments",$scope.editarDescripcion);
         $scope.mensaje = 'Descripción editada con exito!';
         $window.alert($scope.mensaje);

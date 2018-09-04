@@ -58,6 +58,9 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
 
         $scope.newDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
         $scope.newDescripcion.contenedor= {"id":parseInt($scope.newDescripcion.contenedor)};
+        $scope.newDescripcion.groosWeight = parseFloat($scope.newDescripcion.groosWeight).toFixed(2);
+        $scope.newDescripcion.measurement = parseFloat($scope.newDescripcion.measurement).toFixed(2);
+        $scope.newDescripcion.markNumbers = $scope.newDescripcion.markNumbers.toUpperCase();
         $http.post("http://localhost:8080/cargaments",$scope.newDescripcion);
         $scope.mensaje = 'Descripción agregada con exito!';
         $window.alert($scope.mensaje);

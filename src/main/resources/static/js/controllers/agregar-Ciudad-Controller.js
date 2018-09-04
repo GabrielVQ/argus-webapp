@@ -10,8 +10,8 @@ app.controller('agregarCiudadController', ['$scope', '$location','$http','$windo
     };
 
     $scope.send = function(){
-        
 
+        $scope.newAgregarCiudad.nombre = $scope.newAgregarCiudad.nombre.toUpperCase();
         $http.post("http://localhost:8080/ciudades",$scope.newAgregarCiudad);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'ciudad añadida con exito!';
