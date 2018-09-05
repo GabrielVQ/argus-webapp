@@ -32,6 +32,33 @@ public class PDFService {
      *
      * Descripci&oacute;n: Servicio que permite descargar pdf
      */
+
+    @RequestMapping(value = "/reserva/{id}",method = RequestMethod.GET)
+    public void downloadReserva(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
+
+        final ServletContext servletContext = request.getSession().getServletContext();
+        final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        final String temperotyFilePath = tempDirectory.getAbsolutePath();
+
+        String fileName = "Reserva"+id+".pdf";
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition", "attachment; filename="+ fileName);
+
+        try {
+            PDFController createpdf = new PDFController();
+            createpdf.createReserva(temperotyFilePath+"\\"+fileName, id,blHouseRepository);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
+            OutputStream os = response.getOutputStream();
+            baos.writeTo(os);
+            os.flush();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
+
     @RequestMapping(value = "/download/{id}",method = RequestMethod.GET)
     public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
 
