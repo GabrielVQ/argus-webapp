@@ -2,6 +2,8 @@ package cl.argus.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +26,7 @@ public class Cargament {
 
     private String measurement;
 
+    @Column(columnDefinition = "text")
     private String descriptionGoods;
 
     private String numeroOperacion;

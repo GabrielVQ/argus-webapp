@@ -1,11 +1,7 @@
 package cl.argus.services;
 
 import cl.argus.controllers.PDFController;
-import cl.argus.models.BLMaster;
 import cl.argus.repositories.BLHouseRepository;
-import cl.argus.repositories.BLMasterRepository;
-import cl.argus.repositories.CargamentRepository;
-import cl.argus.repositories.IngresoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,30 +27,52 @@ import javax.servlet.http.HttpServletResponse;
 public class PDFService {
     @Autowired
     BLHouseRepository blHouseRepository;
-    @Autowired
-    BLMasterRepository blMasterRepository;
-    @Autowired
-    CargamentRepository cargamentRepository;
-    @Autowired
-    IngresoRepository ingresoRepository;
+
     /*
      *
      * Descripci&oacute;n: Servicio que permite descargar pdf
      */
-    @RequestMapping(value = "/download/{numeroOperacion}/{numeroBLHouse}",method = RequestMethod.GET)
-    public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("numeroOperacion") int numeroOperacion, @PathVariable("numeroBLHouse") int numeroBLHouse) throws IOException {
+
+    @RequestMapping(value = "/reserva/{id}",method = RequestMethod.GET)
+    public void downloadReserva(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
 
         final ServletContext servletContext = request.getSession().getServletContext();
         final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
         final String temperotyFilePath = tempDirectory.getAbsolutePath();
 
-        String fileName = numeroOperacion+".pdf";
+        String fileName = "Reserva"+id+".pdf";
         response.setContentType("application/pdf");
         response.setHeader("Content-disposition", "attachment; filename="+ fileName);
 
         try {
             PDFController createpdf = new PDFController();
-            createpdf.createPDF(temperotyFilePath+"\\"+fileName, numeroOperacion, numeroBLHouse,blHouseRepository, blMasterRepository, cargamentRepository, ingresoRepository);
+            createpdf.createReserva(temperotyFilePath+"\\"+fileName, id,blHouseRepository);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
+            OutputStream os = response.getOutputStream();
+            baos.writeTo(os);
+            os.flush();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
+
+    @RequestMapping(value = "/download/{id}",method = RequestMethod.GET)
+    public void downloadPDF(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") Long id) throws IOException {
+
+        final ServletContext servletContext = request.getSession().getServletContext();
+        final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        final String temperotyFilePath = tempDirectory.getAbsolutePath();
+
+        String fileName = "DetalleUsuario.pdf";
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition", "attachment; filename="+ fileName);
+
+        try {
+            PDFController createpdf = new PDFController();
+            createpdf.createPDF(temperotyFilePath+"\\"+fileName, id,blHouseRepository);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
             OutputStream os = response.getOutputStream();

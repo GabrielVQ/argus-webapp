@@ -104,4 +104,12 @@ public class Empresa {
     public String getTipoEmpresa() {
         return tipoEmpresa;
     }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setTipoEmpresa(String tipoEmpresa) {
+        this.tipoEmpresa = tipoEmpresa;
+    }
 }
