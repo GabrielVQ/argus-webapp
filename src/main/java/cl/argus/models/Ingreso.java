@@ -32,6 +32,7 @@ public class Ingreso {
     public String collect;
     public String numeroOperacion;
     public String numeroBLHouse;
+    public String costo;
     @OneToOne
     @JoinColumn (name= "blHouse")
     private BLHouse blHouse;
@@ -78,5 +79,9 @@ public class Ingreso {
 
     public String getNumeroBLHouse() {
         return numeroBLHouse;
+    }
+
+    public String getCosto() {
+        return costo;
     }
 }

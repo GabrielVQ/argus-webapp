@@ -8,9 +8,9 @@ app.controller('editarBLHouseController', ['$scope', '$location', '$http','$wind
     $scope.blhouse = $routeParams.blhouse;
     $scope.BLHouse = [];
     //$scope.editarBLHouse = [];
-    $scope.numeroBLMaster = localStorage.getItem("token4");
-    $scope.numeroOperacion = localStorage.getItem("token");
-    $scope.numeroBLHouse = localStorage.getItem("token3");
+    $scope.numeroOperacion = $routeParams.bl;
+    $scope.numeroBLHouse = $routeParams.blhouse;
+
     //console.log("TENGO BL HOUSE:", $scope.blhouse, "y ope", $scope.bl)
 
     function isDate(x)
@@ -25,11 +25,11 @@ app.controller('editarBLHouseController', ['$scope', '$location', '$http','$wind
         return fecha;
     }
 
-    function parseFechaForDB(date){
+    function parseFechaForDB(date, hora){
         var fecha = date.getDate()  + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " a las " + ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
         return fecha;
     }
-
+   // $scope.horaStacking = new Date();
     var urlBase = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.bl;
 
     $http.get(urlBase)
@@ -42,7 +42,9 @@ app.controller('editarBLHouseController', ['$scope', '$location', '$http','$wind
                 $scope.numHouse = parseInt($scope.BLHouse[i].numeroBLHouse);
                 if ($scope.numHouse === parseInt($scope.blhouse)) {
                 $scope.editarBLHouse = $scope.BLHouse[i];
-                //console.log("TENGO house:", $scope.editarBLHouse.numeroBLHouse , "y", $scope.editarBLHouse.numeroOperacion)
+                $scope.editarBLHouse.kilos = parseFloat($scope.editarBLHouse.kilos ).toFixed(2);
+                $scope.editarBLHouse.volumen = parseFloat($scope.editarBLHouse.volumen ).toFixed(2);
+                    //console.log("TENGO house:", $scope.editarBLHouse.numeroBLHouse , "y", $scope.editarBLHouse.numeroOperacion)
                 break;
                 }
                 //console.log("no encontre")
@@ -103,6 +105,12 @@ app.controller('editarBLHouseController', ['$scope', '$location', '$http','$wind
             //console.log($scope.ciudades[0]);
     }*/
 
+    var urlBase1 = 'http://localhost:8080/blmasters/numerooperacion/'+$scope.bl;
+    $http.get(urlBase1).then(function(response){  // campo: destino
+        $scope.blMaster = response.data;
+        $scope.numeroBLMaster= $scope.blMaster[0].blmasterNumero
+        //console.log($scope.ciudades);
+    })
 
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;

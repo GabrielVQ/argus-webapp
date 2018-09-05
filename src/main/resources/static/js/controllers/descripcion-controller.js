@@ -1,4 +1,4 @@
-app.controller('descripcionController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse' ,function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse) {
+app.controller('descripcionController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse','$routeParams',function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse, $routeParams ) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
@@ -6,13 +6,22 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
     $scope.fecha = new Date();
     //$scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
 
-    $scope.numeroBLMaster = localStorage.getItem("token4");
-    $scope.numeroOperacion = localStorage.getItem("token");
-    $scope.numeroBLHouse = localStorage.getItem("token3");
+
+    $scope.bl = $routeParams.bl;
+    $scope.blhouse = $routeParams.blhouse;
+    $scope.numeroOperacion =$scope.bl;
+    $scope.numeroBLHouse = $scope.blhouse;
+    var urlBase1 = 'http://localhost:8080/blmasters/numerooperacion/'+$scope.bl;
+
+    $http.get(urlBase1).then(function(response){
+        $scope.blMaster = response.data;
+        $scope.numeroBLMaster= $scope.blMaster[0].blmasterNumero
+        //console.log($scope.ciudades);
+    });
 
     $scope.isActive = function(route) {
         return route === $location.path();
-    }
+    };
 
     $scope.newDescripcion = {
         "numeroOperacion": $scope.numeroOperacion,

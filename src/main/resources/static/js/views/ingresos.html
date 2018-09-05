@@ -110,8 +110,8 @@
                     </div>
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a></li>
-                        <li><a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
-                        <li><a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
+                        <li><a href="#!/descripcion/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
+                        <li><a href="#!/ingresos/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
 
                     </ul>
                     <!--
@@ -139,6 +139,7 @@
                         <th>F & C</th>
                         <th>Prepaid</th>
                         <th>Collect</th>
+                        <th>Costo</th>
                         <th>BL House Number</th>
                     </tr>
                     </thead>
@@ -148,6 +149,7 @@
                         <td>{{BL.cobro.nombreCobro}}</td>
                         <td>{{BL.prepaid}}</td>
                         <td>{{BL.collect}}</td>
+                        <td>{{BL.costo}}</td>
                         <td>{{BL.numeroBLHouse}}</td>
                         <td>
                             <a href="#!/editarIngresos/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}/{{BL.id}}" class="btn btn-primary btn-xs" role="button">Editar</a>
@@ -210,10 +212,12 @@
             <div class="panel-body1">
                 <div class="content col-md-12">
                     <ul class="input-group">
-                    <div class="col-md-4"><label class="col-md-8">Prepaid:</label>
-                        <input ng-model="newIngresos.prepaid" class="col-md-7" type="number"  placeholder="0000,00" ></div>
-                    <div class="col-md-4"><label class="col-md-8">Collect:</label>
-                        <input ng-model="newIngresos.collect" class="col-md-7" type="number"  placeholder="0000,00" ></div>
+                        <div class="col-md-4"><label class="col-md-8">Prepaid:</label>
+                            <input ng-model="newIngresos.prepaid" class="col-md-7" type="number"  placeholder="0000,00" ></div>
+                        <div class="col-md-4"><label class="col-md-8">Collect:</label>
+                            <input ng-model="newIngresos.collect" class="col-md-7" type="number"  placeholder="0000,00" ></div>
+                        <div class="col-md-4"><label class="col-md-8">Costo:</label>
+                            <input ng-model="newIngresos.costo" class="col-md-7" type="number"  placeholder="0000,00" ></div>
                     </ul>
                 </div>
             </div>

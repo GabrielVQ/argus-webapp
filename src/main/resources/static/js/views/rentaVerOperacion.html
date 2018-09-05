@@ -93,7 +93,7 @@
     </div>
 </nav>
 <div class="content-wrapper" >
-    <div class="container-fluid" ng-controller="buscarBLHouseController">
+    <div class="container-fluid" ng-controller="rentaVerController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
                 <h4>Planilla de Rentabilidad</h4>
@@ -103,19 +103,21 @@
                 <div class="col-md-12 justify-content-between">
                     <div class="row">
                         <div class="col-md-4">
-                                <p><strong>N° Operación: </strong>&nbsp; {{BLHouseOp.numeroOperacion}}</p>     
+                                <p><strong>N° Operación: </strong>&nbsp; {{numeroOperacion}}</p>
                         </div>
+                        <!--
                         <div class="col-md-4">
-                                <p><strong>Fecha ingreso: </strong> &nbsp;{{BLHouseOp.numeroOperacion}}</p>     
-                        </div>
+                                <p><strong>Fecha ingreso: </strong> &nbsp;{{BLHouseOp.fechaIngreso}}</p>
+                        </div>-->
 
                     </div>
+                    <!--
                     <div class="row">
                             <div class="col-md-8">
                                     <p><strong>Cliente: </strong> &nbsp;{{BLHouseOp.almacenista.rut}}  &nbsp; |  &nbsp; {{BLHouseOp.almacenista.nombreAbrev}} &nbsp; |  &nbsp; {{BLHouseOp.almacenista.razon_social}}</p>     
                             </div>
                             
-                    </div>
+                    </div>-->
                     
                 </div>
                 
@@ -125,25 +127,50 @@
                 <table id="table" class="table table-striped table-hover table-bordered">
                     <thead>
                     <tr>
-                        <th>Items?</th>
+                        <th>NÚMERO BL HOUSE</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th colspan="2">INGRESOS PREPAID / COLLECT</th>
                         <th>COSTOS</th>
-                        <th>INGRESOS</th>
                         <th></th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat=" BL in BLHouse |filter:searchBox ">
-                        <td>{{BL.numeroOperacion}}</td>
-                        <td>{{BL.blMaster.blmasterNumero}}</td>
-                        <td>{{BL.numeroBLHouse}}</td>
-                        <td>{{BL.blMaster[0].fechaIngreso}}</td>
+                    <tr ng-repeat=" INGRESO in ingresosBYoperacion |filter:searchBox ">
+                        <td>{{INGRESO.numeroBLHouse}}</td>
+                        <td>{{INGRESO.cobro.nombreCobro}}</td>
+                        <td>{{INGRESO.prepaid}}</td>
+                        <td>{{INGRESO.collect}}</td>
+                        <td>{{INGRESO.costo}}</td>
                         <td>
+
                             <a href="#!/editarBLHouse/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-primary btn-xs" role="button">Editar</a>
                         </td>
                     </tr>
                     </tbody>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>TOTAL</th>
+                        <th>{{totalPrepaid}}</th>
+                        <th>{{totalCollect}}</th>
+                        <th>{{totalCosto}}</th>
+                        <th></th>
+
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>PROFIT FINAL:</th>
+                        <th>{{profit}}</th>
+
+
+                    </tr>
+                    </thead>
                 </table>
+
+                <!--
                 <div class="row">
 
                         <div class="col-md-4">
@@ -160,7 +187,7 @@
                                 <h4><strong>PROFIT FINAL: </strong>&nbsp; {{BLHouseOp.numeroOperacion}}</h4>     
                         </div>
     
-                </div>
+                </div>-->
 
             </div>
 

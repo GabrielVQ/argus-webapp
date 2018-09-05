@@ -112,8 +112,8 @@
 
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a></li>
-                        <li><a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
-                        <li><a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
+                        <li><a href="#!/descripcion/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
+                        <li><a href="#!/ingresos/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
 
                     </ul>
                     <!--
@@ -323,7 +323,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label class="col-md-6">Hora stacking:</label>
-                                <input  ng-model="newBLHouse.horaStacking" class="col-md-6" type="time" value="17:00">
+                                <input  ng-model="horaStacking" value={{fechaStacking}} class="col-md-6" type="time" value="17:00">
                             </div>
                         </ul>
                         <ul class="input-group">

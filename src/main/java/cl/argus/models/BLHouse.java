@@ -73,6 +73,8 @@ public class BLHouse {
 
     private String numeroBLHouse;
 
+
+
     @ManyToOne
     @JoinColumn(name="almacenista")
     private Empresa almacenista;

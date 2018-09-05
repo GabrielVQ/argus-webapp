@@ -59,7 +59,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/editarBLHouse.html',
             controller: 'editarBLHouseController'
         })
-        .when('/descripcion',{
+        .when('/descripcion/:bl/:blhouse',{
             templateUrl: 'js/views/descripcion.html',
             controller: 'descripcionController'
         })
@@ -67,7 +67,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/editarDescripcion.html',
             controller: 'editarDescripcionController'
         })
-        .when('/ingresos',{
+        .when('/ingresos/:bl/:blhouse',{
             templateUrl: 'js/views/ingresos.html',
             controller: 'ingresosController'
         })

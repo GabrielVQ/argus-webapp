@@ -1,4 +1,4 @@
-app.controller('ingresosController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse', function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse) {
+app.controller('ingresosController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse','$routeParams', function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse, $routeParams) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
@@ -7,6 +7,17 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
 
    // $scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
 
+    $scope.numeroOperacion = $routeParams.bl;
+    $scope.numeroBLHouse = $routeParams.blhouse;
+
+    var urlBase4 = 'http://localhost:8080/blmasters/numerooperacion/'+$scope.numeroOperacion;
+
+    $http.get(urlBase4).then(function(response){
+        console.log('entre numero master');
+        $scope.blMaster = response.data;
+        $scope.numeroBLMaster = $scope.blMaster[0].blmasterNumero;
+        console.log('numero master:', $scope.numeroBLMaster);
+    })
 
     $scope.isActive = function(route) {
         return route === $location.path();
@@ -22,7 +33,8 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         "llevarFormulario": "",
         "prepaid": "",
         "collect":"",
-        "blHouse":0
+        "blHouse":0,
+        "costo":""
 
     }
 
@@ -43,7 +55,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $scope.newIngresos.facturara = {"id":parseInt($scope.newIngresos.facturara)};
         $scope.newIngresos.prepaid = parseFloat($scope.newIngresos.prepaid).toFixed(2);
         $scope.newIngresos.collect = parseFloat($scope.newIngresos.collect).toFixed(2);
-
+        $scope.newIngresos.costo = parseFloat($scope.newIngresos.costo).toFixed(2);
 
         $http.post("http://localhost:8080/ingresos",$scope.newIngresos);
         $scope.mensaje = 'Ingresos agregado con exito!';
@@ -59,9 +71,8 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $window.location.reload();
     }
 
-    $scope.numeroBLMaster = localStorage.getItem("token4");
-    $scope.numeroOperacion = localStorage.getItem("token");
-    $scope.numeroBLHouse = localStorage.getItem("token3");
+
+
    // console.log("controlador ingresos")
 
     $scope.borrar = function(id){
@@ -81,7 +92,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
 
     $http.get('http://localhost:8080/containers').then(function(response){
         $scope.containers = response.data;
-        console.log($scope.containers);
+        //console.log($scope.containers);
     })
 
     $http.get('http://localhost:8080/empresas').then(function(response){ // campo: agente

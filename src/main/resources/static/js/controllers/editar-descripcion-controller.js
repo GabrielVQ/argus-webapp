@@ -65,7 +65,7 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
         $http.post("http://localhost:8080/cargaments",$scope.editarDescripcion);
         $scope.mensaje = 'Descripción editada con exito!';
         $window.alert($scope.mensaje);
-        $location.url('/descripcion');
+        $location.url('/descripcion/'+$scope.numeroOperacion+'/'+$scope.numeroBLHouse);
 
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
@@ -85,8 +85,8 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
                     $scope.editarDescripcion = $scope.descripcion[i];
                     //console.log("TENGO descri:", $scope.editarDescripcion.numeroBLHouse , "y", $scope.editarDescripcion.numeroOperacion);
                     $scope.editarDescripcion.numerPackages = parseInt($scope.editarDescripcion.numerPackages);
-                    $scope.editarDescripcion.groosWeight = parseInt($scope.editarDescripcion.groosWeight);
-                    $scope.editarDescripcion.measurement = parseInt($scope.editarDescripcion.measurement);
+                    $scope.editarDescripcion.groosWeight = parseFloat($scope.editarDescripcion.groosWeight);
+                    $scope.editarDescripcion.measurement = parseFloat($scope.editarDescripcion.measurement);
                     console.log("descipcion",$scope.editarDescripcion.descriptionGoods)
                     break;
                 }

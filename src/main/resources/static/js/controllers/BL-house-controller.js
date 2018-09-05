@@ -13,8 +13,8 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
     var d = new Date();
     var fechaIngreso = d.getDate()  + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " a las " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
 
-    function parseFecha(date){
-        var fecha = date.getDate()  + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " a las " + ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+    function parseFecha(date, hora){
+        var fecha = date.getDate()  + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " a las " + ("0" + hora.getHours()).slice(-2) + ":" + ("0" + hora.getMinutes()).slice(-2);
         return fecha;
     }
     $scope.isActive = function(route) {
@@ -22,7 +22,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
 
     }
 
-    $scope.numeroOperacion = localStorage.getItem("token");
+    $scope.numeroOperacion = $routeParams.bl;
 
     $scope.newBLHouse= {
         "numeroOperacion": $scope.numeroOperacion,
@@ -50,6 +50,7 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         "observacion":"",
         "imoClase":"",
         "imoNumero":"",
+
     };
 
 
@@ -106,7 +107,9 @@ app.controller('BLHouseController', ['$scope', '$location', '$http','$window', '
         $scope.newBLHouse.almacenista= {"id":parseInt($scope.newBLHouse.almacenista)};
         $scope.newBLHouse.ciudadLlegada= {"id":parseInt($scope.newBLHouse.ciudadLlegada)};
         $scope.newBLHouse.blMaster= {"id":parseInt($scope.idaux)};
-        $scope.newBLHouse.fechaStacking =  parseFecha($scope.newBLHouse.fechaStacking);
+        $scope.newBLHouse.fechaStacking =  parseFecha($scope.newBLHouse.fechaStacking, $scope.newBLHouse.horaStacking);
+        $scope.newIngresos.kilos = parseFloat($scope.newIngresos.kilos).toFixed(2);
+        $scope.newIngresos.volumen = parseFloat($scope.newIngresos.volumen).toFixed(2);
         $http.post("http://localhost:8080/blhouses",$scope.newBLHouse);
         $scope.mensaje = 'BL House generado con exito!';
         $window.alert($scope.mensaje);

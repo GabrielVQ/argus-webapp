@@ -110,8 +110,8 @@
                     </div>
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#!/BL-House/{{numeroOperacion}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/BL-House') }" role="button">1.Cabecera</a></li>
-                        <li><a href="#!/descripcion" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
-                        <li><a href="#!/ingresos" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
+                        <li><a href="#!/descripcion/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/descripcion') }" role="button">2.Descripción</a></li>
+                        <li><a href="#!/ingresos/{{numeroOperacion}}/{{numeroBLHouse}}" class="btn btn-primary btn-sm" ng-class="{ active: isActive('/ingresos') }" role="button">3.Ingresos</a></li>
 
                     </ul>
                     <!--
@@ -191,7 +191,7 @@
                     </ul>
                     <ul class="input-group">
                         <div class="col-md-12"><label class="col-md-6">Description of goods:</label>
-                            <textarea ng-model="editarDescripcion.descriptionGoods" type ="text" name=""  class="col-md-10"></textarea>
+                            <textarea rows="10" cols="40" ng-model="editarDescripcion.descriptionGoods" type ="text" name=""  class="col-md-10"></textarea>
                         </div>
                     </ul>
 

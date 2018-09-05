@@ -30,9 +30,9 @@ app.controller('editarIngresosController', ['$scope', '$location', '$http','$win
                 if ($scope.numid === parseInt($scope.idIngreso)) {
                     $scope.editarIngreso = $scope.ingresos[i];
                     console.log("TENGO prepaidi:", $scope.editarIngreso.prepaid);
-                    $scope.editarIngreso.prepaid = parseInt($scope.editarIngreso.prepaid);
-                    $scope.editarIngreso.collect = parseInt($scope.editarIngreso.collect);
-
+                    $scope.editarIngreso.prepaid = parseFloat($scope.editarIngreso.prepaid);
+                    $scope.editarIngreso.collect = parseFloat($scope.editarIngreso.collect);
+                    $scope.editarIngreso.costo = parseFloat($scope.editarIngreso.costo);
                     //console.log("descipcion", $scope.editarDescripcion.descriptionGoods)
                     break;
                 }
@@ -55,7 +55,7 @@ app.controller('editarIngresosController', ['$scope', '$location', '$http','$win
         $scope.mensaje = 'Ingreso editado con exito!';
         $window.alert($scope.mensaje);
         $window.location.reload();
-        $location.url('/ingresos');
+        $location.url('/ingresos/'+$scope.numeroOperacion+'/'+$scope.numeroBLHouse);
 
 
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
