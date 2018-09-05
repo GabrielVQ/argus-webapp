@@ -139,8 +139,8 @@ app.controller('BLMasterController', ['$scope', '$location', '$http','$window','
     $scope.agregarContenedor = function(){
         $scope.newContenedor.sigla = $scope.newContenedor.sigla.toUpperCase();
         $scope.newContenedor.selloEmpresa = $scope.newContenedor.selloEmpresa.toUpperCase();
-        $scope.newContenedor.selloAduana = $scope.newContenedor.selloEmpresa.toUpperCase();
-        $scope.newContenedor.selloCliente = $scope.newContenedor.selloEmpresa.toUpperCase();
+        $scope.newContenedor.selloAduana = $scope.newContenedor.selloAduana.toUpperCase();
+        $scope.newContenedor.selloCliente = $scope.newContenedor.selloCliente.toUpperCase();
         $scope.newContenedor.descripcionLarga = $scope.newContenedor.sigla+'-'+$scope.newContenedor.numeroContenedor+$scope.newContenedor.digito+"\n"+$scope.newContenedor.selloEmpresa+'\n'+$scope.newContenedor.selloCliente+'\n'+$scope.newContenedor.selloAduana;
 
         $http.post("http://localhost:8080/containers",$scope.newContenedor);

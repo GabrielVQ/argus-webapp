@@ -2,20 +2,25 @@ package cl.argus.controllers;
 
 
 import cl.argus.argusApplication;
-import cl.argus.models.Cargament;
+import cl.argus.models.*;
 import cl.argus.repositories.BLHouseRepository;
 import cl.argus.repositories.BLMasterRepository;
-import cl.argus.models.BLMaster;
-import cl.argus.models.BLHouse;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import cl.argus.models.Empresa;
+import cl.argus.repositories.CargamentRepository;
+import cl.argus.repositories.IngresoRepository;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.draw.LineSeparator;
@@ -24,6 +29,7 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 import org.apache.catalina.core.ApplicationContext;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.data.repository.CrudRepository;
@@ -53,11 +59,56 @@ public class PDFController {
     BLHouse blHouse;
     BLMaster blMaster;
 
-
-    public Document createReserva(String file,Long id,BLHouseRepository blHouseRepository) throws IOException{
+    public String mesLetras(int mes){
+        String mesString;
+        switch (mes) {
+            case 1:  mesString = "Enero";
+                break;
+            case 2:  mesString  = "Febrero";
+                break;
+            case 3:  mesString = "Marzo";
+                break;
+            case 4:  mesString = "Abril";
+                break;
+            case 5:  mesString = "Mayo";
+                break;
+            case 6:  mesString = "Junio";
+                break;
+            case 7:  mesString = "Julio";
+                break;
+            case 8:  mesString = "Agosto";
+                break;
+            case 9:  mesString = "Septiembre";
+                break;
+            case 10: mesString = "Octubre";
+                break;
+            case 11: mesString = "Noviembre";
+                break;
+            case 12: mesString = "Diciembre";
+                break;
+            default: mesString = "Invalid month";
+                break;
+        }
+        return mesString;
+    }
+    public Document createReserva(String file,Long id, int numeroOperacion, BLHouseRepository blHouseRepository, BLMasterRepository blMasterRepository) throws IOException{
         Document document = null;
         try{
             blHouse=blHouseRepository.findOne(id);
+            String auxNumeroOperacion = Integer.toString(numeroOperacion);
+            blMaster = blMasterRepository.getByNumeroOperacion(numeroOperacion).get(0);
+            Date fecha = blHouse.getFechaStacking();
+            String fechaStacking = Integer.toString(blHouse.getFechaStacking().getDay())+"/"+
+                    Integer.toString(blHouse.getFechaStacking().getMonth()+1)+"/"+
+                    Integer.toString(blHouse.getFechaStacking().getYear())+" a las "+
+                    Integer.toString(blHouse.getFechaStacking().getHours())+":"+
+                    Integer.toString(blHouse.getFechaStacking().getMinutes());
+            String fechaZarpe = Integer.toString(blMaster.getFechaZarpe().getDay())+"/"+
+                    Integer.toString(blMaster.getFechaZarpe().getMonth()+1)+"/"+
+                    Integer.toString(blMaster.getFechaZarpe().getYear());
+            System.out.println("test:"+fechaStacking);
+            System.out.println("test:"+fechaZarpe);
+            System.out.println("test:"+blHouse.getFechaStacking().toString());
             document = new Document(PageSize.LETTER,40, 40, 5, 2);
             PdfWriter pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
@@ -78,28 +129,33 @@ public class PDFController {
             Paragraph titulo= new Paragraph("CONFIRMACION DE RESERVA FCL\n\n",title);
             titulo.setAlignment(Element.ALIGN_CENTER);
 
-            Paragraph destinatario= new Paragraph(   "SEÑORES  : \n" +
-                    "ATENCION : \n" +
-                    "FECHA    : \n\n",font
+            //Calendar c = new GregorianCalendar();
+            String dia = Integer.toString(LocalDate.now().getDayOfMonth());
+            String mes = mesLetras(LocalDate.now().getMonthValue());
+            String ano = Integer.toString(LocalDate.now().getYear());
+
+            Paragraph destinatario= new Paragraph(   "SEÑORES  :"+blHouse.getClienteExtranjero().getNombreAbrev()+"\n"+
+                    "ATENCION :"+blMaster.getAgenteAduana()+"\n" +
+                    "FECHA    : "+dia+" de "+mes+" de "+ano+"\n\n",font
             );
 
             Paragraph saludos= new Paragraph("ESTIMADOS SEÑORES,\n" +
                     "LES DETALLAMOS INFORMACION DE ESPACIO PARA SU EXPORTACION.\n\n",font
             );
 
-            Paragraph cuerpo= new Paragraph( "NUMERO DE BOOKING  :SAI0012667\n" +
-                    "NAVIERA            :WAN HAI\n" +
-                    "NAVE               :XIN YA ZHOU  V.132\n" +
-                    "PUERTO DE EMBARQUE :SAN ANTONIO\n" +
+            Paragraph cuerpo= new Paragraph( "NUMERO DE BOOKING  :"+blMaster.getnReserva()+"\n" +
+                    "NAVIERA            :"+blMaster.getNaviera().getNombre()+"\n" +
+                    "NAVE               :"+blMaster.getNave().getNombre()+"\n" +
+                    "PUERTO DE EMBARQUE :"+blMaster.getPuertoOrigen().getNombre()+"\n" +
                     "EQUIPO             :1X20\n" +
-                    "PUERTO DESTINO     :MANZANILLO \n" +
-                    "FECHA ZARPE        :26/05/2018\n" +
-                    "FECHA DE STACKING  :20 AL 24  DE MAYO HASTA LAS 21:00 HRS\n" +
+                    "PUERTO DESTINO     :"+blMaster.getPuertoDescarga().getNombre()+"\n" +
+                    "FECHA ZARPE        :"+blMaster.getFechaZarpe()+"\n" +
+                    "FECHA DE STACKING  :"+blHouse.getFechaStacking()+"\n" +
                     "CIERRE DOCUMENTAL  :23 DE MAYO  2018 HASTA LAS 12:00 HRS \n" +
-                    "REFERENCIA         :DELIMEX\n" +
-                    "RETIRO DE UNIDAD   :SITRANS SANTIAGO\n" +
-                    "CONDICION DE FLETE :COLLECT\n" +
-                    "VºBº D.U.S         :SAN ANTONIO\n\n"
+                    "REFERENCIA         :"+blHouse.getNotify().getNombreAbrev()+"\n" +
+                    "RETIRO DE UNIDAD   :"+blHouse.getAlmacenista().getNombreAbrev()+"\n" +
+                    "CONDICION DE FLETE :"+blHouse.getPpcc().toUpperCase()+"\n" +
+                    "VºBº D.U.S         :"+blMaster.getPuertoOrigen().getNombre()+"\n\n"
                     ,font);
 
             Paragraph despedida= new Paragraph("OBS: ENVIAR MATRIZ DEFINITIVA ANTES DEL  CIERRE  DEL CUT OFF DOCUMENTAL  \n" +
@@ -137,15 +193,37 @@ public class PDFController {
         return document;
     }
 
+    //@Autowired
+    //BLMasterRepository blMasterRepository
+            //BLHouseRepository blHouseRepository;
+    //CiudadRepository ciudadRepository;
 
-    public Document createPDF(String file, Long id,BLHouseRepository blHouseRepository) throws IOException {
+    List<Cargament>  cargamento;
+    List<Ingreso>  ingreso;
+    public Document createPDF(String file, int numeroOperacion, int numeroBLHouse, BLHouseRepository blHouseRepository, BLMasterRepository blMasterRepository, CargamentRepository cargamentRepository, IngresoRepository ingresoRepository) throws IOException {
 
         Document document = null;
 
 
         try {
-            blHouse=blHouseRepository.findOne(id);
-            System.out.println(blHouse.getShipper());
+            String auxNumeroOperacion = Integer.toString(numeroOperacion);
+            String auxNumeroBLHouse = Integer.toString(numeroBLHouse);
+            //System.out.println("numeroOperacion:"+ numeroOperacion);
+            //System.out.println("numeroHouse:"+ numeroBLHouse);
+            //buscqueda de datos por número de operacion
+            Iterable <BLHouse> blHouses = blHouseRepository.getByNumeroOperacion(auxNumeroOperacion);
+            blMaster = blMasterRepository.getByNumeroOperacion(numeroOperacion).get(0);
+            Iterable <Cargament> cargamentos = cargamentRepository.getByNumeroOperacion(auxNumeroOperacion);
+            Iterable <Ingreso> ingresos = ingresoRepository.getByNumeroOperacion(auxNumeroOperacion);
+            //System.out.println( "BLMASTER:" + blMasterRepository.getByNumeroOperacion(3).get(0).getBLMasterNumero());
+            //System.out.println( "CARGAMENTO:" + cargamentRepository.getByNumeroOperacion("3").get(0).getDescriptionGoods());
+            //System.out.println("tengo bl master:"+(((List<BLHouse>) blHouses).get(0).getBlMaster().getBLMasterNumero()));
+
+            blHouse = buscarBLHouse((List<BLHouse>)blHouses,auxNumeroBLHouse);
+            cargamento = buscarCargamento((List<Cargament>)cargamentos , auxNumeroBLHouse);
+            ingreso = buscarIngresos((List<Ingreso>)ingresos , auxNumeroBLHouse);
+
+
             document = new Document(PageSize.LETTER,1, 1, 2, 2);
 
             PdfWriter pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(file));
@@ -227,6 +305,65 @@ public class PDFController {
     }
 
 
+    public BLHouse buscarBLHouse (List<BLHouse> BLHouses, String numeroBLHouse ){
+
+        int i = 0;
+
+        while(i<BLHouses.size()){
+            //System.out.println("tengo numero:" + BLHouses.get(i).getNumeroBLHouse());
+            //System.out.println("busncado numero:"+numeroBLHouse);
+            if ( BLHouses.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+                System.out.println("encontre el blhouse");
+                return BLHouses.get(i);
+            }
+            i++;
+        }
+        System.out.println("no encontre nada");
+        return null;
+
+    }
+
+    public List<Cargament> buscarCargamento (List<Cargament> cargamento, String numeroBLHouse ){
+
+        int i = 0;
+        List<Cargament> cargamentoBLHouse = new ArrayList<Cargament>() {
+        };
+        while(i<cargamento.size()){
+            //System.out.println("tengo numero:" + cargamento.get(i).getNumeroBLHouse());
+            //System.out.println("busncado numero:"+numeroBLHouse);
+            if ( cargamento.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+                //System.out.println("encontre el blhouse");
+                cargamentoBLHouse.add(cargamento.get(i));
+            }
+            i++;
+        }
+        //System.out.println("no encontre nada");
+        return cargamentoBLHouse;
+
+    }
+
+    public List<Ingreso> buscarIngresos (List<Ingreso> ingresos, String numeroBLHouse ){
+
+        int i = 0;
+        List<Ingreso> ingresosBLHouse = new ArrayList<Ingreso>() {
+        };
+        while(i<ingresos.size()){
+            //System.out.println("tengo numero:" + cargamento.get(i).getNumeroBLHouse());
+            //System.out.println("busncado numero:"+numeroBLHouse);
+            if ( ingresos.get(i).getNumeroBLHouse().equals(numeroBLHouse)){
+
+                //System.out.println("encontre el blhouse");
+                ingresosBLHouse.add(ingresos.get(i));
+            }
+            i++;
+        }
+        //System.out.println("no encontre nada");
+        return ingresosBLHouse;
+
+    }
+
     private void addMetaData(Document document) {
         document.addTitle("Generate PDF report");
         document.addSubject("Generate PDF report");
@@ -300,7 +437,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getShipper().getNombreAbrev();
+        String name=blHouse.getShipper().getRazon_social();
 
 
         String direccion=blHouse.getShipper().getDireccion();
@@ -328,19 +465,19 @@ public class PDFController {
 
         table.addCell(c1);
 
-        }
+    }
 
     private void createConsignee(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getConsignee().getNombreAbrev();
-        String direccion=blHouse.getConsignee().getDireccion();
+        String name=blHouse.getNotify().getRazon_social();
+        String direccion=blHouse.getNotify().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
-        String rut=blHouse.getConsignee().getRut();
-        String fono=blHouse.getConsignee().getFonoContacto();
+        String rut=blHouse.getNotify().getRut();
+        String fono=blHouse.getNotify().getFonoContacto();
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("CONSIGNEE",title));
         celda.add("\n");
@@ -363,7 +500,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String name=blHouse.getNotify().getNombreAbrev();
+        String name=blHouse.getNotify().getRazon_social();
         String direccion=blHouse.getNotify().getDireccion();
         String[] direcciones= direccion.split("\\n");
 
@@ -408,7 +545,7 @@ public class PDFController {
 
         //PLACE
         celda= new Paragraph();
-        celda.add(new Paragraph("PLACE OF RECEIPT",title));
+        celda.add(new Paragraph("PLACE OF RECEIPT"+blHouse.getLugarRecepcion(),title));
         celda.add("\n");
         celda.add(new Paragraph(" ",content));
         cl= new PdfPCell(celda);
@@ -427,8 +564,8 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String vessel= blHouse.getBlMaster().getNave().getNombre();
-        String loading=blHouse.getBlMaster().getPuertoOrigen().getNombre();
+        String vessel= blMaster.getNave().getNombre();
+        String loading=blMaster.getPuertoOrigen().getNombre();
 
 
         PdfPTable tablita = new PdfPTable(2);
@@ -463,7 +600,7 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
-        String descarga=blHouse.getBlMaster().getPuertoDescarga().getNombre();
+        String descarga=blMaster.getPuertoDescarga().getNombre();
         String place=blHouse.getCiudadLlegada().getNombre();
 
         PdfPTable tablita = new PdfPTable(2);
@@ -591,17 +728,19 @@ public class PDFController {
         /////////////////////////////////////////////////////////////////////
         //FALTA ESTO ESTO ESTO ESTO
         /////////////////////////////////////////////////////////////////////
-
+        //provisoriamente se completa con agente aduana
         Paragraph celda= new Paragraph();
         celda.add(new Paragraph("FORWARDING AGENT",title));
         celda.add("\n");
-        celda.add(new Paragraph("RH SHIPPING & CHARTERING S. DE R.L. DE C.V. ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getNombreAbrev(),content));
         celda.add("\n");
-        celda.add(new Paragraph("AVDA PASEO DE LA REFORMA N° 222 PISO 15 COL. ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getRazon_social(),content));
         celda.add("\n");
-        celda.add(new Paragraph("JUAREZ CIUDAD DE MEXICO C.P. 06600 ",content));
+        celda.add(new Paragraph(blHouse.getClienteExtranjero().getDireccion(),content));
         celda.add("\n");
-        celda.add(new Paragraph("CIUDAD DE MEXICO/MEXICO\n\n",content));
+        // celda.add(new Paragraph("JUAREZ CIUDAD DE MEXICO C.P. 06600 ",content));
+        //celda.add("\n");
+        //celda.add(new Paragraph(blHouse.getClienteExtranjero().get"\n\n",content));
         PdfPCell c1 = new PdfPCell(celda);
 
 
@@ -688,12 +827,13 @@ public class PDFController {
     private void createMarkAndNumbers(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph("CONTAINTER\n"+carga.getMarkNumbers(),content));
+
+        celda.add(new Paragraph("CONTAINER\n"+cargamento.get(0).getContenedor().getSigla()+" "+ cargamento.get(0).getContenedor().getNumeroContenedor()+"-"+cargamento.get(0).getContenedor().getDigito()+"\n"+cargamento.get(0).getMarkNumbers(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -705,14 +845,14 @@ public class PDFController {
     private void createNumberOfPackages(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add((new Paragraph(carga.getNumerPackages(),content)));
+        celda.add((new Paragraph(cargamento.get(0).getNumerPackages(),content)));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -724,16 +864,14 @@ public class PDFController {
     private void createDescriptionOfGods(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getDescriptionGoods(),content));
-
-
+        celda.add(new Paragraph(cargamento.get(0).getDescriptionGoods(),content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -745,14 +883,14 @@ public class PDFController {
     private void createGrossWeight(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
+        //Cargament carga= cargamento.iterator().next();
 
 
         Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getGroosWeight(),content));
+        celda.add(new Paragraph(cargamento.get(0).getGroosWeight(),content));
         celda.add(" ");
 
 
@@ -765,14 +903,13 @@ public class PDFController {
     private void createMeasurement(PdfPTable table) throws DocumentException {
         Font title = new Font(Font.FontFamily.HELVETICA, 6);
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
-        Font content = new Font(Font.FontFamily.HELVETICA, 9);
+        Font content = new Font(Font.FontFamily.HELVETICA, 8);
 
 
-        Cargament carga= blHouse.getCargaments().iterator().next();
 
 
-        Paragraph celda= new Paragraph();
-        celda.add(new Paragraph(carga.getMeasurement(),content));
+        Paragraph celda = new Paragraph();
+        celda.add(new Paragraph(cargamento.get(0).getMeasurement(), content));
         celda.add(" ");
 
         PdfPCell c1 = new PdfPCell(celda);
@@ -832,7 +969,10 @@ public class PDFController {
 
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getCobro().getNombreCobro()+" "+blHouse.getMoneda()+"\n", content));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -846,7 +986,10 @@ public class PDFController {
 
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph("\n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getPrepaid()+"\n", content));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -857,9 +1000,13 @@ public class PDFController {
         Font contentBold = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD);
         Font content = new Font(Font.FontFamily.HELVETICA, 9);
 
+
         Paragraph celda = new Paragraph();
         celda = new Paragraph();
-        celda.add(new Paragraph(" \n\n\n\n",contentBold));
+        for (int i = 0; i<ingreso.size(); i++) {
+            celda.add(new Paragraph(ingreso.get(i).getCollect()+"\n", content));
+        }
+
         PdfPCell cl =new PdfPCell(celda);
 
         table.addCell(cl);
@@ -883,23 +1030,23 @@ public class PDFController {
 
         Paragraph celda = new Paragraph();
         celda.add(new Paragraph("" +
-                        "Received by Carrier for shipment by ocean vesel between port\n" +
-                        "of loading and port of discharge, and for arrangement or\n"+
-                        "procurement of pre-carriage from please of receip and on-carriage\n"+
-                        "to please of delivery, where stated above, the goods as specified\n" +
-                        "above in apparent good order and condition unless otherwise\n" +
-                        "stated. The goods to be delivered at the above mentioned port\n" +
-                        "of discharge or please of delivery, whichever is applicable, subject\n" +
-                        "always to the exceptions, limitations, conditions and liberties set\n" +
-                        "out the reverse side hereof, to whitch the Shipper and/or\n" +
-                        "Consignee agree to accepting this Bill of Lading.\n" +
-                        "In witness where of the original Bill of Lading all of this tenor\n" +
-                        "and date have been signed in then number stated above, one of\n" +
-                        " whitch being accomplished the other(s) to be void.\n\n" ,content));
+                "Received by Carrier for shipment by ocean vesel between port\n" +
+                "of loading and port of discharge, and for arrangement or\n"+
+                "procurement of pre-carriage from please of receip and on-carriage\n"+
+                "to please of delivery, where stated above, the goods as specified\n" +
+                "above in apparent good order and condition unless otherwise\n" +
+                "stated. The goods to be delivered at the above mentioned port\n" +
+                "of discharge or please of delivery, whichever is applicable, subject\n" +
+                "always to the exceptions, limitations, conditions and liberties set\n" +
+                "out the reverse side hereof, to whitch the Shipper and/or\n" +
+                "Consignee agree to accepting this Bill of Lading.\n" +
+                "In witness where of the original Bill of Lading all of this tenor\n" +
+                "and date have been signed in then number stated above, one of\n" +
+                " whitch being accomplished the other(s) to be void.\n\n" ,content));
         celda.add(new Paragraph("DATED AT:\t",title));
         celda.add(new Paragraph("  SAN ANTONIO 27 DE MAYO 2018\n\n",contentBold));
         celda.add(new Paragraph("BY       \t:",title));
-        celda.add(new Paragraph("    BY ARGUS LOGISTICA LIMITADA\n",contentBold));
+        celda.add(new Paragraph("    ARGUS LOGISTICA LIMITADA\n",contentBold));
 
 
         PdfPCell cl =new PdfPCell(celda);
@@ -919,15 +1066,23 @@ public class PDFController {
         cl.setHorizontalAlignment(Element.ALIGN_RIGHT);
         table.addCell(cl);
 
+        float totalPrepaid = 0;
+        for (int i = 0; i<ingreso.size(); i++) {
+            totalPrepaid = Float.parseFloat(ingreso.get(i).getPrepaid()) + totalPrepaid;
+        }
         celda = new Paragraph();
-        celda.add(new Paragraph("",contentBold));
+        celda.add(new Paragraph(String.format("%.2f", totalPrepaid)+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 
         table.addCell(cl);
 
+        float totalCollect = 0;
+        for (int i = 0; i<ingreso.size(); i++) {
+            totalCollect = Float.parseFloat(ingreso.get(i).getCollect()) + totalCollect;
+        }
         celda = new Paragraph();
-        celda.add(new Paragraph("",contentBold));
+        celda.add(new Paragraph(String.format("%.2f", totalCollect)+" "+blHouse.getMoneda(),contentBold));
         cl =new PdfPCell(celda);
         cl.setBackgroundColor(new BaseColor(0,255,255));
 

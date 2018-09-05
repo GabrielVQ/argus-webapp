@@ -31,10 +31,10 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         "facturara": 0,
         "cobro":0,
         "llevarFormulario": "",
-        "prepaid": "",
-        "collect":"",
+        "prepaid": "0",
+        "collect":"0",
         "blHouse":0,
-        "costo":""
+        "costo":"0"
 
     }
 

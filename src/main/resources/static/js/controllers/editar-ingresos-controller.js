@@ -51,6 +51,7 @@ app.controller('editarIngresosController', ['$scope', '$location', '$http','$win
         //$scope.editarDescripcion.contenedor= {"id":parseInt($scope.editarDescripcion.contenedor.)};
         $scope.editarIngreso.prepaid = parseFloat($scope.editarIngreso.prepaid).toFixed(2);
         $scope.editarIngreso.collect = parseFloat($scope.editarIngreso.collect).toFixed(2);
+        $scope.editarIngreso.costo = parseFloat($scope.editarIngreso.costo).toFixed(2);
         $http.post("http://localhost:8080/ingresos",$scope.editarIngreso);
         $scope.mensaje = 'Ingreso editado con exito!';
         $window.alert($scope.mensaje);
