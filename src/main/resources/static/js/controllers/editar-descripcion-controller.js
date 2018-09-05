@@ -1,4 +1,4 @@
-app.controller('descripcionController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse' ,function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse) {
+app.controller('editarDescripcionController', ['$scope', '$location', '$http','$window', 'servicioNumeroBL','servicioNumeroBLHouse', '$routeParams' ,function($scope, $location, $http,$window, servicioNumeroBL,servicioNumeroBLHouse, $routeParams) {
     $scope.nombre = 'Nacho';
     $scope.tipoBL = ['Exportación', 'Importación'];
     //$scope.numeroOperacion = servicioNumeroBL.numeroBL;
@@ -7,9 +7,11 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
     //$scope.numeroBLHouse = servicioNumeroBLHouse.numeroBLHouse;
 
     $scope.numeroBLMaster = localStorage.getItem("token4");
-    $scope.numeroOperacion = localStorage.getItem("token");
-    $scope.numeroBLHouse = localStorage.getItem("token3");
-
+    $scope.numeroOperacion = $routeParams.bl;
+    $scope.numeroBLHouse = $routeParams.blhouse;
+    $scope.bl = $routeParams.bl;
+    $scope.blhouse = $routeParams.blhouse;
+    $scope.idDescripcion = $routeParams.id;
     $scope.isActive = function(route) {
         return route === $location.path();
     }
@@ -51,44 +53,51 @@ app.controller('descripcionController', ['$scope', '$location', '$http','$window
     $http.get(urlBase)
         .then(function(response) {
             $scope.BLHouseId = response.data[0].id;
-           // console.log('status: ',response.status);
+            // console.log('status: ',response.status);
         });
 
     $scope.send2 = function(){
-
-        $scope.newDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
-        $scope.newDescripcion.contenedor= {"id":parseInt($scope.newDescripcion.contenedor)};
-        $scope.newDescripcion.groosWeight = parseFloat($scope.newDescripcion.groosWeight).toFixed(2);
-        $scope.newDescripcion.measurement = parseFloat($scope.newDescripcion.measurement).toFixed(2);
-        $scope.newDescripcion.markNumbers = $scope.newDescripcion.markNumbers.toUpperCase();
-        $http.post("http://localhost:8080/cargaments",$scope.newDescripcion);
-        $scope.mensaje = 'Descripción agregada con exito!';
+        //console.log("datos a guardar",$scope.editarDescripcion.contenedor);
+        //$scope.editarDescripcion.blHouse= {"id":parseInt($scope.BLHouseId)};
+        //$scope.editarDescripcion.contenedor= {"id":parseInt($scope.editarDescripcion.contenedor.)};
+        $scope.editarDescripcion.groosWeight = parseFloat($scope.editarDescripcion.groosWeight).toFixed(2);
+        $scope.editarDescripcion.measurement = parseFloat($scope.editarDescripcion.measurement).toFixed(2);
+        $http.post("http://localhost:8080/cargaments",$scope.editarDescripcion);
+        $scope.mensaje = 'Descripción editada con exito!';
         $window.alert($scope.mensaje);
+        $location.url('/descripcion');
 
-        $http.get(urlBaseCargament)
+
+        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
+        //$window.location.reload();
+    }
+    var urlBase1 = 'http://localhost:8080/cargaments/numerooperacion/'+$scope.numeroOperacion;
+
+    $http.get(urlBase1)
         .then(function(response) {
-            $scope.cargamentsBYoperacion = response.data;
-            
-            console.log("cargamentByoperacion", $scope.cargamentsBYoperacion);
-            //var i = 0;
-            //console.log("NUMERO BL HOUSE:", response.data[i].numeroBLHouse);
-            /*
-            while (i <= response.data.length) {
-                $scope.numHouse = parseInt(response.data[i].numeroBLHouse);
-                if ($scope.numeroBLHouse === parseInt(response.data[i].numeroBLHouse)) {
-                    $scope.cargamentsBYoperacion = response.data[i];
-                    console.log("TENGO house:", response.data[i].numeroBLHouse)
+            $scope.descripcion = response.data;
+            var i = 0;
+            //console.log("descripcion:", $scope.descripcion[i].numeroBLHouse);
+
+            while (i <= $scope.descripcion.length) {
+                $scope.numid = parseInt($scope.descripcion[i].id);
+                if ($scope.numid === parseInt($scope.idDescripcion)) {
+                    $scope.editarDescripcion = $scope.descripcion[i];
+                    //console.log("TENGO descri:", $scope.editarDescripcion.numeroBLHouse , "y", $scope.editarDescripcion.numeroOperacion);
+                    $scope.editarDescripcion.numerPackages = parseInt($scope.editarDescripcion.numerPackages);
+                    $scope.editarDescripcion.groosWeight = parseInt($scope.editarDescripcion.groosWeight);
+                    $scope.editarDescripcion.measurement = parseInt($scope.editarDescripcion.measurement);
+                    console.log("descipcion",$scope.editarDescripcion.descriptionGoods)
                     break;
                 }
                 //console.log("no encontre")
                 i = i+1;
-            }*/
+            }
+
+            // console.log('id: ',$scope.BLMaster);
+            //$scope.fechaStacking = parseFecha($scope.editarBLHouse.fechaStacking);
+            //console.log("fecha:", $scope.fechaStacking)
         });
-
-        //aca newVotation esta listo para ser utilizado en el método POST, en teoría
-        $window.location.reload();
-    }
-
     $scope.borrar = function(id){
         var opcion = confirm("¿Seguro que desea eliminar el cargamento?")
         if (opcion == true) {

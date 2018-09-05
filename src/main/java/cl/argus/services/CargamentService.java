@@ -35,4 +35,10 @@ public class CargamentService {
         //String nOperacion = Integer.parseInt(id);
         return cargamentRepository.getByNumeroOperacion(numeroOperacion);
     }
+
+    @RequestMapping(value = "/cargamentBorrar/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable("id") Long id) {
+                cargamentRepository.delete(id);
+
+    }
 }

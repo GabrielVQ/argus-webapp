@@ -11,4 +11,5 @@ import java.util.List;
 public interface CargamentRepository extends CrudRepository<Cargament,Long>{
 
     List <Cargament> getByNumeroOperacion(String numeroOperacion);
+
 }

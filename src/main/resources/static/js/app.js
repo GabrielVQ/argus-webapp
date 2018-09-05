@@ -63,9 +63,17 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/descripcion.html',
             controller: 'descripcionController'
         })
+        .when('/editarDescripcion/:bl/:blhouse/:id',{
+            templateUrl: 'js/views/editarDescripcion.html',
+            controller: 'editarDescripcionController'
+        })
         .when('/ingresos',{
             templateUrl: 'js/views/ingresos.html',
             controller: 'ingresosController'
+        })
+        .when('/editarIngresos/:bl/:blhouse/:id',{
+            templateUrl: 'js/views/editarIngresos.html',
+            controller: 'editarIngresosController'
         })
         .when('/agregarCiudad',{
             templateUrl: 'js/views/agregarCiudad.html',
@@ -115,7 +123,7 @@ app.config(function($routeProvider){
             templateUrl: 'js/views/rentaBuscarOperacion.html',
             controller: 'rentaBuscarController'
         })
-        .when('/rentaVer',{
+        .when('/rentaVer/:bl',{
             templateUrl: 'js/views/rentaVerOperacion.html',
             controller: 'rentaVerController'
         })

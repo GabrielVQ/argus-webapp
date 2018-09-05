@@ -105,32 +105,45 @@
                     <div class="content col-md-12">
 
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Codigo Agente:</label>
-                                <input ng-model="newAgregarEmpresa.cod_agente" class="col-md-8" type="text" name="Codigo-Agente">
+                            <div class="col-md-6"><label class="col-md-4">Codigo:</label>
+                                <input ng-model="newAgregarEmpresa.codigo" class="col-md-8" type="text" name="Codigo-Agente" style="text-transform: uppercase">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
-                                <input ng-model="newAgregarEmpresa.contacto" class="col-md-8" type="text" name="Contacto">
+                                <input ng-model="newAgregarEmpresa.contacto" class="col-md-8" type="text" name="Contacto" style="text-transform: uppercase">
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Dirección:</label>
-                                <input ng-model="newAgregarEmpresa.direccion" class="col-md-8" type="text" name="Codigo-Agente">
+                                <input ng-model="newAgregarEmpresa.direccion" class="col-md-8" type="text" name="Codigo-Agente" style="text-transform: uppercase">
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Telefono:</label>
-                                <input ng-model="newAgregarEmpresa.fonoContacto" class="col-md-8" type="text" name="Telefono">
+                                <input ng-model="newAgregarEmpresa.fonoContacto" class="col-md-8" type="text" name="Telefono" style="text-transform: uppercase">
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Nacionalidad:</label>
-                                <input ng-model="newAgregarEmpresa.nacionalidad" class="col-md-8" type="text" name="Nacionalidad">
+                                <input ng-model="newAgregarEmpresa.nacionalidad" class="col-md-8" type="text" name="Nacionalidad" style="text-transform: uppercase">
                             </div>
                             <div class="col-md-6"><label class="col-md-6">Nombre abreviado:</label>
-                                <input ng-model="newAgregarEmpresa.nombreAbrev" class="col-md-8" type="text" name="Nombre-abreviado">
+                                <input ng-model="newAgregarEmpresa.nombreAbrev" class="col-md-8" type="text" name="Nombre-abreviado" style="text-transform: uppercase">
                             </div>
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-4">Razón social:</label>
-                                <input ng-model="newAgregarEmpresa.razon_social" class="col-md-8" type="text" name="Razon-social">
+                                <input ng-model="newAgregarEmpresa.razon_social" class="col-md-8" type="text" name="Razon-social" style="text-transform: uppercase">
+                            </div>
+                            <div class="col-md-6"><label class="col-md-4">rut:</label>
+                                <input ng-model="newAgregarEmpresa.rut" class="col-md-8" type="text" name="Razon-social" style="text-transform: uppercase">
+                            </div>
+                        </ul>
+                        <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Tipo Empresa:</label>
+                                <select ng-model="newAgregarEmpresa.tipoEmpresa" class="col-md-8 withoutSearch" name="tipoCarga" id="inputSelect">
+                                    <option value="Agente" selected="selected">Agente</option>
+                                    <option value="Almacenista">Almacenista</option>
+                                    <option value="Cliente">Cliente</option>
+
+                                </select>
                             </div>
                         </ul>
                     </div>

@@ -96,7 +96,7 @@
     <div class="container-fluid" ng-controller="descripcionController">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
-                <h4>Crear BL-House</h4>
+                <h4>Crear Descripción</h4>
             </div>
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
@@ -144,14 +144,17 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat=" BL in cargamentsBYoperacion ">
-                            <td>{{BL.contenedor.sigla}}</td>
+                            <td><pre>{{BL.contenedor.sigla}}-{{BL.contenedor.numeroContenedor}}-{{BL.contenedor.digito}}
+{{BL.contenedor.selloEmpresa}}
+{{BL.contenedor.selloCliente}}
+{{BL.contenedor.selloAduana}}</pre></td>
                             <td>{{BL.markNumbers}}</td>
-                            <td>{{BL.descriptionGoods}}</td>
+                            <td><pre>{{BL.descriptionGoods}}</pre></td>
                             <td>{{BL.numeroBLHouse}}</td>
-                            <td width="180">
-                                <a href="#!/editarBLMaster/{{BL.numeroOperacion}}" class="btn btn-primary btn-xs" role="button">Editar</a>
-                                <a href="" class="btn btn-danger btn-xs" role="button">Borrar</a>
-                            </td>
+                            <td>
+
+                                <a href="#!/editarDescripcion/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}/{{BL.id}}" class="btn btn-primary btn-xs" role="button">Editar</a>
+                                <input ng-click="borrar (BL.id)" class="btn btn-danger btn-xs" role="button" value="Borrar">
                         </tr>
                         </tbody>
                     </table>
@@ -163,28 +166,28 @@
                     <div class="col-md-6"><label class="col-md-6">Contenedor:</label>
                         <select ng-model="newDescripcion.contenedor" class="col-md-6 contenedorSelect"  >
                             <option ng-repeat="container in containers"
-                                    value="{{container.id}}">{{container.sigla}}
+                                    value="{{container.id}}">{{container.descripcionLarga}}
                             </option>
                         </select>
                     </div>
                         <div class="col-md-6"><label class="col-md-6">Mark and numbers:</label>
-                            <input ng-model="newDescripcion.markNumbers" class="col-md-6" type="text" >
+                            <input ng-model="newDescripcion.markNumbers" class="col-md-6" type="text" style="text-transform: uppercase">
                         </div>
                     </ul>
                     <ul class="input-group">
                         <div class="col-md-4"><label class="col-md-5">Number of packages:</label>
-                            <input ng-model="newDescripcion.numberPackages" class="col-md-2" type="number" >
+                            <input ng-model="newDescripcion.numerPackages" class="col-md-4" type="number" >
                         </div>
                         <div class="col-md-4"><label class="col-md-5">Groos weight:</label>
-                            <input ng-model="newDescripcion.groosWeight" class="col-md-2" type="number" >
+                            <input ng-model="newDescripcion.groosWeight" class="col-md-4" type="number" placeholder="0000,00">
                         </div>
                         <div class="col-md-4"><label class="col-md-4">Measurement:</label>
-                            <input ng-model="newDescripcion.measurement" class="col-md-2" type="number" >
+                            <input ng-model="newDescripcion.measurement" class="col-md-4" type="number" placeholder="0000,00" >
                         </div>
                     </ul>
                     <ul class="input-group">
                         <div class="col-md-12"><label class="col-md-6">Description of goods:</label>
-                        <textarea ng-model="newDescripcion.descriptionGoods" type ="text" name=""  class="col-md-10"></textarea>
+                        <textarea rows="10" cols="40" ng-model="newDescripcion.descriptionGoods" type ="text"   class="col-md-10"></textarea>
                         </div>
                     </ul>
 

@@ -33,4 +33,10 @@ public class IngresoService {
         //String nOperacion = Integer.parseInt(id);
         return ingresoRepository.getByNumeroOperacion(numeroOperacion);
     }
+
+    @RequestMapping(value = "/ingresoBorrar/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable("id") Long id) {
+        ingresoRepository.delete(id);
+
+    }
 }

@@ -70,6 +70,8 @@ public class BLMaster{
     @JoinColumn(name="nave")
     private Nave nave;
 
+
+
     @ManyToOne
     @JoinColumn(name="puerto_descarga")
     private Puerto puertoDescarga;
@@ -125,6 +127,11 @@ public class BLMaster{
         return blocked;
     }
 
+
+    public String getAgenteAduana() {
+        return agenteAduana;
+    }
+
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
@@ -153,9 +160,7 @@ public class BLMaster{
         return tipoNegocio;
     }
 
-    public String getAgenteAduana(){
-        return agenteAduana;
-    }
+
 
     public String getBLMasterNumero() {
         return blmasterNumero;

@@ -87,7 +87,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a href="" class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>
@@ -187,8 +187,8 @@
                             <div class="col-md-6"><label class="col-md-4">Moneda:</label>
 
                                 <select ng-model="newBLHouse.moneda" class="col-md-8 withoutSearch" name="monedaHouse">
-                                    <option value="Dolar USA" selected="selected">Dolar USA</option>
-                                    <option value="pesos">CLP</option>
+                                    <option value="USD" selected="selected">Dolar USA</option>
+                                    <option value="CLP">CLP</option>
                                 </select>
                             </div>
                         </ul>
@@ -209,7 +209,7 @@
                             <div class="content col-md-12">
                             <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-2">Kilos:</label>
-                                <input ng-model="newBLHouse.kilos" class="col-md-3" type="number" name="Kilos" ><label class="col-md-2">KGs</label>
+                                <input ng-model="newBLHouse.kilos" class="col-md-3" type="number" name="Kilos"  ><label class="col-md-2">KGs</label>
                             </div>
                                 <div class="col-md-6"><label class="col-md-3">Volumen:</label>
                                     <input ng-model="newBLHouse.volumen" class="col-md-3" type="number" name="Volumen"><label class="col-md-2">M<sup>3</sup></label>
@@ -217,7 +217,7 @@
                         </ul>
                                 <ul class="input-group">
                                 <div class="col-md-6"><label class="col-md-2">Flete:</label>
-                                    <input ng-model="newBLHouse.flete" class="col-md-7" type="text" name="Flete">
+                                    <input ng-model="newBLHouse.flete" class="col-md-7" type="text" name="Flete" >
                                 </div>
                                 </ul>
                             </div>
@@ -240,22 +240,16 @@
                 <div class="panel-body1">
                     <div class="content col-md-12">
                         <ul class="input-group">
-                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
-                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
-                                    <option ng-repeat="e in empresas"
-                                            value="{{e.id}}">{{e.nombreAbrev}}
-                                    </option>
-                                </select>
-                            </div>
+
                         </ul>
                         <ul class="input-group">
-                            <div class="col-md-6">
+                           <!-- <div class="col-md-6">
                                 <label class="col-md-6">Pre-carriage:</label>
-                                <input ng-model="newBLHouse.preCarriage" class="col-md-7" type="text" name="Pre-carriage">
-                            </div>
+                                <input ng-model="newBLHouse.preCarriage" class="col-md-8" type="text" name="Pre-carriage">
+                            </div>-->
                             <div class="col-md-6">
                                 <label class="col-md-6">Lugar de recepción:</label>
-                                <input ng-model="newBLHouse.lugarRecepcion" class="col-md-7" type="text" name="lugarDeRecepcion">
+                                <input ng-model="newBLHouse.lugarRecepcion" class="col-md-8" type="text" name="lugarDeRecepcion" >
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -274,11 +268,18 @@
                             </div>
                         </ul>
                         <ul class="input-group">
+                            <div class="col-md-6"><label class="col-md-4">Almacenista:</label>
+                                <select ng-model="newBLHouse.almacenista" class="col-md-8 almacenistaSelect" name="almacenista">
+                                    <option ng-repeat="e in empresas"
+                                            value="{{e.id}}">{{e.nombreAbrev}}
+                                    </option>
+                                </select>
+                            </div>
                             <div class="col-md-6"><label class="col-md-4">Contacto:</label>
-                                <input ng-model="newBLHouse.contacto" class="col-md-8" type="text" name="contacto">
+                                <input ng-model="newBLHouse.contacto" class="col-md-8" type="text" name="contacto" >
                             </div>
                             <div class="col-md-6"><label class="col-md-4">Telefono:</label>
-                                <input ng-model="newBLHouse.telefono" class="col-md-8" type="text" name="telefono">
+                                <input ng-model="newBLHouse.telefono" class="col-md-8" type="text" name="telefono" >
                             </div>
                         </ul>
                         <ul class="input-group">
@@ -293,7 +294,7 @@
                         </ul>
                         <ul class="input-group">
                             <div class="col-md-6"><label class="col-md-6">Observación:</label>
-                                <input ng-model="newBLHouse.observacion" class="col-md-12" type="text" name="observacion">
+                                <input ng-model="newBLHouse.observacion" class="col-md-12" type="text" name="observacion" style="text-transform: uppercase">
                             </div>
                         </ul>
                     </div>
@@ -303,7 +304,7 @@
                     <input class="btn btn-primary btn-sm" type="button" value="Reserva">
                     <!--<button type="button" class="btn btn-primary btn-sm">Ver Houses</button>-->
                     <input class="btn btn-primary btn-sm" ng-click="send()" type="submit"  type="button" value="Guardar">
-                    <input class="btn btn-primary btn-sm" type="button" value="Cancelar">
+                    <input class="btn btn-primary btn-sm" ng-click="cancelar()" type="button" value="Cancelar">
                 </ul>
                     </div>
                 </div>

@@ -90,19 +90,40 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
             .then(function(response) {
 
                 if (response.data.length != 0){
-                    var token = response.data[response.data.length - 1].numeroBLHouse + 1;
+                    var token = parseInt(response.data[response.data.length - 1].numeroBLHouse) + 1;
                     //var token = servicioNumeroBLHouse.numeroBLHouse;
                     localStorage.setItem("token3", token);
-                    //console.log('hay bl houses:', localStorage.getItem("token3"))
+                    console.log('hay bl houses:', localStorage.getItem("token3"))
                 }
                 else{
                     var token2 = "1";
                     localStorage.setItem("token3", token2);
-                    //console.log('no hay bl houses', localStorage.getItem("token3"))
+                    console.log('no hay bl houses', localStorage.getItem("token3"))
                 }
             });
 
+    $scope.newContenedor={
+        "tipo":"",
+        "sigla":"" ,
+        "numeroContenedor":"",
+        "selloEmpresa":"",
+        "selloCliente":"",
+        "selloAduana":"",
+        "descripcionLarga":"",
+        "digito":""
+    }
 
+    $scope.agregarContenedor = function(){
+        $scope.newContenedor.sigla = $scope.newContenedor.sigla.toUpperCase();
+        $scope.newContenedor.selloEmpresa = $scope.newContenedor.selloEmpresa.toUpperCase();
+        $scope.newContenedor.selloAduana = $scope.newContenedor.selloEmpresa.toUpperCase();
+        $scope.newContenedor.selloCliente = $scope.newContenedor.selloEmpresa.toUpperCase();
+        $scope.newContenedor.descripcionLarga = $scope.newContenedor.sigla+'-'+$scope.newContenedor.numeroContenedor+$scope.newContenedor.digito+"\n"+$scope.newContenedor.selloEmpresa+'\n'+$scope.newContenedor.selloCliente+'\n'+$scope.newContenedor.selloAduana;
+
+        $http.post("http://localhost:8080/containers",$scope.newContenedor);
+        $scope.mensaje = 'Conetenedor agregado con exito!';
+        $window.alert($scope.mensaje);
+    }
     
     $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;

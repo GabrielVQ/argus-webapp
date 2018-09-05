@@ -19,8 +19,11 @@ public class Container {
     private String tipo;
     private String sigla;
     private String numeroContenedor;
-    private String selloContenedor;
+    private String selloEmpresa;
+    private String selloCliente;
+    private String selloAduana;
     private String digito;
+    private String descripcionLarga;
 
     public long getId() {
         return id;
@@ -42,8 +45,20 @@ public class Container {
         return numeroContenedor;
     }
 
-    public String getSelloContenedor() {
-        return selloContenedor;
+    public String getSelloEmpresa() {
+        return selloEmpresa;
+    }
+
+    public String getSelloCliente() {
+        return selloCliente;
+    }
+
+    public String getSelloAduana() {
+        return selloAduana;
+    }
+
+    public String getDescripcionLarga() {
+        return descripcionLarga;
     }
 
     public String getDigito() {

@@ -116,20 +116,20 @@
                     <thead>
                     <tr>
                         <th>Número de operación</th>
-                        <th>BL Number</th>
                         <th>BL-House Number</th>
-                        <th>Creado por</th>
+                        <th>Cliente extranjero / Consigne</th>
+
 
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat=" BL in BLHouse |filter:searchBox ">
+                    <tr ng-repeat=" BL in BLHouse |filter:searchBox">
                         <td>{{BL.numeroOperacion}}</td>
-                        <td>{{BL.blMaster.blmasterNumero}}</td>
                         <td>{{BL.numeroBLHouse}}</td>
-                        <td>{{BL.blMaster[0].fechaIngreso}}</td>
+                        <td>{{BL.clienteExtranjero.nombreAbrev}}</td>
+
                         <td>
-                            <a href="" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-pdf-o"></i> Pdf</a>
+                            <a href="/pdf/download/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-info btn-xs" role="button"><i class="fa fa-fw fa-file-pdf-o"></i> Pdf</a>
                             <a href="#!/editarBLHouse/{{BL.numeroOperacion}}/{{BL.numeroBLHouse}}" class="btn btn-primary btn-xs" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                             <a href="" class="btn btn-danger btn-xs" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</a>
                         </td>
