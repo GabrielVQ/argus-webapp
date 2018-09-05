@@ -1,7 +1,6 @@
 package cl.argus.controllers;
 
 
-import cl.argus.argusApplication;
 import cl.argus.models.Cargament;
 import cl.argus.repositories.BLHouseRepository;
 import cl.argus.repositories.BLMasterRepository;
@@ -18,6 +17,8 @@ import java.util.Date;
 import cl.argus.models.Empresa;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.draw.DottedLineSeparator;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 
@@ -52,10 +53,98 @@ public class PDFController {
     BLHouse blHouse;
     BLMaster blMaster;
 
+    public Document createReserva(String file,Long id,BLHouseRepository blHouseRepository) throws IOException{
+        Document document = null;
+        try{
+            blHouse=blHouseRepository.findOne(id);
+            document = new Document(PageSize.LETTER,40, 40, 5, 2);
+            PdfWriter pdfWriter= PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+
+
+            Font title= new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
+            Font font= new Font(Font.FontFamily.COURIER, 12);
+            Font subBoldFont = new Font(Font.FontFamily.COURIER, 12, Font.BOLD);
+            Font subFont = new Font(Font.FontFamily.COURIER, 8,Font.BOLD);
+
+            Image image = Image.getInstance("src/main/java/cl/argus/controllers/argus.jpg");
+            image.scalePercent(50,50);
+            image.setAlignment(Element.ALIGN_CENTER);
+
+
+
+            Paragraph titulo= new Paragraph("CONFIRMACION DE RESERVA FCL\n\n",title);
+            titulo.setAlignment(Element.ALIGN_CENTER);
+
+            Paragraph destinatario= new Paragraph(   "SEÑORES  : \n" +
+                                                            "ATENCION : \n" +
+                                                            "FECHA    : \n\n",font
+            );
+
+            Paragraph saludos= new Paragraph("ESTIMADOS SEÑORES,\n" +
+                                                    "LES DETALLAMOS INFORMACION DE ESPACIO PARA SU EXPORTACION.\n\n",font
+            );
+                                                /// en vez de poner el dato en sí poner  "texto" + dato +"\n" 
+            Paragraph cuerpo= new Paragraph( "NUMERO DE BOOKING  :SAI0012667\n" +
+                                                    "NAVIERA            :WAN HAI\n" +
+                                                    "NAVE               :XIN YA ZHOU  V.132\n" +
+                                                    "PUERTO DE EMBARQUE :SAN ANTONIO\n" +
+                                                    "EQUIPO             :1X20\n" +
+                                                    "PUERTO DESTINO     :MANZANILLO \n" +
+                                                    "FECHA ZARPE        :26/05/2018\n" +
+                                                    "FECHA DE STACKING  :20 AL 24  DE MAYO HASTA LAS 21:00 HRS\n" +
+                                                    "CIERRE DOCUMENTAL  :23 DE MAYO  2018 HASTA LAS 12:00 HRS \n" +
+                                                    "REFERENCIA         :DELIMEX\n" +
+                                                    "RETIRO DE UNIDAD   :SITRANS SANTIAGO\n" +
+                                                    "CONDICION DE FLETE :COLLECT\n" +
+                                                    "VºBº D.U.S         :SAN ANTONIO\n\n"
+                    ,font);
+
+            Paragraph despedida= new Paragraph("OBS: ENVIAR MATRIZ DEFINITIVA ANTES DEL  CIERRE  DEL CUT OFF DOCUMENTAL  \n" +
+                    "A:  ana.alvarez@arguscr.cl; eavendano@arguscr.cl de no ser enviada en el plazo se cobrara por Corrección y Matriz Fuera de Plazo\n\n\n\n",font);
+
+            LineSeparator separator = new LineSeparator();
+
+            separator.setLineWidth(3);
+            separator.setPercentage(100);
+
+            Paragraph direccion = new Paragraph("ESTADO 33 OF 73 \n" +
+                    "Fonos 2 2638 0023 / 2 2633 9770 / 2 2638 4976\n" +
+                    "\tSANTIAGO DE CHILE\n", font);
+            direccion.setAlignment(Element.ALIGN_CENTER);
+
+
+            document.add(image);
+            document.add(titulo);
+            document.add(destinatario);
+            document.add(saludos);
+            document.add(cuerpo);
+            document.add(despedida);
+            document.add(separator);
+            document.add(direccion);
+
+
+            document.close();
+
+
+
+
+
+
+
+        }catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return document;
+    }
+
     /**
      *
-     * @param file
-     * @param idBl
+
      * @return
      */
     public Document createPDF(String file, Long id,BLHouseRepository blHouseRepository) throws IOException {
@@ -148,10 +237,10 @@ public class PDFController {
 
 
     private void addMetaData(Document document) {
-        document.addTitle("Generate PDF report");
-        document.addSubject("Generate PDF report");
-        document.addAuthor("Java Honk");
-        document.addCreator("Java Honk");
+        document.addTitle("Confirmacion de reserva");
+        document.addSubject("Confirmacion de reserva");
+        document.addAuthor("Argus");
+        document.addCreator("Argus");
     }
 
     /**
@@ -185,34 +274,13 @@ public class PDFController {
         document.add(preface);
     }
 
-    /**
-     *
-     * @param document
-     * @param nombre_usuario
-     * @throws DocumentException
-     */
 
 
-
-
-    /**
-     *
-     * @param paragraph
-     * @param number
-     */
     private void creteEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
         }
     }
-
-
-
-    /**
-     *
-     * @param table
-     * @throws DocumentException
-     */
 
 
     private void createShipper(PdfPTable table) throws DocumentException {
