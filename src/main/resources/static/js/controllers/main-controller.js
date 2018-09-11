@@ -14,7 +14,7 @@ app.controller('MainController', ['$scope', '$location','$routeParams','$http', 
      } */
 
     $scope.user_id = $routeParams.user_id;
-    $http.get('http://localhost:8080/users/'+ $routeParams.user_id).then(function(response){ 
+    $http.get('https://argus-webapp.herokuapp.com/users/'+ $routeParams.user_id).then(function(response){
         $scope.nombre_usuario = response.data.name;
         //console.log("nombre usuario home", $scope.nombre_usuario)
         var token = $scope.nombre_usuario;

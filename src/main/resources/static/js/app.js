@@ -128,7 +128,7 @@ app.config(function($routeProvider){
             controller: 'rentaVerController'
         })
                 .otherwise({
-            redirectTo: '/agregarCobro'
+            redirectTo: '/login'
         });
 });
 

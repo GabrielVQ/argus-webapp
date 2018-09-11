@@ -13,7 +13,7 @@ app.controller('loginController', ['$scope', '$location', '$http','$window','$in
         $scope.usuario.email = (correo);
         $scope.usuario.password = (pass);
 
-        $http.post("http://localhost:8080/users/validate",$scope.usuario).then(function(response){
+        $http.post("https://argus-webapp.herokuapp.com/users/validate",$scope.usuario).then(function(response){
             //console.log(response.data);
             if(response.data!=""){
 
