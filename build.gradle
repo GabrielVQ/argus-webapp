@@ -52,10 +52,23 @@ dependencies {
 	compile 'com.itextpdf:itext-pdfa:5.5.10'
 	compile 'com.itextpdf:itextg:5.5.9'
 	testCompile('org.springframework.security:spring-security-test')
+	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
 }
 
 configurations{
 	providedRuntime
 }
 
+task stage() {
+	dependsOn clean, war
+}
+war.mustRunAfter clean
 
+task copyToLib(type: Copy) {
+	into "$buildDir/server"
+	from(configurations.compile) {
+		include "webapp-runner*"
+	}
+}
+
+stage.dependsOn(copyToLib)
