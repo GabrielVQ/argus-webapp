@@ -1,1 +1,1 @@
-web: java -jar build/server/webapp-runner-*.jar build/libs/*.war --server.port=$PORT
+web: java -jar build/server/webapp-runner-*.jar build/libs/*.war -Dspring.server.port=$PORT
