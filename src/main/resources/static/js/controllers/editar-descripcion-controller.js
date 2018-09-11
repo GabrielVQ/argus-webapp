@@ -28,7 +28,7 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
         "descriptionGoods":""
     }
 
-    var urlBaseCargament = 'http://localhost:8080/cargaments/numerooperacion/'+$scope.numeroOperacion;
+    var urlBaseCargament = 'https://argus-webapp.herokuapp.com/cargaments/numerooperacion/'+$scope.numeroOperacion;
 
     $http.get(urlBaseCargament)
         .then(function(response) {
@@ -48,7 +48,7 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
             }*/
         });
 
-    var urlBase = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+    var urlBase = 'https://argus-webapp.herokuapp.com/blhouses/numerooperacion/'+$scope.numeroOperacion;
 
     $http.get(urlBase)
         .then(function(response) {
@@ -62,7 +62,7 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
         //$scope.editarDescripcion.contenedor= {"id":parseInt($scope.editarDescripcion.contenedor.)};
         $scope.editarDescripcion.groosWeight = parseFloat($scope.editarDescripcion.groosWeight).toFixed(2);
         $scope.editarDescripcion.measurement = parseFloat($scope.editarDescripcion.measurement).toFixed(2);
-        $http.post("http://localhost:8080/cargaments",$scope.editarDescripcion);
+        $http.post("https://argus-webapp.herokuapp.com/cargaments",$scope.editarDescripcion);
         $scope.mensaje = 'Descripción editada con exito!';
         $window.alert($scope.mensaje);
         $location.url('/descripcion/'+$scope.numeroOperacion+'/'+$scope.numeroBLHouse);
@@ -71,7 +71,7 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
         //aca newVotation esta listo para ser utilizado en el método POST, en teoría
         //$window.location.reload();
     }
-    var urlBase1 = 'http://localhost:8080/cargaments/numerooperacion/'+$scope.numeroOperacion;
+    var urlBase1 = 'https://argus-webapp.herokuapp.com/cargaments/numerooperacion/'+$scope.numeroOperacion;
 
     $http.get(urlBase1)
         .then(function(response) {
@@ -101,23 +101,23 @@ app.controller('editarDescripcionController', ['$scope', '$location', '$http','$
     $scope.borrar = function(id){
         var opcion = confirm("¿Seguro que desea eliminar el cargamento?")
         if (opcion == true) {
-            $http.delete("http://localhost:8080/cargaments/cargamentBorrar/" + id)
+            $http.delete("https://argus-webapp.herokuapp.com/cargaments/cargamentBorrar/" + id)
             $window.alert("Cargamento eliminado")
             $window.location.reload();
         }
     }
 
-    $http.get('http://localhost:8080/containers').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/containers').then(function(response){
         $scope.containers = response.data;
         //console.log($scope.containers);
     })
 
-    $http.get('http://localhost:8080/cargaments').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/cargaments').then(function(response){
         $scope.cargaments = response.data;
         //console.log($scope.cargaments);
     })
 
-    $http.get('http://localhost:8080/blmasters').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/blmasters').then(function(response){
         $scope.BLMaster = response.data;
         //console.log('data:',$scope.BLMaster[1].blHouse);
     })

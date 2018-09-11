@@ -38,7 +38,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
 
     }
 
-    var urlBase1 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.numeroOperacion;
+    var urlBase1 = 'https://argus-webapp.herokuapp.com/blhouses/numerooperacion/'+$scope.numeroOperacion;
 
     $http.get(urlBase1)
         .then(function(response) {
@@ -46,7 +46,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
             // console.log('status: ',response.status);
         });
 
-    var urlBaseIngreso = 'http://localhost:8080/ingresos/numerooperacion/'+$scope.numeroOperacion;
+    var urlBaseIngreso = 'https://argus-webapp.herokuapp.com/ingresos/numerooperacion/'+$scope.numeroOperacion;
 
     $scope.send3 = function(){
 
@@ -57,7 +57,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
         $scope.newIngresos.collect = parseFloat($scope.newIngresos.collect).toFixed(2);
         $scope.newIngresos.costo = parseFloat($scope.newIngresos.costo).toFixed(2);
 
-        $http.post("http://localhost:8080/ingresos",$scope.newIngresos);
+        $http.post("https://argus-webapp.herokuapp.com/ingresos",$scope.newIngresos);
         $scope.mensaje = 'Ingresos agregado con exito!';
         $window.alert($scope.mensaje);
 
@@ -78,7 +78,7 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
     $scope.borrar = function(id){
         var opcion = confirm("¿Seguro que desea eliminar el ingreso?");
         if (opcion === true) {
-            $http.delete("http://localhost:8080/ingresos/ingresoBorrar/" + id);
+            $http.delete("https://argus-webapp.herokuapp.com/ingresos/ingresoBorrar/" + id);
             $window.alert("Ingreso eliminado");
             $window.location.reload();
         }
@@ -90,16 +90,16 @@ app.controller('ingresosController', ['$scope', '$location', '$http','$window', 
             console.log("ingresos por operacion AFUERA ",$scope.ingresosBYoperacion);
         });
 
-    $http.get('http://localhost:8080/containers').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/containers').then(function(response){
         $scope.containers = response.data;
         //console.log($scope.containers);
     })
 
-    $http.get('http://localhost:8080/empresas').then(function(response){ // campo: agente
+    $http.get('https://argus-webapp.herokuapp.com/empresas').then(function(response){ // campo: agente
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
-    $http.get('http://localhost:8080/cobros').then(function(response){ // campo: agente
+    $http.get('https://argus-webapp.herokuapp.com/cobros').then(function(response){ // campo: agente
         $scope.cobros = response.data;
         //console.log($scope.puertos);
     })

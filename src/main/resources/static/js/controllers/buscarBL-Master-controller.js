@@ -5,7 +5,7 @@ app.controller('buscarBLMasterController', ['$scope', '$location', '$http', func
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
 
-    $http.get('http://localhost:8080/blmasters').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/blmasters').then(function(response){
         $scope.BLMaster = response.data;
         //console.log($scope.BLMaster[0].numeroOperacion);
         console.log($scope.BLMaster);

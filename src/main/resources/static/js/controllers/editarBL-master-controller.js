@@ -25,7 +25,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         return fecha;
     }
     
-    var urlBase = 'http://localhost:8080/blmasters/numerooperacion/'+$scope.bl;
+    var urlBase = 'https://argus-webapp.herokuapp.com/numerooperacion/'+$scope.bl;
 
     $http.get(urlBase)
     .then(function(response) {
@@ -34,7 +34,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         $scope.fechaZarpeValue = parseFecha($scope.BLMaster.fechaZarpe);
         $scope.fechaLlegadaValue = parseFecha($scope.BLMaster.fechaLlegada);
         console.log("falops 1 ",$scope.BLMaster.agenteAduana);
-        var urlBase6 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
+        var urlBase6 = 'https://argus-webapp.herokuapp.com/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
         $http.get(urlBase6).then(function(response){  // campo: destino
             $scope.razon_social = response.data[0].razon_social;
             console.log("falops ",$scope.razon_social);
@@ -69,7 +69,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         //$scope.BLMaster.fechaZarpe = $scope.fechaZarpeAux;
        // console.log('fecha zarpeeee final : ',$scope.BLMaster.fechaZarpe);
        // console.log('BL : ',$scope.BLMaster);
-        $http.post("http://localhost:8080/blmasters",$scope.BLMaster);
+        $http.post("https://argus-webapp.herokuapp.com/blmasters",$scope.BLMaster);
         //console.log($scope.BLMaster);
         $scope.mensaje = 'BL Editada con exito!';
         $window.alert($scope.mensaje);
@@ -84,7 +84,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
 
 
 
-        var urlBase2 = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.bl;
+        var urlBase2 = 'https://argus-webapp.herokuapp.com/blhouses/numerooperacion/'+$scope.bl;
         console.log("ME EJECUTE")
         $http.get(urlBase2)
             .then(function(response) {
@@ -120,33 +120,33 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
         $scope.newContenedor.selloCliente = $scope.newContenedor.selloCliente.toUpperCase();
         $scope.newContenedor.descripcionLarga = $scope.newContenedor.sigla+'-'+$scope.newContenedor.numeroContenedor+$scope.newContenedor.digito+"\n"+$scope.newContenedor.selloEmpresa+'\n'+$scope.newContenedor.selloCliente+'\n'+$scope.newContenedor.selloAduana;
 
-        $http.post("http://localhost:8080/containers",$scope.newContenedor);
+        $http.post("https://argus-webapp.herokuapp.com/containers",$scope.newContenedor);
         $scope.mensaje = 'Conetenedor agregado con exito!';
         $window.alert($scope.mensaje);
     }
     
-    $http.get('http://localhost:8080/ciudades').then(function(response){  // campo: destino
+    $http.get('https://argus-webapp.herokuapp.com/ciudades').then(function(response){  // campo: destino
         $scope.ciudades = response.data;
         //console.log($scope.ciudades);
     })
     //console.log($scope.ciudades);
 
-    $http.get('http://localhost:8080/navieras').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/navieras').then(function(response){
         $scope.navieras = response.data;
         //console.log($scope.navieras);
     })
 
-    $http.get('http://localhost:8080/naves').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/naves').then(function(response){
         $scope.naves = response.data;
         //console.log($scope.naves);
     })
 
-    $http.get('http://localhost:8080/puertos').then(function(response){   //campos: pto origen y descarga
+    $http.get('https://argus-webapp.herokuapp.com/puertos').then(function(response){   //campos: pto origen y descarga
         $scope.puertos = response.data;
         //console.log($scope.puertos);
     })
 
-    $http.get('http://localhost:8080/empresas').then(function(response){ // campo: agente
+    $http.get('https://argus-webapp.herokuapp.com/empresas').then(function(response){ // campo: agente
         $scope.empresas = response.data;
         //console.log($scope.puertos);
     })
@@ -155,7 +155,7 @@ app.controller('editarBLMasterController', ['$scope', '$location', '$http','$win
     
 
     $scope.selectedItemChanged = function(){
-        var urlBase5 = 'http://localhost:8080/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
+        var urlBase5 = 'https://argus-webapp.herokuapp.com/empresas/nombreabrev/'+ $scope.BLMaster.agenteAduana;
         $http.get(urlBase5).then(function(response){  // campo: destino
         $scope.razon_social = response.data[0].razon_social;
     })

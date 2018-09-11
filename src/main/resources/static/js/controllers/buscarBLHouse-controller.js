@@ -13,7 +13,7 @@ app.controller('buscarBLHouseController', ['$scope', '$location', '$http','$rout
         console.log("busqueda master1:",$scope.BLHouse);
     })
 
-    $http.get('http://localhost:8080/blmasters').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/blmasters').then(function(response){
         console.log("test 123:",$scope.BLHouse);
         $scope.BLHouse.addElements(response.data);
         //console.log($scope.BLMaster[0].numeroOperacion);

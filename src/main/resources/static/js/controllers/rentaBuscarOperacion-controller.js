@@ -6,7 +6,7 @@ app.controller('rentaBuscarController', ['$scope', '$location', '$http','$routeP
     $scope.creador = 'Eduardo Avendaño';
     $scope.fecha = new Date();
 
-    $http.get('http://localhost:8080/blhouses').then(function(response){
+    $http.get('https://argus-webapp.herokuapp.com/blhouses').then(function(response){
         $scope.BLHouse = response.data;
         //console.log($scope.BLMaster[0].numeroOperacion);
         //console.log($scope.BLMaster);

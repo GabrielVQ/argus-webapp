@@ -24,7 +24,7 @@ app.controller('agregarEmpresaController', ['$scope', '$location','$http','$wind
         $scope.newAgregarEmpresa.nacionalidad = $scope.newAgregarEmpresa.nacionalidad.toUpperCase();
         $scope.newAgregarEmpresa.nombreAbrev = $scope.newAgregarEmpresa.nombreAbrev.toUpperCase();
         $scope.newAgregarEmpresa.razon_social = $scope.newAgregarEmpresa.razon_social.toUpperCase();
-        $http.post("http://localhost:8080/empresas",$scope.newAgregarEmpresa);
+        $http.post("https://argus-webapp.herokuapp.com/empresas",$scope.newAgregarEmpresa);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'empresa añadida con exito!';
         $window.alert($scope.mensaje);

@@ -11,7 +11,7 @@ app.controller('partnerController', ['$scope', '$location','$routeParams','$http
     $scope.op_num;
     $scope.search = function(){
         console.log("input value: ",$scope.op_num);  
-        $http.get('http://localhost:8080/blmasters/numerooperacion/'+ $scope.op_num).then(function(response){ 
+        $http.get('https://argus-webapp.herokuapp.com/blmasters/numerooperacion/'+ $scope.op_num).then(function(response){
         console.log("BL: ", response.data);
         $scope.BLMaster = response.data; // deberia ser el bl-house ahi se obtienen todos los datos q van en el pdf
         //console.log($scope.ciudades);

@@ -8,7 +8,7 @@ app.controller('rentaVerController', ['$scope', '$location', '$http','$routePara
     $scope.totalCosto = 0;
     $scope.profit = 0;
 
-    var urlBase = 'http://localhost:8080/blhouses/numerooperacion/'+$scope.bl;
+    var urlBase = 'https://argus-webapp.herokuapp.com/blhouses/numerooperacion/'+$scope.bl;
 
     $http.get(urlBase).then(function(response){
         $scope.BLHouse = response.data;
@@ -17,7 +17,7 @@ app.controller('rentaVerController', ['$scope', '$location', '$http','$routePara
         //console.log("blhouse test: ",$scope.BLHouseOp.numeroOperacion);
     })
 
-    var urlBaseIngreso = 'http://localhost:8080/ingresos/numerooperacion/'+$scope.numeroOperacion;
+    var urlBaseIngreso = 'https://argus-webapp.herokuapp.com/ingresos/numerooperacion/'+$scope.numeroOperacion;
     $http.get(urlBaseIngreso)
         .then(function(response) {
             $scope.ingresosBYoperacion = response.data;

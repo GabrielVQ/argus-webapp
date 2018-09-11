@@ -14,7 +14,7 @@ app.controller('agregarPuertoController', ['$scope', '$location','$http','$windo
 
         $scope.newAgregarPuerto.nombre = $scope.newAgregarPuerto.nombre.toUpperCase();
         $scope.newAgregarPuerto.direccion = $scope.newAgregarPuerto.direccion.toUpperCase();
-        $http.post("http://localhost:8080/puertos",$scope.newAgregarPuerto);
+        $http.post("https://argus-webapp.herokuapp.com/puertos",$scope.newAgregarPuerto);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'puerto añadido con exito!';
         $window.alert($scope.mensaje);
