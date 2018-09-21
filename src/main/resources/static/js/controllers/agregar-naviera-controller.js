@@ -13,6 +13,7 @@ app.controller('agregarNavieraController', ['$scope', '$location', '$http','$win
     $scope.send = function(){
 
         $scope.newAgregarNaviera.nombre = $scope.newAgregarNaviera.nombre.toUpperCase();
+        console.log("naviera",$scope.newAgregarNaviera.nombre );
         $http.post("https://argus-webapp.herokuapp.com/navieras",$scope.newAgregarNaviera);
         //console.log($scope.newBLMaster);
         $scope.mensaje = 'Naviera añadida con exito!';
