@@ -14,7 +14,7 @@ app.controller('agregarNaveController', ['$scope', '$location','$http','$window'
         $scope.newAgregarNave.nombre = $scope.newAgregarNave.nombre.toUpperCase();
         $http.post("https://argus-webapp.herokuapp.com/naves",$scope.newAgregarNave);
         //console.log($scope.newBLMaster);
-        $scope.mensaje = 'nave añadida con exito!';
+        $scope.mensaje = 'Nave añadida con exito!';
         $window.alert($scope.mensaje);
 
     }
