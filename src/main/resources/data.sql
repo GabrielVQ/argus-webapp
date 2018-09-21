@@ -26,6 +26,7 @@ INSERT INTO public.navieras VALUES (4,'AGENCIA MARITIMA ULTRAMAR                
 INSERT INTO public.navieras VALUES (5,'HAPAG-LLOYD                                       ');
 INSERT INTO public.navieras VALUES (6,'MED PACIFIC EXPRESS                               ');
 INSERT INTO public.navieras VALUES (7,'MITSUI O.S.K. LINES                               ');
+/*
 INSERT INTO public.navieras VALUES (8,'CIA. TRASATLANTICA ESPA�OLA                       ');
 INSERT INTO public.navieras VALUES (9,'AMERICAN PRESIDENT LINES                          ');
 INSERT INTO public.navieras VALUES (10,'A.J. BROOM & CIA. S.A.C.                          ');
@@ -154,7 +155,7 @@ INSERT INTO public.navieras VALUES (133,'PIL                                    
 INSERT INTO public.navieras VALUES (134,'ATALAS AIR                                        ');
 INSERT INTO public.navieras VALUES (135,'SIN COMPA�IA EMBARQUE CO-LOADER                   ');
 INSERT INTO public.navieras VALUES (136,'CIA. SUDAMERICANA DE VAPORES                      ');
-
+*/
 
 INSERT INTO public.puerto VALUES (1,'BUE','BUENOS AIRES'),(2,'MDQ','MAR DEL PLATA'),(16,'SLO','SAN LORENZO'), (13,'CAL','CALAMA'),(19416,'XGO','SANTIAGO'),(116,'VAL','VALPARAISO');
 
