@@ -12,13 +12,12 @@ public class Naviera {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private String nombre;
 
+    private String nombre;
 
     public long getId(){
         return this.id;
     }
-    
     public String getNombre(){
         return this.nombre;
     }

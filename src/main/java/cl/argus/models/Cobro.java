@@ -17,7 +17,6 @@ public class Cobro {
     public long getId() {
         return id;
     }
-
     public String getNombreCobro() {
         return nombreCobro;
     }
